@@ -44,7 +44,7 @@ drives:
     fast: true
 
 video:
-  look: crt             # plain, or crt (the M-CRT shader)
+  look: crt             # plain, or crt (the CRT emulation shader)
   monitor: mono-green   # rgbi (9-pin), rgb (RCA, no intensity line) or mono-green (composite)
   aspect: original      # original (4:3), or square pixels
   scale: fit            # fit the window, or integer multiples only

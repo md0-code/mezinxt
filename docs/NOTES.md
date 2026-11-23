@@ -108,7 +108,7 @@ a `fast` of its own. It is no longer written, and the setup screen removes it fr
 
 | Key | Values | Default | Meaning |
 |---|---|---|---|
-| `video.look` | `plain`, `crt` | `crt` | The picture as it is, or through the M-CRT shader, which imitates a cathode-ray tube monitor |
+| `video.look` | `plain`, `crt` | `crt` | The picture as it is, or through the CRT emulation shader, which imitates a cathode-ray tube monitor |
 | `video.monitor` | `rgbi`, `rgb`, `mono-green` | `mono-green` | The monitor on the CGA, one for each of its video outputs: `rgbi`, colour with intensity steps (the nine-pin connector: 16 colours, with brown); `rgb`, colour without intensity steps (the RCA jacks, which mix the intensity into every channel: three levels a channel, 15 colours, colour 6 dark yellow, colours 7 and 8 alike); `mono-green`, monochrome on the composite video signal (the RCA jack: 16 grey levels from the card's resistor network, softened along each line by the monitor's limited bandwidth, an 8 MHz estimate) in green phosphor. The monochrome coupler (`machine.display: mda`) always shows green |
 | `video.aspect` | `original`, `square` | `original` | The picture's shape: 4:3 as on the monitor, or square pixels |
 | `video.scale` | `fit`, `integer` | `fit` | Fit the window, or integer multiples of the picture only |
