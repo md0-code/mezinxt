@@ -1,0 +1,17 @@
+     {b}Daca{/b}   d = 1    - "catre";
+            d = 0    - "de la".
+     {b}Daca{/b}   w = 1    - instructiune cuvint;
+            w = 0    - instructiune octet.
+     {b}Daca{/b} s:w = 01   - 16 biti de date imediate de la operand;
+          s:w = 11   -  8 biti de date imediate la operand.
+     {b}Daca{/b}   v = 0    - "count"(incrementare) = 1;
+            v = 1    - "count" in (CL).
+
+     x  = redundant
+     z  = utilizat pentru primitive de sir pentru compararea cu ZF {b}FLAG{/b}
+     {b}AL{/b} = acumulator de 8 biti
+     {b}AX{/b} = acumulator de 16 biti
+     {b}CX{/b} = registru contor
+     {b}DS{/b} = segment de date
+     {b}DX{/b} = registru de port variabil
+     {b}ES{/b} = segment suplimentar

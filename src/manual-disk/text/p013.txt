@@ -1,0 +1,55 @@
+                       ------------------------------
+                       |Pin conector|Denumire semnal|
+                       ------------------------------
+                       |      1     |    KBCLK      |
+                       |      2     |    KBDATA     |
+                       |      3     |    KBRESET    |
+                       |      4     |      GND      |
+                       |      5     |      +5V      |
+                       ------------ -----------------
+
+     Pentru configurarea sistemului, placa logica de baza este prevazuta cu
+un  microintrerupator  cu  8  pozitii de tip DIP ce  poate  fi  citit  prin
+program.  Acesta  furnizeaza  software-ului  sistemului  informatii  despre
+optiunile   instalate:   coprocesorul aritmetic,  memoria placii logice  de
+baza,   tipul  cuplorului  de afisaj si modul acestuia de lucru la  punerea
+sub  tensiune  a   echipamentului  precum si  numarul  unitatilor  de  disc
+flexibil atasate.
+     Placa  logica  de  baza primeste semnalul de initializare  (RESET)  la
+punerea  sub  tensiune.  Totusi,  pentru a rezolva  situatiile  de  blocare
+accidentala  a  microsistemului,  in  special  cele  aparute  in  depanarea
+software a unor programe inca insuficient testate,  la placa logica de baza
+este  conectat  un  comutator  de initializare fixat  pe  panoul  spate  al
+echipamentului.
+     Placa  logica  de  baza este alimentata de la sursa de  tensiune  prin
+intermediul unui conector cu 10 contacte. Repartizarea tensiunilor la pinii
+conectorului de alimentare este urmatoarea:
+
+                       ---------------------------
+                       |Pin conector|  Tensiune  |
+                       ---------------------------
+                       |      1     |  nefolosit |
+                       |      2     |     -5V    |
+                       |      3     |     -12V   |
+                       |      4     |  nefolosit |
+                       |      5     |     +12V   |
+                       |      6     |     +5V    |
+                       |      7     |     +5V    |
+                       |      8     |     GND    |
+                       |      9     |     GND    |
+                       |     10     |     GND    |
+                       ---------------------------
+
+     Placa  logica de baza consuma aprox.   3 A pe tensiunea de +5V si   nu
+foloseste  tensiunile  de  -5V,  -12V,  +12V.  Aceste  tensiuni  sint  insa
+utilizate  de  plachetele  logice  adaptoare  introduse  in  conectorii  de
+extensie ce formeaza canalul de intrare/iesire.
+     Canalul    de   intrare/iesire   este   o   extensie   a   magistralei
+microprocesorului   I8086   (I8088).    Magistrala   este   demultiplexata,
+alimentata,  si in plus contine functiile de intrerupere si de acces direct
+la memorie (DMA).
+     Canalul de intrare/iesire contine o magistrala de date  bidirectionala
+de 16 biti,  20 linii de adresa,  8 nivele de intreruperi, linii de comanda
+pentru  citirea si scrierea memoriei si a port-urilor, linii pentru ceas si
+temporizare,  linii de comanda pentru canalele DMA, linii de comanda pentru
+reimprospatarea   memoriei  RAM,   o   linie   de  comanda  a   verificarii

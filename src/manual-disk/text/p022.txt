@@ -1,0 +1,52 @@
+       SEMNIFICATIA STRAP-URILOR DE SELECTIE A TIPULUI DE CONTROLOR DMA
+  -----------------------------------
+  |Tip controlor|     Strap-uri     |
+  |    DMA      |--------------------
+  |             | S12| S13| S14| S15|
+  -----------------------------------
+  |   I8237-5   | OFF| ON | ON | OFF|
+  |   I8257     | ON | OFF| OFF| ON |
+  -----------------------------------
+
+       SEMNIFICATIA  STRAP-URILOR  DE SELECTIE A TIPULUI DE MEMORIE RAM
+  -------------------------
+  |  Tip RAM    |Strap-uri|
+  |             |---------|
+  |             | S16| S17|
+  -------------------------
+  |   MK4164    | OFF| ON |
+  |   MK41256   | ON | OFF|
+  -------------------------
+
+       SEMNIFICATIA STRAP-URILOR DE SELECTIE A TIPULUI DE MEMORIE ROM
+  -------------------------
+  |  Tip RAM    |Strap-uri|
+  |             |---------|
+  |             | S18| S19|
+  -------------------------
+  |   I2764     | OFF| ON |
+  |   I27128    | ON | OFF|
+  -------------------------
+
+       SEMNIFICATIA STRAP-URILOR DE SELECTIE A TIPULUI DE MICROPROCESOR
+  -----------------------------------------------------------------
+  |     Tip     |                   Strap-uri                     |
+  |microprocesor|-------------------------------------------------|
+  |             | S1 | S2 | S3 | S4 | S5 | S6 | S7 | S8 | S9 | S10|
+  ----------------------------------------------------------------|
+  |   I8086     | ON | ON | OFF| ON | OFF| ON | ON | OFF| OFF| ON |
+  |   I8088     | OFF| OFF| ON | OFF| ON | OFF| OFF| ON | ON | OFF|
+  -----------------------------------------------------------------
+
+       SEMNIFICATIA STRAP-ULUI DE SELECTIE A TIPULUI PLACHETELOR DE EXTENSIE
+  ---------------------
+  |     Tip     |Strap|
+  |  extensie   |-----|
+  |             | S11 |
+  ---------------------
+  |  IBM-PC/XT  | ON  |
+  |  JUNIOR-XT  | OFF |
+  ---------------------
+
+  Nota:  ON  indica strap conectat;
+         OFF indica strap neconectat.

@@ -1,0 +1,50 @@
+     Din  punct de vedere al programatorului,  cuplorul pentru  comunicatia
+seriala contine urmatoarele registre (port-uri) de intrare/iesire:
+
+     ---------------------------------------------------
+     |         Registru              |  Adresa (hexa)  |
+     ---------------------------------------------------
+     | SIO/A          data           |     250/260     |
+     | SIO/A      stare/control      |     251/261     |
+     | SIO/B          data           |     252/262     |
+     | SIO/B      stare/control      |     253/263     |
+     | I8253          canal 0        |     254/264     |
+     | I8253          canal 1        |     255/265     |
+     | I8253          canal 2        |     256/266     |
+     | I8253      stare/control      |     257/267     |
+     | Port recunoastere intrerupere | 258-25B/268-26B |
+     | Port citire stare modem       | 25C-25F/26C-26F |
+     ---------------------------------------------------
+
+     Registrul  de citire stare modem (adresa 25CH-25FH/26CH-26FH)  permite
+citirea prin program a starii liniei DSRA, corespunzatoare starii modemului
+pentru  canalul A (starea liniei DSRA este citita pe pozitia bitului  0  de
+date).
+     Semnalele  compatibile   CCITT-V.24  ale interfetelor  de  comunicatie
+seriala sincron/asincrona sint urmatoarele:
+
+     Semnal     Sens          Descriere
+---------------------------------------------------------------------------
+     {b}TxD{/b}        iesire       Emisie date.
+(TRANSMITTED DATA)
+
+     {b}RxD{/b}        intrare      Receptie date.
+(RECEIVED DATA)
+
+     {b}RTS{/b}        iesire       Cerere aprobare de emisie catre modem.
+(REQUEST TO SEND)
+
+     {b}CTS{/b}        iesire       Acceptare cerere de emisie catre modem.
+(CLEAR TO SEND)
+
+     {b}DSR{/b}        intrare      Modem gata de lucru.
+(DATA SET READY)
+
+     {b}DCD{/b}        intrare      Purtatoare detectata de catre  modem
+(DATA CARRIER DETECT)        (receptie posibila).
+
+     {b}DTR{/b}        iesire       Terminal gata de lucru.
+(DATA TERMINAL READY)
+
+     {b}TxCK{/b}       intrare      Ceas de emisie (de la modem).
+(TRANSMITTER CLOCK)

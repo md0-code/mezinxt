@@ -1,0 +1,54 @@
+  Adresa     Numar            Nume                Intrare in BIOS
+  (hexa)     intrerupere
+---------------------------------------------------------------------------
+   54-57       15        Rezervat                 D11
+   58-5B       16        Tastatura                KEYBOARD_IO
+   5C-5F       17        Imprimanta               PRINTER_IO
+   60-63       18        BASIC rezident           F600.0000
+   64-67       19        Bootstrap                BOOT_STRAP
+   68-69       1A        Stabilire ora            TIME_OF_DAY
+   6C-6F       1B        Intrerupere tastatura    DUMMY_RETURN
+   70-73       1C        Tact timer               DUMMY_RETURN
+   74-77       1D        Initializare video       VIDEO_PARMS
+   78-7B       1E        Parametrii disc flexibil DISK_BASE
+   7C-7F       1F        Caractere grafice video  0
+---------------------------------------------------------------------------
+
+     {b}INTRERUPEREA 1B HEXA - ADRESA DE INTRERUPERE A TASTATURII{/b}
+
+     Acest  vector indica codul ce va fi executat atunci cind sint  apasate
+tastele  {b}Ctrl{/b}  si  {b}C{/b}.  Vectorul  este apelat  ca  raspuns  la  intreruperea
+tastaturii, iar controlul va fi transmis printr-o instructiune IRET. Rutina
+de  punere  sub  tensiune  initializeaza acest vector  pentru  a  indica  o
+instructiune  IRET,  astfel incit nimic nu se intimpla la tastarea {b}Ctrl{/b}  si
+{b}C{/b} daca programul de aplicatie nu pozitioneaza o valoare diferita.
+
+     {b}INTRERUPEREA 1C HEXA - TACT TIMER{/b}
+
+     Acest  vector  indica  codul ce trebuie executat la  fiecare  tact  al
+ceasului  sistemului.  Acest  vector este chemat in timpul  raspunsului  la
+intreruperea  timer-ului,  iar controlul trebuie dat printr-o  instructiune
+IRET.  Rutinele de punere sub tensiune initializeaza acest vector sa indice
+o instructiune IRET, astfel incit nimic nu se va intimpla daca aplicatia nu
+va modifica pointer-ul.  Este o responsabilitate a aplicatiei sa salveze si
+sa refaca registrele ce se vor modifica.
+
+     {b}INTRERUPEREA 1D HEXA - PARAMETRII VIDEO{/b}
+
+     Acest  vector  indica adresa unei zone de date ce  contine  parametrii
+necesari  pentru initializarea controlorului MC 6845 de pe placa cuplorului
+de  afisaj.  A  se observa existenta a patru tabele distincte,  ce  trebuie
+luate in considerare  in  cazul  in care se utilizeaza toate  modurile,  de
+operare.   Rutinele    la    punerea    sub  tensiune   a    echipamentului
+initializeaza   acest  vector  pentru  a  indica  parametrii  continuti  in
+rutinele video ale  memoriei ROM.
+
+     {b}INTRERUPEREA 1E HEXA - PARAMETRII DE DISC FLEXIBIL{/b}
+
+     Acest  vector  indica adresa unei zone de date ce  contine  parametrii
+necesari   pentru   unitatea  de  disc  flexibil.   Rutinele   de   pornire
+initializeaza vectorul sa indice parametrii continuti in rutina de disc din
+memoria  ROM.  Acesti  parametri impliciti reprezinta valorile  specificate
+pentru  orice unitati de disc flexibil asociate echipamentului.  Schimbarea
+acestui bloc de parametri poate fi necesara in cazul atasarii altor unitati
+de disc flexibil pentru adaptara la specificatiile lor.

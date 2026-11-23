@@ -1,0 +1,45 @@
+   --------------------------------------------------------------------------
+     Faza     R/W    D7 D6 D5 D4 D3 D2 D1 D0          Observatii
+   --------------------------------------------------------------------------
+                       {b}Scrie  date ("Write Data"){/b}
+
+      Comanda  W     MT MF 0  0  0  1  0  1        Coduri de comanda.
+               W     X  X  X  X  X  HD US1 US0
+               W               C                   Informatii de sector  ID
+               W               H                   anterioare executiei co-
+               W               R                   menzii.
+               W               N
+               W              EOT
+               W              GPL
+               W              DTL
+      Executie                                     Transfer  de date  intre
+                                                   FDD  si  sistem.
+      Rezultat R              ST0                  Informatii de stare dupa
+               R              ST1                  executia comenzii.
+               R              ST2
+               R               C                   Informatii de sector  ID
+               R               H                   dupa executia comenzii.
+               R               R
+               R               N
+   --------------------------------------------------------------------------
+                       {b}Scrie  date sterse ("Write Deleted Data"){/b}
+
+      Comanda  W     MT MF 0  0  1  0  0  1        Coduri de comanda.
+               W     X  X  X  X  X  HD US1 US0
+               W               C                   Informatii de sector  ID
+               W               H                   anterioare executiei co-
+               W               R                   menzii.
+               W               N
+               W              EOT
+               W              GPL
+               W              DTL
+      Executie                                     Transfer  de date  intre
+                                                   FDD  si  sistem.
+      Rezultat R              ST0                  Informatii de stare dupa
+               R              ST1                  executia comenzii.
+               R              ST2
+               R               C                   Informatii de sector  ID
+               R               H                   dupa executia comenzii.
+               R               R
+               R               N
+    ------------------------------------------------------------------------

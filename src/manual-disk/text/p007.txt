@@ -1,0 +1,54 @@
+             {b}CAPITOLUL 2.  INSTALARE, EXPLOATARE, INTRETINERE{/b}
+
+
+     {b}2.1. Instalare{/b}
+
+     {b}2.1.1. Conditii de instalare si exploatare{/b}
+
+     Conditiile  de instalare si exploatare ale microcalculatorului JUNIOR-
+XT sint urmatoarele:
+     - temperatura mediului ambiant: 5...35 grade C;
+     - umiditate relativa: 65% la 20 grade C, fara condensare;
+     - incaperi inchise, tip protectie climatica N3;
+     - mediu  fara  interferenta a cimpurilor electromagnetice generate  de
+       transmitatoare radio,  radar,  masini industriale de radiofrecventa,
+       etc..
+
+     O  corecta  amplasare a microcalculatorului  JUNIOR-XT  se  realizeaza
+respectind conditiile urmatoare:
+     - dimensiunile mesei de instalare: 1000x800 mm;
+     - suprafata  de instalare corespunzatoare configuratiei de  baza:  cel
+       putin patru metri patrati,   inclusiv scaunul operatorului,   pentru
+       cazul   in   care   configuratia   produsului   se   extinde    prin
+       adaugarea   de  echipamente  periferice  se  va  mari  corespunzator
+       suprafata, in raport cu cerintele specifice ale echipamentelor;
+     - iluminarea  incaperii  trebuie  sa  fie  corespunzatoare,  permitind
+       vizualizarea in bune conditii a ecranului.
+
+     {b}2.1.2. Caracteristici de gabarit{/b}
+
+     Dimensiunile modulelor functionale sint:
+     - bloc logic si de alimentare: 480x440x155 mm;
+     - tastatura: 480x207x32 mm.
+
+     Greutatea maxima a modulelor functionale este:
+     - bloc logic si de alimentare: max. 20 kg;
+     - tastatura: max. 2 kg.
+
+     {b}2.1.3. Alimentarea cu energie electrica{/b}
+
+     Echipamentul se va conecta la reteaua cu energie electrica  respectind
+conditiile:
+     - tensiune de alimentare: 220V +10%, -15%;
+     - frecventa retelei: 50Hz +/- 2%;
+     - priza retea de tip SHUKO;
+     - racordare  la  retea electrica separata,  departe de instalatii  sau
+       agregate generatoare de paraziti.
+
+     {b}2.1.4. Instalare{/b}
+
+     Echipamentul  dezambalat  se  instaleaza in  conditiile  de  mai  sus,
+astfel:
+     - se  cupleaza  tastatura  prin  intermediul cablului  de legatura  la
+conectorul  specific  aflat  pe  panoul  spate  al  blocului  logic  si  de
+alimentare;

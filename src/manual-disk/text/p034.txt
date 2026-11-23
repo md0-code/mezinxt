@@ -1,0 +1,50 @@
+REGISTRUL DE STARE 0 AL CONTROLORULUI DE DISC FLEXIBIL NEC uPD 765 (I8272)
+--------------------------------------------------------------------------
+           Bit           |
+-------------------------|           Descriere
+Nr.| Nume         Simbol |
+--------------------------------------------------------------------------
+D7 | Cod              IC |  D7=0 si D6=0
+   |intrerupere          |  Terminare normala a comenzii (NT). Comanda a
+   |("Interrupt Code")   |  fost terminata si executata corect.
+   |                     |------------------------------------------------
+D6 |                     |  D7=0 si D6=1
+   |                     |  Terminarea anormala a comenzii (AT).
+   |                     |  Executia comenzii a fost inceputa,  dar nu a
+   |                     |  fost finalizata corect.
+   |                     |------------------------------------------------
+   |                     |  D7=1 si D6=0
+   |                     |  Comanda invalida (IC). Comanda emisa nu va fi
+   |                     |  lansata niciodata.
+   |                     |------------------------------------------------
+   |                     |  D7=1 si D6=1
+   |                     |  Terminare anormala,  intrucit in timpul exe-
+   |                     |  cutiei  comenzii, semnalul "READY" de la FDD
+   |                     |  si-a schimbat starea.
+--------------------------------------------------------------------------
+D5 | Sfirsit cautare  SE |  Atunci cind FDC executa comanda, acest indi-
+   | ("Seek End")        |  cator este pus in starea 1
+--------------------------------------------------------------------------
+D4 | Verificare       EC |  Daca se  primeste un  semnal de eroare de la
+   | echipament          |  FDD sau daca  semnalul de pista  0  nu se da
+   | ("Equipment Check") |  dupa 77 de impulsuri  (comanda recalibrare),
+   |                     |  atunci indicator este setat.
+--------------------------------------------------------------------------
+D3 | Neoperational    NR |  Atunci cind FDD  este in starea "not  ready"
+   | ("Not Ready")       |  si  se  lanseaza o  comanda  de  citire  sau
+   |                     |  scriere, acest indicator este setat. De ase-
+   |                     |  meni daca  o comanda  de  citire sau scriere
+   |                     |  este lansata pe fata a doua a unui disc cu o
+   |                     |  singura  fata,  atunci   este   setat  acest
+   |                     |  indicator.
+--------------------------------------------------------------------------
+D2 | Adresa capului   HD |  Acest indicator este  utilizat  pentru indi-
+   | de citire/scriere   |  carea  starii capului de  citire/scriere  la
+   | ("Head Address")    |  intrerupere.
+--------------------------------------------------------------------------
+D1 |Selectie unitate  US1|
+   |("Unit Select 1")    |
+-------------------------|   Acesti  indicatori  sint  utilizati  pentru
+D0 |Selectie unitate  US0|   aflarea numarului unitatii de disc la intre-
+   |("Unit Select 0")    |   rupere.
+--------------------------------------------------------------------------

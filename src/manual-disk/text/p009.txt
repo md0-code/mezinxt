@@ -1,0 +1,54 @@
+     {u}2.2.2.1.{/u}  Erorile  datorate  functionarii necorespunzatoare  a  placii
+logice de baza sint semnalate de aparitia pe ecran a mesajelor:
+
+     {b}Error 101 Int{/b}            (eroare controlor de intreruperi)
+sau
+     {b}Error 102 Time{/b}           (eroare timer)
+sau
+     {b}Error 180{/b}                (eroare canal de intrare/iesire)
+sau
+     {b}Error 201 RAM{/b}            (eroare memorie RAM)
+sau
+     {b}Error 701 ROM{/b}            (eroare suma de control ROM aditional)
+sau
+     {b}Error Rom bios check{/b}     (eroare suma de control ROM BIOS)
+
+fiind insotite de semnale sonore de eroare.
+
+     {u}2.2.2.2.{/u}  Erorile datorate functionarii necorespunzatoare a cuplorului
+de afisaj sint semnalate de aparitia pe ecran a mesajelor:
+     {b}Error 501 Crt RAM{/b}        (eroare memorie de afisaj)
+sau
+     {b}Error 502 Crt{/b}            (eroare linii)
+
+fiind insotite de un semnal sonor prelung.
+     De obicei aceste erori sint generate de functionarea necorespunzatoare
+a memoriei de afisaj sau a circuitului controlor de ecran MC 6845. De aceea
+este  posibil  ca  in  cazul unui defect major  al  cuplorului  de  afisaj,
+mesajele  anterioare de eroare sa nu apara pe ecran si echipamentul sa  fie
+neoperational.
+
+     {u}2.2.2.3.{/u}  Erorile datorate functionarii necorespunzatoare a tastaturii
+sint semnalate de aparitia pe ecran a mesajelor:
+
+     {b}Error 301 Kbd{/b}            (cod de scanare intors diferit de AAH)
+sau
+     {b}Error 302 Kbd{/b}            (cod de scanare intors diferit de 00H)
+
+fiind insotite de un semnal sonor scurt.
+     Aceste   erori  sint  datorate fie  functionarii  necorespunzatoare  a
+tastaturii,  fie necuplarii acesteia la blocul logic si de alimentare  prin
+intermediul cablului de legatura.
+
+     {u}2.2.2.4.{/u}  Erorile datorate functionarii necorespunzatoare a cuplorului
+de  disc  flexibil  sau a unitatilor de disc  flexibil  sint  semnalate  de
+aparitia pe ecran a mesajului:
+
+     {b}Error 601{/b}
+
+fiind insotite de un semnal sonor scurt.
+     Acest tip de eroare este datorat fie functionarii necorespunzatoare  a
+cuplorului de disc flexibil,  fie a necuplarii unitatii de disc flexibil la
+blocul  logic si de alimentare (cablul de legatura nu  este  conectat   sau
+unitatea de disc nu este alimentata).
+     Dupa  testarea cuplorului si a unitatii de disc flexibil (se executa o

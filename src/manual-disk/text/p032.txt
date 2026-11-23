@@ -1,0 +1,53 @@
+-------------------------------------------------------------------------
+  Faza     R/W    D7 D6 D5 D4 D3 D2 D1 D0          Observatii
+-------------------------------------------------------------------------
+ {b}Valoare la comparare mai mica sau cel mult egala ("Scan Low or Equal"){/b}
+
+   Comanda  W     MT MF SK 1  1  0  0  1        Coduri de comanda.
+            W     X  X  X  X  X  HD US1 US0
+            W               C                   Informatii de sector  ID
+       W    W               H                   anterioare executiei co-
+       W    W               R                   menzii.
+       W    W               N
+       W    W              EOT
+    e       W              GPL
+            W              DTL
+   Executie                                     Datele  comparate  intre
+                                                FDD  si  sistem.
+   Rezultat R              ST0                  Informatii de stare dupa
+            R              ST1                  executia comenzii.
+            R              ST2
+            R               C                   Informatii de sector  ID
+            R               H                   dupa executia comenzii.
+            R               R
+            R               N
+--------------------------------------------------------------------------
+ {b}Valoare la comparare mai mare sau cel putin egala ("Scan High or Equal"){/b}
+
+   Comanda  W     MT MF SK 1  1  1  0  1        Coduri de comanda.
+            W     X  X  X  X  X  HD US1 US0
+            W               C                   Informatii de sector  ID
+            W               H                   anterioare executiei co-
+            W               R                   menzii.
+            W               N
+            W              EOT
+            W              GPL
+            W              DTL
+   Executie                                     Datele  comparate  intre
+                                                FDD  si  sistem.
+   Rezultat R              ST0                  Informatii de stare dupa
+            R              ST1                  executia comenzii.
+            R              ST2
+            R               C                   Informatii de sector  ID
+            R               H                   dupa executia comenzii.
+            R               R
+            R               N
+--------------------------------------------------------------------------
+                    {b}Recalibrare ("Recalibrate"){/b}
+
+   Comanda  W     0  0  0  0  0  1  1  1        Coduri de comanda
+            W     X  X  X  X  X  0  US1 US0
+   Executie                                     Cap de  citire / scriere
+                                                pozitionat pe pista 0.
+   Fara rezultat
+--------------------------------------------------------------------------

@@ -1,0 +1,23 @@
+     {b}3.6. Sursa de alimentare{/b}
+
+     Sursa  de  alimentare este plasata in partea dreapta spate a  blocului
+logic  si  de  alimentare.  Este  o sursa in  comutatie  de  la  retea,  ce
+furnizeaza tensiunile continue necesare functionarii placii logice de baza,
+plachetelor  si  cuploarelor de extensie,  precum si celor doua unitati  de
+discuri   flexibile  de  5,25  inch,   respectiv  unitatii  de   disc   fix
+(Winchester).
+     Caracteristicile electrice ale sursei de alimentare sint urmatoarele:
+
+     - frecventa retelei   : 50Hz +/- 2%
+     - tensiunea de intrare: 220V +10% -15%
+     - putere consumata    : max 140 VA
+     - tensiuni continue furnizate la iesire:
+          + 5Vcc  + 5% -4%  - 10A
+          - 5Vcc  +10% -8%  - 0,5A
+          +12Vcc  + 5% -4%  - 4A
+          -12Vcc  +10% -8%  - 0,3A
+
+     Sursa  de alimentare este prevazuta cu un filtru de retea  incorporat,
+comutator  de  retea  bipolar  si  sigurante de 1,6A  pe  ambele  faze  ale
+tensiunii de alimentare. Comutatorul de retea si sigurantele se afla fixate
+pe panoul spate al blocului logic si de alimentare.

@@ -1,0 +1,55 @@
+---------------------------------------------------------------------------
+ Al doilea cod           Functie
+--------------------------------------------------------------------------
+     81                  Pagina jos si {b}home{/b} cursor
+     82                  Ins (Insert)
+     83                  Del (Delete)
+    84-93                F11 - F20
+    94-103               F21 - F30 (Ctrl F1 - F10)
+   104-113               F31 - F40 (Alt F1 - F10)
+    114                  Ctrl PrSc (Start/Stop ecou catre imprimanta)
+    115                  Ctrl <- (Cuvint de intoarcere)
+    116                  Ctrl -> (Cuvint de avansare)
+    117                  Ctrl End (Sterge pina la sfirsit de linie - EOL)
+    118                  Ctrl PgDn (Sterge pina la sfirsitul ecranului
+                                   EOS)
+    119                  Ctrl Home (Clear Screen si Home)
+   120-131               Alt 1,2,3,4,5,6,7,8,9,0,-,= (Tastele 2-13)
+    132                  Ctrl  PgUp (Primele 25 linii ale textului  si
+                               home cursor)
+---------------------------------------------------------------------------
+
+     {u}4.2.2.1. Stari shiftate{/u}
+
+     Majoritatea  starilor  de  shift sint tratate  in  interiorul  rutinei
+tastaturii,  transparent sistemului sau programului de aplicatie.  In orice
+caz,  setul  curent al starilor de shift active este  disponibil  printr-un
+apel la un punct de intrare in rutina tastaturii din ROM. Urmatoarele taste
+dau starile de shift alternate.
+
+     {b}Shift{/b}
+     Aceasta tasta shifteaza temporar tastele de shift 2-13, 15-27,  30-41,
+43-53,  55  si 59-68 in majuscule (sau in caractere de baza in starea  {b}Caps{/b}
+{b}Lock{/b}).  De asemeni, tasta {b}Shift{/b} inverseaza temporar starile de {b}Num Lock{/b} sau
+non-{b}Num Lock{/b} ale tastelor 71-73, 75, 77 si 79-83.
+
+     {b}Ctrl{/b}
+     Aceasta  tasta  shifteaza temporar  tastele  3,7,12,14,16-28,30-38,43-
+50,55,59-71,73,75,77,79 si 81 in starea {b}Ctrl.{/b}  De asemeni,  tasta {b}Ctrl{/b} este
+utilizata  impreuna  cu  tastele {b}Alt{/b} si {b}Del{/b} pentru  generarea  functiei  de
+initializare   a  sistemului,   impreuna  cu  tasta  de  {b}Scrl Lock{/b}   pentru
+generarea  functiei de intrerupere,  iar cu tasta {b}Num Lock{/b} pentru generarea
+functiei de pauza.
+
+     {b}Alt{/b}
+     Tasta  shifteaza temporar tastele 2-13,16-25,30-38,44-50 si  59-60  in
+starea {b}Alt.{/b}  De asemeni,  tasta {b}Alt{/b} este utilizata impreuna cu tastele {b}Ctrl{/b}
+si  {b}Del{/b}  pentru  generarea functiei de initializare  sistem,  descrisa  mai
+departe.
+     Tasta {b}Alt{/b} mai are o utilizare. Ea permite ca utilizatorul sa introduca
+de  la  tastatura  orice  cod  de  caracter  intre  0  si  255  in  sistem.
+Utilizatorul  tine  apasata  tasta  {b}Alt{/b} si  tasteaza  valoarea  zecimala  a
+caracterelor  dorite  prin utilizarea unei zone de taste numerice  (tastele
+71-73,75-77,si  79-82).  Apoi  tasta {b}Alt{/b} nu se mai tine  apasata.  Daca  se
+introduc  mai  mult de trei digiti,  atunci rezulta un  numar  modulo  256.
+Acesti  trei digiti sint interpretati ca fiind coduri de caractere si  sint

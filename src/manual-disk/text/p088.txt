@@ -1,0 +1,41 @@
+---------------------------------------------------------------------------
+   Functie                     Tasta(e)    Comentariu
+---------------------------------------------------------------------------
+   Taste de functii           Taste Alt
+   suplimentare                  2-13
+                              (1-9,0, )
+---------------------------------------------------------------------------
+   Taste de functii            Alt A-Z    Utilizate atunci cind functia
+   suplimentare                           incepe cu aceeasi litera ca una
+                                          din tastele alfa
+---------------------------------------------------------------------------
+
+
+   FUNCTII DE ECRAN SPECIALE PENTRU EDITARE BASIC
+---------------------------------------------------------------------------
+   Functie                    Tasta
+---------------------------------------------------------------------------
+   Carriage return            <-
+   Line feed                  Ctrl <-
+   Bell                       Ctrl G
+   Home                       Home
+   Cursor sus                 ^
+                              |
+   Cursor jos                 |
+                              V
+   Cursor stinga              <-
+   Cursor dreapta             ->
+   Cuvint inainte             Ctrl ->
+   Cuvint inapoi              Ctrl <-
+   Inserare                   Ins
+   Sterge                     Del
+   Sterge ecran               Ctrl Home
+   Blocare iesire             Ctrl Num lock
+   Tab inainte                ->|
+   Opreste executie (break)   Ctrl Break
+   Sterge linie curenta       Esc
+   Sterge pina la sfirsit     Ctrl End
+   de linie
+   Pozitioneaza cursor        End
+   la sfirsit de linie
+---------------------------------------------------------------------------

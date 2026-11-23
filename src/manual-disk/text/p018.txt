@@ -1,0 +1,55 @@
+         CONFIGURATIA CONECTORILOR CANALULUI DE INTRARE/IESIRE
+
+
+                                J1 - J8
+                             -------------
+                  GND       -|B01     A01|-   - IOCHCK
+                + RESET     -|B02     A02|-    + DATA7
+                + 5V        -|B03     A03|-    + DATA6
+                + IRQ2      -|B04     A04|-    + DATA5
+                - 5V        -|B05     A05|-    + DATA4
+                + DRQ2      -|B06     A06|-    + DATA3
+                - 12V       -|B07     A07|-    + DATA2
+                - CARDSLCTD -|B08     A08|-    + DATA1
+                + 12V       -|B09     A09|-    + DATA0
+                  GND       -|B10     A10|-  - IOCHRDY
+                - MEMW      -|B11     A11|-      + AEN
+                - MEMR      -|B12     A12|-    + ADR19
+                - IOW       -|B13     A13|-    + ADR18
+                - IOR       -|B14     A14|-    + ADR17
+                - DACK3     -|B15     A15|-    + ADR16
+                + DRQ3      -|B16     A16|-    + ADR15
+                - DACK1     -|B17     A17|-    + ADR14
+                + DRQ1      -|B18     A18|-    + ADR13
+                - DACK0     -|B19     A19|-    + ADR12
+                + CLK       -|B20     A20|-    + ADR11
+                + IRQ7      -|B21     A21|-    + ADR10
+                + IRQ6      -|B22     A22|-     + ADR9
+                + IRQ5      -|B23     A23|-     + ADR8
+                + IRQ4      -|B24     A24|-     + ADR7
+                + IRQ3      -|B25     A25|-     + ADR6
+                - DACK2     -|B26     A26|-     + ADR5
+                + T/C       -|B27     A27|-     + ADR4
+                + ALE       -|B28     A28|-     + ADR3
+                + 5V        -|B29     A29|-     + ADR2
+                + OSC       -|B30     A30|-     + ADR1
+                  GND       -|B31     A31|-     + ADR0
+                             -------------
+
+
+                               J9 - J12
+                             -------------
+                - XBHE      -|D01     C01|-     + DATA8
+                - INTA      -|D02     C02|-     + DATA9
+                + HLDAEN    -|D03     C03|-    + DATA10
+                + HRQDMA    -|D04     C04|-    + DATA11
+                + PCLK      -|D05     C05|-    + DATA12
+                + IRQ1      -|D06     C06|-    + DATA13
+                + IRQ0      -|D07     C07|-    + DATA14
+                + NMI       -|D08     C08|-    + DATA15
+                + HRQEN     -|D09     C09|-   nefolosit
+                + DRQ0      -|D10     C10|-   nefolosit
+                             -------------
+
+              Nota:  Semnul - indica semnal activ 0 logic;
+                     Semnul + indica semnal activ 1 logic.

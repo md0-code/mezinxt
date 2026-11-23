@@ -1,0 +1,55 @@
+     ----------------------------------------------------------------
+     |Reg|Nr. |Tip reg.  |Unitate  |citire/ | 40x25 | 80x25 |Moduri |
+     |   |reg.|          |         |scriere |  alfa |  alfa |grafice|
+     ----------------------------------------------------------------
+     | A | R10|inceput   |linii    |numai   |  06   |  06   |  06   |
+     |   |    |cursor    |baleiate |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | B | R11|sfirsit   |linii    |numai   |  07   |  07   |  07   |
+     |   |    |cursor    |baleiate |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | C | R12|adresa    |         |numai   |  00   |  00   |  00   |
+     |   |    |inceput(H)|         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | D | R13|adresa    |         |numai   |  00   |  00   |  00   |
+     |   |    |inceput(L)|         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | E | R14|adresa    |         |citire/ |  XX   |  XX   |  XX   |
+     |   |    |cursor(H) |         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | F | R15|adresa    |         |citire/ |  XX   |  XX   |  XX   |
+     |   |    |cursor(L) |         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 10| R16|creion    |         |numai   |  XX   |  XX   |  XX   |
+     |   |    |optic(H)  |         |citire  |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 11| R17|creion    |         |numai   |  XX   |  XX   |  XX   |
+     |   |    |optic(L)  |         |citire  |       |       |       |
+     ----------------------------------------------------------------
+     Nota: Toate valorile sint date in hexa.
+
+     {u}3.3.3.2. Registrul de selectie a culorii{/u}
+
+     Este  un registru de iesire pe 6 biti (nu poate fi citit) si poate  fi
+incarcat  de catre microprocesor printr-o instructiune OUT.  Adresa lui  de
+intrare/iesire este 3D9H.
+
+     ----------------------------------------------------------------
+     | Bit 0   Selectie albastru pentru margine in alfa 40x25       |
+     |         Selectie albastru pentru fond  in grafic 320x200     |
+     |         Selectie albastru pentru date  in grafic 640x200     |
+     | Bit 1   Selectie verde pentru margine in alfa 40x25          |
+     |         Selectie verde pentru fond  in grafic  320x200       |
+     |         Selectie verde pentru date  in grafic 640x200        |
+     | Bit 2   Selectie rosu pentru margine in alfa 40x25           |
+     |         Selectie rosu pentru fond in grafic 320x200          |
+     |         Selectie rosu pentru date in grafic 640x200          |
+     | Bit 3   Selectie culoare intensificata margine in alfa 40x25 |
+     |         Selectie culoare intensificata fond in grafic 320x200|
+     |         Selectie culoare intensificata date in grafic 640x200|
+     | Bit 4   Selectie set culori intensificate alternate in grafic|
+     |         Selectie culori fond in alfa                         |
+     | Bit 5   Selectie set culori in grafica 320x200               |
+     | Bit 6   nefolosit                                            |
+     | Bit 7   nefolosit                                            |
+     ----------------------------------------------------------------

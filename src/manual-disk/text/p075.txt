@@ -1,0 +1,54 @@
+                     {b}CAPITOLUL 4. PREZENTARE SOFTWARE{/b}
+
+
+     {b}4.1 Sistemul de intrare/iesire (BIOS){/b}
+
+     Sistemul de baza de intrare/iesire (BIOS) este rezident in memoria ROM
+de pe placa de baza si realizeaza comanda pentru majoritatea dispozitivelor
+de  intrare/iesire  din sistem.  Pentru controlul cuploarelor optionale  se
+pot  adauga  noi module   ROM.
+     Rutinele BIOS fac posibil ca programatorul, in limbaj de asamblare, sa
+execute  operatii de intrare/iesire la nivel de bloc sau de caracter,  fara
+a  se  lua in considerare caracteristicile de adresare si  functionare  ale
+dispozitivului.  Accesele la sistem,  cum ar fi in cazul determinarii  orei
+sau a dimensiunii memoriei,  sint realizate de BIOS. Astfel se realizeaza o
+interfata  operationala  catre  sistem si se  degreveaza  programatorul  de
+cunoasterea  caracteristicilor   hardware  ale dispozitivelor  de  intrare/
+iesire.   Interfata  BIOS  izoleaza utilizatorul  de  hardware,   permitind
+astfel   adaugarea  de  noi  dispozitive   de  intrare/iesire  la   sistem,
+mentinindu-se interfata  BIOS  a dispozitivului.   In acest mod, programele
+utilizatorului devin transparente  la modificarile  si adaugarile hardware.
+     Un listing complet al BIOS-ului este prezentat in ANEXA 3.
+     Accesul  la BIOS se face prin intermediul intreruperilor software  ale
+microprocesorului.   Fiecare  punct  de  intrare  in  BIOS  este  dat  prin
+intreruperea  sa  proprie,  ce  se  gaseste  in  listing-ul  intreruperilor
+software ale microprocesorului.
+     Intreruperile  software,  de la 10H pina la 1AH acceseaza rutine  BIOS
+diferite. De exemplu, pentru determinarea memoriei disponibile din  sistem,
+comanda  INT 12H  va  chema  rutina BIOS  pentru  determinarea  dimensiunii
+memoriei si va intoarce aceasta valoare apelantului.
+     Toti  parametrii  transferati de la si catre rutinele BIOS  trec  prin
+registrele microprocesorului.
+     Daca o functie BIOS cuprinde mai multe operatii posibile, registrul AH
+este  utilizat  la  intrare pentru a indica operatia  dorita.  De  exemplu,
+pentru fixarea orei, este necesar urmatorul cod:
+
+          MOV AH,1            ;functia de stabilire ora
+          MOV CX,HIGH_COUNT   ;stabileste ora curenta
+          MOV DX,LOW_COUNT
+          INT 1AH             ;fixeaza ora
+
+     Pentru citirea orei este necesar urmatorul cod:
+
+          MOV AH,0            ;functia de citire ora
+          INT 1AH             ;citeste ora
+
+     In  general,  rutinele  BIOS  salveaza toate  registrele  cu  exceptia
+indicatorilor  si  a  registrului  AX.  Alte registre  sint  modificate  la
+intoarcere numai daca contin valoarea apelantului.
+     Codul BIOS este apelat prin intreruperile software.  Programatorul  nu
+trebuie sa fixeze adresele BIOS in aplicatii.  Modul de lucru intern cit si
+adresele absolute din BIOS se pot schimba.
+      Daca  se semnaleaza o eroare prin codul discului fix sau al  discului
+flexibil  trebuie  initializat cuplorul unitatii si  reincercata  operatia.
+Citirile  de discuri trebuie repetate de un numar specificat de ori  pentru

@@ -1,0 +1,53 @@
+canalului  de intrare/iesire ,  alimentarea  si masa pentru  plachetele  de
+extensie.   Pentru   extensiile   de intrare/iesire exista patru nivele  de
+tensiune: +5V, -5V, +12V, -12V curent continuu.
+     O  linie  de sincronizare este prevazuta in canalul de  intrare/iesire
+pentru a permite operatiile cu echipamentele periferice lente.  Daca  linia
+de  sincronizare  a  canalului nu este activata de un  echipament  adresat,
+atunci  ciclurile  de  scriere/citire  memorie  generate  de  microprocesor
+dureaza  4  perioade  de  210  ns (deci  840  ns/octet)  iar  ciclurile  de
+citire/scriere  port-uri  generate de microprocesor dureaza 5  perioade  de
+ceas (deci  1,05 us/octet).  Toate transferurile DMA necesita 5 perioade de
+ceas  sau 1,05 us/octet.   Ciclurile de reimprospatare a memoriei  dinamice
+RAM   se executa  o  data la fiecare 72 de ceasuri  (aprox.   15  us),   si
+necesita   4 perioade  de  ceas,    ceea  ce  reprezinta  aprox.   7%   din
+timpul  alocat  magistralei.
+     Canalul de intrare/iesire este prevazut cu o  linie de control  pentru
+anuntarea   procesorului la aparitia starilor de eroare.  Activarea acestei
+linii genereaza o cerere de intrerupere nemascabila (NMI) catre microproce-
+sorul I8086 (I8088).  Modulul de  extensie memorie utilizeaza aceasta linie
+pentru anuntarea erorilor  de paritate.
+     Canalul de intrare/iesire este interfatat pentru a putea comanda toate
+cele opt extensii,  presupunind existenta a doua sarcini Low-Power Schottky
+(LS) pe fiecare extensie.  Adaptorii de intrare/iesire utilizeaza de obicei
+doar o sarcina.
+     Cererile  de temporizare pe extensia J8 sint mult mai stricte decit pe
+celelalte extensii.  De asemeni extensia J8 presupune existenta unui semnal
+ce anunta selectia placii.
+     In  continuare  sint descrise liniile canalului de  intrare/iesire  al
+placii logice de baza (toate liniile sint compatibile TTL).
+
+
+ Semnal       Sens       Descriere
+---------------------------------------------------------------------------
+
+   {b}OSC{/b}        iesire     Ceas de frecventa  14,318 MHz  (perioada 70 ns) si
+(OSCILLATOR)             factor de umplere de 50%.
+
+   {b}CLK{/b}        iesire     Ceas  al sistemului cu o perioada de 210 ns  (4,77
+ (CLOCK)                 MHz)  si un factor de umplere de  33%;  reprezinta
+                         1/3 din frecventa semnalului OSC.
+
+   {b}RESET{/b}      iesire     Linie utilizata la initializarea logicii  sistemu-
+ (RESET)                 lui  la  punerea   sub  tensiune.   Semnalul  este
+                         sincronizat cu frontul descrescator al ceasului si
+                         este activ 1 logic.
+
+  {b}ADR0-ADR19{/b}  iesire     Linii de adresa ce  sint  utilizate  la  adresarea
+  (ADDRESS)              memoriei si a dispozitivelor de intrare/iesire din
+                         sistem.  Cele 20 de linii de adresa permit accesul
+                         la o  memorie de  pina la 1 Moctet.  A0 este bitul
+                         cel mai  putin semnificativ  (LSB)  iar  A19  este
+                         bitul   cel  mai semnificativ (MSB).  Aceste linii
+                         sint   generate  fie  de   microprocesor  fie   de
+                         controlorul DMA  si  sint active 1 logic.

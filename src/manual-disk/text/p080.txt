@@ -1,0 +1,40 @@
+     VARIABILE DE LUCRU PENTRU BASIC IN CAZUL DEF SEG
+     (SEGMENT CU SPATIU DE LUCRU IMPLICIT)
+--------------------------------------------------------------------------
+                                                Offset        Lungime
+                                                (hexa)
+--------------------------------------------------------------------------
+Numarul liniei curente in curs  de executie      2E              2
+Numarul liniei cu ultima eroare                  347             2
+Offset in segmentul de start  al                 30              2
+programului  text
+Offset in segmentul variabilelor de pornire      358             2
+(sfirsit program text)
+Continutul buffer-ului tastaturii                6A              1
+     0 - nu exista caracter in buffer
+     1 - exista caractere in buffer
+Culoarea caracterelor in modul grafic fixata      4E             1
+la 1, 2, sau 3 pentru obtinerea textelor in
+culori de la 1 la 3
+(Implicit = 3)
+---------------------------------------------------------------------------
+
+
+     HARTA MEMORIEI BIOS
+------------------------------------------------------------------------ --
+Adresa de inceput in hexa          Semnificatie
+---------------------------------------------------------------------------
+     00000                         Vectori de intrerupere BIOS
+---------------------------------------------------------------------------
+     00080                         Vectori de intrerupere disponibili
+---------------------------------------------------------------------------
+     00400                         Zona de date BIOS
+---------------------------------------------------------------------------
+     00500                         Memorie RAM utilizator
+---------- ----------------------------------------------------------------
+     C8000                         Memorie ROM pentru cuplorul de disc fix
+---------------------------------------------------------------------------
+     F0000                         Memorie ROM
+---------------------------------------------------------------------------
+     FE000                         Zona de programe  BIOS
+---------------------------------------------------------------------------

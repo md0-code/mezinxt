@@ -1,0 +1,54 @@
+                    {b}CAPITOLUL 3.  DESCRIERE FUNCTIONALA{/b}
+
+
+     Modulele  functionale de baza ale microcalculatorului JUNIOR-XT  sint:
+blocul logic si de alimentare, tastatura si monitorul TV.
+     Blocul logic si de alimentare este nucleul microcalculatorului JUNIOR-
+XT.  El contine placa logica de baza ("motherboard"),  plachetele logice de
+extensie,  unitatile  de  disc  flexibil,  difuzorul  precum  si  sursa  de
+alimentare necesara functionarii microsistemului.
+
+
+     {b}3.1. Placa logica de baza ("motherboard"){/b}
+
+     Placa  logica de baza se fixeaza orizontal in cutia blocului logic  si
+de alimentare si are dimensiunile de aprox.  325 x 285 mm,  fiind realizata
+pe circuit imprimat multistrat, cu straturi interne de masa si alimentare.
+     Placa  logica  de  baza  respecta  in  totalitate  tipul  si  adresele
+port-urilor   precum  si  celelalte cerinte hardware ale placii  logice  de
+baza din configuratia microcalculatorului IBM-PC/XT.
+     Placa logica de baza contine urmatoarele resurse hardware:
+     - microprocesor I8086 (sau I8088)
+     - coprocesor matematic I8087 (optional)
+     - memorie RAM de capacitate 256 - 640 Kocteti
+     - memorie EPROM de capacitate 16 - 32 Kocteti
+     - sistem de intreruperi pe 8 nivele de prioritati
+     - logica de acces DMA cu patru canale programabile
+     - ceas de timp real programabil
+     - generator de tonuri
+     - interfata pentru tastatura seriala
+     - comutatoare pentru configurare sistem
+     - 8 conectori de extensie plachete compatibili IBM-PC/XT
+
+     Componenta   cea   mai  importanta  a  placii  logice  de  baza   este
+microprocesorul  I8086  (sau I8088).  Acesta admite operatii pe  16   biti,
+inclusiv  inmultirea si impartirea si prezinta o magistrala de adrese de 20
+biti, putind adresa direct 1 Moctet de memorie.
+Microprocesorul  lucreaza  la  frecventa  de 4,77  MHz  (210  ns).  Aceasta
+frecventa  deriva prin divizarea cu trei a ceasului de baza de 14,318  MHz.
+La  ceasul de 4,77 MHz,   ciclurile  microprocesorului sint de patru  stari
+pentru accesarea memoriei si cinci stari pentru accesarea port-urilor  (840
+ns respectiv 1,05 us).
+Microprocesorul  este  folosit in modul maxim,  ceea ce permite  utilizarea
+optionala a unui coprocesor matematic I8087.
+     Placa logica de baza contine atit memoria EPROM cit si memoria RAM.
+Memoria  EPROM este implementata cu doua circuite de tip I2764 sau  I27128,
+avind  o  capacitate totala de 16Kx8 biti,  respectiv 32Kx8  biti.  Memoria
+EPROM contine subsistemul de intrare/iesire (BIOS) ce cuprinde:  autotestul
+la punerea sub tensiune,  driver-ele de intrare/iesire, matricile de puncte
+pentru modul grafic si un incarcator al sistemului de operare de pe  discul
+flexibil.
+     Memoria  RAM este implementata cu circuite de memorie dinamica de  tip
+MK4164  sau MK41256,  avind o capacitate totala de 256Kx9  biti,  respectiv
+640Kx9 biti. Toate memoriile RAM sint verificate la paritate.
+Pentru   marirea  peste  256  Kocteti  a  capacitatii  memoriei  interne  a

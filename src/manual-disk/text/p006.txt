@@ -1,0 +1,47 @@
+ELEMENTELE COMPONENTE ALE MICROCALCULATORULUI JUNIOR-XT
+---------------------------------------------------------------------------
+|Nr.|     Cod URC     |               Denumire  URC                       |
+|crt|                 |                                                   |
+---------------------------------------------------------------------------
+| 1.|  703.100.000    | Bloc logic si de alimentare                       |
+| 2.|  703.200.000    | Tastatura                                         |
+| 3.|  703.300.001    | Cuplor pentru discul flexibil (FDA)               |
+| 4.|  703.300.002    | Cuplor pentru afisajul grafic color de medie rezo-|
+|   |                 | lutie (CGA)                                       |
+| 5.|  703.300.003    | Cuplor pentru afisajul grafic monocrom de mare re-|
+|   |                 | zolutie (MDA)                                     |
+| 6.|  703.300.004    | Cuplor pentru comunicatia seriala asincrona si    |
+|   |                 | imprimanta paralela                               |
+| 7.|  703.300.005    | Cuplor pentru comunicatia seriala sincrona        |
+| 8.|  703.300.006    | Cuplor pentru discul Winchester                   |
+| 9.|  703.300.007    | Cuplor pentru banda magnetica                     |
+|10.|  703.300.008    | Cuplor pentru joystick                            |
+|11.|  703.300.009    | Cuplor de instrumentatie                          |
+|12.|  703.300.010    | Modul de extensie memorie RAM 384 Kocteti         |
+|13.|  703.300.011    | Procesor matematic                                |
+---------------------------------------------------------------------------
+
+
+
+ECHIPAMENTELE PERIFERICE DIN CONFIGURATIA MICROCALCULATORULUI JUNIOR-XT
+---------------------------------------------------------------------------
+|Nr.|     Cod URC     |               Denumire  URC                       |
+|crt|                 |                                                   |
+---------------------------------------------------------------------------
+| 1.|  703.800.0XX    | Unitate de disc flexibil de 5,25 inch             |
+| 2.|  703.801.0XX    | Unitate de disc flexibil de 8 inch                |
+| 3.|  703.802.0XX    | Monitor color                                     |
+| 4.|  703.803.0XX    | Monitor monocrom                                  |
+| 5.|  703.804.0XX    | Imprimanta                                        |
+| 6.|  703.805.0XX    | Unitate de disc fix (Winchester)                  |
+| 7.|  703.806.0XX    | Unitate de banda magnetica                        |
+| 8.|  703.807.0XX    | Plotter plan                                      |
+| 9.|  703.808.0XX    | Plotter cu tambur                                 |
+|10.|  703.809.0XX    | Lector de banda perforata                         |
+|11.|  703.810.0XX    | Perforator de banda                               |
+|12.|  703.811.0XX    | Dispozitiv de intrare de tip joystick             |
+|13.|  703.812.0XX    | Dispozitiv de intrare de tip mouse                |
+|14.|  703.813.0XX    | Dispozitiv de vizualizare de tip display          |
+|15.|  703.814.0XX    | Dispozitiv de intrare de tip tableta grafica      |
+|16.|  703.815.0XX    | Dispozitiv de intrare de tip creion optic         |
+---------------------------------------------------------------------------

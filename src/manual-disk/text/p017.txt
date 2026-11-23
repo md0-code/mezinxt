@@ -1,0 +1,52 @@
+ Semnal       Sens       Descriere
+-------- -- --------------- ------- - -  ----------------------------------
+
+     {b}INTA{/b}     iesire     Aceasta   linie  este  activata  in  0  logic   de
+(INTERRUPT ACKNOWLEDGE)  controlorul  de  magistrala  I8288  si   semnifica
+                         recunoasterea  de catre microprocesor a unui ciclu
+                         de intrerupere.
+
+     {b}NMI{/b}      intrare    Cerere de intrerupere nemascabila la microprocesor
+(NON MASCABLE INTERRUPT) activa 1 logic.
+
+     {b}PCLK{/b}     iesire     Ceas  cu  o perioada de 420 ns (2,38  MHz)  si  un
+(PERIPHERAL CLOCK)       factor  de  umplere  de 50%;  reprezinta  1/2  din
+                         frecventa semnalului CLK.
+
+     {b}HRQDMA{/b}   iesire     Aceasta linie este activa 1 logic si  atentioneaza
+(HOLD REQUEST DMA)       microprocesorul  ca,   controlorul  DMA   I8237A-5
+                         (I8257)  solicita  magistrala pentru  un  transfer
+                         de date.
+
+     {b}HRQEN{/b}    intrare    Aceasta  linie  valideaza semnalul  HRQDMA,  fiind
+(HOLD REQUEST ENABLE)    folosita in special pentru testare; ea este activa
+                         1 logic.
+
+     {b}HLDAEN{/b}   intrare    Aceasta linie valideaza linia HOLDA de acceptare a
+(HOLD ACKNOWDLEDGE       transferului  DMA a circuitului I8237A-5  (I8257),
+      ENABLE)            fiind folosita in special pentru testare;  ea este
+                         activa 1 logic.
+
+     Urmatoarele tensiuni sint disponibile pe canalul de intrare/iesire  de
+pe placa de baza:
+
+     +5 V c.c. +/- 5%
+     -5 V c.c. +/-10%
+     +12V c.c. +/- 5%
+     -12V c.c. +/-10%
+     GND (masa)
+
+     Din   punct   de   vedere  fizic,   canalul   de   intrare/iesire   al
+microcalculatorului  JUNIOR-XT este realizat folosind 8 conectori de 2 x 31
+contacte (J1-J8) si 4 conectori de 2 x 10 contacte (J9-J12).
+     Conectorii  de  2  x  31  contacte  contin  toate  semnalele  necesare
+functionarii  cuploarelor si plachetelor   logice   de  extensie   dintr-un
+microcalculator    IBM-PC/XT  echipat  cu  microprocesor  I8088.    Aceasta
+compatibilitate   la  nivel  fizic  creeaza  posibilitatea  utilizarii   in
+microcalculatorul  JUNIOR-XT  a  oricarui cuplor sau  extensie  compatibila
+IBM-PC/XT.
+     Conectorii  de  2 x 10 contacte reprezinta o extensie a  canalului  de
+intrare/iesire  din microcalculatoarele IBM-PC/XT.  Ei contin in  principal
+liniile  de  date  superioare (DATA8 - DATA15)  si  linia  XBHE,  specifica
+microprocesorului I8086,  fiind compatibili la nivel fizic si al semnalelor
+cu extensia canalului de intrare/iesire din microcalculatorul FELIX-PC.

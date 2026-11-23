@@ -1,0 +1,54 @@
+---------------------------------------------------------------------------
+   Functie                     Tasta(e)    Comentariu
+---------------------------------------------------------------------------
+   Defilare sus                ^           Mod scroll lock
+                               |
+---------------------------------------------------------------------------
+   Defilare jos                |           Mod scroll lock
+                               V
+---------------------------------------------------------------------------
+   Defilare stinga             <-          Mod scroll lock
+---------------------------------------------------------------------------
+   Defilare dreapta            ->          Mod scroll lock
+---------------------------------------------------------------------------
+   Sterge de la cursor la EOL   Ctrl End   Text, comanda
+---------------------------------------------------------------------------
+   Exit/Escape                 Esc         Editor, 1 nivel meniu
+---------------------------------------------------------------------------
+   Start/Stop ecou ecran la   Ctrl Prsc    Oricind
+   imprimanta
+---------------------------------------------------------------------------
+   Sterge de la cursor la EOS  Ctrl PgDn   Text,comanda
+---------------------------------------------------------------------------
+   Cuvint inainte              Ctrl ->     Text
+---------------------------------------------------------------------------
+   Cuvint inapoi               Ctrl <-     Text
+---------------------------------------------------------------------------
+   Fereastra dreapta           Ctrl ->     Pt. texte ce depasesc merginile
+---------------------------------------------------------------------------
+   Fereastra stinga            Ctrl <-     Pt. texte ce depasesc merginile
+---------------------------------------------------------------------------
+   Intrare in mod inserare     Ins         Editor linie
+---------------------------------------------------------------------------
+   Iesire mod inserare         Ins         Editor linie
+---------------------------------------------------------------------------
+   Anulare ora curenta         Esc         Comanda, text
+---------------------------------------------------------------------------
+   Suspendare sistem (pauza)   Ctrl        Stop listare, program, etc.
+                               Num Lock    Se reia prin orice tastare
+ --------------------------------------------------------------------------
+   Break interrupt             Ctrl C      Intrerupere proces in executie
+ --------------------------------------------------------------------------
+   Initializare sistem         Alt Ctrl    Reincarcare
+                                 Del
+---------------------------------------------------------------------------
+   Inceput de text si          Ctrl Pg Up  Editoare, procesoare de texte
+   cursor home
+---------------------------------------------------------------------------
+   Taste de functii standard   F1-F10      Taste pentru functii primare
+-------------------- ------------------------------------------------------
+   Taste de functii secundare Shift F1-F10 Taste  pentru  functii suplimen-
+                                           tare daca nu sint suficiente 10
+                              Ctrl F1-F10
+                              Alt  F1-F10
+--------------------------------------------------------------------------

@@ -1,0 +1,52 @@
+     {b}3.10. Compatibilitatea  microcalculatorului  JUNIOR-XT cu{/b}
+             {b}microcalculatoarele IBM-PC/XT si FELIX-PC{/b}
+
+     Compatibilitatea  microcalculatorului JUNIOR-XT  cu  microcalculatorul
+IBM-PC/XT  prezinta  doua aspecte esentiale:  compatibilitatea hardware  si
+compatibilitatea software.
+
+     {b}3.10.1. Compatibilitatea la nivel hardware{/b}
+
+     Compatibilitatea la nivel hardware cu microcalculatorul IBM-PC/XT este
+indeplinita  prin folosirea aceluiasi tip de microprocesor sau  echivalent,
+prin respectarea arhitecturii microsistemului,  a alocarii memoriei interne
+ROM/RAM  precum  si  a tipului si adreselor circuitelor specializate  si  a
+port-urilor utilizate in configuratia microcalculatorului JUNIOR-XT.
+     Pentru  configuratia  hardware prezentata in acest  manual,  cerintele
+enuntate  mai  sus sint indeplinite in totalitate,  cu o  singura  abatere:
+cuplorul  de  comunicatie  seriala asincrona a  fost  implementat  folosind
+circuitul  specializat  Z80-SIO  in loc de I8250  (folosit  in  IBM-PC/XT),
+circuit neobtenabil in momentul de fata.  Consecintele software ale acestei
+abateri fata de structura microcalculatorului IBM-PC/XT sint prezentate  in
+cap. 3.10.2.
+     Un   alt   element   important   al   compatibilitatii   hardware   cu
+microcalculatorul   IBM-PC/XT  il  reprezinta  canalul  de   intrare/iesire
+(conectori  si  semnale)  si plachetele logice de extensie.  Din  punct  de
+vedere  fizic,  canalul de intrare/iesire al microcalculatorului  JUNIOR-XT
+este  realizat  folosind  8 conectori de 2 x 31 contacte  (J1  - J8)  si  4
+conectori de 2 x 10 contacte (J9 - J12).
+     Conectorii  de  2  x  31  contacte  contin  toate  semnalele  necesare
+functionarii  cuploarelor  si  plachetelor  logice  de  extensie   dintr-un
+microcalculator   IBM-PC/XT   echipat  cu  microprocesor   I8088.   Aceasta
+compatibilitate   la  nivel  fizic  creeaza  posibilitatea  utilizarii   in
+microcalculatorul  JUNIOR-XT  echipat  cu microprocesor  I8088  a  oricarui
+cuplor sau placheta de extensie compatibila IBM-PC/XT.
+     Conectorii  de  2 x 10 contacte reprezinta o extensie a  canalului  de
+intrare/iesire  din  microcalculatorul IBM-PC/XT.  Ei contin  in  principal
+semnalele  specifice microprocesorului I8086,  fiind compatibili  la  nivel
+fizic  si al semnalelor cu extensia canalului de intrare/iesire din  micro-
+calculatorul FELIX-PC. Utilizarea microprocesorului I8086 confera posibili-
+tatea  utilizarii  in microcalculatorul JUNIOR-XT a oricarei  plachete  sau
+cuplor de extensie compatibil IBM-PC/XT care nu contine memorie ROM sau RAM
+(plachetele  de extensie IBM-PC/XT ce contin ROM sau RAM nu pot fi accesate
+pe 16 biti simultan).
+     Compatibilitatea  hardware  a cuplorului de afisaj grafic  color  este
+realizata prin utilizarea controlorului specializat de ecran MC 6845.
+     Compatibilitatea hardware a cuplorului de disc flexibil este realizata
+prin   utilizarea   controlorului  de  disc  specializat   NEC   uPD   765.
+Compatibilitatea   suportului  memoriei  externe  pe  disc  flexibil   este
+realizata  prin  utilizarea  unitatilor  de  disc flexibil  de  5,25  inch,
+simpla/dubla fata si dubla densitate.
+     Compatibilitatea tastaturii microcalculatorului JUNIOR-XT cu cea de la
+IBM-PC/XT  este asigurata prin respectarea functiilor,  a  protocolului  de
+comunicatie precum si a cacteristicilor de interfata (semnale si conectori).

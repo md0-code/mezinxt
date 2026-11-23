@@ -1,0 +1,237 @@
+@doc software | software | Software: BIOS si tastatura
+  Prezentarea software cuprinde sistemul de intrare/iesire (BIOS) si modul
+  de codificare si utilizare a tastaturii.
+
+  {h}Straturile{/}
+
+   {d}┌───────────────────────────────────────────────┐{/}
+   {d}│{/} {b}Programul{/} de aplicatie sau de sistem          {d}│{/}
+   {d}├───────────────────────────────────────────────┤{/}
+   {d}│{/} {c}INT 10H ... INT 1AH{/} - intreruperi software    {d}│{/}
+   {d}├───────────────────────────────────────────────┤{/}
+   {d}│{/} {b}BIOS{/} - rutine in memoria ROM                  {d}│{/}
+   {d}├───────────────────────────────────────────────┤{/}
+   {d}│{/} dispozitivele de intrare/iesire               {d}│{/}
+   {d}└───────────────────────────────────────────────┘{/}
+
+  Interfata BIOS izoleaza programul de hardware: dispozitivele se pot
+  schimba sau adauga fara ca programele sa se modifice.
+
+  {h}Cuprins{/}
+
+   [[bios|BIOS]]                       ce ofera, cum se apeleaza, module ROM
+   [[vectori|Vectorii de intrerupere]]    tabela 0 - 1F, 40, 41; DOS si BASIC
+   [[date-bios|Zona de date BIOS]]          locatii rezervate, harta memoriei BIOS
+   [[coduri-taste|Coduri de scanare]]          cele 83 de taste, codurile caracterelor
+   [[coduri-extinse|Coduri extinse]]             al doilea cod (AH) pentru functii speciale
+   [[stari-speciale|Stari si moduri speciale]]   Shift, Ctrl, Alt, Lock, reset, Break, pauza
+   [[utilizare-taste|Utilizarea tastaturii]]      functiile uzuale; BASIC si DOS
+
+  {d}Vezi si:{/} [[acasa|Prezentare]]  [[hardware|Hardware]]  [[tastatura-hw|Tastatura (hardware)]]
+         [[test:tastatura|Test tastatura]]  [[compatibilitate|Compatibilitate]]
+  Carte tehnica: [[pag:75|pag. 75]] [[pag:81|pag. 81]]
+
+@doc bios | software | Sistemul de intrare/iesire (BIOS)
+  BIOS-ul este rezident in memoria ROM a placii de baza si comanda
+  majoritatea dispozitivelor de intrare/iesire. Pentru cuploarele optionale
+  se pot adauga module ROM. Rutinele BIOS permit, in limbaj de asamblare,
+  operatii de intrare/iesire la nivel de bloc sau de caracter, fara
+  adresarea si functionarea dispozitivului; accesele la sistem (ora,
+  dimensiunea memoriei) tot BIOS-ul le face.
+
+  {h}Cum se apeleaza{/}
+
+  Prin {b}intreruperile software{/} ale microprocesorului: fiecare punct de intrare
+  are intreruperea sa ([[vectori|vectorii de intrerupere]]).
+  Intreruperile {c}10H - 1AH{/} acceseaza rutine BIOS diferite; de exemplu
+  {c}INT 12H{/} da dimensiunea memoriei disponibile.
+
+   {c}■{/} parametrii trec prin registrele microprocesorului
+   {c}■{/} la functii cu mai multe operatii, {c}AH{/} alege operatia
+   {c}■{/} rutinele salveaza toate registrele, cu exceptia indicatorilor si a
+     lui {c}AX{/}; altele se modifica doar daca contin valoarea apelantului
+   {c}■{/} adresele BIOS nu se fixeaza in aplicatii: modul intern de lucru si
+     adresele absolute se pot schimba
+
+  {b}Fixarea orei{/}
+   {c}MOV AH,1{/}           {d};functia de stabilire ora{/}
+   {c}MOV CX,HIGH_COUNT{/}  {d};stabileste ora curenta{/}
+   {c}MOV DX,LOW_COUNT{/} 
+   {c}INT 1AH{/}            {d};fixeaza ora{/}
+
+  {b}Citirea orei{/}
+   {c}MOV AH,0{/}  {d};functia de citire ora{/}
+   {c}INT 1AH{/}   {d};citeste ora{/}
+
+  {h}Reguli de programare{/}
+
+   {c}■{/} la o eroare a discului fix sau flexibil se initializeaza cuplorul
+     unitatii si se reincearca; citirile se repeta de un numar specificat
+     de ori, ca sa nu fie o cauza accidentala
+   {c}■{/} la modificarea porturilor de I/E se schimba numai bitii necesari, si
+     la sfirsit se refac valorile initiale
+
+  {h}Module ROM de cuploare{/}
+
+  La evaluarea resurselor hardware, BIOS-ul stabileste vectorii de
+  intrerupere, apoi scaneaza adresele de la {c}C0000H{/} la {c}F0000H{/} in blocuri de
+  2 K octeti, cautind un ROM valid de cuplor:
+
+  {d}┌────────┐ ┌────────┐ ┌────────────────────┐ ┌───────────────┐{/}
+  {d}│{/} {b}octet 0{/}{d}│ │{/} {b}octet 1{/}{d}│ │{/} {b}octet 2{/}            {d}│ │{/} {b}octet 3 ...{/}   {d}│{/}
+  {d}│{/} {c}55{/} hexa{d}│ │{/} {c}AA{/} hexa{d}│ │{/} lungime, in blocuri{d}│ │{/} cod executabil{d}│{/}
+  {d}│{/}        {d}│ │{/}        {d}│ │{/} de 512 octeti      {d}│ │{/} (apelat)      {d}│{/}
+  {d}└────────┘ └────────┘ └────────────────────┘ └───────────────┘{/}
+
+  Suma de control: toti octetii se aduna modulo {c}100H{/}; suma trebuie sa fie
+  {c}0{/}. La un ROM valid se apeleaza octetul 3; cuplorul isi
+  executa operatiile de punere sub tensiune si reda controlul BIOS-ului
+  printr-un {c}RETURN FAR{/}. Rutina poate lasa sau opri atasarea vectorilor
+  de intrerupere la sistem.
+
+  {d}Vezi si:{/} [[vectori|Vectori de intrerupere]]  [[date-bios|Zona de date BIOS]]  [[software|Software]]
+         [[harta-memorie|Harta memoriei]]  [[erori-post|Erori la pornire]]  [[test:sistem|Test sistem]]
+  Carte tehnica: [[pag:75|pag. 75]] [[pag:76|pag. 76]]
+
+@doc vectori | software | Vectorii de intrerupere
+  Fiecare vector ocupa 4 octeti, de la adresa 0. {c}INT n{/} = adresa {c}4 x n{/}.
+
+  {b}Adresa  INT  Nume                      Intrare in BIOS{/}
+   {c}0-3{/}    {c}0{/}    Imparte la zero           D11
+   {c}4-7{/}    {c}1{/}    Pas cu pas                D11
+   {c}8-B{/}    {c}2{/}    Nemascabil                NMI_INT
+   {c}C-F{/}    {c}3{/}    Breakpoint                D11
+   {c}10-13{/}  {c}4{/}    Overflow                  D11
+   {c}14-17{/}  {c}5{/}    Tiparire ecran            PRINT_SCREEN
+   {c}18-1B{/}  {c}6{/}    Rezervat                  D11
+   {c}1D-1F{/}  {c}7{/}    Rezervat                  D11
+   {c}20-23{/}  {c}8{/}    Stabilire data            TIMER_INT
+   {c}24-27{/}  {c}9{/}    Tastatura                 KB_INT
+   {c}28-2B{/}  {c}A{/}    Rezervat                  D11
+   {c}2C-2F{/}  {c}B{/}    Comunicatii               D11
+   {c}30-33{/}  {c}C{/}    Comunicatii               D11
+   {c}34-37{/}  {c}D{/}    Disc fix                  D11
+   {c}38-3B{/}  {c}E{/}    Disc flexibil             DISK_INT
+   {c}3C-3F{/}  {c}F{/}    Imprimanta                D11
+   {c}40-43{/}  {c}10{/}   Video                     VIDEO_IO
+   {c}44-47{/}  {c}11{/}   Verificare echipament     EQUIPMENT
+   {c}48-4B{/}  {c}12{/}   Memorie                   MEMORY_SIZE_DETERMINE
+   {c}4C-4F{/}  {c}13{/}   Disc flexibil/fix         DISKETTE_IO
+   {c}50-53{/}  {c}14{/}   Comunicatii               RS232_IO
+   {c}54-57{/}  {c}15{/}   Rezervat                  D11
+   {c}58-5B{/}  {c}16{/}   Tastatura                 KEYBOARD_IO
+   {c}5C-5F{/}  {c}17{/}   Imprimanta                PRINTER_IO
+   {c}60-63{/}  {c}18{/}   BASIC rezident            F600.0000
+   {c}64-67{/}  {c}19{/}   Bootstrap                 BOOT_STRAP
+   {c}68-69{/}  {c}1A{/}   Stabilire ora             TIME_OF_DAY
+   {c}6C-6F{/}  {c}1B{/}   Intrerupere tastatura     DUMMY_RETURN
+   {c}70-73{/}  {c}1C{/}   Tact timer                DUMMY_RETURN
+   {c}74-77{/}  {c}1D{/}   Initializare video        VIDEO_PARMS
+   {c}78-7B{/}  {c}1E{/}   Parametrii disc flexibil  DISK_BASE
+   {c}7C-7F{/}  {c}1F{/}   Caractere grafice video   0
+
+  {h}Vectori cu rol special{/}
+
+   {c}1B{/}  {b}adresa de intrerupere a tastaturii{/}: codul executat la {b}Ctrl C{/}; se
+       apeleaza la intreruperea tastaturii si se revine cu IRET; punerea
+       sub tensiune il indica spre un IRET, deci nu se intimpla nimic daca
+       aplicatia nu-l schimba
+   {c}1C{/}  {b}tact timer{/}: codul executat la fiecare tact al ceasului; revenire
+       cu IRET (initial); aplicatia salveaza si reface registrele pe care
+       le modifica
+   {c}1D{/}  {b}parametrii video{/}: zona de date pentru initializarea controlorului
+       MC 6845 ([[registre-cga|registrele CGA]]); sint patru tabele distincte, de luat
+       in considerare daca se folosesc toate modurile
+   {c}1E{/}  {b}parametrii discului flexibil{/}: zona de date; valorile implicite
+       sint cele ale unitatilor din echipament; pot fi schimbate pentru
+       alte unitati ([[cuplor-disc|cuplorul de disc]])
+   {c}1F{/}  {b}extensiile caracterelor grafice{/}: in modurile grafice, matricile
+       primelor 128 de coduri sint in ROM; pentru celelalte se indica o
+       tabela de pina la 1 K octet, 8 octeti pe cod; initial {c}0000:0000{/}
+   {c}40{/}  rezervat: cu cuplorul de disc fix, BIOS-ul il foloseste pentru o
+       noua generare a pointer-ului discului flexibil
+   {c}41{/}  {b}parametrii discului fix{/}: zona de date; valori implicite; pot fi
+       schimbate pentru alte unitati
+
+  {h}Intreruperi rezervate pentru BASIC si DOS{/}
+
+   {b}Adresa   INT    Functie{/}
+   {c}80-83{/}    {c}20{/}     terminare program DOS
+   {c}84-87{/}    {c}21{/}     apel functie DOS
+   {c}88-8B{/}    {c}22{/}     adresa rutinei de terminare program DOS
+   {c}8C-8F{/}    {c}23{/}     adresa rutinei de tratare Ctrl C
+   {c}90-93{/}    {c}24{/}     adresa rutinei de tratare a erorilor fatale de disc
+   {c}94-97{/}    {c}25{/}     citire absoluta disc DOS
+   {c}98-9B{/}    {c}26{/}     scriere absoluta disc DOS
+   {c}9C-9F{/}    {c}27{/}     terminare program DOS (program ramas rezident)
+   {c}A0-FF{/}    {c}28-3F{/}  rezervat pentru DOS
+   {c}100-17F{/}  {c}40-5F{/}  rezervat
+   {c}180-19F{/}  {c}60-67{/}  rezervat pentru intreruperi software ale utilizatorului
+   {c}1A0-1FF{/}  {c}68-7F{/}  neutilizat
+   {c}200-217{/}  {c}80-85{/}  rezervat de BASIC
+   {c}218-3C3{/}  {c}86-F0{/}  utilizat de BASIC in timpul executiei
+   {c}3C4-3FF{/}  {c}F1-FF{/}  neutilizat
+
+  {d}Vezi si:{/} [[bios|BIOS]]  [[date-bios|Zona de date BIOS]]  [[harta-ie|Harta I/E]]
+         [[intreruperi-dma|Intreruperi hardware]]  [[software|Software]]
+  Carte tehnica: [[pag:76|pag. 76]] [[pag:77|pag. 77]] [[pag:78|pag. 78]] [[pag:79|pag. 79]]
+
+@doc date-bios | software | Zona de date BIOS si locatiile rezervate
+  Rutinele BIOS folosesc {c}256{/} de octeti de memorie, de la {c}400H{/} la {c}4FFH{/}.
+
+   {c}400H - 407H{/}  adresele de baza ale cuploarelor de comunicatie seriala
+   {/}             RS-232C atasate sistemului
+   {c}408H - 40FH{/}  adresele de baza ale cuplorului de imprimanta
+   {c}300H - 3FFH{/}  zona de stiva la initializare (punere sub tensiune,
+   {/}             bootstrap); pentru alta stiva, aplicatia o fixeaza
+
+  {h}Harta memoriei BIOS{/}  {d}(nu la scara){/}
+
+   {c}FFFFF{/}  {d}┌────────────────────────────────────────┐{/}
+          {d}│{/}{a:4F} ROM  zona de programe BIOS             {/}{d}│{/}
+   {c}FE000{/}  {d}├────────────────────────────────────────┤{/}
+          {d}│{/}{a:4F} ROM                                    {/}{d}│{/}
+   {c}F0000{/}  {d}├────────────────────────────────────────┤{/}
+          {d}│{/}{a:4F} ROM  cuplorul de disc fix              {/}{d}│{/}
+   {c}C8000{/}  {d}├────────────────────────────────────────┤{/}
+          {d}│{/}{a:2F} RAM  utilizator                        {/}{d}│{/}
+   {c}00500{/}  {d}├────────────────────────────────────────┤{/}
+          {d}│{/}{a:3F} zona de date BIOS                      {/}{d}│{/}
+   {c}00400{/}  {d}├────────────────────────────────────────┤{/}
+          {d}│{/}{a:5F} vectori de intrerupere disponibili     {/}{d}│{/}
+   {c}00080{/}  {d}├────────────────────────────────────────┤{/}
+          {d}│{/}{a:5F} vectori de intrerupere BIOS            {/}{d}│{/}
+   {c}00000{/}  {d}└────────────────────────────────────────┘{/}
+   {d}adresa din stinga: inceputul zonei de deasupra ei{/}
+
+  {h}Locatiile rezervate{/}
+
+   {b}Adresa   Mod       Functie{/}
+   {c}400-4BF{/}  ROM BIOS  vezi listing-ul BIOS
+   {c}490-4EF{/}  {/}          rezervat
+   {c}4F0-4FF{/}  {/}          rezervat pentru aplicatii: zona de comunicatii
+   {c}500-5FF{/}  {/}          rezervat pentru DOS si BASIC
+   {c}500{/}      DOS       starea tiparirii ecranului: {c}0{/} inactiva sau terminata cu
+   {/}         {/}          succes; {c}1{/} in curs; {c}255{/} eroare in timpul tiparirii
+   {c}504{/}      DOS       octet de stare pentru un singur disc flexibil
+   {c}510-511{/}  BASIC     adresa segmentului BASIC
+   {c}512-515{/}  BASIC     segment pentru vectorul de intrerupere al ceasului
+   {c}516-519{/}  BASIC     segment pentru vectorul intreruperii Ctrl C
+   {c}51A-51D{/}  BASIC     segment pentru vectorul intreruperii de eroare disc
+
+  {h}Variabile de lucru BASIC{/}  {d}cu DEF SEG (segmentul implicit){/}
+
+   {b}Offset  Lung.  Variabila{/}
+   {c}2E{/}      2      numarul liniei curente in executie
+   {c}347{/}     2      numarul liniei cu ultima eroare
+   {c}30{/}      2      offset in segmentul de start al textului programului
+   {c}358{/}     2      offset in segmentul variabilelor de pornire (sfirsit
+   {/}        {/}       program text)
+   {c}6A{/}      1      continutul buffer-ului tastaturii: {c}0{/} fara caracter,
+   {/}        {/}       {c}1{/} cu caractere
+   {c}4E{/}      1      culoarea caracterelor in modul grafic: {c}1{/}, {c}2{/} sau {c}3{/}
+   {/}        {/}       (implicit {c}3{/}), pentru texte in culori de la 1 la 3
+
+  {d}Vezi si:{/} [[vectori|Vectori de intrerupere]]  [[bios|BIOS]]  [[harta-memorie|Harta memoriei]]
+         [[software|Software]]
+  Carte tehnica: [[pag:78|pag. 78]] [[pag:79|pag. 79]] [[pag:80|pag. 80]]

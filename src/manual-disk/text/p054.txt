@@ -1,0 +1,16 @@
+             tensiune  a  echipamentului si este dezactivat  prin  executia
+             unei instructiuni de intrare/iesire la adresa portului 3DBH.
+Bit  2     - Starea comutatorului creion optic este reflectata prin  starea
+             acestui bit; starea 0 indica comutatorul activ.
+Bit  3     - Cind  este activ,indica ca ecranul se afla pe cursa inversa de
+             cadre.
+
+     {u}3.3.3.5. Secventa de operatii pentru schimbarea modului de lucru{/u}
+
+     1. Se alege modul de lucru;
+     2. Se sterge  bitul de activare semnal video din registrul de selectie
+a modului de lucru;
+     3.  Se programeaza controlorul de ecran  MC 6845 pentru modul  respec-
+tiv;
+     4. Se  incarca  registrele de selectie a culorii si a modului de lucru
+(inclusiv bitul de activare semnal video).

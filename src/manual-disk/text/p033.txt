@@ -1,0 +1,40 @@
+   --------------------------------------------------------------------------
+     Faza     R/W    D7 D6 D5 D4 D3 D2 D1 D0          Observatii
+   --------------------------------------------------------------------------
+                       {b}Stare intrerupere ("Sense Interrupt Status"){/b}
+
+      Comanda  W     0  0  0  0  1  0  0  0        Coduri de comanda.
+      Rezultat R              ST0                  Informatii  de  stare la
+               R              PCN                  sfirsitul  operatiei  de
+                                                   cautare pista a FDC.
+   --------------------------------------------------------------------------
+                       {b}Specificare ("Specify"){/b}
+
+      Comanda  W     0  0  0  0  0  0  1  1        Coduri de comanda.
+               W     --SRT------------HUT--
+               W     -----HLT------------ND
+      Fara rezultat
+   --------------------------------------------------------------------------
+                       {b}Stare unitate ("Sense Drive Status"){/b}
+      Comanda  W     0  0  0  0  0  1  0  0        Coduri de comanda.
+               W     X  X  X  X  X  HD US1 US0
+      Rezultat R                ST3                Informatie de stare des-
+                                                   pre FDD.
+   --------------------------------------------------------------------------
+                       {b}Cautare pista ("Seek"){/b}
+
+      Comanda  W     0  0  0  0  1  1  1  1        Coduri de comanda.
+               W     X  X  X  X  X  HD US1 US0
+               W                NCN
+      Executie                                     Capul este pozitionat pe
+                                                   cilindrul cu numarul co-
+                                                   rect (cel solicitat).
+      Fara rezultat
+   --------------------------------------------------------------------------
+                       {b}Invalid{/b}
+
+      Comanda  W     Coduri invalide               Coduri de  comanda inva-
+                                                   lide  (controlorul intra
+                                                   in stare de asteptare.
+      Rezultat R            ST0                    ST0 = 80
+   --------------------------------------------------------------------------

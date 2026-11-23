@@ -1,0 +1,55 @@
+Bit 2     1 - Selecteaza mooul monocrom;
+          0 - Selecteaza modul color.
+Bit 3     1 - Activeaza semnalul video  dupa  schimbarea  modului  de lucru
+              (semnalul video este  dezactivat pe timpul schimbarii modului
+              de lucru).
+Bit 4     1 - Selecteaza regimul grafic monocrom de rezolutie mare (640x200
+              puncte); din registrul de selectie a culorii (adresa 3D9H) se
+              selecteaza una din cele 8 culori pentru afisarea informatiei.
+Bit  5    1 - Schimba intensitatea fondului caracterului in  combinatie  cu
+              atributul blinking in regim alfanumeric;  cind bitul cel  mai
+              semnificativ   din  octetul  atribut al caracterului  este  0
+              sint disponibile cele 16 culori de fond; in mod normal, acest
+              bit al atributului este 1 permitind functia de blinking.
+
+     -------------------------
+     | 0 | 1 | 2 | 3 | 4 | 5 |
+     -------------------------
+     | 0 | 0 | 1 | 1 | 0 | 1 |     alfanumeric monocrom 40x25 caractere
+     | 0 | 0 | 0 | 1 | 0 | 1 |     alfanumeric color 40x25 caractere
+     | 1 | 0 | 1 | 1 | 0 | 1 |     alfanumeric monocrom 80x25 caractere
+     | 1 | 0 | 0 | 1 | 0 | 1 |     alfanumeric color 80x25 caractere
+     | 0 | 1 | 1 | 1 | 0 | Z |     grafic monocrom 320x200 puncte
+     | 0 | 1 | 0 | 1 | 0 | Z |     grafic color 320x200 puncte
+     | 0 | 1 | 1 | 1 | 1 | Z |     grafic monocrom 640x200 puncte
+     -------------------------
+       |   |   |   |   |   |
+       |   |   |   |   |   ---->   activeaza atributul blink
+       |   |   |   |   -------->   monocrom 640x200 puncte
+       |   |   |   ------------>   activeaza semnalul video
+       |   |   ---------------->   selecteaza modul monocrom
+       |   -------------------->   selecteaza  grafic 320x200 puncte
+       ------------------------>   selecteaza alfanumeric 80x25 caractere
+     Z = indiferent
+
+     {u}3.3.3.4. Registrul de stare{/u}
+
+     Este un registru de citire pe 4 biti.Adresa portului de intrare/iesire
+asociat este 3DAH si poate fi citit printr-o instructiune de intrare/iesire
+IN a microprocesorului.  Functiile registrului de stare sint:
+
+     --------------------------------
+     |Bit 0  - afisare  activa      |
+     |Bit 1  - validare creion optic|
+     |Bit 2  - stare creion optic   |
+     |Bit 3  - sincronizare cadre   |
+     |Bit 4  - nefolosit            |
+     |Bit 5  - nefolosit            |
+     |Bit 6  - nefolosit            |
+     |Bit 7  - nefolosit            |
+     --------------------------------
+
+Bit  0     - Cind este activ, procesorul poate accesa memoria de ecran fara
+             a interfera cu afisarea.
+Bit  1     - Cind  este  activ,bistabilul aferent interfetei  creion  optic
+             este  activ;   bistabilul  este  initializat  la  punerea  sub

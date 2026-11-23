@@ -1,0 +1,52 @@
+--------------------------------------------------------------------------
+Simbol |    Nume              |             Descriere
+--------------------------------------------------------------------------
+   N   | Numar octeti         |  Numar octeti de date dintr-un sector
+       | ("Number of Bytes")  |
+--------------------------------------------------------------------------
+  NCN  | Numarul umui nou     |  Numarul unui nou  cilindru  care va  fi
+       | cilindru             |  rezultat  in  urma  unei operatiuni  de
+       | ("New Cylinder       |  cautare pista, sau altfel spus, pozitia
+       |  Numher")            |  dorita a  capului de  scriere/citire.
+--------------------------------------------------------------------------
+   ND  | Mod nou DMA          |  Determina operarea in mod nou DMA.
+       | ("New DMA Mode")     |
+--------------------------------------------------------------------------
+  PCN  | Numarul unui         |  Indica  pozitia actuala a  capului  (la
+       | cilindru actual      |  momentul respectiv) si  este  rezultatul
+       | ("Present Cylinder   |  unei comenzi de citire a starii intreru-
+       |  Number")            |  perii.
+--------------------------------------------------------------------------
+   R   | Inregistrare         |  Numarul  sectorului care  urmeaza  a fi
+       | ("Record")           |  citit sau scris.
+--------------------------------------------------------------------------
+  R/W  | Citire/scriere       |  Indica operatiunea de citire/scriere.
+       | ("Read/Write")       |
+--------------------------------------------------------------------------
+   SC  | Sector               |  Numarul de sectoare/cilindru.
+--------------------------------------------------------------------------
+   SK  | Omitere              |  Omite  (sare peste)  marca de  adresa a
+       | ("Skip")             |  datelor sterse.
+--------------------------------------------------------------------------
+  SRT  | Rata pasului         | Furnizeaza  rate  de la  1 la  16 ms  in
+       | motorului            | cuante de 1 ms.  Aceeasi rata a  motoru-
+       | ("Step Rate Time")   | lui  pas cu pas se  aplica la toate uni-
+       |                      |  tatile.
+--------------------------------------------------------------------------
+  ST 0 | Status 0             |  Indica  numele a  unuia din  cele patru
+  ST 1 | Status 1             |  registre  care   contin  informatii  de
+  ST 2 | Status 2             |  stare  dupa  executia unei comenzi,  in
+  ST 3 | Status 3             |  faza de rezultat.  Aceste  registre  nu
+       |                      |  trebuiesc  confundate cu  registrul  de
+       |                      |  stare.
+       |                      |  ST 0-3 trebuie citite numai dupa execu-
+       |                      |  tia unei  comenzi si  contin informatii
+       |                      |  referitoare doar la acea comanda.
+--------------------------------------------------------------------------
+  STP  |                      |  In  cursul  unei  operatii  de scanare,
+       |                      |  daca STP=1, data din sectoare  contigue
+       |                      |  este comparata octet cu  octet cu  data
+       |                      |  transmisa de microprocesor (sau DMA) si
+       |                      |  daca STP=2, atunci sectoarele alternate
+       |                      |  sint citite si comparate.
+--------------------------------------------------------------------------

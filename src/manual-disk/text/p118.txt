@@ -1,0 +1,25 @@
+                              {b}ANEXA 3{/b}
+
+
+             {b}CATALOG DE SUBANSAMBLE SI PIESE DE SCHIMB{/b}
+
+
+ 1. Placa logica de baza                 703.910.010
+ 2. Placa logica FDA                     703.910.030
+ 3. Placa logica CGA                     703.910.060
+ 4. Placa logica SPA                     703.910.050
+ 5. Placa logica REX                     703.910.040
+ 6. Cablu disc flexibil                  703.302.111
+ 7. Suport conectori video               703.304.012
+ 8. Cablu video color                    703.302.012
+ 9. Cablu video monocrom                 703.303.012
+10. Suport conector interfata seriala    703.302.014
+11. Cablu modem                          703.303.014
+12. Cablu interfata seriala              703.304.014
+13. Cablu interfata paralela             703.305.014
+14. Cablu reset                          703.113.100
+15. Cablu difuzor                        703.114.100
+16. Sursa alimentare                     SAC 150W
+17. Tastatura                            703.200.000
+18. Tasta Hall                           282810000
+19. Set capace taste                     703.211.000

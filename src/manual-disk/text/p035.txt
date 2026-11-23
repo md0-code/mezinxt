@@ -1,0 +1,46 @@
+REGISTRUL DE STARE 1 AL CONTROLORULUI DE DISC FLEXIBIL NEC uPD 765 (I8272)
+--------------------------------------------------------------------------
+           Bit           |
+-------------------------|                   Descriere
+Nr.| Nume         Simbol |
+--------------------------------------------------------------------------
+D7 | Sfirsit          EN |  Atunci  cind   FDC  incearca sa  acceseze un
+   | de cilindru         |  sector  dincolo  de  sfirsitul  discului  se
+   |("End of Cylinder")  |  seteaza acest indicator.
+--------------------------------------------------------------------------
+D6 |  -               -  |  Neutilizat.  Acest bit este intotdeauna 0.
+--------------------------------------------------------------------------
+D5 | Eroare de        DE |  Atunci cind  FDC  detecteaza o  eroare  CRC,
+   |  date               |  fie in cimpul  ID,  fie in  cimpul de  date,
+   |("Data Error")       |  se seteaza acest indicator.
+-------------------------------------------------------------------------
+D4 | Depasire         OR |  Daca  FDC  nu este  servit (achitat) de sis-
+   |("Over Run")         |  temul principal in timpul  transferurilor de
+   |                     |  date intr-un interval anumit de timp, atunci
+   |                     |  este setat acest indicator.
+--------------------------------------------------------------------------
+D3 |  -               -  |  Neutilizat.  Acest bit este mereu 0.
+--------------------------------------------------------------------------
+D2 | Date lipsa       ND |  In timpul executiei unei citiri de date,scrie-
+   | ("No  Data")        |  re date sterse sau scanare, daca FDC nu gase-
+   |                     |  ste  sectorul  specificat  in  registrul  ID,
+   |                     |  atunci este setat acest indicator.
+   |                     |------------------------------------------------
+   |                     |  In timpul  executiei  comenzii  de citire ID,
+   |                     |  daca  FDC  nu  poate  citi  cimpul  ID  fara
+   |                     |  eroare, atunci acest indicator este setat.
+   |                     |------------------------------------------------
+   |                     |  In timpul executiei  citirii  unui  cilindru,
+   |                     |  daca  sectorul de inceput nu  poate fi gasit,
+   |                     |  atunci indicatorul este setat.
+--------------------------------------------------------------------------
+D1 | Scriere          NW |  In timpul executiei unei scrieri date,scrieri
+   | nepermisa           |  date sterse sau a unei initializari, daca FDC
+   | ("No Writable")     |  depisteaza un semnal de  protectie la scriere
+   |                     |  de la  FDD, atunci se seteaza indicatorul.
+--------------------------------------------------------------------------
+D0 | Lipsa            MA |  Daca FDC nu poate detecta marca adresei  ID,
+   | marca adresa        |  atunci acest  indicator este setat.  De ase-
+   |("Missing Address    |  meni,  se pozitioneaza in 1  MD  (adresa din
+   | Mark")              |  cimpul de date a registrului de stare).
+--------------------------------------------------------------------------

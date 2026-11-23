@@ -1,0 +1,56 @@
+CONSTANTELE DE PROGRAMARE ALE CONTROLORULUI DE DISC FLEXIBIL NEC uPD 765
+                         ------------------------
+                         | Constante FDC | hexa |
+                         ------------------------
+                         | N             |  02  |
+                         | Format GPL    |  05  |
+                         | SC            |  08  |
+                         | GPL R/L       |  2A  |
+                         | HUT           |  0F  |
+                         | HLT           |  01  |
+                         | SRT           |  0C  |
+                         ------------------------
+        Semn
+
+     {b}3.2.2. Interfata cu unitatile de disc flexibile{/b}
+
+     Semnalele interfetei cu discul flexibil sint urmatoarele:
+
+  Semnal      Sens       Descriere
+---------------------------------------------------------------------------
+{b}SELECT 0-3{/b}    iesire     Patru  linii utilizate de catre unitatile asociate
+                         pentru  validarea    semnalelor    de   interfata,
+                         cu exceptia  semnalelor MOTOR ON 0-3.
+
+{b}MOTOR ON 0-3{/b}  iesire     Unitatea   asociata cu fiecare din  aceste   linii
+                         trebuie  sa-si   porneasca   motorul  atunci  cind
+                         linia   devine activa si sa-l opreasca la dezacti-
+                         varea liniei.
+
+{b}SEEK/STEP{/b}     iesire     Unitatea    selectata    deplaseaza    capul    de
+                         citire/scriere cu un cilindru la fiecare impuls.
+
+{b}DIRECTION{/b}     iesire     Pentru   fiecare   impuls  al  liniei   SEEK/STEP,
+                         capul   de citire/scriere se   deplaseaza   inapoi
+                         daca  semnalul este activ si inainte daca semnalul
+                         este inactiv.
+
+{b}SIDE SELECT{/b}   iesire     Capul  al  doilea (al fetei de  deasupra  discului
+{b}(HEAD LOAD){/b}              flexibil)   va   fi selectat atunci  cind  aceasta
+                         linie este activata.
+
+{b}WRITE ENABLE{/b}  iesire     Dezactiveaza operatia de scriere.
+
+{b}WRITE DATA{/b}    iesire     Pentru   fiecare   activare a  acestei linii (atit
+                         timp cit linia WRITE ENABLE este activa),   unita-
+                         tea selectata genereaza un flux magnetic permitind
+                         scrierea pe  discul flexibil.
+
+{b}LOW CURRENT{/b}   iesire     Aceasta  linie  atentioneaza unitatea de  disc  ca
+                         este adresata o pista mai mare de 43.
+
+{b}FAULT RESET{/b}   iesire     Activarea  acestei linii poduce resetarea erorilor
+                         memorate de unitatea de disc.
+
+{b}INDEX{/b}         intrare    Unitatea  selectata genereaza pe aceasta linie  un
+                         impuls pentru fiecare rotatie a dischetei.

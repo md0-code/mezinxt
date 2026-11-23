@@ -1,0 +1,55 @@
+     {u}3.2.1.2. Controlorul de disc flexibil NEC uPD 765 (I8272){/u}
+
+     Controlorul de disc flexibil  NEC uP 765 (I8272) contine doua registre
+ce  pot  fi accesate de microprocesorul sistemului:  un registru  de  stare
+(adresa  3F4H)  si un registru de date (adresa 3F5H).  Registrul  de  stare
+contine informatii de stare ale  FDC si poate fi accesat oricind. Registrul
+de  date  (format  din mai multe registre  puse  intr-o  stiva,  un  singur
+registru  fiind  conectat  pe magistrala la un  moment  dat), inmagazineaza
+date, comenzi, parametri si  furnizeaza informatii de stare.
+     Bitii  de  date  sint  cititi/scrisi in registrul de  date  in  scopul
+programarii sau a  obtinerii rezultatelor dupa o  anumita  comanda.  Regis-
+trul de stare poate fi doar citit si este utilizat pentru efectuarea trans-
+ferului de date dintre microprocesor si FDC.
+     Bitii din registrul de stare sint definiti dupa cum urmeaza:
+
+---------------------------------------------------------------------------
+| Bit |  Denumire      |Simbol|              Descriere                    |
+---------------------------------------------------------------------------
+| DB0 | FDD A ocupat   | DAB  |  FDD nr.0 in mod cautare pista ("seek").  |
+| DB1 | FDD B ocupat   | DBB  |  FDD nr.1 in mod cautare pista ("seek").  |
+| DB2 | FDD C ocupat   | DCB  |  FDD nr.2 in mod cautare pista ("seek").  |
+| DB3 | FDD D ocupat   | DDB  |  FDD nr.3 in mod cautare pista ("seek").  |
+| DB4 | FDC ocupat     | CB   |  O comanda de citire/scriere este in curs |
+|     |                |      |  de executie.                             |
+| DB5 | Mod non DMA    | NDM  |  FDC este in mod non DMA.                 |
+| DB6 | Intrare/iesire | DIO  |  Indica  directia  transferului  de  date |
+|     | date           |      |  intre FDC si  microprocesor;             |
+|     |                |      |  daca DIO = 1,  atunci transferul este de |
+|     |                |      |  la registrul de date al FDC catre micro- |
+|     |                |      |  procesor;  daca DIO = 0, atunci transfe- |
+|     |                |      |  rul este de  la  microprocesor catre re- |
+|     |                |      |  gistrul de date FDC.                     |
+| DB7 | Cerere de acces| RQM  |  Indica faptul ca  registrul  de date este|
+|     |                |      |  pregatit pentru a trimite/receptiona date|
+|     |                |      |  catre/de la Microprocesor.               |
+|     |                |      |  Atit  bitii  DIO  cit si  RQM  trebuiesc |
+|     |                |      |  utilizati  pentru  executia  functiiilor |
+|     |                |      |  "ready" si" direction" ale  protocolului |
+|     |                |      |  de comunicatii cu microprocesorul.       |
+---------------------------------------------------------------------------
+
+   FDC este capabil sa execute 15 comenzi diferite.  Fiecare comanda incepe
+printr-un transfer pe  mai multi  octeti de la microprocesor,  iar rezulta-
+tul  executiei  comenzii poate fi  tot un  transfer pe  mai  multi  octeti,
+inapoi catre microprocesor.  Din cauza acestui schimb de  informatii pe mai
+multi octeti intre FDC si microprocesor,  este convenabil sa  consideram ca
+fiecare comanda este formata din trei faze:
+
+{u}Faza  de  comanda:{/u}  FDC  primeste de la  microprocesor  toate  informatiile
+necesare executiei unei anumite operatii.
+
+{u}Faza de executie:{/u} FDC excuta operatia pentru care s-a dat comanda.
+
+{u}Faza de rezultat:{/u} Dupa terminarea executiei, informatiile de  stare si alte
+informatii de gestiune sint pregatite pentru microprocesor.

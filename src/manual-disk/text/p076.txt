@@ -1,0 +1,55 @@
+asigurarea ca problemele aparute nu au o cauza accidentala
+     La modificarea programarii porturilor de intrare/iesire, programatorul
+trebuie  sa schimbe numai acei biti ce sint necesari in aplicatia  curenta.
+La terminarea operatiei, programatorul trebuie sa refaca valorile initiale.
+Nerespectarea acestei reguli poate fi incompatibila cu aplicatiile prezente
+si viitoare.
+     BIOS-ul prezinta facilitatea de a integra cuploarele dispozitivelor de
+intrare/iesire cu cod ROM in sistem.
+In  timpul  evaluarii  resurselor  hardware  ale  sistemului,  vectorii  de
+intrerupere sint stabiliti prin apelurile BIOS.  Dupa ce vectorii impliciti
+sint stabiliti,  are loc o scanare pentru module ROM suplimentare. In acest
+moment,  o  rutina  din  ROM-ul  de pe  placa  cuplorului  poate  sa  preia
+controlul.  Rutina poate facilita sau opri ca vectorii de intrerupere sa se
+ataseze sistemului.
+     Adresele  absolute de la C0000H pina la F0000H sint scanate in blocuri
+de 2 Kocteti pentru depistarea unei placi de cuplor valide.   Un ROM  valid
+este definit dupa cum urmeaza:
+     Octet 0:  55 hexa
+     Octet 1:  AA hexa.
+     Octet 2:  Un indicator de lungime ce reprezinta  numarul de blocuri de
+               512 octeti din modulul ROM.
+     Pentru  testarea  integritatii modulului ROM se efectueaza o  suma  de
+control.  Fiecare  octet  in ROM-ul definit este insumat modulo  100  hexa.
+Aceasta suma trebuie sa fie 0 pentru ca modulul sa fie valid.
+     Cind  secventa  de  evaluare a resurselor hardware identifica  un  ROM
+valid,  se  apeleaza  octetul 3 al ROM-ului (acesta trebuie sa fie  in  cod
+executabil).  Cuplorul  poate  acum sa execute operatiile  la  punerea  sub
+tensiune.   ROM-ul  va  trebui  sa  redea  controlul  rutinelor  BIOS  prin
+executarea unei instructiuni RETURN FAR.
+
+  Adresa     Numar            Nume                Intrare in BIOS
+  (hexa)     intrerupere
+---------------------------------------------------------------------------
+   0-3         0         Imparte la zero          D11
+   4-7         1         Pas cu pas               D11
+   8-B         2         Nemascabil               NMI_INT
+   C-F         3         Breakpoint               D11
+   10-13       4         Overflow                 D11
+   14-17       5         Tiparire ecran           PRINT_SCREEN
+   18-1B       6         Rezervat                 D11
+   1D-1F       7         Rezervat                 D11
+   20-23       8         Stabilire data           TIMER_INT
+   24-27       9         Tastatura                KB_INT
+   28-2B       A         Rezervat                 D11
+   2C-2F       B         Comunicatii              D11
+   30-33       C         Comunicatii              D11
+   34-37       D         Disc fix                 D11
+   38-3B       E         Disc flexibil            DISK_INT
+   3C-3F       F         Imprimanta               D11
+   40-43       10        Video                    VIDEO_IO
+   44-47       11        Verificare echipament    EQUIPMENT
+   48-4B       12        Memorie                  MEMORY_SIZE_DETERMINE
+   4C-4F       13        Disc flexibil/fix        DISKETTE_IO
+   50-53       14        Comunicatii              RS232_IO
+---------------------------------------------------------------------------

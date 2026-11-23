@@ -1,0 +1,51 @@
+MNEMONICELE COMENZILOR SI PARAMETRILOR CONTROLORULUI DE DISC FLEXIBIL
+--------------------------------------------------------------------------
+Simbol |    Nume              |             Descriere
+--------------------------------------------------------------------------
+   C   | Numar cilindru       |  Indica numarul cilindrului.
+       | ("Cylinder")         |
+--------------------------------------------------------------------------
+   D   | Cuvint date          |  Indica paternele de date care trebuiesc
+       | ("Data")             |  inscrise intr-un sector.
+--------------------------------------------------------------------------
+US0,US1| Selectie unitate     |  DS  indica  numarul unitatii  selectate
+       | ("Unit Select")      |  0 sau 1.
+--------------------------------------------------------------------------
+  DTL  | Lungime date         |  Cind N este definit ca 00,  DTL inlocu-
+       | ("Data Lenght")      |  ieste lungimea blocului de date pe care
+       |                      |  utilizatorul o va citi sau scrie intr-un
+       |                      |  sector.
+--------------------------------------------------------------------------
+  EOT  | Sfirsit de pista     |  EOT indica numarul ultimului  sector al
+       | ("End of Track")     |  unui cilindru.
+--------------------------------------------------------------------------
+  GPL  | Lungime spatiu       |  GPL  indica  lungimea  GAP  3 asteptata
+       | intersector          |  intre  sectoare,  excluzind  cimpul  de
+       | ("GAP Lenght")       |  sincronizare pentru VCO.
+--------------------------------------------------------------------------
+   H   | Adresa cap scriere/  |  Numarul capului  0 sau 1, dupa cum este
+       | citire               |  specificat in cimpul ID.
+--------------------------------------------------------------------------
+  HDS  | Selectie cap scriere/|  Este  echivalent cu  semnalul de selec-
+       | citire               |  tie  a  capului  0 sau  1  ( H = HDS in
+       | ("Head Select")      |  toate comenzile).
+--------------------------------------------------------------------------
+  HLT  | Timp de incarcare    |  Ia valori de la 2 la  254 ms, in cuante
+       | (selectie) a capului |  de 2ms.
+       | de scriere/citire    |
+       | ("Head Load Time")   |
+--------------------------------------------------------------------------
+  HUT  | Timp de descarcare   |  Ia valori de la 16 la 240 ms, in cuante
+       | (deselectie) a capu- |  de 16 ms.
+       | lui de scriere/citire|
+       | ("Head Unload Time") |
+--------------------------------------------------------------------------
+   MF  | Simpla sau dubla     |  Daca  MF este  0,  se  selecteaza modul
+       | densitate            |  simpla densitate, iar daca este  1, du-
+       | ("FM/MFM")           |  bla densitate.
+--------------------------------------------------------------------------
+   MT  | Multipista           |  Daca  MT este  1, o operatie multipista
+       | ("Multi-Track")      |  va fi executata  (un cilindru va fi ci-
+       |                      |  tit sau scris pe  ambele fete - cu  HD0
+       |                      |  si  HD1).
+--------------------------------------------------------------------------

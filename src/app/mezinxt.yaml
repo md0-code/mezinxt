@@ -1,0 +1,98 @@
+# MezinXT configuration: the emulated FEPER JUNIOR-XT and its window.
+# Written with the defaults on first start. MezinXT keeps these comments
+# when it saves a change.
+
+machine:
+  bios: 4.0             # 3.0, 4.0, 5.0 or 5.0-alt (4.0 drives the Junior's own serial adapter)
+  cpu: 8086             # 8086 or 8088
+  speed: 4.77           # MHz: 4.77 (the original), 7.16, 9.54, or unthrottled
+  ram_kb: 640           # 64, 128, 192 or 256 (the board's banks), or 640 (256 with the 384 KiB module)
+  display: cga80        # the display coupler: cga80, cga40, mda (monochrome, 80 columns, green phosphor) or none
+  fpu: false            # the 8087 math processor is fitted
+  drives: 2             # diskette drives fitted, 1 to 4 (drives.a to drives.d)
+  winchester: false     # the Winchester coupler (fixed disks drives.hd0 and hd1; its BIOS takes C8000h, so no rom_c8000)
+  rom_c8000:            # EPROM images (up to 32 KiB) in the 384 KiB module's sockets: at C8000h, F0000h or F8000h;
+  rom_f0000:            # they need the module (ram_kb: 640). The BIOS runs a ROM that starts with 55h AAh and whose
+  rom_f8000:            # bytes add up to zero (else ERROR 701); at F8000h at most 16 KiB (32 KiB would cover the BIOS)
+
+drives:
+  a:
+    image: disks/manual.img # a disk image; empty for an empty drive (a first start without disks/manual.img leaves it empty)
+    write_protect: false
+    tracks: 40          # 40 or 80: an 80-track drive reads 720 KiB disks
+    fast: true          # not original: run at full host speed while this drive works (its motor turns), so loading is quick
+  b:
+    image:
+    write_protect: false
+    tracks: 40
+    fast: true
+  c:                    # drives c and d are there when machine.drives is 3 or 4
+    image:
+    write_protect: false
+    tracks: 40
+    fast: true
+  d:
+    image:
+    write_protect: false
+    tracks: 40
+    fast: true
+  hd0:                  # fixed disks on the Winchester coupler: raw images of 17-sector tracks (20 MB: 615 x 4 x 17)
+    image:
+    fast: true          # as for the diskette drives: full host speed while the fixed disk works
+  hd1:                  # the second one needs the first
+    image:
+    fast: true
+
+video:
+  look: crt             # plain, or crt (the M-CRT shader)
+  monitor: mono-green   # rgbi (9-pin), rgb (RCA, no intensity line) or mono-green (composite)
+  aspect: original      # original (4:3), or square pixels
+  scale: fit            # fit the window, or integer multiples only
+  filter: sharp         # nearest, linear or sharp (the plain look only: the crt look smooths the picture itself)
+  fullscreen: false     # Alt+Enter switches while running
+  vsync: true
+  snow: true            # the CGA card's snow in 80-column text, as on the real card; false is not original: a clean picture
+  drive_lights: false   # not original: lights for the drives at work (diskette letters, fixed disk C and D) in the picture's bottom row
+
+sound:
+  enabled: true         # false mutes the speaker and the drives
+  volume: 100           # percent, 0 to 100
+  drives: true          # the sound of the disk drives: motors, head steps and loads, a fixed disk's spindle and seeks (made up, not recorded)
+  drives_volume: 50     # percent, 0 to 100: the drives' loudness against the speaker's
+
+ui:
+  language: en          # en or ro (Romanian); a first start on a Romanian system writes ro
+
+ports:
+  adapter: true         # the serial and parallel adapter board is fitted (BIOS 4.0 finds its SIO at 253h)
+  sio_a: none           # none, loopback (TxD wired to RxD), COM1, tcp:HOST:PORT, tcp-listen:PORT, pipe:NAME or file:FILE
+  sio_b: none           # tcp: connects to HOST:PORT; tcp-listen: waits here (HOST:PORT picks the interface)
+  lpt: none            # none (no printer: the port reads off line) or file:FILE (the printed bytes are appended)
+  pc_serial: none       # the PC/XT asynchronous adapter, 8250 ports at 3F8h and 2F8h that BIOS 3.0 and 5.0 find: none, one (COM1)
+                        # or two (COM1 and COM2); COM1 shares IRQ 4 with the SIO adapter, so it needs adapter: false
+  com1: none            # as sio_a, or mouse: the host mouse as a Microsoft serial mouse (a click on the picture captures it,
+  com2: none            # Ctrl+F10 lets it go); at most one port is the mouse
+  lpt_mda: none         # the monochrome coupler's printer port (3BCh), only with display: mda: none or file:FILE
+
+controllers:
+  adapter: false        # the game control adapter (joystick coupler, port 201h) is fitted
+  light_pen: false      # the host mouse is a light pen on the CGA: its position over the picture, the left button the pen's switch
+  keys:                 # the keyboard stand-in's keys, named as --hostkey takes them (Up, A, Left Ctrl, Space); each needs a key of its own
+    up: Up              # F11 switches the stand-in's keys between the joystick and the computer; F11, F12, Pause and PrintScreen stay the window's
+    down: Down
+    left: Left
+    right: Right
+    fire1: Left Ctrl    # the joystick's buttons 1 and 2
+    fire2: Left Shift
+  joystick1:
+    device: none        # none, keyboard (the keys above: the arrow keys and Left Ctrl and Left Shift as buttons) or controller 1 (a host game controller)
+    dead_zone: 10       # percent of the travel that counts as centred (0 to 50)
+    range: 100          # percent of the travel that gives full deflection (50 to 100)
+    centre_x: 0         # where the stick rests, percent of the travel (-50 to 50)
+    centre_y: 0         # the setup screen's Calibrate sets range and the centre
+  joystick2:
+    device: none
+    dead_zone: 10
+    range: 100
+    centre_x: 0
+    centre_y: 0

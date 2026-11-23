@@ -1,0 +1,55 @@
+     {b}3.9. Monitorul TV{/b}
+
+     Microcalculatorul  JUNIOR-XT  este conceput pentru a permite  cuplarea
+simultana  a  trei  tipuri de monitoare:  monitor color RGB  cu  trepte  de
+intensitate,  monitor  color  RGB  fara trepte de  intensitate  si  monitor
+monocrom.
+     Monitorul  color  RGB  cu  trepte  de  intensitate  se  conecteaza  la
+echipament  prin intermediul unui cablu cu noua fire si conector tata de  9
+contacte  la ambele capete.  Monitorul color fara trepte de intensitate  se
+conecteaza   la  echipament  prin  intermediul  a  patru  cabluri  ecranate
+prevazute cu mufe RCA la ambele capete. Monitorul monocrom se conecteaza la
+echipament  prin  intermediul unui cablu ecranat prevazut cu  mufe  RCA  la
+ambele capete. Lungimea maxima a cablurilor de legatura cu monitoarele este
+de 1,5 m.
+     Atit monitoarele color cit si cel monocrom prezinta pe panoul  frontal
+butoane  de reglaj al luminozitatii si contrastului,  comutatorul de  retea
+precum si un indicator luminos ce arata punerea sub tensiune.
+     Repartizarea   semnalelor   de  comanda  a   monitoarelor   la   pinii
+conectorului (mufelor) cablurilor de legatura este urmatoarea:
+
+     ------------------------------------------
+     | Monitor color cu trepte de intensitate |
+     |----------------------------------------|
+     | Pin conector |     Denumire semnal     |
+     ------------------------------------------
+     |      1       |           GND           |
+     |      2       |           GND           |
+     |      3       |            R            |
+     |      4       |            G            |
+     |      5       |            B            |
+     |      6       |            I            |
+     |      7       |            -            |
+     |      8       |          HSYNC          |
+     |      9       |          VSYNC          |
+     ------------------------------------------
+
+     ------------------------------------------
+     |Monitor color fara trepte de intensitate|
+     ------------------------------------------
+     |              |           R             |
+     |    Mufa 1    |-------------------------|
+     |              |           GND           |
+     |----------------------------------------|
+     |              |           G             |
+     |    Mufa 2    |-------------------------|
+     |              |           GND           |
+     |----------------------------------------|
+     |              |           B             |
+     |    Mufa 3    |-------------------------|
+     |              |           GND           |
+     |----------------------------------------|
+     |              |           SYNC          |
+     |    Mufa 4    |-------------------------|
+     |              |           GND           |
+     ------------------------------------------

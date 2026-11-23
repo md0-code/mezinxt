@@ -1,0 +1,53 @@
+     {b}3.2.1. Descriere functionala si notiuni de programare{/b}
+
+     Din  punct de vedere al programarii,  cuplorul pentru discul  flexibil
+prezinta  un registru de uz general de iesire pe 8 biti si un controlor  de
+disc flexibil de tip NEC uPD 765 sau echivalent (I8272).
+     In  prezentarea ce urmeaza se vor folosi termenii abreviati din  limba
+engleza:
+     FDC ("Floppy Disk Controller") - Controlor de disc flexibil
+     FDD ("Floppy Disk Drive")      - Unitate de disc flexibil
+
+     {u}3.2.1.1. Registrul de iesire{/u} - adresa 3F2H
+
+     Registrul   de  iesire  este un registru accesat  doar   in   scriere,
+utilizat  pentru  comanda motoarelor si selectia unitatilor de  disc.  Toti
+bitii  sint  initializati  prin semnalul de  initializare  a  sistemului de
+intrare/iesire (RESET).
+      Registrul de iesire are urmatoarea configuratie:
+
+   7     6     5     4     3     2    1     0
+-------------------------------------------------
+| FS7 | FS6 | FS5 | FS4 | FS3 | FS2 | FS1 | FS0 |
+-------------------------------------------------
+   |     |     |     |     |     |     |     |
+   |     |     |     |     |     |      ------- Selectie unitate de disc
+   |     |     |     |     |      ------------- Initializare FDC
+   |     |     |     |      ------------------- Activare cerere DMA
+   |     |     |     |                          si intrerupere
+   |     |     |      ------------------------- Activare motor unitate 0
+   |     |      ------------------------------- Activare motor unitate 1
+   |      ------------------------------------- Activare motor unitate 2
+    -- ---------------------------------------- Activare motor unitate 3
+FS0 si FS1     - Destinati a selecta o unitate, daca aceasta este  pornita,
+                 astfel:
+
+                  FS1  FS0   Unitate
+                 --- ----------------
+                   0    0     0 (A)
+                   0    1     1 (B)
+                   1    0     2 (C)
+                   1    1     3 (D)
+
+FS2            - Bit  de initializare  a controlorului  programabil NEC uPD
+                 765  (I8272);   FDC este initializat  atunci   cind  bitul
+                 este 0 logic;  pentru activarea  FDC,   bitul va fi trecut
+                 in 1 logic prin program.
+FS3            - Bit de validare catre  magistrala sistemului  a  cererilor
+                 de   intrerupere si DMA;   daca acest bit este trecut in 0
+                 logic, cererile de  DMA si  interupere sint blocate.
+FS4 - FS7      - Comanda    motoarele   celor  patru   unitati  de  discuri
+                 flexibile,   determinind   activarea  semnalelor MOTOR  ON
+                 0  - 3;  daca unul din acesti biti este  0 logic,  motorul
+                 asociat    este  inactiv,    iar  unitatea  nu  poate   fi
+                 selectat.

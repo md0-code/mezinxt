@@ -1,0 +1,54 @@
+   Intre segmente
+   -----------------
+   |1 1 0 0 1 0 1 1|
+   -----------------
+
+   Intre segmente si adunare imediata la SP
+   -----------------------------------------
+   |1 1 0 0 1 0 1 0 | data-inf. | data-sup.|
+   -----------------------------------------
+
+   {b}JE/JZ{/b} = Salt la egalitate/zero
+   ------------------------
+   |0 1 1 1 0 1 0 0 | disp|
+   ------------------------
+
+   {b}JL/JNGE{/b} = Salt la mai mic/la mai mic sau egal
+   ------------------------
+   |0 1 1 1 1 1 0 0 | disp|
+   ------------------------
+
+   {b}JLE/JNG{/b} = Salt la mai mic sau egal/mai mic
+   ------------------------
+   |0 1 1 1 1 1 1 0 | disp|
+   ------------------------
+
+   {b}JB/JNAE{/b} = Salt la mai mic/mai mic sau egal
+   ------------------------
+   |0 1 1 1 0 0 1 0 | disp|
+   ------------------------
+
+   {b}JP/JPE{/b} = Salt la paritate/paritate para
+   ------------------------
+   |0 1 1 1 1 0 1 0 | disp|
+  -------------------------
+
+   {b}JO{/b} = Salt la depasire
+   ------------------------
+   |0 1 1 1 0 0 0 0 | disp|
+   ------------------------
+
+   {b}JS{/b} = Salt la semn
+   ------------------------
+   |0 1 1 1 1 0 0 0 | disp|
+   ------------------------
+
+   {b}JNE/JNZ{/b} = Salt la diferit/diferit de zero
+   ------------------------
+   |0 1 1 1 0 1 0 1 | disp|
+   ------------------------
+
+   {b}JNL/JGE{/b} = Salt la nu mai mic/mai mare sau egal
+   ------------------------
+   |0 1 1 1 1 1 0 1 | disp|
+   ------------------------

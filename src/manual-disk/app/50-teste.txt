@@ -1,0 +1,69 @@
+@doc teste | teste | Teste interactive
+  Patru teste ruleaza pe microcalculator si verifica echipamentul descris in
+  carte. Fiecare se deschide din legatura de mai jos.
+
+   [[test:tastatura|Test tastatura]]  cele 83 de taste, cu codul de scanare
+   [[test:video|Test video]]      culori, caractere, moduri, reglaj monitor
+   [[test:sistem|Test sistem]]     microintrerupatoare, memorie, coprocesor, difuzor
+   [[test:disc|Test disc]]       piste de discheta, imprimanta, porturi seriale
+
+  {h}Test tastatura{/}
+
+  Cele {c}83{/} de taste sint desenate in forma tastaturii. {b}Se apasa pe rind{/}:
+  fiecare tasta apasata se aprinde si arata {b}codul sau de scanare{/} (hexa).
+
+  {a:70} Q {/}{a:4F} W {/}{a:70} E {/}   {d}schema: W apasata{/}  {c}11{/}
+
+   {c}■{/} codurile se compara cu desenul si tabelul din [[coduri-taste|codurile de scanare]]
+   {c}■{/} o tasta care nu se aprinde: tasta sau cablu defect; la pornire,
+     o tastatura necuplata da [[erori-post|Error 301 / 302]] ([[tastatura-hw|tastatura]])
+   {c}■{/} tastele de stare (Shift, Ctrl, Alt, Lock) si PrSc: [[stari-speciale|stari speciale]]
+
+  {h}Test video{/}
+
+  Verifica ecranul si cuplorul de afisaj ([[cuplor-cga|cuplorul CGA]]):
+
+  {a:17}▐{/}{a:00}  {/}{a:17}▌{/}{a:17}▐{/}{a:10}  {/}{a:17}▌{/}{a:17}▐{/}{a:20}  {/}{a:17}▌{/}{a:17}▐{/}{a:30}  {/}{a:17}▌{/}{a:17}▐{/}{a:40}  {/}{a:17}▌{/}{a:17}▐{/}{a:50}  {/}{a:17}▌{/}{a:17}▐{/}{a:60}  {/}{a:17}▌{/}{a:17}▐{/}{a:70}  {/}{a:17}▌{/}{a:17}▐{/}{a:80}  {/}{a:17}▌{/}{a:17}▐{/}{a:90}  {/}{a:17}▌{/}{a:17}▐{/}{a:A0}  {/}{a:17}▌{/}{a:17}▐{/}{a:B0}  {/}{a:17}▌{/}{a:17}▐{/}{a:C0}  {/}{a:17}▌{/}{a:17}▐{/}{a:D0}  {/}{a:17}▌{/}{a:17}▐{/}{a:E0}  {/}{a:17}▌{/}{a:17}▐{/}{a:F0}  {/}{a:17}▌{/}  {d}16 culori{/}
+
+   {c}■{/} {b}cele 16 culori{/}: toate distincte, in ordinea din [[culori|culori]]
+   {c}■{/} {b}setul de caractere{/}: cele 256 de caractere ale generatorului
+     ([[caractere|caractere]])
+   {c}■{/} {b}modurile alfanumerice{/} 40 x 25 si 80 x 25 ([[registre-cga|registrele CGA]]); la 80
+     de coloane textul trebuie sa ramina clar
+   {c}■{/} {b}modurile grafice{/} 320 x 200 (4 culori, palete) si 640 x 200 (2 culori)
+   {c}■{/} {b}modelul de reglaj{/}: se regleaza luminozitatea si contrastul cu
+     butoanele de pe panoul frontal al monitorului ([[monitor|monitor]])
+
+  {h}Test sistem{/}
+
+  Arata ce stie sistemul despre el insusi:
+
+   {b}SW-1 {/} {b}SW-2 {/} {b}SW-3 {/} {b}SW-4 {/} {b}SW-5 {/} {b}SW-6 {/} {b}SW-7 {/} {b}SW-8 {/}
+  {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/}
+  {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/}
+  {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}■{/} {b}microintrerupatoarele{/} de configurare ([[comutatoare|microintrerupatoare]]): coprocesor,
+     memoria placii de baza (64 - 256 K), tipul cuplorului de afisaj,
+     numarul unitatilor de disc; se compara cu echipamentul real
+   {c}■{/} {b}dimensiunea memoriei{/} si {b}testul de memorie{/} ([[placa-baza|placa de baza]],
+     [[memorie-ram|modulul de 384 K]]);
+     la pornire, o eroare de RAM da {c}Error 201 RAM{/} ([[erori-post|erorile la pornire]])
+   {c}■{/} {b}coprocesorul{/} I8087 (microintrerupator SW-2)
+   {c}■{/} {b}difuzorul{/}: tonurile vin de la canalul 2 al timer-ului ([[placa-baza|placa de baza]])
+
+  {h}Test disc{/}
+
+  Se introduce o discheta in unitate si se citesc {b}toate pistele{/} ei.
+
+   {c}■{/} {b}pistele{/}: 40 sau 80 pe fata ([[unitati-disc|unitatile de disc]]); o eroare de citire
+     se interpreteaza cu bitii de stare ST1 / ST2 ([[disc-stare|registrele ST0-ST3]]): eroare
+     CRC, sector sau marca de adresa lipsa
+   {c}■{/} {b}imprimanta{/}: starea portului ([[imprimanta|imprimanta]]): BUSY, ACK, PAPER END,
+     SELECT, ERROR
+   {c}■{/} {b}porturile seriale{/}: starea celor doua canale; linia DSR, de ex.,
+     se citeste din portul de stare modem ([[cuplor-serial|cuplorul serial]])
+
+  {d}Vezi si:{/} [[acasa|Prezentare]]  [[instalare|Instalare]]  [[hardware|Hardware]]  [[software|Software]]
+         [[punere-functiune|Punerea in functiune]]  [[erori-post|Erori la pornire]]
+  Carte tehnica: [[pag:8|pag. 8]] [[pag:9|pag. 9]] [[pag:10|pag. 10]]

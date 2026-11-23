@@ -1,0 +1,55 @@
+     {u}3.3.3.1. Programarea controlorului de ecran Motorola 6845{/u}
+
+     Controlorul  MC  6845 are 19 registre interne  adresabile,  care  sint
+utilizate pentru comanda monitoarelor.  Unul din aceste registre, registrul
+index, este utilizat ca pointer al celorlalte 18 registre. Este un registru
+de  scriere,  care este incarcat de catre microprocesor prin executia  unei
+instructiuni   OUT   la  adresa portului de intrare/iesire  3D4H.  Cei  mai
+putini  semnificativi  cinci  biti ai magistralei  de  intrare/iesire  sint
+incarcati in registrul index.
+     Pentru incarcarea oricaruia din cele 18 registre, mai intii se incarca
+registrul  index  cu pointerul necesar si  registrul de date cu  informatia
+care  trebuie  incarcata  in registrul selectat.  Registrul  de  date  este
+incarcat  de  catre microprocesor prin executia unei  instructiuni  OUT  la
+adresa portului de intrare/iesire 3D5H.
+       Urmatorul   tabel   defineste  valorile cu  care  trebuie  programat
+controlorul MC 6845  pentru comandarea diferitelor  regimuri de lucru:
+
+     ----------------------------------------------------------------
+     |Reg|Nr. |Tip reg.  |Unitate  |citire/ | 40x25 | 80x25 |Moduri |
+     |   |reg.|          |         |scriere |  alfa |  alfa |grafice|
+     ----------------------------------------------------------------
+     | 0 | R0 |orizontal |caracter |numai   |  38   |  71   |  38   |
+     |   |    |total     |         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 1 | R1 |orizontal |caracter |numai   |  28   |  50   |  28   |
+     |   |    |afisat    |         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 2 | R2 |pozitia   |caracter |numai   |  2D   |  5A   |  2D   |
+     |   |    |sincroniz.|         |scriere |       |       |       |
+     |   |    |pe linii  |         |        |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 3 | R3 |latimea   |caracter |numai   |  0A   |  0A   |  0A   |
+     |   |    |sincroniz.|         |scriere |       |       |       |
+     |   |    |pe linii  |         |        |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 4 | R4 |vertical  |rinduri  |numai   |  1F   |  1F   |  7F   |
+     |   |    |total     |caractere|scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 5 | R5 |vertical  |linii    |numai   |   06  |  06   |  06   |
+     |   |    |total     |baleiate |scriere |       |       |       |
+     |   |    |ajustat   |         |        |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 6 | R6 |vertical  |rinduri  |numai   |  19   |  19   |  64   |
+     |   |    |afisat    |caractere|scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 7 | R7 |pozitia   |rinduri  |numai   |  1C   |  1C   |  70   |
+     |   |    |sincroniz.|caractere|scriere |       |       |       |
+     |   |    |verticale |         |        |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 8 | R8 |mod       |         |numai   |  02   |  02   |  02   |
+     |   |    |intretesut|         |scriere |       |       |       |
+     |   |    |          |         |        |       |       |       |
+     | 9 | R9 |adr.max.  |linii    |numai   |  07   |   07  |  01   |
+     |   |    |linii     |baleiate |scriere |       |       |       |
+     |   |    |baleiate  |         |        |       |       |

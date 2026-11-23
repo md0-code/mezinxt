@@ -1,0 +1,203 @@
+@doc anexe | anexe | Anexe
+  Cartea tehnica se incheie cu patru anexe; aici sint prezentate trei.
+
+   [[caractere|Anexa 1: caractere, taste, culori]]        valorile 00 - FF, atribute
+   [[instructiuni|Anexa 2: instructiunile I8086/I8088]]      grupe, mnemonice, formate
+   [[piese|Anexa 3: subansamble si piese de schimb]]  catalogul, cu codurile
+   {d}Anexa 4: scheme electrice{/}                {d}vezi cuprinsul,{/} [[pag:3|pag. 3]]
+
+  {d}Vezi si:{/} [[acasa|Prezentare]]  [[software|Software]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:3|pag. 3]] [[pag:90|pag. 90]] [[pag:103|pag. 103]] [[pag:118|pag. 118]]
+
+@doc caractere | anexe | Anexa 1: caractere, taste si culori
+  Tabelul (pag. 90 - 101) da, pentru fiecare valoare 00 - FF, caracterul si
+  atributul asociat.
+
+  {h}Coloanele tabelului{/}
+
+   {b}Valoare{/}   {c}Hex{/} si {c}Dec{/}: valoarea
+   {b}Caracter{/}  {c}Simbol{/}: caracterul afisat
+   {/}          {c}Comanda{/}: tasta(ele) cu care se obtine (Ctrl A, Alt 128, ...)
+   {/}          {c}Mod{/}: Shift sau o nota (1 - 6)
+   {b}Atribut{/}   cuplor color: {c}Fond{/} si {c}Informatie{/} (culoarea caracterului);
+   {/}          cuplor monocrom: neafisat, subliniat, normal, intensificat,
+   {/}          intensificat subliniat, video invers
+   {/}          prima cifra hexa a valorii da fondul, a doua informatia
+   {/}          ([[culori|culori]], [[memorie-ecran|octetul atribut]])
+
+  {h}Caracterele 20H - FFH{/}  {d}ca in generatorul de caractere{/}
+
+      {b}0{/} {b}1{/} {b}2{/} {b}3{/} {b}4{/} {b}5{/} {b}6{/} {b}7{/} {b}8{/} {b}9{/} {b}A{/} {b}B{/} {b}C{/} {b}D{/} {b}E{/} {b}F{/}
+  {b}2x{/}  {b}.{/} {b}!{/} {b}"{/} {b}#{/} {b}${/} {b}%{/} {b}&{/} {b}'{/} {b}({/} {b}){/} {b}*{/} {b}+{/} {b},{/} {b}-{/} {b}.{/} {b}/{/}
+  {b}3x{/}  {b}0{/} {b}1{/} {b}2{/} {b}3{/} {b}4{/} {b}5{/} {b}6{/} {b}7{/} {b}8{/} {b}9{/} {b}:{/} {b};{/} {b}<{/} {b}={/} {b}>{/} {b}?{/}
+  {b}4x{/}  {b}@{/} {b}A{/} {b}B{/} {b}C{/} {b}D{/} {b}E{/} {b}F{/} {b}G{/} {b}H{/} {b}I{/} {b}J{/} {b}K{/} {b}L{/} {b}M{/} {b}N{/} {b}O{/}
+  {b}5x{/}  {b}P{/} {b}Q{/} {b}R{/} {b}S{/} {b}T{/} {b}U{/} {b}V{/} {b}W{/} {b}X{/} {b}Y{/} {b}Z{/} {b}[{/} {b}\{/} {b}]{/} {b}^{/} {b}_{/}
+  {b}6x{/}  {b}`{/} {b}a{/} {b}b{/} {b}c{/} {b}d{/} {b}e{/} {b}f{/} {b}g{/} {b}h{/} {b}i{/} {b}j{/} {b}k{/} {b}l{/} {b}m{/} {b}n{/} {b}o{/}
+  {b}7x{/}  {b}p{/} {b}q{/} {b}r{/} {b}s{/} {b}t{/} {b}u{/} {b}v{/} {b}w{/} {b}x{/} {b}y{/} {b}z{/} {b}{(}{/} {b}|{/} {b}{)}{/} {b}~{/} {b}.{/}
+  {b}8x{/}  {c}Ç{/} {c}ü{/} {c}é{/} {c}â{/} {c}ä{/} {c}à{/} {c}å{/} {c}ç{/} {c}ê{/} {c}ë{/} {c}è{/} {c}ï{/} {c}î{/} {c}ì{/} {c}Ä{/} {c}Å{/}
+  {b}9x{/}  {c}É{/} {c}æ{/} {c}Æ{/} {c}ô{/} {c}ö{/} {c}ò{/} {c}û{/} {c}ù{/} {c}ÿ{/} {c}Ö{/} {c}Ü{/} {c}¢{/} {c}£{/} {c}¥{/} {c}₧{/} {c}ƒ{/}
+  {b}Ax{/}  {c}á{/} {c}í{/} {c}ó{/} {c}ú{/} {c}ñ{/} {c}Ñ{/} {c}ª{/} {c}º{/} {c}¿{/} {c}⌐{/} {c}¬{/} {c}½{/} {c}¼{/} {c}¡{/} {c}«{/} {c}»{/}
+  {b}Bx{/}  {c}░{/} {c}▒{/} {c}▓{/} {c}│{/} {c}┤{/} {c}╡{/} {c}╢{/} {c}╖{/} {c}╕{/} {c}╣{/} {c}║{/} {c}╗{/} {c}╝{/} {c}╜{/} {c}╛{/} {c}┐{/}
+  {b}Cx{/}  {c}└{/} {c}┴{/} {c}┬{/} {c}├{/} {c}─{/} {c}┼{/} {c}╞{/} {c}╟{/} {c}╚{/} {c}╔{/} {c}╩{/} {c}╦{/} {c}╠{/} {c}═{/} {c}╬{/} {c}╧{/}
+  {b}Dx{/}  {c}╨{/} {c}╤{/} {c}╥{/} {c}╙{/} {c}╘{/} {c}╒{/} {c}╓{/} {c}╫{/} {c}╪{/} {c}┘{/} {c}┌{/} {c}█{/} {c}▄{/} {c}▌{/} {c}▐{/} {c}▀{/}
+  {b}Ex{/}  {c}α{/} {c}ß{/} {c}Γ{/} {c}π{/} {c}Σ{/} {c}σ{/} {c}µ{/} {c}τ{/} {c}Φ{/} {c}Θ{/} {c}Ω{/} {c}δ{/} {c}∞{/} {c}φ{/} {c}ε{/} {c}∩{/}
+  {b}Fx{/}  {c}≡{/} {c}±{/} {c}≥{/} {c}≤{/} {c}⌠{/} {c}⌡{/} {c}÷{/} {c}≈{/} {c}°{/} {c}∙{/} {c}·{/} {c}√{/} {c}ⁿ{/} {c}²{/} {c}■{/} {c}.{/}
+
+  {d}"." = simbol blank (20, 7F, FF){/}   {b}20-7E{/} tastate direct, {c}80-FF{/} cu Alt + cod
+
+  {h}Notele tabelului{/}
+
+   {c}1{/}  asteriscul ({c}*{/}): tasta PrSc, sau tasta 8 (*) cu Shift
+   {c}2{/}  punctul ({c}.{/}): tasta ">" ".", sau tasta "." (DEL) cu Shift sau Shift Lock
+   {c}3{/}  cifrele 0 - 9: tastele numerice de sus, sau, cu Shift ori Num Lock,
+      blocul numeric separat
+   {c}4{/}  literele mari A - Z: cu Shift, sau cu Caps Lock
+   {c}5{/}  literele mici a - z: direct, sau cu Caps Lock si Shift
+   {c}6{/}  dupa Alt, cele trei cifre se tasteaza din blocul numeric separat; se
+      pot introduce codurile 000 - 255 (cu Caps Lock activ, codurile 97 -
+      122 afiseaza litere mari)
+
+  {h}Paginile tabelului{/}  {d}(valori hexa){/}
+
+   {c}00-12{/} [[pag:90|pag. 90]]    {c}13-24{/} [[pag:91|pag. 91]]    {c}25-3A{/} [[pag:92|pag. 92]]
+   {c}3B-50{/} [[pag:93|pag. 93]]    {c}51-66{/} [[pag:94|pag. 94]]    {c}67-7C{/} [[pag:95|pag. 95]]
+   {c}7D-92{/} [[pag:96|pag. 96]]    {c}93-A8{/} [[pag:97|pag. 97]]    {c}A9-BE{/} [[pag:98|pag. 98]]
+   {c}BF-D4{/} [[pag:99|pag. 99]]    {c}D5-EA{/} [[pag:100|pag. 100]]    {c}EB-FF{/} [[pag:101|pag. 101]]
+   {d}notele:{/} [[pag:102|pag. 102]]
+
+  {d}Vezi si:{/} [[coduri-taste|Coduri de scanare]]  [[stari-speciale|Alt + cod]]  [[culori|Culori]]
+         [[cuplor-cga|Cuplor CGA]]  [[test:video|Test video]]  [[anexe|Anexe]]
+  Carte tehnica: [[pag:90|pag. 90]] [[pag:101|pag. 101]] [[pag:102|pag. 102]]
+
+@doc instructiuni | anexe | Anexa 2: instructiunile I8086/I8088
+  Anexa da formatul in cod masina al instructiunilor, cu mnemonicele lor,
+  in grupe. Fiecare grupa trimite la paginile ei.
+
+  {h}Formatul{/}  {d}exemplu: MOV, registru/memorie catre/de la registru{/}
+
+  {d}┌─┬─┬─┬─┬─┬─┬─┬─┐ ┌─────┬─────┬─────┐{/}
+  {d}│{/}1{d}│{/}0{d}│{/}0{d}│{/}0{d}│{/}1{d}│{/}0{d}│{/}{c}d{/}{d}│{/}{c}w{/}{d}│ │{/} mod {d}│{/} reg {d}│{/} r/m {d}│{/}
+  {d}└─┴─┴─┴─┴─┴─┴─┴─┘ └─────┴─────┴─────┘{/}
+
+   {c}d{/} = 1 "catre", 0 "de la"          {c}w{/} = 1 instructiune cuvint, 0 octet
+   {c}s:w{/} = 01: 16 biti de date imediate; 11: 8 biti de date imediate
+   {c}v{/} = 0: "count" = 1; 1: "count" in CL      {c}x{/} redundant
+   {c}z{/}: primitive de sir, comparare cu ZF
+   {c}AL{/} acumulator 8 biti  {c}AX{/} 16 biti  {c}CX{/} contor  {c}DX{/} port variabil
+   {c}DS{/} segment de date  {c}ES{/} segment suplimentar
+
+  {h}Prefixul de segment "override"{/}  {d}pag. 103{/}
+
+  {d}┌─┬─┬─┬───┬─┬─┬─┐{/}
+  {d}│{/}0{d}│{/}0{d}│{/}1{d}│{/}reg{d}│{/}1{d}│{/}1{d}│{/}0{d}│{/}   {c}reg{/}: {c}00{/} ES, {c}01{/} CS, {c}10{/} SS, {c}11{/} DS
+  {d}└─┴─┴─┴───┴─┴─┴─┘{/}
+
+   {b}Registrul                  Implicit  Cu prefix{/}
+   IP {d}(adresa codului){/}        CS        niciodata
+   SP {d}(adresa stivei){/}         SS        niciodata
+   BP {d}(stiva, marker){/}         SS        BP+DS sau ES sau CS
+   SI sau DI {d}(fara siruri){/}    DS        ES, SS sau CS
+   SI {d}(sursa sirurilor){/}       DS        ES, SS sau CS
+   DI {d}(destinatia sirurilor){/}  ES        niciodata
+
+  {h}Transfer de date{/}  [[pag:103|pag. 103]] [[pag:104|104]] [[pag:105|105]] [[pag:106|106]]
+   {c}MOV{/}    Move                          {c}PUSH{/}  Salvare
+   {c}POP{/}    Restaurare                    {c}XCHG{/}  Interschimbare
+   {c}IN{/}     Intrare din port in AL/AX     {c}OUT{/}   Iesire din AL/AX la port
+   {c}XLAT{/}   Translatare octet catre AL    {c}LEA{/}   Incarcare EA in registru
+   {c}LDS{/}    Incarcare pointer in DS       {c}LES{/}   Incarcare pointer in ES
+   {c}LAHF{/}   Incarcare in AH indicatoare   {c}SAHF{/}  Incarcare din AH in indicatoare
+   {c}PUSHF{/}  Salvare indicatoare           {c}POPF{/}  Restaurare indicatoare
+
+  {h}Aritmetice{/}  [[pag:106|pag. 106]] [[pag:107|107]] [[pag:108|108]] [[pag:109|109]]
+   {c}ADD{/}   Adunare                          {c}ADC{/}   Adunare cu transport
+   {c}INC{/}   Incrementare                     {c}AAA{/}   Ajustare ASCII la adunare
+   {c}DAA{/}   Ajustare zecimala la adunare     {c}SUB{/}   Scadere
+   {c}SBB{/}   Scadere cu imprumut              {c}DEC{/}   Decrementare
+   {c}NEG{/}   Complementare semn               {c}CMP{/}   Comparare
+   {c}AAS{/}   Ajustare ASCII la scadere        {c}DAS{/}   Ajustare zecimala la scadere
+   {c}MUL{/}   Inmultire (fara semn)            {c}IMUL{/}  Inmultire de intregi (cu semn)
+   {c}AAM{/}   Ajustare ASCII la inmultire      {c}DIV{/}   Impartire
+   {c}IDIV{/}  Impartire de intregi (cu semn)   {c}AAD{/}   Ajustare ASCII la impartire
+   {c}CBW{/}   Conv. octet in cuvint            {c}CWD{/}   Conv. octet in cuvint dublu
+
+  {h}Logice{/}  [[pag:109|pag. 109]] [[pag:110|110]]
+   {c}NOT{/}  Inversare                     {c}SHL/SAL{/}  Deplasare stinga
+   {c}SHR{/}  Deplasare logica dreapta      {c}SAR{/}      Deplasare aritmetica dreapta
+   {c}ROL{/}  Rotatie la stinga             {c}ROR{/}      Rotatie la dreapta
+   {c}RCL{/}  Rotatie cu transport stinga   {c}RCR{/}      Rotatie cu transport dreapta
+   {c}AND{/}  Si                            {c}TEST{/}     Si, fara depunere
+   {c}OR{/}   Sau                           {c}XOR{/}      Sau exclusiv
+
+  {h}Lucru cu siruri{/}  [[pag:111|pag. 111]]
+   {c}REP{/}   Repetare                    {c}MOVS{/}  Deplaseaza sir in memorie
+   {c}CMPS{/}  Compara sir in memorie      {c}SCAS{/}  Compara sir cu acumulator
+   {c}LODS{/}  Incarca sir in acumulator   {c}STOS{/}  Memoreaza sir din acumulator
+
+  {h}Transfer de comenzi{/}  [[pag:111|pag. 111]] [[pag:112|112]] [[pag:113|113]] [[pag:114|114]] [[pag:115|115]]
+   {c}CALL{/}         Apel                      {c}JMP{/}            Salt neconditionat
+   {c}RET{/}          Intoarcere din apel       {c}LOOP{/}           Cicleaza de CX ori
+   {c}LOOPZ/LOOPE{/}  Cicleaza, salt ZF=1       {c}LOOPNZ/LOOPNE{/}  Cicleaza, salt ZF=0
+   {c}JCXZ{/}         Salt la CX zero           {c}INT{/}            Intrerupere
+   {c}INTO{/}         Intrerupere la depasire   {c}IRET{/}           Intoarcere din intr.
+
+  {b}Salturi conditionate{/}  {d}pag. 113 - 115, conditiile la pag. 115{/}
+
+   {b}Instructiunea  Conditia{/}
+   {c}JE sau JZ{/}      ZF = 1
+   {c}JL sau JNGE{/}    (SF xor OF) = 1
+   {c}JLE sau JNG{/}    ((SF xor OF) sau ZF) = 1
+   {c}JB, JNAE, JC{/}   CF = 1
+   {c}JBE sau JNA{/}    (CF sau ZF) = 1
+   {c}JP sau JPE{/}     PF = 1
+   {c}JO{/}             OF = 1
+   {c}JS{/}             SF = 1
+   {c}JNE sau JNZ{/}    ZF = 1
+   {c}JNL sau JGE{/}    (SF xor OF) = 0
+   {c}JNLE sau JG{/}    ((SF xor OF) sau ZF) = 0
+   {c}JNB, JAE, JNC{/}  CF = 0
+   {c}JNBE sau JA{/}    (CF sau ZF) = 0
+   {c}JNP sau JPO{/}    PF = 0
+   {c}JNO{/}            OF = 0
+   {c}JNS{/}            SF = 0
+   {d}"deasupra", "dedesubt": valori fara semn; "mai mare", "mai mic": cu semn{/}
+
+  {h}Control procesor{/}  [[pag:115|pag. 115]] [[pag:116|116]]
+   {c}CLC{/}   Stergere flag transport   {c}CMC{/}   Complementare flag transport
+   {c}CLD{/}   Stergere flag directie    {c}CLI{/}   Stergere flag intrerupere
+   {c}HLT{/}   Halt                      {c}LOCK{/}  Prefix de blocare a magistralei
+   {c}STC{/}   Stergere flag transport   {c}NOP{/}   Nici o operatie
+   {c}STD{/}   Setare flag directie      {c}STI{/}   Setare flag intrerupere
+   {c}WAIT{/}  Asteptare                 {c}ESC{/}   Escape (catre dispozitiv extern)
+
+  {d}Notatii:{/} [[pag:117|pag. 117]]
+
+  {d}Vezi si:{/} [[anexe|Anexe]]  [[bios|BIOS]]  [[vectori|Vectori de intrerupere]]
+  Carte tehnica: [[pag:103|pag. 103]] [[pag:117|pag. 117]]
+
+@doc piese | anexe | Anexa 3: subansamble si piese de schimb
+  Catalogul de subansamble si piese de schimb, cu codul fiecaruia.
+
+   {b}Nr  Subansamblu sau piesa              Cod{/}
+   {c}1{/}   Placa logica de baza               {c}703.910.010{/}
+   {c}2{/}   Placa logica FDA                   {c}703.910.030{/}
+   {c}3{/}   Placa logica CGA                   {c}703.910.060{/}
+   {c}4{/}   Placa logica SPA                   {c}703.910.050{/}
+   {c}5{/}   Placa logica REX                   {c}703.910.040{/}
+   {c}6{/}   Cablu disc flexibil                {c}703.302.111{/}
+   {c}7{/}   Suport conectori video             {c}703.304.012{/}
+   {c}8{/}   Cablu video color                  {c}703.302.012{/}
+   {c}9{/}   Cablu video monocrom               {c}703.303.012{/}
+   {c}10{/}  Suport conector interfata seriala  {c}703.302.014{/}
+   {c}11{/}  Cablu modem                        {c}703.303.014{/}
+   {c}12{/}  Cablu interfata seriala            {c}703.304.014{/}
+   {c}13{/}  Cablu interfata paralela           {c}703.305.014{/}
+   {c}14{/}  Cablu reset                        {c}703.113.100{/}
+   {c}15{/}  Cablu difuzor                      {c}703.114.100{/}
+   {c}16{/}  Sursa alimentare                   {c}SAC 150W{/}
+   {c}17{/}  Tastatura                          {c}703.200.000{/}
+   {c}18{/}  Tasta Hall                         {c}282810000{/}
+   {c}19{/}  Set capace taste                   {c}703.211.000{/}
+
+  {d}Vezi si:{/} [[anexe|Anexe]]  [[configuratie|Configuratie si catalog]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:118|pag. 118]]

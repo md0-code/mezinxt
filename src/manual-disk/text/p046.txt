@@ -1,0 +1,57 @@
+     In  tabelul  urmator  sint  descrise  nuantele  de culoare ce  pot  fi
+selectate in regimul alfanumeric:
+
+     ----------------------------------------
+     |  R   G   B   I      |  Culoarea      |
+     ----------------------|-----------------
+     |  0   0   0   0      | negru          |
+     |  0   0   1   0      | albastru       |
+     |  0   1   0   0      | verde          |
+     |  0   1   1   0      | cyan           |
+     |  1   0   0   0      | rosu           |
+     |  1   0   1   0      | magenta        |
+     |  1   1   0   0      | maron          |
+     |  1   1   1   0      | alb            |
+     |  0   0   0   1      | gri            |
+     |  0   0   1   1      | albastru intens|
+     |  0   1   0   1      | verde intens   |
+     |  0   1   1   1      | cyan intens    |
+     |  1   0   0   1      | rosu intens    |
+     |  1   0   1   1      | magenta intens |
+     |  1   1   0   1      | galben intens  |
+     |  1   1   1   1      | alb intens     |
+     ----------------------------------------
+
+{fig culori}
+
+     In  regimul  alfanumeric,  cuplorul de afisaj afiseaza  caracterul  si
+atributul din memoria de ecran.  Adresa de inceput a memoriei de ecran este
+programata  prin  controlorul MC 6845 si trebuie  sa  fie o   adresa  para.
+Codurile  caracterelor si atributele sint afisate in concordanta cu pozitia
+lor relativa din memoria de ecran.
+
+     Adresa de memorie       Memoria de ecran
+
+  prima adresa  B8000H       ---------------------
+  (para)                     |    Caracter A     |
+                B8001H       ---------------------
+                             |    Atribut  A     |
+                B8002H       ---------------------
+                             |    Caracter B     |
+                B8003H       ---------------------
+                             |    Atribut  B     |
+                             --------------------- -------------------
+                             |                   | |AB               |
+                             |                   | |                 |
+                             --------------------- |                 |
+                             |     Caracter X    | |                X|
+  ultima adresa              --------------------- -------------------
+                             |     Atribut  X    |        ecran
+                             ---------------------
+
+     Microprocesorul si cuplorul de afisaj au aceeasi prioritate in accesul
+memoriei  de  ecran,  in  toate  modurile de operare  cu  exceptia  modului
+alfanumeric  de  rezolutie  mare.  In acest mod microprocesorul  va  accesa
+memoria  de  ecran  numai pe perioada  cursei  inverse  de  cadre.  In  caz
+contrar, pe ecran vor aparea interferente datorate accesului mmicroproceso-
+rului la memoria de ecran.

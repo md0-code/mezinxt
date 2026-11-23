@@ -1,0 +1,53 @@
+     {b}3.2. Cuplorul pentru discul flexibil (FDA){/b}
+
+     Cuplorul  pentru  discul flexibil ("FLOPPY DISK ADAPTER"  - FDA)  este
+realizat  sub  forma  unei  plachete logice  ce se introduce  in  unul  din
+conectorii  de  extensie  ai placii logice de baza si permite  cuplarea  la
+echipament a 1 - 4 unitati de disc  flexibil de 5,25 inch sau 8 inch.
+     Cuplorul  pentru  discul  flexibil este prevazut cu doi  conectori  de
+iesire:
+     - un  conector  de cablu plat cu 26 contacte pentru  cuplarea  a  doua
+unitati de disc din interiorul blocului logic;
+     - un  conector mama cu 25 contacte (accesibil pe panoul spate al echi-
+pamentului) care furnizeaza semnale necesare pentru cuplarea tuturor  celor
+patru unitati de disc.
+     Astfel,  cuplorul poate lega doua  unitati de  disc interioare si doua
+exterioare,  sau  patru unitati de disc exterioare,  fiind proiectat pentru
+operatii  in simpla/dubla  densitate ( codate FM/MFM ) cu dischete de  5,25
+inch   sau 8 inch.  El utilizeaza pentru  regenerarea datelor la  citire  o
+bucla PLL analogica, iar la scriere o logica de precompensare.
+     Selectia  modului de utilizare a semnalului READY al unitatii de  disc
+flexibil  precum si selectia tipului de unitati folosite (simpla sau  dubla
+fata,  5,25 inch sau 8 inch) este facuta prin strap-uri,  conform tabelelor
+urmatoare:
+
+-------------------------------             -------------------------------
+| Tip unitate disc  |Strap-uri|             | Mod de utilizare  |Strap-uri|
+|     flexibil      |---------|             |   semnal READY    |---------|
+|                   | S1 | S2 |             |                   | S1 | S2 |
+-------------------------------             -------------------------------
+|  Simpla fata      | ON | OFF|             |READY unitate      | OFF| ON |
+|  Dubla fata       | OFF| ON |             |READY permanent "1"| ON | OFF|
+-------------------------------             -------------------------------
+
+---------------------------------------------------------------------------
+|Tip  unitate |                      Strap-uri                            |
+|disc flexibil|-----------------------------------------------------------|
+|             | S5 | S6 | S7 | S8 | S9 | S10| S11| S12| S13| S14| S15| S16|
+---------------------------------------------------------------------------
+|  5,25 inch  | OFF| ON | OFF| ON | OFF| ON | OFF| ON | OFF| ON | OFF| ON |
+|    8 inch   | ON | OFF| ON | OFF| ON | OFF| ON | OFF| ON | OFF| ON | OFF|
+---------------------------------------------------------------------------
+     Nota:  ON  reprezinta strap conectat;
+            OFF reprezinta strap neconectat.
+
+     Cuplorul  de disc flexibil este implementat folosind un circuit  inte-
+grat specializat de tip NEC uPD 765 (I8272),  ceea ce faciliteaza programa-
+rea  parametrilor  diferitelor  unitati de disc flexibil pe care  le  poate
+comanda, permitind totodata protejarea discurilor la scriere.
+     Cuplorul  de  disc  flexibil utilizeaza pentru transferurile  de  date
+accesul  direct  la memorie (DMA),  iar  pentru  atentionarea  procesorului
+asupra  incheierii  unei operatii printr-o conditie de stare,  un nivel  de
+intrerupere.
+     In  general,  cuplorul de disc flexibil se prezinta pentru  driver-ele
+software ca o interfata de comanda de nivel inalt.

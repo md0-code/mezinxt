@@ -1,0 +1,314 @@
+@doc cuplor-serial | hardware | Cuplor de comunicatie seriala asincrona
+  Placheta contine doua interfete seriale asincrone compatibile {c}RS-232-C{/}
+  (CCITT-V.24) si o interfata paralela pentru imprimanta ([[imprimanta|imprimanta]]).
+  Schimba informatie intre JUNIOR-XT si alte echipamente prin doua linii,
+  cu viteze de {c}50 - 19200 bauds{/}, gestionind erorile de linie, starea liniei
+  si a modemului atasat (optional).
+
+  {d}┌─────────────┐   ┌────────┐   ┌──────────────────┐{/}
+  {d}│{/} {b}I8253-5{/}     {d}│{/}   {d}│{/} {b}Z80-SIO{/}{d}│{/}   {d}│{/} {b}Interfata cu{/}     {d}│{/}
+  {d}│{/} timer, cuart{d}│{/} {c}»{/} {d}│{/} canal A{d}│{/} {c}»{/} {d}│{/} liniile: RS-232-C{d}│{/}
+  {d}│{/} 18,432 MHz  {d}│{/} {c}»{/} {d}│{/} canal B{d}│{/} {c}»{/} {d}│{/} sau bucla 20 mA  {d}│{/}
+  {d}└─────────────┘   └────────┘   └──────────────────┘{/}
+
+  {c}Z80-SIO{/}: doua canale independente, regim asincron/sincron, biti/caracter,
+  biti de stop si paritate programabile, intreruperi vectorizate (emisie,
+  receptie, erori, schimbari de stare), control modem, "break". {c}I8253-5{/}
+  divizeaza frecventa cuartului de 18,432 MHz: {b}canalul 0{/} da ceasul caii
+  SIO/A, {b}canalul 1{/} ceasul caii SIO/B. Interfata cu magistrala introduce
+  o stare de asteptare de {c}210 ns{/} la fiecare transfer.
+
+  {h}Porturile{/}  {d}(hexa){/}
+
+   {b}registru{/}                             {b}prima baza{/}  {b}a doua baza{/}
+   SIO/A date                           {c}250{/}         {c}260{/}
+   SIO/A stare/control                  {c}251{/}         {c}261{/}
+   SIO/B date                           {c}252{/}         {c}262{/}
+   SIO/B stare/control                  {c}253{/}         {c}263{/}
+   I8253 canal 0                        {c}254{/}         {c}264{/}
+   I8253 canal 1                        {c}255{/}         {c}265{/}
+   I8253 canal 2                        {c}256{/}         {c}266{/}
+   I8253 stare/control                  {c}257{/}         {c}267{/}
+   port de recunoastere a intreruperii  {c}258-25B{/}     {c}268-26B{/}
+   port de citire a starii modemului    {c}25C-25F{/}     {c}26C-26F{/}
+
+  Citirea portului de recunoastere in rutina de intrerupere este
+  {r}absolut necesara{/}: deblocheaza hardware circuitul Z80-SIO (semnalele IORQ
+  si M1 ale unui ciclu de recunoastere). Portul de stare modem arata pe bitul
+  0 de date linia DSRA (modemul canalului A).
+
+  {h}Selectii prin microintrerupatoare{/}  {d}ON = inchis, OFF = deschis{/}
+
+   {b}Adresa si intreruperea{/}         {b}SW13{/}  {b}SW14{/}  {b}nivel{/}
+   250H - 25FH {d}(baza produsului){/}  {c}ON{/}    OFF   IRQ4
+   260H - 26FH                    OFF   {c}ON{/}    IRQ3
+
+   {b}Nivel de intrerupere{/}  {b}SW11{/}  {b}SW12{/}
+   IRQ3                  OFF   {c}ON{/}
+   IRQ4                  {c}ON{/}    OFF
+
+   {b}Interfata{/}        {b}canal A{/}   {b}canal B{/}
+   {/}                 {b}SW1{/}  {b}SW2{/}  {b}SW7{/}  {b}SW8{/}
+   CCITT-V.24       OFF  {c}ON{/}   OFF  {c}ON{/}
+   bucla de curent  {c}ON{/}   OFF  {c}ON{/}   OFF
+
+   {b}Ceas de comunicatie{/}  {b}canal A{/}             {b}canal B{/}
+   {/}                     {b}SW3  SW4  SW5  SW6{/}  {b}SW9{/}  {b}SW10{/}
+   intern               OFF  {c}ON{/}   OFF  {c}ON{/}   OFF  {c}ON{/}
+   extern               {c}ON{/}   OFF  {c}ON{/}   OFF  {c}ON{/}   OFF
+
+  Regimul sincron: canalul A primeste ceasul de emisie si pe cel de receptie
+  de la modem; canalul B un singur ceas de receptie, de pe pinul 17 al cuplei.
+
+  {h}Semnale si conectori{/}
+
+  Semnalele V.24 si bucla de curent, nivelurile si pinii celor doi conectori
+  de 25 de contacte: [[serial-conectori|semnale si pini]].
+
+  {d}Vezi si:{/} [[serial-conectori|Semnale si pini]]  [[imprimanta|Imprimanta]]  [[harta-ie|Harta I/E]]
+         [[compatibilitate|Compatibilitate (Z80-SIO)]]  [[test:disc|Test disc]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:55|pag. 55]] [[pag:56|pag. 56]] [[pag:57|pag. 57]]
+
+@doc serial-conectori | hardware | Interfata seriala: semnale si conectori
+  Cele doua canale, A si B, folosesc aceleasi semnale ([[cuplor-serial|cuplorul serial]]).
+
+  {h}Semnalele V.24{/}
+
+   {b}TxD{/}        iesire   emisie date
+   {b}RxD{/}        intrare  receptie date
+   {b}RTS{/}        iesire   cerere aprobare de emisie catre modem
+   {b}CTS{/}        iesire   acceptare cerere de emisie catre modem
+   {b}DSR{/}        intrare  modem gata de lucru
+   {b}DCD{/}        intrare  purtatoare detectata de modem (receptie posibila)
+   {b}DTR{/}        iesire   terminal gata de lucru
+   {b}TxCK{/}       intrare  ceas de emisie (de la modem)
+   {b}RxCK{/}       intrare  ceas de receptie (de la modem)
+   {b}CLK{/}        iesire   ceas de emisie (generat de terminal)
+   {b}GND{/}        {/}         masa electrica
+   {b}TLOOP{/}      iesire   emisie in bucla de curent
+   {b}TLOOP-RET{/}  iesire   retur pentru emisia in bucla
+   {b}RLOOP{/}      intrare  receptie in bucla de curent
+   {b}RLOOP-RET{/}  iesire   retur pentru receptia in bucla
+
+  Niveluri: {c}+3 ... +15 V{/} = stare 0, "spaceing", ON;
+            {c}-3 ... -15 V{/} = stare 1, "marking", OFF.
+
+  {h}Conectorii{/}
+
+  Doua cabluri interioare cu conectori plati de 20 de contacte duc la doi
+  conectori standard mama de 25 de contacte pe panoul spate.
+
+   {b}25 ct.{/}  {b}canal A{/}     {b}canal B{/}     {b}20 ct.{/}
+   {c}1{/}       GND (mec.)  GND (mec.)  {d}-{/}
+   {c}2{/}       TxDA        TxDB        2
+   {c}3{/}       RxDA        RxDB        3
+   {c}4{/}       RTSA        RTSB        4
+   {c}5{/}       CTSA        CTSB        5
+   {c}6{/}       DSRA        DSRB        6
+   {c}7{/}       GND (el.)   GND (el.)   7
+   {c}8{/}       DCDA        DCDB        8
+   {c}9{/}       TCLRA       TCLRB       9
+   {c}11{/}      TCLDA       TCLDB       11
+   {c}15{/}      RxCKA       RxCKB       15
+   {c}17{/}      xTxCKA      {d}-{/}           17 {d}(canal A){/}
+   {c}18{/}      RCLDA       RCLDB       18
+   {c}20{/}      DTRA        DTRB        20
+   {c}24{/}      TxCKA       TxCKB       16
+   {c}25{/}      RCLRA       RCLRB       19
+   {d}pinii 10, 12, 13, 14, 16, 19, 21, 22, 23: neutilizati{/}
+
+  {d}Vezi si:{/} [[cuplor-serial|Cuplor serial]]  [[imprimanta|Imprimanta]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:57|pag. 57]] [[pag:58|pag. 58]] [[pag:59|pag. 59]]
+
+@doc imprimanta | hardware | Cuplorul pentru imprimanta paralela
+  Conceput pentru imprimante cu interfata paralela compatibila {c}CENTRONICS{/};
+  poate fi folosit si ca interfata universala de intrare/iesire. Are {c}12{/}
+  linii de intrare/iesire (citite si scrise prin OUT si IN) si {c}5{/} linii de
+  stare; una din liniile de intrare poate genera o intrerupere, validata
+  sau nu prin program (nivelul 7, [[intreruperi-dma|intreruperi si DMA]]).
+
+  La imprimare, datele si comenzile se incarca in porturile de iesire si se
+  activeaza STROBE; procesorul citeste apoi liniile de stare asteptind
+  raspunsul imprimantei, sau foloseste intreruperea. Cele 12 linii de iesire
+  se pot citi in secventele de diagnosticare, ceea ce izoleaza erorile
+  hardware dintre cuplor si dispozitiv.
+
+  {h}Adresa{/}  {d}selectata prin microintrerupatoare{/}
+
+   {b}Adresa cuplor{/}                {b}SW15{/}  {b}SW16{/}
+   278 - 27A                    OFF   {c}ON{/}
+   378 - 37A {d}(baza produsului){/}  {c}ON{/}    OFF
+
+  {h}Porturile{/}  {d}(prima baza 378..., a doua 278...){/}
+
+  {b}Scriere date{/}  {c}378H{/}  {d}(biti: iesiri de date, pinii in paranteza){/}
+  {b}   7    {/} {b}   6    {/} {b}   5    {/} {b}   4    {/} {b}   3    {/} {b}   2    {/} {b}   1    {/} {b}   0    {/}
+ {d}┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐{/}
+ {d}│{/} PDATA7 {d}│{/} PDATA6 {d}│{/} PDATA5 {d}│{/} PDATA4 {d}│{/} PDATA3 {d}│{/} PDATA2 {d}│{/} PDATA1 {d}│{/} PDATA0 {d}│{/}
+ {d}│{/}(pin 9) {d}│{/}(pin 8) {d}│{/}(pin 7) {d}│{/}(pin 6) {d}│{/}(pin 5) {d}│{/}(pin 4) {d}│{/}(pin 3) {d}│{/}(pin 2) {d}│{/}
+ {d}└────────┴────────┴────────┴────────┴────────┴────────┴────────┴────────┘{/}
+  {d}iesirile sint incheiate la +5V cu rezistente de 1 Kohm{/}
+
+  {b}Scriere comenzi{/}  {c}37AH{/}   {b}Citire comenzi{/}  {c}37AH{/} {d}(aceleasi linii){/}
+  {b}   7    {/} {b}   6    {/} {b}   5    {/} {b}   4    {/} {b}   3    {/} {b}   2    {/} {b}   1    {/} {b}   0    {/}
+ {d}┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐{/}
+ {d}│{/}        {d}│{/}        {d}│{/}        {d}│{/} IRQEN  {d}│{/} SELIN  {d}│{/}  INIT  {d}│{/} AUTOFD {d}│{/} STROBE {d}│{/}
+ {d}│{/}        {d}│{/}        {d}│{/}        {d}│{/}    -   {d}│{/}(pin 17){d}│{/}(pin 16){d}│{/}(pin 14){d}│{/}(pin 1) {d}│{/}
+ {d}└────────┴────────┴────────┴────────┴────────┴────────┴────────┴────────┘{/}
+  {d}bitii 0 - 3: cele patru linii de comenzi, cu colectorul in gol, incheiate{/}
+  {d}la +5V cu 4,7 Kohm. Bitul 4 = 1: intrerupere la fiecare tranzitie din 1 in{/}
+  {d}0 a semnalului ACK (pinul 10).{/}
+
+  {b}Citire date{/}  {c}378H{/}  {d}(intrarile = iesirile portului de scriere date){/}
+  {b}   7    {/} {b}   6    {/} {b}   5    {/} {b}   4    {/} {b}   3    {/} {b}   2    {/} {b}   1    {/} {b}   0    {/}
+ {d}┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐{/}
+ {d}│{/} PDATA7 {d}│{/} PDATA6 {d}│{/} PDATA5 {d}│{/} PDATA4 {d}│{/} PDATA3 {d}│{/} PDATA2 {d}│{/} PDATA1 {d}│{/} PDATA0 {d}│{/}
+ {d}│{/}(pin 9) {d}│{/}(pin 8) {d}│{/}(pin 7) {d}│{/}(pin 6) {d}│{/}(pin 5) {d}│{/}(pin 4) {d}│{/}(pin 3) {d}│{/}(pin 2) {d}│{/}
+ {d}└────────┴────────┴────────┴────────┴────────┴────────┴────────┴────────┘{/}
+
+  {b}Citire stare{/}  {c}379H{/}
+  {b}   7    {/} {b}   6    {/} {b}   5    {/} {b}   4    {/} {b}   3    {/} {b}   2    {/} {b}   1    {/} {b}   0    {/}
+ {d}┌────────┬────────┬────────┬────────┬────────┬────────┬────────┬────────┐{/}
+ {d}│{/}  BUSY  {d}│{/}  ACK   {d}│{/}PAP.END {d}│{/} SELECT {d}│{/} ERROR  {d}│{/}        {d}│{/}        {d}│{/}        {d}│{/}
+ {d}│{/}(pin 11){d}│{/}(pin 10){d}│{/}(pin 12){d}│{/}(pin 13){d}│{/}(pin 15){d}│{/}        {d}│{/}        {d}│{/}        {d}│{/}
+ {d}└────────┴────────┴────────┴────────┴────────┴────────┴────────┴────────┘{/}
+  {d}cele cinci intrari sint incheiate la +5V cu rezistente de 4,7 Kohm{/}
+
+  {h}Conectorul{/}  {d}25 contacte, mama, pe panoul spate{/}
+
+   {c}-{/} activ 0, {c}+{/} activ 1 logic.  Sens fata de cuplor.
+
+   {b}pin{/}  {b}semnal{/}      {b}sens{/}         {b}pin{/}  {b}semnal{/}      {b}sens{/}
+   {c}1{/}    -STROBE     iesire       {c}14{/}   -AUTO FEED  iesire
+   {c}2{/}    +PDATA0     iesire       {c}15{/}   -ERROR      intrare
+   {c}3{/}    +PDATA1     iesire       {c}16{/}   -INIT       iesire
+   {c}4{/}    +PDATA2     iesire       {c}17{/}   -SELIN      iesire
+   {c}5{/}    +PDATA3     iesire       {c}18{/}   {g}GND{/}       
+   {c}6{/}    +PDATA4     iesire       {c}19{/}   {g}GND{/}       
+   {c}7{/}    +PDATA5     iesire       {c}20{/}   {g}GND{/}       
+   {c}8{/}    +PDATA6     iesire       {c}21{/}   {g}GND{/}       
+   {c}9{/}    +PDATA7     iesire       {c}22{/}   {g}GND{/}       
+   {c}10{/}   -ACK        intrare      {c}23{/}   {g}GND{/}       
+   {c}11{/}   +BUSY       intrare      {c}24{/}   {g}GND{/}       
+   {c}12{/}   +PAPER END  intrare      {c}25{/}   {g}GND{/}       
+   {c}13{/}   +SELECT     intrare
+
+  {d}Vezi si:{/} [[cuplor-serial|Cuplor serial]]  [[harta-ie|Harta I/E]]  [[intreruperi-dma|Intreruperi]]
+         [[test:disc|Test disc (starea portului)]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:59|pag. 59]] [[pag:60|pag. 60]] [[pag:61|pag. 61]] [[pag:62|pag. 62]]
+
+@doc memorie-ram | hardware | Modulul de extensie memorie RAM 384 K
+  Placheta introdusa intr-un conector de extensie al placii de baza; mareste
+  memoria interna de la {c}256 K{/} la {c}640 K{/} RAM. Contine memorie RAM si EPROM.
+
+   {a:2F} 256 K pe placa de baza {a:3F} 384 K pe modul {/}  = {c}640 K{/}   ([[harta-memorie|harta memoriei]])
+
+  {h}Memoria RAM{/}
+
+  Circuite dinamice {c}MK4164{/} sau {c}MK41256{/}, total {c}384K x 9{/} biti; toate verificate
+  la paritate. Erorile de paritate se transmit procesorului printr-o
+  intrerupere nemascabila (NMI), prin canalul de intrare/iesire.
+  Reimprospatarea se face prin DMA, ca pentru RAM-ul placii de baza
+  (aprox. la 15 us).
+  Lucreaza fara stari de asteptare, la 4,77 MHz: o operatie de scriere/citire
+  dureaza {c}840 ns{/} (4 perioade de ceas).
+
+   {b}Tip RAM{/}  {b}S1{/}   {b}S2{/}
+   MK4164   {c}ON{/}   OFF
+   MK41256  OFF  {c}ON{/}
+   {d}cu MK41256 se implanteaza numai primul modul de memorie RAM{/}
+
+  {h}Memoria EPROM{/}
+
+  Doua circuite {c}I2764{/} sau {c}I27128{/}: {c}16 K{/}octeti, respectiv {c}32 K{/}octeti. Zona de
+  adrese si tipul se aleg prin strap-uri:
+
+   {b}Adresa{/}  {b}S5{/}   {b}S6{/}   {b}S7{/}       {b}Tip EPROM{/}  {b}S3{/}   {b}S4{/}
+   {c}C8000{/}   {c}ON{/}   OFF  OFF      2764       {c}ON{/}   OFF
+   {c}F0000{/}   OFF  {c}ON{/}   OFF      27128      OFF  {c}ON{/}
+   {c}F8000{/}   OFF  OFF  {c}ON{/} 
+
+  {d}ON = strap conectat, OFF = neconectat{/}
+
+  Mai contine interfata cu magistrala sistemului, circuitele de generare a
+  semnalelor de acces la memorie si cele de decodare si multiplexare a
+  adreselor.
+
+  {d}Vezi si:{/} [[harta-memorie|Harta memoriei]]  [[placa-baza|Placa de baza]]  [[canal-semnale|Canal I/E]]
+         [[hardware|Hardware]]
+  Carte tehnica: [[pag:63|pag. 63]]
+
+@doc sursa | hardware | Sursa de alimentare
+  Plasata in partea dreapta spate a blocului logic. Sursa in comutatie de la
+  retea; alimenteaza placa de baza, plachetele si cuploarele de extensie,
+  cele doua unitati de disc flexibil de 5,25 inch si discul fix (Winchester).
+
+  {h}Intrare{/}
+
+   {b}frecventa retelei{/}     {c}50 Hz{/} +/- 2%
+   {b}tensiunea de intrare{/}  {c}220 V{/} +10% -15%
+   {b}puterea consumata{/}     max. {c}140 VA{/}
+
+  {h}Tensiuni continue la iesire{/}  {d}curent maxim, bara la scara{/}
+
+   {g}+ 5 V{/}  +5% -4%   {c}10 A{/}   {a:1A}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{/}
+   {g}-5 V{/}   +10% -8%  {c}0,5 A{/}  {a:1A}▄{/}
+   {g}+12 V{/}  +5% -4%   {c}4 A{/}    {a:1A}▄▄▄▄▄▄▄▄{/}
+   {g}-12 V{/}  +10% -8%  {c}0,3 A{/}  {a:1A}▄{/}
+
+  {h}Protectii{/}
+
+  Filtru de retea incorporat, comutator de retea bipolar, sigurante de
+  {c}1,6 A{/} pe ambele faze. Comutatorul si sigurantele sint pe panoul spate.
+
+  {h}Conectorul placii de baza{/}  {d}10 contacte{/}
+
+  {b}pin{/}  {c}1{/} {d}-{/}   {c}2{/} {g}-5V{/}   {c}3{/} {g}-12V{/}   {c}4{/} {d}-{/}   {c}5{/} {g}+12V{/}   {c}6{/} {g}+5V{/}   {c}7{/} {g}+5V{/}
+       {c}8{/} {g}GND{/}  {c}9{/} {g}GND{/}  {c}10{/} {g}GND{/}      {d}(1 si 4: nefolosite){/}
+
+  Placa de baza consuma aprox. {c}3 A{/} pe +5 V si nu foloseste -5 V, -12 V,
+  +12 V; acestea sint folosite de plachetele din conectorii de extensie.
+
+  {d}Vezi si:{/} [[placa-baza|Placa de baza]]  [[unitati-disc|Unitati de disc]]  [[alimentare|Alimentare retea]]
+         [[hardware|Hardware]]
+  Carte tehnica: [[pag:13|pag. 13]] [[pag:64|pag. 64]]
+
+@doc tastatura-hw | hardware | Tastatura: cablu si conector
+  Tastatura seriala cu microprocesor, compatibila IBM-PC/XT, cu taste cu efect
+  {c}Hall{/}. Cablu atasat permanent, cu mufa cu {c}5{/} contacte: doua linii de
+  alimentare (+5V si masa), o linie de initializare si doua linii
+  bidirectionale, de date si de ceas.
+
+  {d}┌───────────────────┐   ┌──────────────────────┐{/}
+  {d}│{/} {b}TASTATURA{/}         {d}│{/}   {d}│{/} {b}PLACA DE BAZA{/}        {d}│{/}
+  {d}│{/} microprocesor Z-80{d}│{/} {c}»{/} {d}│{/} circuite adaptoare   {d}│{/}
+  {d}│{/} 83 de taste       {d}│{/}   {d}│{/} I8255A, intrerupere 1{d}│{/}
+  {d}└───────────────────┘   └──────────────────────┘{/}
+  {d}cablu torsadat cu 5 fire, asemanator cablului telefonic{/}
+
+  {h}Mufa de 5 contacte{/}
+
+   {b}   1    {/} {b}   2    {/} {b}   3    {/} {b}   4    {/} {b}   5    {/}
+  {d}┌────────┬────────┬────────┬────────┬────────┐{/}
+  {d}│{/} KBCLK  {d}│{/} KBDATA {d}│{/}KBRESET {d}│{/}  GND   {d}│{/}  +5V   {d}│{/}
+  {d}└────────┴────────┴────────┴────────┴────────┘{/}
+
+  Microprocesorul Z-80 scaneaza tastele, memoreaza codurile si initiaza
+  dialogul pentru transferul lor spre sistem; la punerea sub tensiune executa
+  un autotest al memoriei ROM a tastaturii. Placa de baza genereaza o
+  intrerupere la receptionarea fiecarui cod. O tastatura necuplata sau
+  defecta se semnaleaza prin [[erori-post|Error 301 / Error 302]].
+
+  {h}Cele 83 de taste{/}  {d}trei grupuri{/}
+
+   {b}stinga{/}   {c}10{/} taste de functii, definite software
+   {b}centru{/}   partea similara claviaturii unei masini de scris
+   {b}dreapta{/}  {c}15{/} taste definite software: numerice, control cursor,
+   {/}         editare ecran
+
+  Tastele genereaza {b}coduri de scanare{/}, nu coduri ASCII, diferite la apasare
+  si la eliberare: mare flexibilitate software ([[coduri-taste|codurile de scanare]]).
+
+  {d}Vezi si:{/} [[coduri-taste|Coduri de scanare]]  [[stari-speciale|Stari speciale]]  [[test:tastatura|Test tastatura]]
+         [[erori-post|Erori la pornire]]  [[placa-baza|Placa de baza]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:12|pag. 12]] [[pag:13|pag. 13]] [[pag:65|pag. 65]] [[pag:66|pag. 66]]

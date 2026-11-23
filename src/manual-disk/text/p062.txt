@@ -1,0 +1,10 @@
+     {u}Portul de citire comenzi{/u} - port de intrare (adresa 27AH/37AH)
+    7        6        5        4        3        2        1        0
+-------------------------------------------------------------------------
+|        |        |        | IRQEN  | SELIN  |  INIT  |AUTOFEED| STROBE |
+|        |        |        |   -    |(pin 17)|(pin 16)|(pin 14)| (pin 1)|
+-------------------------------------------------------------------------
+
+Observatie:  Intrarile acestui port reprezinta iesirile portului de scriere
+comenzi  si  in  acelasi timp cele patru linii de  comenzi  ale  interfetei
+paralele.

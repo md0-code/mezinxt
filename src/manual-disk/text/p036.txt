@@ -1,0 +1,43 @@
+REGISTRUL DE STARE 2 AL CONTROLORULUI DE DISC FLEXIBIL NEC uPD 765 (I8272)
+--------------------------------------------------------------------------
+            Bit          |
+-------------------------|                   Descriere
+Nr.| Nume          Simbol|
+--------------------------------------------------------------------------
+D7 | -                -  |  Nefolosit. Acest bit este intotdeauna 0.
+--------------------------------------------------------------------------
+D6 | Control marca    CM |  In timpul executiei comenzilor  citire  date
+   | adresa              |  si scanare,  daca  FDC  intilneste un sector
+   | ("Control Mark")    |  ce contine adresa stearsa, atunci se seteaza
+   |                     |  indicatorul.
+--------------------------------------------------------------------------
+D5 | Eroare de date   DD |  Daca  FDC  detecteaza o eroare  CRC in date,
+   | in cimpul de date   |  atunci acest indicator este setat.
+   | ("Data Error in Data|
+   | Field")             |
+--------------------------------------------------------------------------
+D4 | Cilindru         WC |  Acest bit este corelat cu bitul ND; cind va-
+   | eronat              |  loarea constantei C de  pe  mediul  magnetic
+   | ("Wrong Cylinder")  |  (discheta) este diferita de cea memorata  in
+   |                     |  registrul ID, acest indicator este setat.
+--------------------------------------------------------------------------
+D3 | Valoare la       SH |  In timpul executiei comenzii de scanare,daca
+   | comparare egala     |  este  satisfacuta  conditia egal,  atunci se
+   | ("Scan Equal Hit")  |  seteaza indicatorul.
+--------------------------------------------------------------------------
+D2 | Scanare          SN |  In  timpul executiei  scanarii, daca  FDC nu
+   | necorespunzatoare   |  poate  gasi un  sector,  atunci  este  setat
+   | ("Scan Not          |  indicatorul.
+   | Satisfied")         |
+--------------------------------------------------------------------------
+D1 | Cilindru         BC |  Acest bit este corelat cu bitul  ND;  atunci
+   | necorespunzator     |  cind continutul C este diferit de cel inmaga-
+   | ("Bad Cylinder")    |  zinat in registrul ID, si continutul C  este
+   |                     |  FF, este setat indicatorul.
+--------------------------------------------------------------------------
+D0 | Lipsa marca      MD |  Atunci cind sint citite datele, daca  FDC nu
+   | adresa in cimpul    |  poate  gasi o marca de  adresa,  se pozitio-
+   | de date             |  neaza acest indicator.
+   | ("Missing Address   |
+   | Mark in Data Field")|
+--------------------------------------------------------------------------

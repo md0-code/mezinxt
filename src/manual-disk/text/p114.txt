@@ -1,0 +1,49 @@
+   {b}JBE/JNA{/b} = Salt la mai mic sau egal/dedesubt
+   ------------------------
+   |0 1 1 1 0 1 1 0 | disp|
+   ------------------------
+
+   {b}JNB/JAE{/b} = Salt la deasupra/deasupra sau egal
+   ------------------------
+   |0 1 1 1 0 0 1 1 | disp|
+   ------------------------
+
+   {b}JNBE/JA{/b} = Salt la deasupra sau egal/deasupra
+   ------------------------
+   |0 1 1 1 0 1 1 1 | disp|
+   ------------------------
+
+   {b}JNP/JPO{/b} = Salt la neparitate/paritate impara
+   ------------------------
+   |0 1 1 1 1 0 1 1 | disp|
+   ------------------------
+
+   {b}JNO{/b} = Salt la nedepasire
+   ------------------------
+   |0 1 1 1 0 0 0 1 | disp|
+   ------------------------
+
+   {b}JNS{/b} = Salt la semn inactiv
+   ------------------------
+   |0 1 1 1 1 0 0 1 | disp|
+   ------------------------
+
+   {b}LOOP{/b} = Cicleaza de CX ori
+   ------------------------
+   |1 1 1 0 0 0 1 0 | disp|
+   ------------------------
+
+   {b}LOOPZ/LOOPE{/b} = Cicleaza si salt cind CX = 0 sau ZF = 1
+   ------------------------
+   |1 1 1 0 0 0 0 1 | disp|
+   ------------------------
+
+   {b}LOOPNZ/LOOPNE{/b} = Cicleaza si salt cind CX # 0 si Z # 0
+   ------------------------
+   |1 1 1 0 0 0 0 0 | disp|
+   ------------------------
+
+   {b}JCXZ{/b} = Salt la CX zero
+   ------------------------
+   |1 1 1 0 0 0 1 1 | disp|
+   ------------------------

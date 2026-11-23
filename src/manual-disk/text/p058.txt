@@ -1,0 +1,46 @@
+     Semnal     Sens          Descriere
+---------------------------------------------------------------------------
+     {b}RxCK{/b}       intrare      Ceas de receptie (de la modem).
+(RECEIVER CLOCK)
+
+     {b}CLK{/b}        iesire       Ceas de emisie (generat de terminal).
+   (CLOCK)
+
+     {b}GND{/b}                     Masa electrica.
+   (GROUND)
+
+     In afara acestor semnale specifice interfetei CCITT-V.24 sint prezente
+in  cuplele  de iesire si patru semnale  corespunzatoare  emisiei/receptie
+prin intermediul buclei de curent:
+
+     Semnal     Sens         Descriere
+---------------------------------------------------------------------------
+     {b}TLOOP{/b}      iesire       Emisie in bucla de curent
+(TRANSMITTER LOOP)
+
+     {b}TLOOP-RET{/b}  iesire       Retur pentru emisia in bucla de curent.
+(TRANSMITTER LOOP-RETURN)
+
+     {b}RLOOP{/b}      intrare      Receptie in bucla de curent.
+(RECEIVER LOOP)
+
+     {b}RLOOP-RET{/b}  iesire       Retur pentru receptia in bucla de curent.
+(RECEIVER LOOP-RETURN)
+
+     Interfata    cuplorului  cu  liniile  de  comunicatie  se  face   prin
+intermediul  a doi  conectori de cablu plat cu 20 contacte,  a doua cabluri
+interioare  si a doi conectori standard cu 25 contacte  mama,  fixati  prin
+intermediul unor suporti metalici pe panoul spate al echipamentului.
+     Semnalele electrice de la pinii conectorilor sint conform standardului
+CCITT-V.24:
+
+     -----------------------------------------------------------
+     |  Tensiune  | Stare linie | Semnal linie | Functie linie |
+     -----------------------------------------------------------
+     |  3V... 15V |      0      |  "spaceing"  |       ON      |
+     | -3V...-15V |      1      |  "marking"   |       OFF     |
+     -----------------------------------------------------------
+
+     Repartizarea   semnalelor  la  pinii  conectorilor  de  interfata   ai
+cuplorului   pentru   comunicatia  seriala  este  prezentata  in   tabelele
+urmatoare:

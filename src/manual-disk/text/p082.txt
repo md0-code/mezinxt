@@ -1,0 +1,47 @@
+--------------------------------------------------------------------------
+   Numarul   Litere mici   Litere mari         Ctrl            Alt
+   tastei
+--------------------------------------------------------------------------
+     34         g               G              BEL(007)        Nota 1
+     35         h               H              BS(008)         Nota 1
+     36         j               J              LF(010)         Nota 1
+     37         k               K              VT(011)         Nota 1
+     38         l               L              FF(012)         Nota 1
+     39         ;               :              -1              -1
+     40         '               "              -1              -1
+     41         `               ~              -1              -1
+     42 Shift   -1              -1             -1              -1
+     43         \               |              FS(028)         -1
+     44         z               Z              SUB(026)        Nota 1
+     45         x               X              CAN(024)        Nota 1
+     46         c               C              ETX(003)        Nota 1
+     47         v               V              SYN(002)        Nota 1
+     48         b               B              STX(002)        Nota 1
+     49         n               N              SO(014)         Nota 1
+     50         m               M              CR(013)         Nota 1
+     51         ,               <              -1              -1
+     52         .               >              -1              -1
+     53         /               ?              -1              -1
+     54 Shift   -1              -1             -1              -1
+     55 Prsc    *              (Nota 2)       (Nota 1)         -1
+     56 Alt     -1              -1             -1              -1
+     57         SP              SP             SP              SP
+     58         -1              -1             -1              -1
+     Caps Lock
+     59 F1   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     60 F2   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     61 F3   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     62 F4   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     63 F5   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     64 F6   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     65 F7   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     66 F8   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     67 F9   Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     68 F10  Nul (Nota 1)   Nul (Nota 1)   Nul (Nota 1)    Nul (Nota 1)
+     69         -1              -1                             -1
+     Num Lock
+     70         -1              -1                             -1
+     Scrl Lock
+--------------------------------------------------------------------------
+Nota:   1. Vezi 'Coduri extinse'
+        2. Vezi 'Utilizare speciala'

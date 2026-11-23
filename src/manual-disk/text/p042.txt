@@ -1,0 +1,33 @@
+    ---------------------------------------------------
+    | Pin conector |  Denumire semnal  | Pin conector |
+    | 25 contacte  |                   | 26 contacte  |
+    ---------------------------------------------------
+    |      1       |  READY            |      -       |
+    |      2       |  WRITE FAULT      |      -       |
+    |      3       |  TWO SIDED        |      -       |
+    |      4       |  FAULT RESET      |      -       |
+    |      5       |  TRACK 0          |     23       |
+    |      6       |  SELECT 0         |     24       |
+    |      7       |  SELECT 1         |     11       |
+    |      8       |  SELECT 2         |      -       |
+    |      9       |  SELECT 3         |      -       |
+    |     10       |  WRITE PROTECT    |     3,21     |
+    |     11       |  SEEK/STEP        |     1,22     |
+    |     12       |      -            |      -       |
+    |     13       |  READ DATA        |     5,19     |
+    |     14       |  WRITE DATA       |     8,20     |
+    |     15       |  INDEX            |     7,17     |
+    |     16       |  WRITE ENABLE     |     10,18    |
+    |     17       |  LOW CURRENT      |      -       |
+    |     18       |  DIRECTION        |     9,15     |
+    |     19       |  SIDE SELECT      |     13,16    |
+    |              |  (HEAD LOAD)      |              |
+    |     20       |  MOTOR ON 0       |     25       |
+    |     21       |  MOTOR ON 1       |     12       |
+    |     22       |  MOTOR ON 2       |      -       |
+    |     23       |  MOTOR ON 3       |      -       |
+    |     24       |  GND              |     2,4      |
+    |     25       |  GND              |     14,26    |
+    ---------------------------------------------------
+
+    Nota:  Toate semnalele sint active 0 logic.

@@ -1,0 +1,56 @@
+   ii: 0,1
+
+Bitii: 0,1,2,3  - Selecteaza   culorile   marginii  ecranului  in   regimul
+                  alfanumeric   40x25 caractere.  Selecteaza  de   asemenea
+                  culorile  fondului(  C0,C1 ) in regimul grafic  color  de
+                  rezolutie  medie (320x200 puncte).
+Bitul: 4        - Cind  este  1  acest  bit  selecteaza  setul  de   culori
+                  intensificate  alternate  in modul  grafic.  De  asemenea
+                  selecteaza  culoarea fondului in modul  alfanumeric.
+Bitul: 5        - Acest  bit este folosit numai in modul grafic  color   de
+                  rezolutie  medie (320x200 puncte) pentru selectarea setu-
+                  lui de culori activ.
+                  Cind bitul 5 este 1 logic culorile sint:
+
+     -----------------------------------------------------------
+     | C1 | C0 |     Set selectat                              |
+     -----------------------------------------------------------
+     | 0  | 0  | fond (definit prin bitii 0-3 ai portului 3D9H)|
+     | 0  | 1  | cyan                                          |
+     | 1  | 0  | magenta                                       |
+     | 1  | 1  | alb                                           |
+     ---------------------------         -----------------------
+
+                  Cind bitul 5 este 0 logic culorile sint:
+
+     -----------------------------------------------------------
+     | C1 | C0 |     Set selectat                              |
+     -----------------------------------------------------------
+     | 0  | 0  | fond (definit prin bitii 0-3 ai portului 3D9H)|
+     | 0  | 1  | verde                                         |
+     | 1  | 0  | rosu                                          |
+     | 1  | 1  | maron                                         |
+     -----------------------------------------------------------
+
+     {u}3.3.3.3. Registrul de selectie al modului de lucru{/u}
+
+     Este  un registru de iesire pe 6 biti (nu poate fi citit).  Are adresa
+3D8H  si  poate  fi  scris printr-o instructiune de  intrare/iesire  OUT  a
+microprocesorului.
+Functiile acestui registru sint:
+
+     ------------------------------------------------------------
+     |Bit 0    selectie mod alfanumeric 80x25                   |
+     |Bit 1    selectie mod grafic                              |
+     |Bit 2    selectie mod monocrom                            |
+     |Bit 3    activare semnal video                            |
+     |Bit 4    selectie mod monocrom de rezolutie mare (640x200)|
+     |Bit 5    modificare intensitate fond conform bit blinking |
+     |Bit 6    nefolosit                                        |
+     |Bit 7    nefolosit                                        |
+     ------------------------------------------------------------
+
+Bit 0     1 - Selecteaza modul alfanumeric 80x25 caractere;
+          0 - Selecteaza modul alfanumeric 40x25 caractere.
+Bit 1     1 - Selecteaza modul grafic 320x200 puncte;
+          0 - Selecteaza modul alfanumeric.

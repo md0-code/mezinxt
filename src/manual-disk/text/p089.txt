@@ -1,0 +1,26 @@
+   FUNCTII SPECIALE DOS
+--------------------------------------------------------------------------
+   Functiie                   Tasta
+---------------------------------------------------------------------------
+   Pauza                      Ctrl Num Lock
+   Ecou la imprimanta         Ctrl Prsc
+                              (Tasta 55 in orice situatie)
+   Stop ecou la imprimanta    Ctrl Prsc
+                              (Tasta 55 in orice situatie)
+   Intrerupe functia curenta  Ctrl C
+   Backspace                  <- Tasta 14
+   Line feed                  Ctrl <-
+   Anulare linie              Esc
+   Copiaza caracter           F1 sau ->
+   Copiaza pina se potrivesc  F2
+   Copiaza restul             F3
+   Salt peste caracter        Del
+   Salt pina se potrivesc     F4
+   Intrare in mod inserare    Ins
+   Iesire mod inserare        Ins
+   Creaza linie noua          F5
+   Separator de sir in        F6
+   REPLACE
+   Sfirsit linie la           F6
+   intrare tastatura
+--------------------------------------------------------------------------

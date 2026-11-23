@@ -1,0 +1,51 @@
+     - procedurile  de afisare si memorare sint aceleasi ca la modul grafic
+color  de rezolutie medie dar formatul datelor este diferit.  In acest  mod
+fiecare bit din memorie reprezinta un punct pe ecran;
+     - cele 8 puncte din octet sint organizate astfel:
+
+                              ---------------------------------
+                              | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+                              ---------------------------------
+                                |   |   |   |   |   |   |   |
+                                |   |   |   |   |   |   |   |
+ primul punct afisat      <-----    |   |   |   |   |   |   |
+ al doilea   punct afisat <---------    |   |   |   |   |   |
+ al treilea  punct afisat <-------------    |   |   |   |   |
+ al patrulea punct afisat <-----------------    |   |   |   |
+ al cincilea punct afisat <---------------------    |   |   |
+ al saselea  punct afisat <-------------------------    |   |
+ al saptelea punct afisat <-----------------------------    |
+ al optelea  punct afisat <---------------------------------
+
+     {b}3.3.3.  Notiuni de programare{/b}
+
+     Urmatoarele  registre  (porturi) de intrare /iesire sint  definite  in
+cadrul cuplorului de afisaj grafic color:
+
+     ------------------------------------------------------------
+     |Adr. |A9 A8 A7 A6 A5 A4 A3 A2 A1 A0| Functia registrului  |
+     |(hex)|          (binar)            |                      |
+     ------------------------------------------------------------
+     | 3D8 |1  1  1  1  0  1  1  0  0  0 |Registru de comanda a |
+     |     |                             |modului de lucru      |
+     |     |                             |                      |
+     | 3D9 |1  1  1  1  0  1  1  0  0  1 |Registru selectie     |
+     |     |                             |culoare               |
+     |     |                             |                      |
+     | 3DA |1  1  1  1  0  1  1  0  1  0 |Registru stare        |
+     |     |                             |                      |
+     | 3DB |1  1  1  1  0  1  1  0  1  1 |Reset bistabil creion |
+     |     |                             |optic                 |
+     |     |                             |                      |
+     | 3DC |1  1  1  1  0  1  1  1  0  0 |Set bistabil creion   |
+     |     |                             |optic                 |
+     |     |                             |                      |
+     | 3D4 |1  1  1  1  0  1  0  Z  Z  0 |Registru index 6845   |
+     |     |                             |                      |
+     | 3D5 |1  1  1  1  0  1  0  Z  Z  1 |Registru date 6845    |
+     |     |                             |                      |
+     | 3D0 |1  1  1  1  0  1  0  Z  Z  0 |Registre 6845         |
+     |     |                             |                      |
+     | 3D1 |1  1  1  1  0  1  0  Z  Z  1 |Registre 6845         |
+     ------------------------------------------------------------
+     Z = indiferent

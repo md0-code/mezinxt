@@ -1,0 +1,39 @@
+ Octetul atribut defineste urmatoarele functii:
+
+     ------------------------------------------------------------
+     |    Functia      |           Octet atribut                |
+     ------------------------------------------------------------
+     |                 |  7  |  6    5    4 |  3  | 2    1    0 |
+     |                 ------------------------------------------
+     |                 |  Bk |  R    G    B |  I  | R    G    B |
+     |                 ------------------------------------------
+     |                 |     |     Fond     |     Caracter      |
+     |                 ------------------------------------------
+     |Normal           |  Bk |  0    0    0 |  I  | 1    1    1 |
+     |Video invers     |  Bk |  1    1    1 |  I  | 0    0    0 |
+     |Ecran stins      |  Bk |  0    0    0 |  I  | 0    0    0 |
+     |Ecran luminos    |  Bk |  1    1    1 |  I  | 1    1    1 |
+     ------------------------------------------------------------
+     Bk = blinking pe caracter
+     I  = intensificare pe caracter
+
+     In regimul alfanumeric afisarea  se realizeaza atit cu rezolutie medie
+cit si cu rezolutie mare.
+     Regimul alfanumeric de rezolutie medie are urmatoarele caracteristici:
+     - accepta monitoare de rezolutie medie;
+     - afiseaza maxim 25 rinduri a cite 40 caractere;
+     - generatorul de caractere ROM contine 256 caractere diferite;
+     - necesita o memorie RAM de 2.000 de octeti;
+     - dimensiunea  caracterulului este de 7x7 puncte intr-o matrice de 8x8
+       puncte;
+     - fiecare caracter are asociat un octet de atribut.
+     Regimul alfanumeric de rezolutie mare are urmatoarele caracteristici:
+     - accepta orice  monitor color cu intrari video separate ( cu sau fara
+       semnal de intensificare separat);
+     - accepta monitoare monocrome cu intrare de semnal video-complex;
+     - afiseaza maxim 25 rinduri a cite 80 caractere;
+     - generatorul de  caractere ROM contine 256 caractere diferite;
+     - necesita o memorie RAM de 4.000 octeti;
+     - dimensiunea caracterului este de 7x7 puncte,  intr-o matrice de  8x8
+       puncte;
+     - fiecare caracter are asociat un octet de atribut.

@@ -1,0 +1,53 @@
+---------------------------------------------------------------------------
+Instructiune         Conditie         Interpretare
+---------------------------------------------------------------------------
+JE  sau JZ            ZF = 1          'egal' sau 'zero'
+JL  sau JNGE         (SF xor OF)=1    'mai mic' sau 'mai mic sau egal'
+JLE sau JNG          ((SF xor OF)     'mai mic sau egal' sau 'nu mai mare'
+                      sau ZF)=1
+JB  sau JNAE sau JC   CF = 1          'dedesubt' sau 'mai mic sau egal'
+JBE sau JNA          (CF sau ZF)=1    'dedesubt sau egal' sau 'mai mic'
+JP  sau JPE           PF = 1          'paritate' sau 'paritate impara'
+JO                    OF = 1          'depasire'
+JS                    SF = 1          'semn'
+JNE sau JNZ           ZF = 1          'diferit de zero' sau 'neegal'
+JNL sau JGE          (SF xor OF)=0    'nu mai mic' sau 'mai mare sau egal'
+JNLE sau JG          ((SF xor OF)     'nu mai mic sau egal' sau 'mai mare'
+                      sau ZF)=0A
+JNB sau JAE sau JNC   CF = 0          'nu dedesubt' sau 'deasupra sau egal'
+JNBE sau JA          (CF sau ZF)=0    'nu dedesubt sau egal' sau 'deasupra'
+JNP sau JPO           PF = 0          'fara paritate' sau 'paritate impara'
+JNO                   OF = 0          'nedepasire'
+JNS                   SF = 0          'fara semn'
+---------------------------------------------------------------------------
+Nota:  1. 'deasupra' si 'dedesubt'  se refera la relatia dintre doua valori
+           fara semn;
+       2.  'mai  mare' si 'mai mic' se refera la relatia dintre doua valori
+            cu semn.
+
+
+     {b}INT{/b} = Intrerupere
+     Tipul specificat
+     -------------------------
+     |1 1 0 0 1 1 0 1 | octet|
+     -------------------------
+
+     Tip 3 - adresa vector intrerupere = 0000CH
+     -----------------
+     |1 1 0 0 1 1 0 1|
+     -----------------
+
+     {b}INTO{/b} = Intrerupere la depasire
+     -----------------
+     |1 1 0 0 1 1 1 0|
+     -----------------
+
+     {b}IRET{/b} = Intoarcere din intrerupere
+     -----------------
+     |1 1 0 0 1 1 1 1|
+     -----------------
+
+     {b}CLC{/b} = Stergere flag transport
+     -----------------
+     |1 1 1 1 1 0 0 0|
+     -----------------

@@ -1,0 +1,55 @@
+-------------------------------          --------------------------------
+|        CANAL A              |          |        CANAL B               |
+|-----------------------------|          |------------------------------|
+|Conector| Denumire  |Conector|          |Conector| Denumire  |Conector |
+|  25 ct.| semnal    |  20 ct.|          |  25 ct.| semnal    |  20 ct. |
+-------------------------------          -------------------------------
+|   1    | GND (mec.)|   -    |          |   1    | GND (mec.)|   -     |
+|   2    | TxDA      |   2    |          |   2    | TxDB      |   2     |
+|   3    | RxDA      |   3    |          |   3    | RxDB      |   3     |
+|   4    | RTSA      |   4    |          |   4    | RTSB      |   4    |
+|   5    | CTSA      |   5    |          |   5    | CTSB      |   5    |
+|   6    | DSRA      |   6    |          |   6    | DSRB      |   6    |
+|   7    | GND (el.) |   7    |          |   7    | GND (el.) |   7    |
+|   8    | DCDA      |   8    |          |   8    | DCDB      |   8    |
+|   9    | TCLRA     |   9    |          |   9    | TCLRB     |   9    |
+|  10    | -         |   -    |          |  10    | -         |   -    |
+|  11    | TCLDA     |  11    |          |  11    | TCLDB     |  11    |
+|  12    | -         |   -    |          |  12    | -         |   -    |
+|  13    | -         |   -    |          |  13    | -         |   -    |
+|  14    | -         |   -    |          |  14    | -         |   -    |
+|  15    | RxCKA     |  15    |          |  15    | RxCKB     |  15    |
+|  16    | -         |   -    |          |  16    | -         |   -    |
+|  17    | xTxCKA    |  17    |          |  17    | -         |   -    |
+|  18    | RCLDA     |  18    |          |  18    | RCLDB     |  18    |
+|  19    | -         |   -    |          |  19    | -         |   -    |
+|  20    | DTRA      |  20    |          |  20    | DTRB      |  20    |
+|  21    | -         |   -    |          |  21      -         |   -    |
+|  22    | -         |   -    |          |  22    | -         |   -    |
+|  23    |           |        |          |  23    | -         |   -    |
+|  24    | TxCKA     |  16    |          |  24    | TxCKB     |  16    |
+|  25    | RCLRA     |  19    |          |  25    | RCLRB        19    |
+-------------------------------          -------------------------------
+
+     {b}3.4.2. Cuplorul pentru imprimanta paralela{/b}
+
+     Cuplorul  de imprimanta este conceput pentru cuplarea la echipament  a
+imprimantelor  cu  interfata  paralela,  dar  poate fi  utilizat  si  ca  o
+interfata   universala   de  intrare/iesire  pentru  orice  aplicatie   sau
+dispozitiv  ale carui cerinte corespund specificatiilor  de  intrare/iesire
+ale cuplorului.
+     Cuplorul pentru imprimanta este prevazut cu 12 linii oe intrare/iesire
+ce   pot  fi  inscrise  si  citite  sub  controlul  programului,   folosind
+instructiunile  OUT  si IN ale microprocesorului.  Cuplorul  de  imprimanta
+contine  de  asemenea 5 linii de stare ce pot fi  citite  de  microprocesor
+instructiunea IN.
+     In  plus,  una  din liniile de intrare poate genera o  intrerupere  la
+microprocesor.  Aceasta  intrerupere  poate fi validata sau invalidata  sub
+controlul programului.
+     Cind  cuplorul este utilizat pentru cuplarea unei imprimante paralele,
+datele de iesire si comenzile catre imprimanta sint incarcate in port-urile
+de  iesire  iar  linia de strobe  activata.  Microprocesorul  citeste  apoi
+liniile  de  stare  ale imprimantei asteptind raspunsul acesteia  pentru  a
+transmite urmatorul caracter, sau poate folosi linia de intrerupere.
+     Cele  12  linii  de iesire ale interfetei paralele pot fi  citite  sub
+controlul  programului  in secventele  de  diagnosticare.  Aceasta  permite

@@ -1,0 +1,23 @@
+# Development files kept locally, never committed.
+/AGENTS.md
+/PLAN.md
+/TODO.md
+/ISSUES.md
+/docs/DEVELOPMENT.md
+/docs/dev/
+# FEPER's ROMs, and one's own test disk images: never committed.
+/roms/
+/test/
+# Scratch and test output, development tools, worktrees; build trees; the distribution.
+/work/
+/build/
+/dist/
+# A configuration, screenshots and disks written by running MezinXT in the repository root.
+/mezinxt.yaml
+/mezinxt-*.png
+/disks/
+# Editors and Python.
+.vscode/
+.venv/
+__pycache__/
+*.py[cod]

@@ -1,0 +1,53 @@
+     Cuplorul pentru imprimanta paralela contine doua porturi de iesire  si
+trei  porturi  de intrare.  Configuratia acestora,  precum si  adresele  de
+selectie sint prezentate mai jos.
+
+     {u}Portul de scriere date{/u} - port de iesire (adresa 278H/378H)
+
+    7        6        5        4        3        2        1        0
+-------------------------------------------------------------------------
+| PDATA7 | PDATA6 | PDATA5 | PDATA4 | PDATA3 | PDATA2 | PDATA1 | PDATA0 |
+| (pin 9)| (pin 8)| (pin 7)| (pin 6)| (pin 5)| (pin 4)| (pin 3)| (pin 2)|
+-------------------------------------------------------------------------
+
+Observatie:  Iesirile  acestui  port  reprezinta cele 8 linii de  date  ale
+interfetei paralele. Ele sint incheiate la +5V cu rezistente de 1 Kohm
+
+     {u}Portul de scriere comenzi{/u} - port de iesire (adresa 27AH/37AH)
+
+    7        6        5        4        3        2        1        0
+-------------------------------------------------------------------------
+|        |        |        | IRQEN  | SELIN  |  INIT  |AUTOFEED| STROBE |
+|        |        |        |   -    |(pin 17)|(pin 16)|(pin 14)| (pin 1)|
+-------------------------------------------------------------------------
+
+Observatie:  Primele patru iesiri ale acestui port (bitii 0 - 3) reprezinta
+cele  patru  linii de comenzi ale interfetei paralele.  Aceste  linii  sint
+interfatate  de  circuite  cu  colectorul  in  gol,  incheiate  la  +5V  cu
+rezistente de 4,7 Kohm.  Daca bitul 4 este in 1 logic, cuplorul va genera o
+intrerupere  la fiecare tranzitie din 1 logic in 0 logic a semnalului de pe
+pinul 10 al conectorului de intrare/iesire (ACK).
+
+     {u}Portul de citire date{/u} - port de intrare (adresa 278H/378H)
+
+    7        6        5        4        3        2        1        0
+-------------------------------------------------------------------------
+| PDATA7 | PDATA6 | PDATA5 | PDATA4 | PDATA3 | PDATA2 | PDATA1 | PDATA0 |
+| (pin 9)| (pin 8)| (pin 7)| (pin 6)| (pin 5)| (pin 4)| (pin 3)| (pin 2)|
+-------------------------------------------------------------------------
+
+Observatie:  Intrarile  acestui port reprezinta cele opt linii de date  ale
+interfetei  paralele  (si  in acelasi timp iesirile  port-ului  de  scriere
+date).
+
+     {u}Portul de citire stare{/u} - port de intrare (adresa 279H/379H)
+
+    7        6        5        4        3        2        1        0
+-------------------------------------------------------------------------
+|  BUSY  |  ACK   | PAP.END| SELECT | ERROR  |        |        |        |
+|(pin 11)|(pin 10)|(pin 12)|(pin 13)|(pin 15)|        |        |        |
+-------------------------------------------------------------------------
+
+Observatie:  Intrarile  acestui port reprezinta cele cinci linii  de  stare
+ale  interfetei  paralele.  Ele sint incheiate la +5V cu rezistente de  4,7
+Kohm.

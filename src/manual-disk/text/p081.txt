@@ -1,0 +1,55 @@
+     {b}4.2. Codificarea si utilizarea tastaturii{/b}
+
+     Rutina  tastaturii  furnizata  de  echipament  in  BIOS-ul  sistemului
+transforma  codurile de scanare ale tastaturii in ceea ce va fi definit  ca
+"ASCII extins".
+     Codul  ASCII exins cuprinde coduri de caractere de un octet cu  valori
+posibile intre 0 si 255, coduri extinse pentru anumite functii de tastatura
+extinse,  si  functii  tratate  intern,  din  rutina  tastaturii  sau  prin
+intreruperi.
+
+     {b}4.2.1. Codurile caracterelor{/b}
+
+     Urmatoarele  coduri  ale  caracterelor sint transmise prin  rutina  de
+tastatura  a BIOS-ului catre programele de aplicatii sau  de  sistem.  '-1'
+inseamna ca,  combinatia este eliminata in rutina tastaturii. Codurile sint
+intoarse in AL.
+
+--------------------------------------------------------------------------
+   Numarul   Litere mici   Litere mari         Ctrl            Alt
+   tastei
+-------------------------------------------------------------------------
+      1         Esc            Esc             Esc             -1
+      2         1               !              -1              Nota 1
+      3         2               @        Nul (000) Nota 1      Nota 1
+      4         3               #              -1              Nota 1
+      5         4               $              -1              Nota 1
+      6         5               %              -1              Nota 1
+      7         6               ^              RS(030)         Nota 1
+      8         7               &              -1              Nota 1
+      9         8               *              -1              Nota 1
+     10         9               (              -1              Nota 1
+     11         0               )              -1              Nota 1
+     12         -               -              US(031)         Nota 1
+     13         =               +              -1              Nota 1
+     14         BS(008)         BS(008)        DEL(127)        -1
+     15 Tab   --->|(009)  |<--- (Nota 1)       -1              -1
+     16         q               Q              DC1(017)        Nota 1
+     17         w               W              ETB(023)        Nota 1
+     18         e               E              ENQ(005)        Nota 1
+     19         r               R              DC2(018)        Nota 1
+     20         t               T              DC4(020)        Nota 1
+     21         y               Y              EM(025)         Nota 1
+     22         u               U              NAK(021)        Nota 1
+     23         i               I              HT(009)         Nota 1
+     24         o               O              SI(015)         Nota 1
+     25         o               P              DLE(016)        Nota 1
+     26         [               [              Esc(027)        -1
+     27         ]               ]              GS(029)         -1
+     28         CR              CR             LF(010)         -1
+     29 Ctrl    -1              -1             -1              -1
+     30         a               A              SOH(001)        Nota 1
+     31         s               S              DC3(019)        Nota 1
+     32         d               D              EOT(004)        Nota 1
+     33         f               F              ACK(006)        Nota 1
+---------------------------------------------------------- -----------  --

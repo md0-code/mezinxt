@@ -1,0 +1,55 @@
+     Tastele  71-83 au semnificatie doar pentru literele mici,  in  starile
+{b}Num Lock{/b} (sau shiftate),  sau in starea {b}Ctrl.{/b} Trebuie notat faptul ca tasta
+{b}Shift{/b} inverseaza temporar starea {b}Num Lock.{/b}
+
+------------------------------------------------------------------- ------
+     Nr.      Num
+    tasta     Lock   Caractere mici         Alt  Ctrl
+ --------------------------------------------------------------------------
+     71       7      Home (Nota 1)          -1   Sterge ecran
+     72       8      ^ (Nota 1)             -1   -1
+                     |
+     73       9      Pagina sus (Nota 1)    -1   La inceput de text si Home
+     74       -      ---------------        -1   -1
+     75       4      <- (Nota 1)            -1   Cuvint inapoi (Nota 1)
+     76       5      -1                     -1   -1
+     77       6      -> (Nota 1)            -1   Cuvint inainte
+     78       +      +                      -1   -1
+     79       1      End (Nota 1)           -1   Sterge pina la EOL(Nota 1)
+                     |
+     80       2      v (Nota 1)             -1   -1
+     81       3      Pagina jos (Nota 1)    -1   Sterge pina la EOS(Nota 1)
+     82       0      Ins                    -1   -1
+     83              Del (Nota 1,2)       Nota 2 Nota 2
+--------------------------------------------------------------------------
+Nota:   1. Vezi 'Coduri extinse'
+        2. Vezi 'Utilizare speciala'
+
+      {b}4.2.2. Coduri extinse{/b}
+
+      Pentru  anumite  functii ce nu pot fi reprezentate in codul  standard
+ASCII, se utilizeaza un cod extins. Un cod de caracter 00 (Nul) este intors
+in AL. Aceasta indica faptul ca sistemul sau programul de aplicatii trebuie
+sa examineze un al doilea cod ce va indica functia specificata.  De obicei,
+dar  nu intotdeauna,  acest al doilea cod este codul de scanare  al  primei
+taste ce a fost apasata. Acest cod este intors in AH.
+
+---------------------------------------------------------------------------
+ Al doilea cod           Functie
+---------------------------------------------------------------------------
+      3                  Caracter nul
+     15                  |<---
+    16-25                Alt Q,W,E,R,T,Y,U,I,O,P
+    30-38                Alt A,S,D,F,G,H,J,K,L
+    44-50                Alt Z,X,C,V,B,N,M
+    59-68                Caractere de baza pentru tastele de functii F1-F10
+     71                  Home
+     72                  ^
+                         |
+     73                  Pagina sus si home cursor
+     75                  <-
+     77                  ->
+     79                  End
+                         |
+     80                  v
+---------------------------------------------------------------------------

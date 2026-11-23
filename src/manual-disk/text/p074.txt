@@ -1,0 +1,14 @@
+     {b}3.10.2. Compatibilitatea la nivel software{/b}
+
+     Compatibilitatea  software este direct influentata de compatibilitatea
+hardware a echipamentului.  Avind in vedere cele prezentate mai sus,  putem
+afirma  ca microcalculatorul JUNIOR-XT respecta  integral  compatibilitatea
+software  cu microcalculatorul IBM-PC/XT,  cu exceptia acelor programe care
+acceseaza  direct  suportul hardware al cuplorului de  comunicatie  seriala
+asincrona.  Aceste  programe vor trebui modificate din punct de  vedere  al
+adresei  port-urilor si al modului de programare a interfetelor seriale  de
+comunicatie.
+     Pentru  a elimina acest neajuns,  driver-ul de comunicatie seriala din
+BIOS a fost adaptat configuratiei hardware a microcalculatorului JUNIOR-XT,
+ceea  ce  confera o portabilitate deplina acelor programe  care  utilizeaza
+functii BIOS.

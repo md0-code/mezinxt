@@ -1,0 +1,54 @@
+     {b}3.5. Modulul de extensie memorie RAM 384 Kocteti{/b}
+
+     Modulul  de  extensie memorie RAM 384 Kocteti este realizat sub  forma
+unei plachete logice ce se introduce in unul din conectorii de extensie  ai
+placii  logice de baza si permite extinderea memoriei interne a  sistemului
+de la 256 Kocteti la 640 Kocteti RAM.
+     Modulul  de  extensie memorie contine atit memorie RAM cit si  memorie
+EPROM.
+     Memoria  EPROM  este implementata cu doua circuite de  tip  I2764  sau
+I27128, avind o capacitate totala de 16 Kocteti, respectiv 32 Kocteti. Zona
+de adrese a memoriei EPROM precum si tipul memoriilor EPROM folosite pot fi
+selectate prin strap-uri dupa cum urmeaza:
+
+     ----------------------------------       ----------------------------
+     | Adresa (hexa)| S5  | S6  | S7  |       |   Tip EPROM  | S3  | S4  |
+     ----------------------------------       ----------------------------
+     |   C8000      | ON  | OFF | OFF |       |   2764       | ON  | OFF |
+     |   F0000      | OFF | ON  | OFF |       |              |     |     |
+     |   F8000      | OFF | OFF | ON  |       |   27128      | OFF | ON  |
+     ----------------------------------       ----------------------------
+     Nota:  ON  indica strap conectat;
+            OFF indica strap neconectat.
+
+     Memoria  RAM este implementata cu circuite de memorie dinamica de  tip
+MK4164  sau  MK41256,  avind o capacitate totala de 384K x  9  biti.  Toate
+memoriile  RAM sint verificate la paritate.  Erorile de paritate  detectate
+sint  comunicate sub forma unei intreruperi  nemascabile  microprocesorului
+prin intermediul canalului de intrare/iesire.
+     In  afara  circuitelor de memorie RAM si EPROM,  modulul  de  extensie
+contine  interfata  cu  magistrala sistemului,  circuitele  de  generare  a
+semnalelor  de  acces  la  memorie,  precum si circuitele  de  decodare  si
+multiplexare adrese.
+     Reimprospatarea  memoriei  dinamice RAM se efectueaza,  ca  si  pentru
+memoria RAM de pe placa logica de baza, prin intermediul unui transfer DMA
+Cererile  de  reimprosopatare  ("refresh") sint generate  de  un  canal  al
+dispozitivului timer/numarator de pe placa logica de baza, care declanseaza
+la fiecare aprox. 15 us un ciclu DMA fictiv de citire a memoriei.
+     Memoria  RAM si EPROM de pe modulul de extensie lucreaza fara stari de
+asteptare ("wait") la frecventa ceasului de baza al sistemului de 4,77  MHz
+(210 ns). Astfel orice operatie de scriere/citire memorie dureaza 840 ns (4
+perioade de ceas).
+     Selectia  tipului de circuite de memorie RAM folosite  este  realizata
+prin strap-uri conform tabelului urmator:
+
+     ----------------------------
+     |   Tip RAM    | S1  | S2  |
+     ----------------------------
+     |   MK4164     | ON  | OFF |
+     |   MK41256    | OFF | ON  |
+     ----------------------------
+     Nota:  1.  ON  indica strap conectat;
+                OFF indica strap neconectat.
+            2.  In  cazul  folosirii  circiuitelor de  memorie  MK41256
+                implanteaza numai primul modul de memorie RAM.

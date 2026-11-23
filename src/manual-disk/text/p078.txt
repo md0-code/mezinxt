@@ -1,0 +1,36 @@
+     {b}INTRERUPERA 1F HEXA - EXTENSIILE CARACTERELOR GRAFICE{/b}
+
+     Atunci cind se lucreaza in modul grafic al cuplorului de afisaj grafic
+color  (320 x 200 sau 640 x 200),  interfata de caractere de citire/scriere
+va  genera  caracterele  din tabela de coduri ASCII ,utilizind  un  set  de
+matrici de puncte.  Matricile de puncte  pentru primele 128 de coduri  sint
+continute  in  ROM.  Pentru  accesarea celorlalte  coduri,  trebuie  sa  se
+stabileasca ca acest vector sa fie asociat unei tabele de pina la 1 Koctet,
+unde fiecare cod  este reprezentat prin 8 octeti de informatii grafice.  La
+punerea sub tensiune,  acest vector este initializat cu  0000:0000, si este
+responsabilitatea  utilizatorului de a schimba vectorul daca sint  necesare
+coduri suplimentare.
+
+     {b}INTRERUPEREA 40 HEXA - REZERVAT{/b}
+
+     La instalarea cuplorului de disc fix, rutinele BIOS utilizeaza aceasta
+intrerupere pentru o noua generare a pointer-ului discului flexibil.
+
+     {b}INTRERUPEREA 41 HEXA - PARAMETRII PENTRU DISC FIX{/b}
+
+     Acest  vector  indica adresa unei zone de  date  continind  parametrii
+necesari  pentru  unitatea de disc fix.  Rutinele la punerea  sub  tensiune
+initializeaza  vectorul sa indice parametrii continuti in rutina de disc  a
+ROM-ului. Acesti parametri impliciti reprezinta valorile specificate pentru
+orice unitati de disc fix atasate echipamentului.  Schimbarea  blocului  de
+parametri poate fi necesara in functie de caracteristicile altor unitati de
+disc fix atasate.
+
+     Rutinele  BIOS  utilizeaza 256 octeti de memorie incepind de  la  400H
+pina  la  4FFH.  Locatiile 400H pina la 407H contin adresa de  baza  pentru
+cuploarele  de comunicatie seriala RS-232C  atasate  sistemului.  Locatiile
+408H  pina la 40FH contin adresele de baza  ale cuplorului  de  imprimanta.
+Locatiile  de  memorie  de la 300H pina la 3FFH sint utilizate ca  zona  de
+stiva  in timpul initializarii la punerea sub tensiune si la bootstrap-are.
+Daca utilizatorul vrea sa schimbe zona de stiva, atunci zona trebuie fixata
+de aplicatie.

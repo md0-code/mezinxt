@@ -1,0 +1,53 @@
+      INTRERUPERI REZERVATE PENTRU BASIC SI DOS
+--------------------------------------------------------------------------
+      Adresa    Intrerupere             Functie
+      (hexa)      (hexa)
+--------------------------------------------------------------------------
+      80-83         20        Terminare program DOS
+      84-87         21        Apel functie DOS
+      88-8B         22        Adresa rutinei de terminare program DOS
+      8C-8F         23        Adresa rutinei de tratare {b}Ctrl C{/b}
+      90-93         24        Adresa rutinei de tratare a erorilor  fatale
+                              disc flexibil
+      94-97         25        Citire absoluta disc DOS
+      98-9B         26        Scriere absoluta disc DOS
+      9C-9F         27        Terminare   program   DOS    (program   ramas
+                              rezident)
+      A0-FF        28-3F      Rezervat pentru DOS
+     100-17F       40-5F      Rezervat
+     180-19F       60-67      Rezervat  pentru  intreruperi  software   ale
+                              utilizatorului
+     1A0-1FF       68-7F      Neutilizat
+     200-217       80-85      Rezervat de BASIC
+     218-3C3       86-F0      Utilizat  de BASIC in timpul executiei
+     3C4-3FF       F1-FF      Neutilizat
+--------------------------------------------------------------------------
+
+
+      LOCATIILE REZERVATE DIN MEMORIE
+-------------------------------------------------------------------- -- -
+     Adresa      Mod               Functie
+     (hexa)
+--------------------------------------------------------------------------
+     400-4BF     ROM BIOS          Vezi listing-ul BIOS
+     490-4EF                       Rezervat
+     4F0-4FF                       Rezervat pentru aplicatii
+                                   Zona de comunicatii pentru orice aplica-
+                                   tie
+     500-5FF                       Rezervat pentru DOS si BASIC
+     500         DOS               Indicator stare tiparire ecran
+                                   0 - tiparire ecran inactiva sau operatia
+                                   de tiparire ecran executata cu succes
+                                   1 - tiparire ecran in curs de executie
+                                   255 - eroare intilnita in timpul tipari
+                                   rii ecranului
+     504         DOS               Octet  de stare  pentru un  singur  disc
+                                   flexibil
+     510-511     BASIC             Adresa segmentului BASIC
+     512-515     BASIC             Segment pentru  vectorul  de intrerupere
+                                   al ceasului
+     516-519     BASIC             Segment  pentru  vectorul de intrerupere
+                                   al tastei {b}Ctrl C{/b}
+     51A-51D     BASIC             Segment  pentru vectorul de  intrerupere
+                                   la eroare disc
+---------------------------------------------------------------------------

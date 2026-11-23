@@ -1,0 +1,48 @@
+         SEMNIFICATIA MICROINTRERUPATOARELOR DE CONFIGURARE SISTEM
+---------------------------------------------------------------------------
+     {b}SW-1{/b}
+      OFF                               Functionare normala
+---------------------------------------------------------------------------
+     {b}SW-2{/b}                               {b}Coprocesor matematic I8087{/b}
+       ON                               Neinstalat
+      OFF                               Instalat
+---------------------------------------------------------------------------
+     {b}SW-3{/b}      {b}SW-4{/b}                     {b}Capacitatea memoriei RAM de pe{/b}
+                                              {b}placa de baza{/b}
+       ON        ON                                64 K
+      OFF        ON                               128 K
+       ON       OFF                               192 K
+      OFF       OFF                               256 K
+---------------------------------------------------------------------------
+     {b}SW-5{/b}      {b}SW-6{/b}                     {b}Tipul cuplorului de afisaj{/b}
+       ON        ON                     Cuplor de afisaj neinstalat
+      OFF        ON                     Cuplor CGA (40x25)
+       ON       OFF                     Cuplor CGA (80x25)
+      OFF       OFF                     Cuplor MDA sau ambele
+---------------------------------------------------------------------------
+     {b}SW-7{/b}      {b}SW-8{/b}                     {b}Numarul unitatilor de disc{/b}
+                                        {b}flexibil din sistem{/b}
+       ON        ON                               1
+      OFF        ON                               2
+       ON       OFF                               3
+      OFF       OFF                               4
+---------------------------------------------------------------------------
+{fig comutatoare}
+
+ Nota:    1. ON  indica microintrerupator inchis;
+             OFF indica microintrerupator deschis.
+          2. PB3=0 permite citirea SW-1, SW-2, SW-3, SW-4;
+             PB3=1 permite citirea SW-5, SW-6, SW-7, SW-8.
+             PP.
+
+
+                     MODUL DE ALOCARE A CANALELOR DMA
+                    ----------------------------------
+                    |Canal DMA|       Alocare        |
+                    ----------------------------------
+                    |    0    | Reimprospatare       |
+                    |         | memorie RAM (refresh)|
+                    |    1    | Rezervat             |
+                    |    2    | Cuplor disc flexibil |
+                    |    3    | Cuplor disc fix      |
+                    ----------------------------------

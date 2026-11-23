@@ -1,0 +1,299 @@
+@doc hardware | hardware | Hardware - descrierea functionala
+  {h}Schema bloc a microcalculatorului{/}
+
+  {h}Placa logica de baza{/}
+  {d}┌──────────────┐ ┌─────────────┐ ┌───────────────┐ ┌──────────────┐{/}
+  {d}│{/} {b}I8086 (I8088){/}{d}│ │{/} {b}I8087{/}       {d}│ │{/} {b}EPROM{/}         {d}│ │{/} {b}RAM{/}          {d}│{/}
+  {d}│{/} microprocesor{d}│ │{/} optional    {d}│ │{/} 16 - 32 K     {d}│ │{/} 256 - 640 K  {d}│{/}
+  {d}└──────────────┘ └─────────────┘ └───────────────┘ └──────────────┘{/}
+  {d}┌──────────────┐ ┌─────────────┐ ┌───────────────┐ ┌──────────────┐{/}
+  {d}│{/} {b}I8259A{/}       {d}│ │{/} {b}I8237A-5{/}    {d}│ │{/} {b}I8253-5{/}       {d}│ │{/} {b}I8255A{/}       {d}│{/}
+  {d}│{/} 8 intreruperi{d}│ │{/} 4 canale DMA{d}│ │{/} 3 canale timer{d}│ │{/} tastatura, SW{d}│{/}
+  {d}└──────────────┘ └─────────────┘ └───────────────┘ └──────────────┘{/}
+
+  {h}Canalul de intrare/iesire{/}  {c}J1-J8{/} (2 x 31)  {c}J9-J12{/} (2 x 10)
+  {y}═══════════════════════════════════════════════════════════════════════{/}
+  {d}┌────────────────┐ ┌─────────────┐ ┌─────────────────┐ ┌───────────────┐{/}
+  {d}│{/} [[cuplor-disc|Cuplor disc]]    {d}│ │{/} [[cuplor-cga|Cuplor CGA]]  {d}│ │{/} [[cuplor-serial|Serial + imprim.]]{d}│ │{/} [[memorie-ram|RAM 384 K]]     {d}│{/}
+  {d}│{/} NEC uPD 765    {d}│ │{/} MC 6845     {d}│ │{/} Z80-SIO         {d}│ │{/} modul extensie{d}│{/}
+  {d}└────────────────┘ └─────────────┘ └─────────────────┘ └───────────────┘{/}
+    unitati de disc    monitor         2 x RS-232-C        
+    {d}1 - 4{/}              {d}creion optic{/}    {d}imprimanta{/}          {d}EPROM aditional{/}
+
+  {h}Partile descrise{/}
+
+    {b}Placa{/}  [[placa-baza|Placa logica de baza]]         procesor, ceas, memorie, timer
+           [[i8255|Interfata I8255A]]             tastatura, difuzor, comutatoare
+           [[harta-memorie|Harta memoriei]]               alocarea celor 1024 K de adrese
+           [[harta-ie|Harta I/E]]                    adresele porturilor
+           [[intreruperi-dma|Intreruperi si DMA]]           nivele si canale
+           [[canal-ie|Canalul de intrare/iesire]]    conectori J1-J12
+           [[canal-semnale|Semnalele canalului]]          descrierea fiecarui semnal
+           [[comutatoare|Comutatoare si strap-uri]]     configurarea sistemului
+    {b}Disc{/}   [[cuplor-disc|Cuplor disc flexibil]]         registre, controlorul uPD 765
+           [[comenzi-disc|Comenzi disc]]                 cele 15 comenzi, fazele lor
+           [[disc-stare|Registre ST0-ST3]]             biti de stare, simbolurile comenzilor
+           [[interfata-disc|Interfata discului]]           semnale si conectori
+           [[unitati-disc|Unitati de disc]]              5,25 inch si 8 inch
+    {b}Ecran{/}  [[cuplor-cga|Cuplor CGA]]                   moduri alfanumeric si grafic
+           [[memorie-ecran|Memoria de ecran]]             caractere, atribute, puncte
+           [[registre-cga|Registrele CGA]]               comanda, culoare, stare
+           [[mc6845|Controlorul MC 6845]]          registrele 6845 si valorile lor
+           [[culori|Culori]]                       cele 16 culori, paletele
+           [[monitor|Monitor]]                      tipuri, conectori
+    {b}Alte{/}   [[cuplor-serial|Cuplor serial]]                doua canale RS-232-C
+           [[serial-conectori|Semnale seriale]]              V.24, bucla, pinii conectorilor
+           [[imprimanta|Imprimanta]]                   interfata paralela
+           [[memorie-ram|Memorie RAM 384 K]]            modulul de extensie
+           [[sursa|Sursa de alimentare]]          tensiuni, putere
+           [[tastatura-hw|Tastatura]]                    cablul, cele 83 de taste
+
+  {d}Vezi si:{/} [[acasa|Prezentare]]  [[software|Software]]  [[test:sistem|Test sistem]]
+  Carte tehnica: [[pag:11|pag. 11]]
+
+@doc placa-baza | hardware | Placa logica de baza
+  Placa se fixeaza orizontal in cutia blocului logic; are aprox. {c}325 x 285 mm{/},
+  circuit imprimat multistrat cu straturi interne de masa si alimentare.
+  Respecta tipul si adresele port-urilor placii IBM-PC/XT.
+
+  {h}Resursele placii{/}
+
+   {c}■{/} microprocesor {c}I8086{/} (sau I8088)    {c}■{/} intreruperi cu 8 nivele
+   {c}■{/} coprocesor {c}I8087{/} (optional)        {c}■{/} DMA cu 4 canale programabile
+   {c}■{/} RAM {c}256 - 640 K{/}octeti              {c}■{/} ceas de timp real
+   {c}■{/} EPROM {c}16 - 32 K{/}octeti              {c}■{/} generator de tonuri
+   {c}■{/} interfata pentru tastatura seriala
+   {c}■{/} comutatoare pentru configurare ([[comutatoare|microintrerupatoare]])
+   {c}■{/} 8 conectori de extensie compatibili IBM-PC/XT
+
+  {h}Microprocesorul{/}
+
+  Operatii pe 16 biti, inclusiv inmultire si impartire; magistrala de adrese
+  de 20 biti: adreseaza direct {c}1 Moctet{/}. Lucreaza in {b}mod maxim{/}, ceea ce
+  permite coprocesorul I8087. Ceasul deriva din oscilatorul de baza:
+
+  {d}┌───────────────┐     ┌────────────────┐     ┌────────────────┐{/}
+  {d}│{/} {b}OSC{/}           {d}│{/} ÷3  {d}│{/} {b}CLK{/}            {d}│{/} ÷2  {d}│{/} {b}PCLK{/}           {d}│{/}
+  {d}│{/} {c}14,318 MHz{/}    {d}├────»│{/} {c}4,77 MHz{/}       {d}├────»│{/} {c}2,38 MHz{/}       {d}│{/}
+  {d}│{/} perioada 70 ns{d}│     │{/} perioada 210 ns{d}│     │{/} perioada 420 ns{d}│{/}
+  {d}└───────────────┘     └────────────────┘     └────────────────┘{/}
+
+  {h}Durata ciclurilor{/}  {d}(la 4,77 MHz){/}
+
+   memorie  {a:1A}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{/}            4 stari = {c}840 ns{/}
+   port     {a:1A}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{/}        5 stari = {c}1,05 us{/}
+   DMA      {a:1A}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{/}        5 perioade = {c}1,05 us{/}
+   refresh  {a:1A}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{/}            4 perioade = {c}840 ns{/}
+
+  {h}Memoria{/}
+
+   {b}EPROM{/}  doua circuite {c}I2764{/} sau {c}I27128{/}: 16K x 8, respectiv 32K x 8 biti.
+          Contine BIOS-ul: autotestul la punerea sub tensiune, driver-ele de
+          intrare/iesire, matricile de puncte pentru modul grafic si un
+          incarcator al sistemului de operare de pe discul flexibil.
+   {b}RAM{/}    dinamica {c}MK4164{/} sau {c}MK41256{/}: 256K x 9, respectiv 640K x 9 biti;
+          toate memoriile sint verificate la paritate (eroare: NMI).
+          Peste 256 K cu MK4164 se adauga [[memorie-ram|modulul de 384 K]].
+
+  {h}Timer I8253-5{/}  {d}3 canale de 16 biti{/}
+
+   {c}0{/}  baza de timp constanta pentru ceasul care indica ora; nivel de
+      intrerupere 0
+   {c}1{/}  cererile de reimprospatare a memoriei dinamice (la 72 de ceasuri,
+      aprox. 15 us, un ciclu DMA fictiv de citire; ~7% din timpul
+      magistralei)
+   {c}2{/}  tonurile pentru difuzor
+
+  {h}Difuzor{/}  {d}3 ohm / 0,3 W{/}
+
+  Cablu cu doua fire si conector cu doi pini. Doua moduri de comanda,
+  executabile si simultan: {c}1){/} activarea unui bit genereaza un impuls;
+  {c}2){/} forma de unda generata de canalul 2 al timer-ului.
+
+  {h}Interfata I8255A{/}  {d}adrese 0060 - 0063{/}
+
+  Datele tastaturii, difuzorul, citirea microintrerupatoarelor si testele
+  de paritate si de canal: [[i8255|interfata I8255A]].
+
+  {d}Vezi si:{/} [[i8255|I8255A]]  [[harta-ie|Harta I/E]]  [[intreruperi-dma|Intreruperi si DMA]]
+         [[tastatura-hw|Tastatura]]  [[sursa|Sursa]]  [[memorie-ram|Memorie 384 K]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:11|pag. 11]] [[pag:12|pag. 12]] [[pag:13|pag. 13]] [[pag:14|pag. 14]]
+
+@doc i8255 | hardware | Interfata I8255A
+  Circuitul {c}I8255A{/} ocupa adresele {c}0060 - 0063{/} ([[harta-ie|harta I/E]]).
+
+  Semnul {c}+{/}: functia se executa cu bitul in 1; {c}-{/}: cu bitul in 0.
+
+  {b}0060{/}  intrare, {d}PA0 - PA7{/}: datele tastaturii
+
+  {b}0061{/}  iesire, {d}PB{/}
+     {b}  7   {/} {b}  6   {/} {b}  5   {/} {b}  4   {/} {b}  3   {/} {b}  2   {/} {b}  1   {/} {b}  0   {/}
+    {d}┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐{/}
+    {d}│{/}  {c}-{/}   {d}│{/}  {c}-{/}   {d}│{/}  {c}-{/}   {d}│{/}  {c}-{/}   {d}│{/}      {d}│{/}      {d}│{/}  {c}+{/}   {d}│{/}  {c}+{/}   {d}│{/}
+    {d}│{/} tast {d}│{/} clk  {d}│{/} iock {d}│{/} par  {d}│{/}  sw  {d}│{/} rez  {d}│{/} dif  {d}│{/} tmr  {d}│{/}
+    {d}└──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘{/}
+   {c}7{/} - activare tastatura / +initializare tastatura
+   {c}6{/} - mentine in 0 ceasul tastaturii
+   {c}5{/} - activare test canal de intrare/iesire
+   {c}4{/} - activare test de paritate a memoriei RAM
+   {c}3{/}   comutator de citire a microintrerupatoarelor de configurare
+   {c}2{/}   rezervat
+   {c}1{/} + data difuzor
+   {c}0{/} + modulare canal 2 timer pentru difuzor
+
+  {b}0062{/}  intrare, {d}PC{/}
+     {b}  7   {/} {b}  6   {/} {b}  5   {/} {b}  4   {/} {b}  3   {/} {b}  2   {/} {b}  1   {/} {b}  0   {/}
+    {d}┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐{/}
+    {d}│{/}  {c}+{/}   {d}│{/}  {c}+{/}   {d}│{/}  {c}+{/}   {d}│{/}      {d}│{/} SW-4 {d}│{/} SW-3 {d}│{/} SW-2 {d}│{/} SW-1 {d}│{/}
+    {d}│{/} par  {d}│{/} iock {d}│{/} tmr  {d}│{/} dif  {d}│{/} SW-8 {d}│{/} SW-7 {d}│{/} SW-6 {d}│{/} SW-5 {d}│{/}
+    {d}└──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘{/}
+   {c}7{/} + testare paritate RAM        {c}6{/} + testare canal de intrare/iesire
+   {c}5{/} + iesire canal 2 timer        {c}4{/}   iesire difuzor
+   {c}3 - 0{/}  microintrerupatoarele: {c}SW-1..4{/} (rindul de sus) sau {c}SW-5..8{/}
+           (rindul de jos), dupa bitul PB3 ([[comutatoare|microintrerupatoare]])
+
+  {b}0063{/}  registru de comanda/mod; valoarea {c}99H{/}
+
+  {d}Vezi si:{/} [[placa-baza|Placa de baza]]  [[comutatoare|Comutatoare]]  [[tastatura-hw|Tastatura]]
+         [[harta-ie|Harta I/E]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:12|pag. 12]] [[pag:13|pag. 13]] [[pag:20|pag. 20]] [[pag:21|pag. 21]]
+
+@doc harta-memorie | hardware | Harta memoriei
+  Procesorul adreseaza direct {c}1 Moctet{/} (20 de linii de adresa). Alocarea,
+  de la adresele mari la cele mici (nu la scara):
+
+  {c}FFFFF{/} {d}┌────────────────────────────────────────────────┐{/}
+        {d}│{/}{a:6F} ROM  sistemul de baza: BIOS si BASIC           {/}{d}│{/}  {c}64 K{/}
+  {c}F0000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:4F} ROM  extensie memorie ROM                      {/}{d}│{/}  {c}144 K{/}
+        {d}│{/}{a:4F}                                                {/}{d}│{/}  {c}{/}
+  {c}CC000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:4F} ROM  cuplorul de disc fix                      {/}{d}│{/}  {c}16 K{/}
+  {c}C8000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:4F} ROM  extensie memorie ROM                      {/}{d}│{/}  {c}32 K{/}
+  {c}C0000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:08} rezervat                                       {/}{d}│{/}  {c}16 K{/}
+  {c}BC000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:5F} RAM  memoria de afisaj a cuplorului CGA        {/}{d}│{/}  {c}16 K{/}
+  {c}B8000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:08} rezervat                                       {/}{d}│{/}  {c}16 K{/}
+  {c}B4000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:5F} RAM  memoria de afisaj a cuplorului MDA        {/}{d}│{/}  {c}16 K{/}
+  {c}B0000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:08} rezervat                                       {/}{d}│{/}  {c}64 K{/}
+  {c}A0000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:3F} RAM  extensie de 384 K in canalul de           {/}{d}│{/}  {c}384 K{/}
+        {d}│{/}{a:3F}      intrare/iesire                            {/}{d}│{/}  {c}{/}
+        {d}│{/}{a:3F}                                                {/}{d}│{/}  {c}{/}
+        {d}│{/}{a:3F}                                                {/}{d}│{/}  {c}{/}
+  {c}40000{/} {d}├────────────────────────────────────────────────┤{/}
+        {d}│{/}{a:2F} RAM  pe placa logica de baza                   {/}{d}│{/}  {c}256 K{/}
+        {d}│{/}{a:2F}                                                {/}{d}│{/}  {c}{/}
+        {d}│{/}{a:2F}                                                {/}{d}│{/}  {c}{/}
+  {c}00000{/} {d}└────────────────────────────────────────────────┘{/}
+
+  {a:6F}  {/} BIOS  {a:4F}  {/} ROM  {a:5F}  {/} afisaj  {a:2F}  {/} RAM placa  {a:3F}  {/} RAM extensie  {a:08}  {/} rezervat
+
+  {h}Pe regiuni{/}
+
+   {b}RAM{/}     {c}00000 - 9FFFF{/}: 640 K, din care primii 256 K pe placa de baza
+           si 384 K pe [[memorie-ram|modulul de extensie]]
+   {b}Afisaj{/}  {c}B8000 - BBFFF{/} memoria cuplorului [[cuplor-cga|CGA]]
+   {b}ROM{/}     {c}F0000 - FFFFF{/} BIOS si BASIC ([[bios|BIOS]])
+           {c}C8000{/}, {c}F0000{/} sau {c}F8000{/}: zona EPROM a modulului de extensie
+           (strap-uri S5-S7, [[memorie-ram|modulul de 384 K]])
+
+  {d}Vezi si:{/} [[harta-ie|Harta I/E]]  [[placa-baza|Placa de baza]]  [[cuplor-cga|Cuplor CGA]]
+         [[hardware|Hardware]]
+  Carte tehnica: [[pag:23|pag. 23]] [[pag:24|pag. 24]]
+
+@doc harta-ie | hardware | Harta adreselor de intrare/iesire
+  Spatiul porturilor, 000 - 3FF, in pasi de 16 adrese (hexa). Fiecare patrat
+  este o zona de 16 porturi: {c}██{/} folosita, {d}▒▒{/} rezervata, {d}··{/} nealocata.
+
+         {b}0{/}  {b}1{/}  {b}2{/}  {b}3{/}  {b}4{/}  {b}5{/}  {b}6{/}  {b}7{/}  {b}8{/}  {b}9{/}  {b}A{/}  {b}B{/}  {b}C{/}  {b}D{/}  {b}E{/}  {b}F{/} 
+   {b}0xx{/}   {c}██{/} {d}··{/} {c}██{/} {d}··{/} {c}██{/} {d}··{/} {c}██{/} {d}··{/} {c}██{/} {d}··{/} {c}██{/} {d}··{/} {d}▒▒{/} {d}··{/} {d}··{/} {d}▒▒{/}
+   {b}1xx{/}   {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/}
+   {b}2xx{/}   {c}██{/} {c}██{/} {d}▒▒{/} {d}▒▒{/} {d}▒▒{/} {c}██{/} {c}██{/} {c}██{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {d}▒▒{/}
+   {b}3xx{/}   {c}██{/} {c}██{/} {c}██{/} {d}··{/} {d}··{/} {d}··{/} {d}··{/} {c}██{/} {c}██{/} {d}··{/} {d}▒▒{/} {c}██{/} {d}▒▒{/} {c}██{/} {d}▒▒{/} {c}██{/}
+
+  {h}Adresele{/}
+
+   {c}000-00F{/}  Controlor DMA I8237A-5 (I8257)
+   {c}020-021{/}  Controlor intreruperi I8259A
+   {c}040-043{/}  Timer I8253-5
+   {c}060-063{/}  [[i8255|Interfata paralela I8255A]]
+   {c}080-083{/}  Registre pagina DMA
+   {c}0AX{/}      Registru NMI
+   {d}0CX      Rezervat{/}
+   {d}0FX      Rezervat{/}
+   {c}200-20F{/}  Cuplor joystick
+   {c}210-217{/}  Unitate de extensie
+   {d}220-24F  Rezervat{/}
+   {c}250-25F{/}  [[cuplor-serial|Cuplor de comunicatie seriala asincrona]]
+   {c}260-26F{/}  Cuplor de comunicatie seriala asincrona (extensie)
+   {c}278-27F{/}  Cuplor de imprimanta paralela (extensie)
+   {d}2F8-2FF  Rezervat{/}
+   {c}300-31F{/}  Extensie prototip
+   {c}320-32F{/}  Cuplor de disc fix (Winchester)
+   {c}378-37F{/}  [[imprimanta|Cuplor de imprimanta paralela]]
+   {c}380-38F{/}  Cuplor de comunicatie seriala sincrona SDLC
+   {d}3A0-3AF  Rezervat{/}
+   {c}3B0-3BF{/}  Cuplor de afisaj monocrom de mare rezolutie (MDA)
+   {d}3C0-3CF  Rezervat{/}
+   {c}3D0-3DF{/}  [[cuplor-cga|Cuplor de afisaj color de medie rezolutie (CGA)]]
+   {d}3E0-3E7  Rezervat{/}
+   {c}3F0-3F7{/}  [[cuplor-disc|Cuplor de disc flexibil]]
+   {d}3F8-3FF  Rezervat{/}
+
+  Detaliile: [[intreruperi-dma|controlorul DMA si intreruperile]], [[i8255|8255A]],
+  [[cuplor-disc|3F0-3F7]], [[cuplor-cga|3D0-3DF]], [[cuplor-serial|250-25F]], [[imprimanta|378-37F]].
+
+  {d}Vezi si:{/} [[harta-memorie|Harta memoriei]]  [[intreruperi-dma|Intreruperi si DMA]]
+         [[canal-ie|Canal I/E]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:19|pag. 19]]
+
+@doc intreruperi-dma | hardware | Intreruperi si canale DMA
+  {h}Nivelele de intrerupere{/}  {d}I8259A: 8 nivele; 6 pe canalul de I/E{/}
+
+  Prioritate maxima la nivelul 0, minima la 7. {c}NMI{/} este intreruperea
+  nemascabila a microprocesorului.
+
+   {a:4F} NMI {/}  eroare de paritate {d}(memoria RAM){/}
+   {a:2F}  0  {/}  timer {d}(ceasul care indica ora; pe placa){/}
+   {a:2F}  1  {/}  tastatura {d}(pe placa){/}
+   {a:08}  2  {/}  {d}rezervat{/}
+   {a:3F}  3  {/}  cuplor serial asincron (extensie)
+   {/}       cuplor serial sincron SDLC (extensie)
+   {a:3F}  4  {/}  cuplor serial asincron
+   {/}       cuplor serial sincron SDLC
+   {a:3F}  5  {/}  cuplor de disc fix (Winchester)
+   {a:3F}  6  {/}  cuplor de disc flexibil ([[cuplor-disc|cuplorul de disc]])
+   {a:3F}  7  {/}  cuplor de imprimanta paralela ([[imprimanta|imprimanta]])
+
+  Cuplorul serial se leaga la IRQ3 sau IRQ4, dupa microintrerupatoare
+  ([[cuplor-serial|cuplorul serial]]).
+
+  {h}Canalele DMA{/}  {d}I8237A-5 (I8257): 4 canale programabile{/}
+
+  Trei canale sint pe canalul de intrare/iesire (transferuri rapide intre
+  memorie si dispozitive, fara procesor); al patrulea reimprospateaza
+  memoria dinamica. Prioritate maxima: canalul 0 (DRQ0).
+
+   {a:4F} 0 {/}  reimprospatare memorie RAM (refresh)
+   {a:08} 1 {/}  {d}rezervat{/}
+   {a:3F} 2 {/}  cuplor de disc flexibil
+   {a:3F} 3 {/}  cuplor de disc fix
+
+  {h}Durate{/}
+
+   transfer DMA obisnuit    {c}5{/} perioade de 210 ns = {c}1,05 us{/} (fara ready)
+   reimprospatare           {c}4{/} perioade de 210 ns = {c}840 ns{/}, la aprox. 15 us
+   registre pagina DMA      adresele {c}080 - 083{/} ([[harta-ie|harta I/E]])
+
+  Tipul controlorului DMA se alege prin strap-uri S12 - S15
+  ([[comutatoare|microintrerupatoare]]).
+
+  {d}Vezi si:{/} [[canal-semnale|Semnale DRQ, DACK, IRQ]]  [[harta-ie|Harta I/E]]  [[placa-baza|Placa de baza]]
+         [[hardware|Hardware]]
+  Carte tehnica: [[pag:12|pag. 12]] [[pag:19|pag. 19]] [[pag:21|pag. 21]]

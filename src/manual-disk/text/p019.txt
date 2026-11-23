@@ -1,0 +1,52 @@
+                    TABELUL ADRESELOR DE INTRARE/IESIRE
+---------------------------------------------------------------------------
+  000-00F                     Controlor DMA I8237A-5 (I8257)
+  020-021                     Controlor intreruperi I8259A
+  040-043                     Timer I8253-5
+  060-063                     Interfata paralela I8255A
+  080-083                     Registre pagina DMA
+  0AX                         Registru NMI
+  0CX                         Rezervat
+  0FX                         Rezervat
+  200-20F                     Cuplor joystick
+  210-217                     Unitate de extensie
+  220-24F                     Rezervat
+  250-25F                     Cuplor de comunicatie seriala asincrona
+  260-26F                     Cuplor de comunicatie seriala asincrona
+                              (extensie)
+  278-27F                     Cuplor de imprimanta paralela (extensie)
+  2F8-2FF                     Rezervat
+  300-31F                     Extensie prototip
+  320-32F                     Cuplor de disc fix (Winchester)
+  378-37F                     Cuplor de imprimanta paralela
+  380-38F                     Cuplor de comunicatie seriala sincrona SDLC
+  3A0-3AF                     Rezervat
+  3B0-3BF                     Cuplor  de afisaj grafic  monocrom  de  mare
+                              rezolutie (MDA)
+  3C0-3CF                     Rezervat
+  3D0-3DF                     Cuplor  de  afisaj  grafic  color  de  medie
+                              rezolutie (CGA)
+  3E0-3E7                     Rezervat
+  3F0-3F7                     Cuplor de disc flexibil
+  3F8-3FF                     Rezervat
+---------------------------------------------------------------------------
+
+
+
+                       LISTA INTRERUPERILOR HARDWARE
+---------------------------------------------------------------------------
+     Nivel               Utilizare
+---------------------------------------------------------------------------
+     NMI                 Eroare de paritate
+      0                  Timer
+      1                  Tastatura
+      2                  Rezervat
+      3                  Cuplor de comunicatie seriala asincrona (extensie)
+                         Cuplor   de  comunicatie  seriala  sincrona   SDLC
+                         (extensie)
+      4                  Cuplor de comunicatie seriala asincrona
+                         Cuplor de comunicatie seriala sincrona SDLC
+      5                  Cuplor de disc fix (Winchester)
+      6                  Cuplor de disc flexibil
+      7                  Cuplor de imprimanta paralela
+---------------------------------------------------------------------------

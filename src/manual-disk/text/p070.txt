@@ -1,0 +1,44 @@
+     {b}3.8.2. Unitatile de disc flexibil de 8 inch{/b}
+
+     Unitatile de disc flexibil de 8 inch sint exterioare echipamentului si
+au  surse  de alimentare proprii.  Ansamblul unitate de disc flexibil de  8
+inch  si sursa de alimentare poarta numele de UDF-102A si este fabricat  de
+IEPER.
+     Unitatile  de  disc flexibil de 8 inch din  componenta  subansamblului
+UDF-102A sint simpla fata,  cu 77 de piste si sint folosite numai in  dubla
+densitate cu modulare in frecventa modificata (MFM).
+     Cuplarea  subansamblului UDF-102A se realizeaza prin intermediul  unui
+cablu  de legatura cuplat la conectorul de 25 contacte accesibil pe  panoul
+spate  al  echipamentului  (vezi  3.2.2.).   Configuratia  conectorului  de
+interfata al subansamblului UDF-102A este urmatoarea:
+
+     -----------------------------------------------------------
+     |Pin conector|Denumire semnal|Pin conector|Denumire semnal|
+     -----------------------------------------------------------
+     |      1     | GND           |     27     | GND           |
+     |      2     | HEAD LOAD     |     28     | SELECT 1      |
+     |      3     | GND           |     29     | GND           |
+     |      4     | INDEX         |     30     | SELECT 3      |
+     |      5     | GND           |     31     | GND           |
+     |      6     | SEEK/STEP     |     32     | READY 1       |
+     |      7     | GND           |     33     | GND           |
+     |      8     | WRITE ENABLE  |     34     | -             |
+     |      9     | GND           |     35     | -             |
+     |     10     | SELECT 0      |     36     | -             |
+     |     11     | GND           |     37     | -             |
+     |     12     | SELECT 2      |     38     | FAULT RESET   |
+     |     13     | GND           |     39     | GND           |
+     |     14     | READY 0       |     40     | WRITE FAULT   |
+     |     15     | GND           |     41     | GND           |
+     |     16     | READY 2       |     42     | -             |
+     |     17     | GND           |     43     | -             |
+     |     18     | READ DATA     |     44     | -             |
+     |     19     | GND           |     45     | -             |
+     |     20     | TRACK 0       |     46     | -             |
+     |     21     | GND           |     47     | GND           |
+     |     22     | LOW CURRENT   |     48     | WRITE PROTECT |
+     |     23     | GND           |     49     | GND           |
+     |     24     | DIRECTION     |     50     | READY 3       |
+     |     25     | GND           |            |               |
+     |     26     | WRITE DATA    |            |               |
+     -----------------------------------------------------------

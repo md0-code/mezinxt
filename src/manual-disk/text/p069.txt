@@ -1,0 +1,51 @@
+     Conectorul  de alimentare al unitatilor de disc flexibil de  5,25 inch
+are urmatoarea configuratie:
+
+     -------------------------------
+     | Pin conector |   Tensiune   |
+     -------------------------------
+     |      1       |    +12V      |
+     |      2       | GND (pt.+12V)|
+     |      3       | GND (pt.+ 5V)|
+     |      4       |    + 5V      |
+     -------------------------------
+
+     Unitatile de disc flexibil de 5,25 inch exterioare echipamentului sint
+prevazute cu sursa de alimentare proprie.  Ansamblul unitate de disc flexi-
+bil  de 5,25 inch si sursa de alimentare aferenta poarta numele de  UDF-201
+si este fabricat in IEPER.
+     Cuplarea  subansamblului  UDF-201 se realizeaza prin intermediul  unui
+cablu  de legatura cuplat la conectorul de 25 contacte accesibil pe  panoul
+spate  al  echipamentului  (vezi  3.2.2.).   Configuratia  conectorului  de
+interfata al subansamblului UDF-201 este urmatoarea:
+
+     --------------------------------
+     | Pin conector |Denumire semnal|
+     --------------------------------
+     |      1       | READY         |
+     |      2       |  -            |
+     |      3       |  -            |
+     |      4       |  -            |
+     |      5       | TRACK 0       |
+     |      6       |  -            |
+     |      7       |  -            |
+     |      8       | SELECT 2      |
+     |      9       | SELECT 3      |
+     |     10       | WRITE PROTECT |
+     |     11       | SEEK/STEP     |
+     |     12       |  -            |
+     |     13       | READ DATA     |
+     |     14       | WRITE DATA    |
+     |     15       | INDEX         |
+     |     16       | WRITE ENABLE  |
+     |     17       |  -            |
+     |     18       | DIRECTION     |
+     |     19       | SIDE SELECT   |
+     |              | (HEAD LOAD)   |
+     |     20       |  -            |
+     |     21       |  -            |
+     |     22       | MOTOR ON 2    |
+     |     23       | MOTOR ON 3    |
+     |     24       | GND           |
+     |     25       | GND           |
+     --------------------------------

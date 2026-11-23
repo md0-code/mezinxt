@@ -1,0 +1,54 @@
+necesara,  ea  realizind  la nivel hardware deblocarea circuitului  Z80-SIO
+prin generarea semnalelor specifice (IORQ si M1) unui ciclu de recunoastere
+a intreruperii de catre microprocesor.
+     Selectia adresei cuplorului  pentru comunicatia seriala este stabilita
+prin microintrerupatoare,  cuplorul putind raspunde la adresele 250H   25FH
+sau  260H  - 26FH.  Cuplorul  pentru comunicatia  seriala  este  inclus  in
+configuratia  de baza a produsului la adresele  250H  - 25FH.  Configuratia
+microintrerupatoarelor  de selectie a adresei cuplorului este prezentata in
+tabelul urmator:
+
+     -------------------------------------------
+     |Adresa cuplor| SW13 | SW14 |  Nivel de   |
+     |   (hexa)    |      |      | intrerupere |
+     -------------------------------------------
+     | 250H - 25FH |  ON  |  OFF |    IRQ4     |
+     | 260H - 26FH |  OFF |  ON  |    IRQ3     |
+     -------------------------------------------
+
+     Cuplorul  pentru comunicatia seriala contine doua tipuri de  interfete
+cu  liniile  de comunicatie:  standard RS-232-C (CCITT-V.24)  si  bucla  de
+curent  (20 mA).  Configuratia microintrerupatoarelor de selectie a tipului
+interfetei cu liniile de comunicatie este prezentata in tabelul urmator:
+
+     ---------------------------------------
+     |             |  CANAL A  |  CANAL B  |
+     |Tip interfata|-----------------------|
+     |             | SW1 | SW2 | SW7 | SW8 |
+     ---------------------------------------
+     | CCITT-V.24  | OFF | ON  | OFF | ON  |
+     | Bucla curent| ON  | OFF | ON  | OFF |
+     ---------------------------------------
+
+     Cuplorul  pentru comunicatia seriala este conceput pentru a  lucra  in
+special in mod asincron dar admite si modul de lucru sincron. In acest scop
+a  fost  creata posibilitatea utilizarii unui ceas de  comunicatie  extern
+generat de modem.
+     Tipul  de  circuit Z80-SIO folosit,  prezinta intrari  de  ceasuri  de
+emisie/receptie  separate  pentru  canalul A si o singura intrare  de  ceas
+pentru canalul B.  De aceea, in mod sincron, canalul A va primi atit ceasul
+de emisie cit si cel de receptie din cupla de modem iar canalul B va  primi
+un  singur  ceas  de  receptie de pe pinul 17 al  cuplei  de  interfata  cu
+modemul   Configuratia  microintrerupatoarelor  de selectie a  ceasului  de
+comunicatie este prezentata in tabelul urmator:
+
+     ---------------------------------------------------
+     |   Ceas de   |        CANAL A        |  CANAL B  |
+     | comunicatie |-----------------------------------|
+     |             | SW3 | SW4 | SW5 | SW6 | SW9 | SW10|
+     ---------------------------------------------------
+     |   intern    | OFF | ON  | OFF | ON  | OFF | ON  |
+     |   extern    | ON  | OFF | ON  | OFF | ON  | OFF |
+     ---------------------------------------------------
+     Nota:  ON  indica microintrerupator inchis;
+            OFF indica microintrerupator deschis.

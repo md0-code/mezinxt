@@ -1,0 +1,54 @@
+                                  {b}ANEXA 2{/b}
+
+
+               {b}INSTRUCTIUNILE MICROPROCESORULUI I8086/I8088{/b}
+
+
+PREFIXUL SEGMENTULUI DE "OVERRIDE"
+-----------------------
+|0  0  1  reg  1  1  0|
+-----------------------
+Nota: reg selecteaza registrul segment;
+      reg = 00 pentru ES;
+      reg = 01 pentru CS;
+      reg = 10 pentru SS;
+      reg = 11 pentru DS.
+
+UTILIZAREA SEGMENTULUI DE "OVERRIDE"
+---------------------------------------------------------------------------
+Registru operand                             Implicit          Cu prefix de
+                                                               "override"
+---------------------------------------------------------------------------
+IP (Adresa codului)                             CS             Niciodata
+SP (Adresa stivei)                              SS             Niciodata
+BP (Adresa stivei sau marker-ul stivei)         SS      BP+DS sau ES sau CS
+SI sau DI (sirurile nu sint incluse)            DS             ES,SS sau CS
+SI (adresa sursei implicita pentru siruri)      DS             ES,SS sau CS
+DI (adresa destinatiei implicita pentru siruri) ES             Niciodata
+---------------------------------------------------------------------------
+
+     {b}MOV{/b} = Move
+     Registru/memorie catre/de la registru
+     ---------------------------------
+     |1 0 0 0 1 0 d w | mod  reg  r/m|
+     ---------------------------------
+
+     Imediat catre registru/memorie
+     ------------------------------------------------------------
+     |1 0 0 0 0 1 1 w | mod  0 0 0  r/m | date | date daca w = 1|
+     ------------------------------------------------------------
+
+     Imediat catre registru
+     ----------------------------------------
+     |1 0 1 1 w reg | date | date daca w = 1|
+     ----------------------------------------
+
+     Memorie catre acumulator
+     -----------------------------------------
+     |1 0 1 0 0 0 0 w | adr. inf. | adr. sup.|
+     -----------------------------------------
+
+     Acumulator catre memorie
+     -----------------------------------------
+     |1 0 1 0 0 0 1 w | adr. inf. | adr. sup.|
+     -----------------------------------------

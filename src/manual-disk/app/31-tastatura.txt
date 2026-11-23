@@ -1,0 +1,276 @@
+@doc coduri-taste | software | Coduri de scanare: cele 83 de taste
+  Tastatura este seriala, cu 83 de taste: fiecare tasta da un {b}cod de scanare{/}
+  la apasare si altul la eliberare. In desen, sub fiecare tasta: codul de
+  scanare, in hexa. Pe tasta: simbolul cu {b}Shift{/} si cel fara.
+
+  {a:30}  {/} taste speciale   {a:70}  {/} taste obisnuite   {a:60}  {/} taste de functii
+
+  {h}Gruparea centrala{/}
+
+  {a:30}ESC{/} {a:70}!1 {/} {a:70}@2 {/} {a:70}#3 {/} {a:70}$4 {/} {a:70}%5 {/} {a:70}^6 {/} {a:70}&7 {/} {a:70}*8 {/} {a:70}(9 {/} {a:70})0 {/} {a:70}_- {/} {a:70}+= {/} {a:30}   BS    {/}
+  {c}01 {/} {c}02 {/} {c}03 {/} {c}04 {/} {c}05 {/} {c}06 {/} {c}07 {/} {c}08 {/} {c}09 {/} {c}0A {/} {c}0B {/} {c}0C {/} {c}0D {/} {c}   0E    {/}
+  {a:30} TAB {/} {a:70} Q {/} {a:70} W {/} {a:70} E {/} {a:70} R {/} {a:70} T {/} {a:70} Y {/} {a:70} U {/} {a:70} I {/} {a:70} O {/} {a:70} P {/} {a:70}{(}[ {/} {a:70}{)}] {/} {a:30} ENTER {/}
+  {c} 0F  {/} {c}10 {/} {c}11 {/} {c}12 {/} {c}13 {/} {c}14 {/} {c}15 {/} {c}16 {/} {c}17 {/} {c}18 {/} {c}19 {/} {c}1A {/} {c}1B {/} {c}  1C   {/}
+  {a:30}CTRL {/} {a:70} A {/} {a:70} S {/} {a:70} D {/} {a:70} F {/} {a:70} G {/} {a:70} H {/} {a:70} J {/} {a:70} K {/} {a:70} L {/} {a:70}:; {/} {a:70}"' {/} {a:70}~` {/} {a:30}       {/}
+  {c} 1D  {/} {c}1E {/} {c}1F {/} {c}20 {/} {c}21 {/} {c}22 {/} {c}23 {/} {c}24 {/} {c}25 {/} {c}26 {/} {c}27 {/} {c}28 {/} {c}29 {/} {a:30}       {/}
+  {a:30}SHIFT{/} {a:70}|\ {/} {a:70} Z {/} {a:70} X {/} {a:70} C {/} {a:70} V {/} {a:70} B {/} {a:70} N {/} {a:70} M {/} {a:70}<, {/} {a:70}>. {/} {a:70}?/ {/} {a:30}SHIFT{/} {a:30}PRSC*{/}
+  {c} 2A  {/} {c}2B {/} {c}2C {/} {c}2D {/} {c}2E {/} {c}2F {/} {c}30 {/} {c}31 {/} {c}32 {/} {c}33 {/} {c}34 {/} {c}35 {/} {c} 36  {/} {c} 37  {/}
+  {a:30}  ALT  {/} {a:70}               SPACE               {/} {a:30} CAPS  {/}
+  {c}  38   {/} {c}                39                 {/} {c}  3A   {/}
+
+  {h}Functii si bloc numeric{/}
+
+  {a:60} F1 {/} {a:60} F2 {/}     {a:30} NUM {/} {a:30}SCRL {/}
+  {a:60}    {/} {a:60}    {/}     {a:30}LOCK {/} {a:30}LOCK {/}
+  {c} 3B {/} {c} 3C {/}     {c} 45  {/} {c} 46  {/}
+  {a:60} F3 {/} {a:60} F4 {/}     {a:70}  7  {/} {a:70}  8  {/} {a:70}  9  {/} {a:70}  -  {/}
+  {a:60}    {/} {a:60}    {/}     {a:70}HOME {/} {a:70}  ^  {/} {a:70}PG UP{/} {a:70}     {/}
+  {c} 3D {/} {c} 3E {/}     {c} 47  {/} {c} 48  {/} {c} 49  {/} {c} 4A  {/}
+  {a:60} F5 {/} {a:60} F6 {/}     {a:70}  4  {/} {a:70}  5  {/} {a:70}  6  {/} {a:70}  +  {/}
+  {a:60}    {/} {a:60}    {/}     {a:70} <-  {/} {a:70}     {/} {a:70} ->  {/} {a:70}     {/}
+  {c} 3F {/} {c} 40 {/}     {c} 4B  {/} {c} 4C  {/} {c} 4D  {/} {c} 4E  {/}
+  {a:60} F7 {/} {a:60} F8 {/}     {a:70}  1  {/} {a:70}  2  {/} {a:70}  3  {/}
+  {a:60}    {/} {a:60}    {/}     {a:70} END {/} {a:70}  v  {/} {a:70}PG DN{/}
+  {c} 41 {/} {c} 42 {/}     {c} 4F  {/} {c} 50  {/} {c} 51  {/}
+  {a:60} F9 {/} {a:60}F10 {/}     {a:70}     0     {/} {a:70}  .  {/}
+  {a:60}    {/} {a:60}    {/}     {a:70}    INS    {/} {a:70} DEL {/}
+  {c} 43 {/} {c} 44 {/}     {c}    52     {/} {c} 53  {/}
+
+  {h}Din coduri de scanare in ASCII extins{/}
+
+  Rutina tastaturii din BIOS transforma codurile de scanare in "ASCII
+  extins": coduri de un octet (0 - 255), coduri extinse pentru functii
+  speciale ([[coduri-extinse|coduri extinse]]) si functii tratate intern ([[stari-speciale|stari speciale]]).
+  Codul caracterului se intoarce in {c}AL{/}; {c}-1{/} inseamna ca tasta cu starea
+  respectiva este eliminata de rutina.
+
+   {b}Tasta{/}                    {b}fara Shift{/}  {b}cu Shift{/}  {b}Ctrl{/}       {b}Alt{/}
+   Esc                      Esc         Esc       Esc        -1
+   litere A - Z             a - z       A - Z     1 - 26     extins
+   cifre 1 - 0 {d}(2-11){/}       cifra       semnul    -1 {d}(*){/}     extins
+   Bs {d}(14){/}                  BS (008)    BS (008)  DEL (127)  -1
+   Enter {d}(28){/}               CR          CR        LF (010)   -1
+   Spatiu {d}(57){/}              SP          SP        SP         SP
+   F1 - F10                 Nul         Nul       Nul        Nul
+   Ctrl, Shift, Alt, Caps,  -1          -1        -1         -1
+   Num, Scrl Lock{/}           {/}            {/}          {/}           {/}
+
+  {h}Ctrl + litera, semne{/}  {d}(nume si cod){/}
+
+   {c}A{/} SOH(001)  {c}B{/} STX(002)  {c}C{/} ETX(003)  {c}D{/} EOT(004)  {c}E{/} ENQ(005)
+   {c}F{/} ACK(006)  {c}G{/} BEL(007)  {c}H{/} BS(008)   {c}I{/} HT(009)   {c}J{/} LF(010)
+   {c}K{/} VT(011)   {c}L{/} FF(012)   {c}M{/} CR(013)   {c}N{/} SO(014)   {c}O{/} SI(015)
+   {c}P{/} DLE(016)  {c}Q{/} DC1(017)  {c}R{/} DC2(018)  {c}S{/} DC3(019)  {c}T{/} DC4(020)
+   {c}U{/} NAK(021)  {c}V{/} SYN(002)  {c}W{/} ETB(023)  {c}X{/} CAN(024)  {c}Y{/} EM(025)
+   {c}Z{/} SUB(026)
+   {c}2{/} Nul(000)  {c}6{/} RS(030)   {c}-{/} US(031)   {c}[{/} Esc(027)  {c}]{/} GS(029)
+   {c}\{/} FS(028)   {d}(*) celelalte combinatii Ctrl: -1{/}
+
+  {d}Pentru restul tastelor (bloc numeric, F1-F10 cu Shift/Ctrl/Alt) vezi{/}
+  [[coduri-extinse|coduri extinse]]. Tastele {b}71 - 83{/} dau cifre cu Num Lock sau Shift; Shift
+  inverseaza temporar starea Num Lock.
+
+  {d}Vezi si:{/} [[coduri-extinse|Coduri extinse]]  [[stari-speciale|Stari speciale]]  [[caractere|Caractere]]
+         [[tastatura-hw|Tastatura (hardware)]]  [[test:tastatura|Test tastatura]]  [[software|Software]]
+  Carte tehnica: [[pag:65|pag. 65]] [[pag:66|pag. 66]] [[pag:67|pag. 67]] [[pag:81|pag. 81]] [[pag:82|pag. 82]] [[pag:83|pag. 83]]
+
+@doc coduri-extinse | software | Coduri extinse
+  Pentru functii care nu se pot reprezenta in ASCII standard, rutina intoarce
+  in {c}AL{/} codul {c}00{/} (Nul): programul trebuie sa citeasca un {b}al doilea cod{/}, de
+  obicei (nu intotdeauna) codul de scanare al primei taste apasate; el vine
+  in {c}AH{/}.
+
+   {b}Al doilea cod  Functia{/}
+   {c}3{/}              caracter nul
+   {c}15{/}             |<--- (tab inapoi)
+   {c}16 - 25{/}        Alt Q, W, E, R, T, Y, U, I, O, P
+   {c}30 - 38{/}        Alt A, S, D, F, G, H, J, K, L
+   {c}44 - 50{/}        Alt Z, X, C, V, B, N, M
+   {c}59 - 68{/}        caractere de baza pentru tastele de functii F1 - F10
+   {c}71{/}             Home
+   {c}72{/}             ^ (cursor sus)
+   {c}73{/}             Pagina sus si home cursor
+   {c}75{/}             <- (cursor stinga)
+   {c}77{/}             -> (cursor dreapta)
+   {c}79{/}             End
+   {c}80{/}             v (cursor jos)
+   {c}81{/}             Pagina jos si home cursor
+   {c}82{/}             Ins (Insert)
+   {c}83{/}             Del (Delete)
+   {c}84 - 93{/}        F11 - F20
+   {c}94 - 103{/}       F21 - F30 (Ctrl F1 - F10)
+   {c}104 - 113{/}      F31 - F40 (Alt F1 - F10)
+   {c}114{/}            Ctrl PrSc (start/stop ecou catre imprimanta)
+   {c}115{/}            Ctrl <- (cuvint de intoarcere)
+   {c}116{/}            Ctrl -> (cuvint de avansare)
+   {c}117{/}            Ctrl End (sterge pina la sfirsit de linie, EOL)
+   {c}118{/}            Ctrl PgDn (sterge pina la sfirsitul ecranului, EOS)
+   {c}119{/}            Ctrl Home (Clear Screen si Home)
+   {c}120 - 131{/}      Alt 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, -, = (tastele 2 - 13)
+   {c}132{/}            Ctrl PgUp (primele 25 de linii ale textului si home cursor)
+
+  {h}Blocul numeric, tastele 71 - 83{/}
+
+  Cu {b}Num Lock{/} (sau Shift) dau cifra; altfel dau codul extins al functiei.
+
+   {b}Tasta  Num Lock  Normal{/} {d}(cod extins){/}  {b}Ctrl{/}
+   {c}71{/}     7         Home                 sterge ecran
+   {c}72{/}     8         ^                    -1
+   {c}73{/}     9         Pagina sus           la inceput de text si Home
+   {c}74{/}     -         -                    -1
+   {c}75{/}     4         <-                   cuvint inapoi
+   {c}76{/}     5         -1                   -1
+   {c}77{/}     6         ->                   cuvint inainte
+   {c}78{/}     +         +                    -1
+   {c}79{/}     1         End                  sterge pina la EOL
+   {c}80{/}     2         v                    -1
+   {c}81{/}     3         Pagina jos           sterge pina la EOS
+   {c}82{/}     0         Ins                  -1
+   {c}83{/}     .         Del                  {d}utilizare speciala{/}
+   {d}Alt: -1 la toate tastele 71 - 82.{/}
+
+  {d}Vezi si:{/} [[coduri-taste|Coduri de scanare]]  [[stari-speciale|Stari speciale]]
+         [[utilizare-taste|Utilizarea tastaturii]]  [[test:tastatura|Test tastatura]]  [[software|Software]]
+  Carte tehnica: [[pag:83|pag. 83]] [[pag:84|pag. 84]]
+
+@doc stari-speciale | software | Stari shiftate si moduri speciale
+  Majoritatea starilor de shift se trateaza in rutina tastaturii, invizibil
+  pentru program; starea curenta e disponibila printr-un apel la un punct de
+  intrare al rutinei din ROM.
+
+  {h}Tastele de shift{/}  {d}numerele sint pozitiile tastelor{/}
+
+   {a:70} Shift {/}      {c}2-13, 15-27, 30-41, 43-53, 55, 59-68{/} in majuscule (sau
+                in caractere de baza, cu Caps Lock); inverseaza temporar
+                starea Num Lock a tastelor {c}71-73, 75, 77, 79-83{/}
+   {a:70} Ctrl {/}       {c}3, 7, 12, 14, 16-28, 30-38, 43-50, 55, 59-71, 73, 75,{/}
+                {c}77, 79, 81{/} in starea Ctrl
+   {a:70} Alt {/}        {c}2-13, 16-25, 30-38, 44-50, 59-60{/} in starea Alt
+   {a:70} Caps Lock {/}  {c}16-25, 30-38, 44-50{/} in majuscule; a doua apasare
+                inverseaza; tratata intern
+   {a:70} Scrl Lock {/}  tastele de cursor incadreaza textul intr-o fereastra in
+                loc sa mute cursorul; rutina retine doar starea, functia
+                o executa sistemul sau aplicatia; a doua apasare inverseaza
+
+  {h}Introducerea unui cod de caracter cu Alt{/}
+
+  Se tine apasata {b}Alt{/} si se tasteaza valoarea zecimala a codului (0 - 255) cu
+  tastele numerice {c}71-73, 75-77, 79-82{/}; apoi se elibereaza Alt. Peste trei
+  cifre rezulta un numar modulo 256. Cele trei cifre se transmit ca un cod
+  de caracter; Alt este tratata intern.
+
+  {h}Prioritati{/}
+
+  Daca sint apasate Alt, Ctrl si Shift si numai una e valida: {c}1{/} Alt, {c}2{/} Ctrl,
+  {c}3{/} Shift. Singura combinatie valida este Alt si Ctrl, folosita pentru
+  initializarea sistemului.
+
+  {h}Moduri de lucru speciale{/}
+
+   {a:70} Alt {/}{b}+{/}{a:70} Ctrl {/}{b}+{/}{a:70} Del {/}   {b}initializare sistem{/}
+        echivalentul unei initializari sau reincarcari, realizat intern
+        la tastatura
+   {a:70} Ctrl {/}{b}+{/}{a:70} C {/}   {b}Break{/}
+        rutina genereaza adresa de intrerupere {c}1BH{/} si intoarce caractere
+        extinse (AL = 00, AH = 00)
+   {a:70} Ctrl {/}{b}+{/}{a:70} Num Lock {/}   {b}pauza{/}
+        intreruperea tastaturii buclaza pina la apasarea oricarei taste,
+        in afara de Num Lock: suspendare transparenta a listarii,
+        tiparirii etc., apoi operatia se reia
+   {a:70} Shift {/}{b}+{/}{a:70} PrSc {/}   {b}tiparire ecran{/} (tasta 55)
+        o intrerupere cheama rutina de tiparire; lucreaza in modurile
+        alfanumeric si grafic, caracterele nerecunoscute se tiparesc ca
+        spatii
+
+  {h}Alte caracteristici{/}
+
+  Rutina tastaturii are buffer-ul propriu, suficient pentru o tastare rapida.
+  Daca se introduce un caracter cind buffer-ul e plin, el este ignorat si
+  se aude un {b}semnal sonor{/}. Nu se afiseaza actiunea tastelor Ctrl, Shift, Alt,
+  Num Lock, Scrl Lock, Caps Lock si Ins.
+
+  Verificarea interactiva a tastelor: [[test:tastatura|Test tastatura]].
+
+  {d}Vezi si:{/} [[utilizare-taste|Utilizarea tastaturii]]  [[coduri-taste|Coduri de scanare]]
+         [[coduri-extinse|Coduri extinse]]  [[test:tastatura|Test tastatura]]  [[software|Software]]
+  Carte tehnica: [[pag:84|pag. 84]] [[pag:85|pag. 85]] [[pag:86|pag. 86]]
+
+@doc utilizare-taste | software | Utilizarea tastaturii
+  Functiile cele mai uzuale, dupa tastele care le dau.
+
+  {h}Functii uzuale{/}
+
+   {b}Functia                        Tasta(e)       Comentariu{/}
+   Cursor in pozitia initiala     {c}Home{/}           editoare, texte
+   Return la menu                 {c}Home{/}           aplicatii cu meniu
+   Cursor sus                     {c}^{/}              editoare de ecran
+   Cursor jos                     {c}v{/}              editoare de ecran
+   Cursor stinga, dreapta         {c}<-  ->{/}         text, comanda
+   Pagina sus (25 linii, home)    {c}PgUp{/}           editoare, texte
+   Pagina jos (25 linii, home)    {c}PgDn{/}           editoare, texte
+   Defilare la sfirsit de pagina  {c}End{/}            cursor la EOL
+   Start/Stop inserare la cursor  {c}Ins{/}            text, comanda
+   Sterge caracter de la cursor   {c}Del{/}            text, comanda
+   Backspace distructiv           {c}<- (14){/}        text, comanda
+   Tab inainte, inapoi            {c}->|  |<-{/}       text
+   Stergere ecran si Home         {c}Ctrl Home{/}      comanda
+   Defilare sus, jos, st., dr.    {c}^ v <- ->{/}      mod scroll lock
+   Sterge pina la EOL             {c}Ctrl End{/}       text, comanda
+   Sterge pina la EOS             {c}Ctrl PgDn{/}      text, comanda
+   Exit/Escape                    {c}Esc{/}            editor, 1 nivel meniu
+   Start/Stop ecou la imprimanta  {c}Ctrl PrSc{/}      oricind
+   Cuvint inainte, inapoi         {c}Ctrl ->  <-{/}    text
+   Fereastra dreapta, stinga      {c}Ctrl ->  <-{/}    texte peste margini
+   Intrare, iesire mod inserare   {c}Ins{/}            editor linie
+   Anulare ora curenta            {c}Esc{/}            comanda, text
+   Suspendare sistem (pauza)      {c}Ctrl Num Lock{/}  reluare: orice tasta
+   Break interrupt                {c}Ctrl C{/}         intrerupe procesul
+   Initializare sistem            {c}Alt Ctrl Del{/}   reincarcare
+   Inceput de text, cursor home   {c}Ctrl PgUp{/}      editoare, texte
+   Functii standard               {c}F1-F10{/}         functii primare
+   Functii secundare              {c}Shift F1-F10{/}   daca 10 nu ajung
+   {/}                               {c}Ctrl F1-F10{/}  
+   {/}                               {c}Alt F1-F10{/}   
+   Functii suplimentare           {c}Alt 2-13{/}       (1-9, 0, -, =)
+   Functii suplimentare           {c}Alt A-Z{/}        initiala functiei
+
+  {h}Functii de ecran speciale pentru editare BASIC{/}
+
+   {b}Functia                                    Tasta{/}
+   Carriage return                            {c}Enter{/}
+   Line feed                                  {c}Ctrl <-{/}
+   Bell                                       {c}Ctrl G{/}
+   Home                                       {c}Home{/}
+   Cursor sus, jos, stinga, dreapta           {c}^  v  <-  ->{/}
+   Cuvint inainte, inapoi                     {c}Ctrl ->  Ctrl <-{/}
+   Inserare, sterge                           {c}Ins  Del{/}
+   Sterge ecran                               {c}Ctrl Home{/}
+   Blocare iesire                             {c}Ctrl Num lock{/}
+   Tab inainte                                {c}->|{/}
+   Opreste executia (break)                   {c}Ctrl Break{/}
+   Sterge linia curenta                       {c}Esc{/}
+   Sterge pina la sfirsit de linie            {c}Ctrl End{/}
+   Pozitioneaza cursorul la sfirsit de linie  {c}End{/}
+
+  {h}Functii speciale DOS{/}
+
+   {b}Functia                             Tasta{/}
+   Pauza                               {c}Ctrl Num Lock{/}
+   Ecou la imprimanta; stop ecou       {c}Ctrl PrSc{/} {d}(tasta 55 in orice situatie){/}
+   Intrerupe functia curenta           {c}Ctrl C{/}
+   Backspace                           {c}<-{/} {d}(tasta 14){/}
+   Line feed                           {c}Ctrl <-{/}
+   Anulare linie                       {c}Esc{/}
+   Copiaza caracter                    {c}F1{/} sau {c}->{/}
+   Copiaza pina se potrivesc           {c}F2{/}
+   Copiaza restul                      {c}F3{/}
+   Salt peste caracter                 {c}Del{/}
+   Salt pina se potrivesc              {c}F4{/}
+   Intrare, iesire mod inserare        {c}Ins{/}
+   Creaza linie noua                   {c}F5{/}
+   Separator de sir in REPLACE         {c}F6{/}
+   Sfirsit linie la intrare tastatura  {c}F6{/}
+
+  {d}Vezi si:{/} [[stari-speciale|Stari speciale]]  [[coduri-extinse|Coduri extinse]]  [[coduri-taste|Coduri]]
+         [[test:tastatura|Test tastatura]]  [[software|Software]]
+  Carte tehnica: [[pag:86|pag. 86]] [[pag:87|pag. 87]] [[pag:88|pag. 88]] [[pag:89|pag. 89]]

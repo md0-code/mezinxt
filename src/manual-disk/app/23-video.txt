@@ -1,0 +1,362 @@
+@doc cuplor-cga | hardware | Cuplor de afisaj grafic color (CGA)
+  Placheta introdusa intr-un conector de extensie; permite cuplarea
+  monitoarelor color sau monocrome de rezolutie medie si mare. Foloseste
+  circuitul {c}MC 6845{/} si genereaza semnale pentru doua interfete video:
+  video-complex alb/negru si RGB (cu semnale TTL, sau de impedanta 75 ohmi);
+  in plus, o interfata pentru creion optic.
+
+  {h}Cele patru moduri de lucru{/}
+
+  {b}Regim        Mod        Puncte/car.  Culori            Memorie{/}
+  alfanumeric  40 x 25    matrice 8x8  16 car. + 8 fond  2.000 octeti
+  alfanumeric  80 x 25    matrice 8x8  16 car. + 8 fond  4.000 octeti
+  grafic       320 x 200  4 culori     fond: 1 din 16    16.000 octeti
+  grafic       640 x 200  2 culori     negru + 1 din 8   16.000 octeti
+
+  {d}Moduri alfanumerice{/}: 40 x 25 pentru monitoare de rezolutie medie, 80 x 25
+  pentru rezolutie mare; caracterul de 7x7 puncte intr-o matrice de 8x8.
+  Monocrom: atribute video invers, blinking, intensificat. Color: 16 culori
+  pentru caractere, 8 pentru fond, blinking la nivel de caracter, culoarea
+  marginii ecranului din cele 16 ([[memorie-ecran|memoria de ecran]]).
+
+  {d}Moduri grafice{/}: 320 x 200 color (fiecare punct are una din 4 culori;
+  fondul una din 16; celelalte 3 dintr-una din doua palete) si 640 x 200
+  monocrom (intreaga memorie de ecran memoreaza punctele: 0 stins, 1 aprins;
+  informatia are una din 8 culori) ([[culori|culori]]).
+
+  Afisarea este neintretesuta, la {c}7,159 MHz{/} sau {c}14,318 MHz{/}, dupa mod.
+
+  {h}Memoria de ecran{/}
+
+  Cuplorul contine {c}32 K{/}octeti RAM la adresele {c}B8000H - BC000H{/}, accesibili
+  direct procesorului ([[harta-memorie|harta memoriei]]).
+   {c}■{/} 40 x 25: 1.000 octeti de caractere + 1.000 de atribute: pina la
+     {c}16{/} ecrane
+   {c}■{/} 80 x 25: pina la {c}8{/} ecrane
+
+  {h}Generatorul de caractere ROM{/}  {d}256 de caractere{/}
+
+  {a:4F}    {a:5F}    {a:2F}                        {a:3F}            {a:6F}            {a:7F}    {a:0F}    {/}
+  {a:4F}    {a:5F}    {a:2F}                        {a:3F}            {a:6F}            {a:7F}    {a:0F}    {/}
+
+   {a:4F}  {/} 16  caractere speciale: elemente de baza pentru jocuri
+   {a:5F}  {/} 15  elemente de editare pentru procesare de texte
+   {a:2F}  {/} 96  setul de caractere ASCII
+   {a:3F}  {/} 48  set de baza pentru limbi straine
+   {a:6F}  {/} 48  prezentare economica: tabele, scheme, diagrame cu linii
+           simple sau duble
+   {a:7F}  {/} 16  caractere grecesti
+   {a:0F}  {/} 16  caractere pentru notatii stiintifice
+
+  {h}Conectorii{/}
+
+  Conectorul de 9 contacte (RGB cu semnal de intensificare) si mufa RCA a
+  semnalului video-complex sint fixate pe un suport metalic si accesibile
+  la spatele echipamentului. Semnalele RGB fara intensificare (75 ohmi) merg
+  printr-un cablu interior la mufe RCA de pe panoul spate.
+
+   {b}RGB{/} {d}9 ct.{/}      {b}Creion optic{/} {d}9 ct., mama{/}
+   {c}1{/} {g}GND{/}          {c}1{/} LPENIN
+   {c}2{/} {g}GND{/}          {c}2{/} {d}-{/}
+   {c}3{/} R            {c}3{/} LPENSW
+   {c}4{/} G            {c}4{/} {g}GND{/}
+   {c}5{/} B            {c}5{/} {g}+5V{/}
+   {c}6{/} I            {c}6{/} {g}+12V{/}
+   {c}7{/} {d}-{/}            {c}7{/} {d}-{/}
+   {c}8{/} HSYNC        {c}8{/} {d}-{/}
+   {c}9{/} VSYNC        {c}9{/} {d}-{/}
+
+  {d}Vezi si:{/} [[registre-cga|Registrele CGA]]  [[memorie-ecran|Memoria de ecran]]  [[culori|Culori]]
+         [[monitor|Monitor]]  [[test:video|Test video]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:43|pag. 43]] [[pag:44|pag. 44]] [[pag:47|pag. 47]]
+
+@doc memorie-ecran | hardware | Memoria de ecran: caractere si puncte
+  {h}Regimul alfanumeric{/}
+
+  Fiecare caracter afisat este definit in memoria de afisare prin {b}doi octeti{/}:
+  codul caracterului si atributul.
+
+     {b} 7  {/} {b} 6  {/} {b} 5  {/} {b} 4  {/} {b} 3  {/} {b} 2  {/} {b} 1  {/} {b} 0  {/}
+    {d}┌────┬────┬────┬────┬────┬────┬────┬────┐{/}
+    {d}│{/} 7  {d}│{/} 6  {d}│{/} 5  {d}│{/} 4  {d}│{/} 3  {d}│{/} 2  {d}│{/} 1  {d}│{/} 0  {d}│{/}
+    {d}└────┴────┴────┴────┴────┴────┴────┴────┘{/}
+  {b}  cod de caracter{/} (octetul par)         {b}atribut{/} (octetul impar)
+
+  {h}Octetul atribut{/}
+     {b} 7  {/} {b} 6  {/} {b} 5  {/} {b} 4  {/} {b} 3  {/} {b} 2  {/} {b} 1  {/} {b} 0  {/}
+    {d}┌────┬────┬────┬────┬────┬────┬────┬────┐{/}
+    {d}│{/} Bk {d}│{/} R  {d}│{/} G  {d}│{/} B  {d}│{/} I  {d}│{/} R  {d}│{/} G  {d}│{/} B  {d}│{/}
+    {d}└────┴────┴────┴────┴────┴────┴────┴────┘{/}
+          {d}└───{/} fond {d}───┘{/}      {d}└─{/} caracter {d}─┘{/}
+   {c}Bk{/} blinking pe caracter      {c}I{/} intensificare pe caracter
+
+   {b}Functia{/}        {b}Bk{/}  {b}fond{/}   {b}I{/}  {b}caracter{/}
+   Normal         Bk  0 0 0  I  1 1 1
+   Video invers   Bk  1 1 1  I  0 0 0
+   Ecran stins    Bk  0 0 0  I  0 0 0
+   Ecran luminos  Bk  1 1 1  I  1 1 1
+
+  Culorile ({b}R G B I{/}) sint la [[culori|culori]]; bitul 5 al registrului de mod
+  ([[registre-cga|registrele CGA]]) schimba rolul bitului Bk.
+
+  {h}Memoria, caracter dupa caracter{/}
+
+  Adresa de inceput se programeaza prin 6845 si trebuie sa fie para.
+
+   {c}B8000H{/}  {d}┌─────────────┐{/}   {d}ecran{/}
+           {d}│{/} caracter A  {d}│{/}   {d}┌──────────────┐{/}
+   {c}B8001H{/}  {d}├─────────────┤{/}   {d}│{/}{b}AB{/}            {d}│{/}
+           {d}│{/} atribut A   {d}│{/}   {d}│              │{/}
+   {c}B8002H{/}  {d}├─────────────┤{/}   {d}│{/}             {b}X{/}{d}│{/}
+           {d}│{/} caracter B  {d}│{/}   {d}└──────────────┘{/}
+   {c}B8003H{/}  {d}├─────────────┤{/}
+           {d}│{/} atribut B   {d}│{/}   {d}caracterele apar pe ecran dupa{/}
+           {d}├─────────────┤{/}   {d}pozitia lor relativa in memorie{/}
+           {d}│{/} ...         {d}│{/}
+           {d}│{/} caracter X  {d}│{/}
+           {d}├─────────────┤{/}
+           {d}│{/} atribut X   {d}│{/}
+           {d}└─────────────┘{/}
+
+  Procesorul si cuplorul au aceeasi prioritate la memoria de ecran, in toate
+  modurile, {r}cu exceptia{/} modului alfanumeric de rezolutie mare: aici procesorul
+  acceseaza memoria numai in cursa inversa de cadre, altfel apar
+  interferente pe ecran.
+
+  {h}Modul grafic 320 x 200{/}  {d}4 puncte intr-un octet{/}
+
+     {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+    {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+    {d}│{/} C1  {d}│{/} C0  {d}│{/} C1  {d}│{/} C0  {d}│{/} C1  {d}│{/} C0  {d}│{/} C1  {d}│{/} C0  {d}│{/}
+    {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+     {d}└{/} primul {d}─┘{/} {d}└{/} al doilea {d}┘{/} {d}└{/} al treilea {d}┘{/} {d}└{/} al patrulea {d}┘{/}
+
+  Memoria grafica (16.000 octeti) are doua zone de 8.000 octeti; la
+  {c}B8000H{/} este punctul din coltul stinga sus al ecranului.
+
+   {c}BBFFF{/}  {d}┌────────────────────────────┐{/}
+          {d}│{/} {d}nefolosita{/}                 {d}│{/}
+   {c}BBF3F{/}  {d}├────────────────────────────┤{/}
+          {d}│{/} {b}linii impare{/} (1,3,5...199) {d}│{/}  8.000 octeti
+   {c}BA000{/}  {d}├────────────────────────────┤{/}
+          {d}│{/} {d}nefolosita{/}                 {d}│{/}
+   {c}B9F3F{/}  {d}├────────────────────────────┤{/}
+          {d}│{/} {b}linii pare{/} (0,2,4...198)   {d}│{/}  8.000 octeti
+   {c}B8000{/}  {d}└────────────────────────────┘{/}
+
+  {h}Modul grafic 640 x 200{/}  {d}un bit = un punct{/}
+
+     {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+    {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+    {d}│{/}  1  {d}│{/}  2  {d}│{/}  3  {d}│{/}  4  {d}│{/}  5  {d}│{/}  6  {d}│{/}  7  {d}│{/}  8  {d}│{/}
+    {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+  {d}cifrele din casute: ordinea afisarii celor 8 puncte (bitul 7 primul){/}
+
+  {d}Vezi si:{/} [[cuplor-cga|Cuplor CGA]]  [[registre-cga|Registrele CGA]]  [[culori|Culori]]
+         [[test:video|Test video]]  [[harta-memorie|Harta memoriei]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:44|pag. 44]] [[pag:45|pag. 45]] [[pag:46|pag. 46]] [[pag:47|pag. 47]] [[pag:48|pag. 48]] [[pag:49|pag. 49]]
+
+@doc registre-cga | hardware | Registrele cuplorului CGA
+  {h}Porturile{/}
+
+   {b}3D8{/}       scriere  registrul de comanda a modului de lucru
+   {b}3D9{/}       scriere  registrul de selectie a culorii
+   {b}3DA{/}       citire   registrul de stare
+   {b}3DB{/}       {/}         reset al bistabilului creionului optic
+   {b}3DC{/}       {/}         set al bistabilului creionului optic
+   {b}3D4{/}       {/}         registrul index al 6845
+   {b}3D5{/}       {/}         registrul de date al 6845
+   {b}3D0, 3D1{/}  {/}         registrele 6845 (bitii A2 si A1 ai adresei: indiferenti)
+
+  {h}Registrul de mod{/}  {d}3D8H, 6 biti, numai scriere (OUT){/}
+
+    {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+   {d}┌─────┬─────┬─────┬─────┬─────┬─────┐{/}
+   {d}│{/} blk {d}│{/} 640 {d}│{/} vid {d}│{/}mono {d}│{/} gr  {d}│{/} 80  {d}│{/}
+   {d}└─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}0{/} 1 = alfanumeric 80x25; 0 = 40x25
+   {c}1{/} 1 = grafic 320x200; 0 = alfanumeric
+   {c}2{/} 1 = monocrom; 0 = color
+   {c}3{/} 1 = activeaza semnalul video (dezactivat pe timpul schimbarii modului)
+   {c}4{/} 1 = grafic monocrom 640x200; culoarea punctelor din registrul 3D9
+   {c}5{/} 1 = schimba intensitatea fondului in combinatie cu atributul
+       blinking: cind bitul cel mai semnificativ al atributului e 0 sint
+       disponibile cele 16 culori de fond; in mod normal e 1 (blinking)
+
+  Valorile bitilor {b}0 1 2 3 4 5{/}, in aceasta ordine ({b}Z{/} = indiferent):
+
+   {c}0 0 1 1 0 1{/}  alfanumeric monocrom 40x25
+   {c}0 0 0 1 0 1{/}  alfanumeric color 40x25
+   {c}1 0 1 1 0 1{/}  alfanumeric monocrom 80x25
+   {c}1 0 0 1 0 1{/}  alfanumeric color 80x25
+   {c}0 1 1 1 0 Z{/}  grafic monocrom 320x200
+   {c}0 1 0 1 0 Z{/}  grafic color 320x200
+   {c}0 1 1 1 1 Z{/}  grafic monocrom 640x200
+
+  {h}Registrul de selectie a culorii{/}  {d}3D9H, 6 biti, numai scriere{/}
+
+    {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+   {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+   {d}│{/}  -  {d}│{/}  -  {d}│{/} pal {d}│{/} int {d}│{/}  I  {d}│{/}  R  {d}│{/}  G  {d}│{/}  B  {d}│{/}
+   {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}0 - 3{/}  {b}B G R I{/}: culoarea marginii ecranului in alfanumeric 40x25;
+         culoarea fondului in grafic 320x200 (C0, C1); culoarea datelor
+         in grafic 640x200
+   {c}4{/}  1 = setul de culori intensificate alternate in modul grafic;
+        selecteaza si culoarea fondului in modul alfanumeric
+   {c}5{/}  numai in grafic 320x200, selecteaza setul de culori activ:
+        {c}1{/} cyan / magenta / alb;  {c}0{/} verde / rosu / maron
+   {c}6, 7{/}  nefolosite
+   Culorile punctelor: [[culori|culori]].
+
+  {h}Registrul de stare{/}  {d}3DAH, 4 biti, numai citire (IN){/}
+
+    {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+   {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+   {d}│{/}  -  {d}│{/}  -  {d}│{/}  -  {d}│{/}  -  {d}│{/}sinc {d}│{/} CO  {d}│{/} LP  {d}│{/} act {d}│{/}
+   {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}0{/}  afisare activa: cind e activ, procesorul poate accesa memoria de
+        ecran fara a interfera cu afisarea
+   {c}1{/}  validare creion optic: bistabilul este initializat la punerea
+        sub tensiune si dezactivat de o instructiune la portul 3DBH
+   {c}2{/}  starea comutatorului creionului optic; 0 = comutator activ
+   {c}3{/}  sincronizare cadre: activ = ecranul este pe cursa inversa de cadre
+
+  {h}Controlorul MC 6845{/}  {d}19 registre interne{/}
+
+  Registrul index (3D4H) si registrul de date (3D5H); valorile fiecarui
+  registru, pentru fiecare regim: [[mc6845|MC 6845]].
+
+  {h}Schimbarea modului de lucru{/}
+
+   {c}1{/}  se alege modul de lucru
+   {c}2{/}  se sterge bitul de activare a semnalului video din registrul de mod
+   {c}3{/}  se programeaza controlorul MC 6845 pentru modul respectiv
+   {c}4{/}  se incarca registrele de culoare si de mod (inclusiv bitul de
+      activare a semnalului video)
+
+  {d}Vezi si:{/} [[mc6845|MC 6845]]  [[cuplor-cga|Cuplor CGA]]  [[memorie-ecran|Memoria de ecran]]
+         [[culori|Culori]]  [[test:video|Test video]]  [[harta-ie|Harta I/E]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:49|pag. 49]] [[pag:51|pag. 51]] [[pag:52|pag. 52]] [[pag:53|pag. 53]] [[pag:54|pag. 54]]
+
+@doc mc6845 | hardware | Controlorul de ecran MC 6845
+  {c}19{/} registre interne, adresabile prin portul index/date ([[registre-cga|registrele CGA]]).
+
+  Registrul index (scriere; OUT la {c}3D4H{/}, ultimii 5 biti) indica pe cel
+  dintre celelalte {c}18{/}; apoi registrul de date (OUT la {c}3D5H{/}) se incarca cu
+  valoarea. Valorile (hexa) pentru fiecare regim:
+
+   {b}Reg     Registru                       Unitate  C/S  40x25  80x25  grafic{/}
+   {c}0{/}  R0   orizontal total                car.     S    38     71     38
+   {c}1{/}  R1   orizontal afisat               car.     S    28     50     28
+   {c}2{/}  R2   sincroniz. pe linii, pozitie   car.     S    2D     5A     2D
+   {c}3{/}  R3   sincroniz. pe linii, latime    car.     S    0A     0A     0A
+   {c}4{/}  R4   vertical total                 rinduri  S    1F     1F     7F
+   {c}5{/}  R5   vertical total ajustat         linii    S    06     06     06
+   {c}6{/}  R6   vertical afisat                rinduri  S    19     19     64
+   {c}7{/}  R7   sincroniz. verticala, pozitie  rinduri  S    1C     1C     70
+   {c}8{/}  R8   mod intretesut                 -        S    02     02     02
+   {c}9{/}  R9   adresa max. linii baleiate     linii    S    07     07     01
+   {c}A{/}  R10  inceput cursor                 linii    S    06     06     06
+   {c}B{/}  R11  sfirsit cursor                 linii    S    07     07     07
+   {c}C{/}  R12  adresa de inceput (H)          -        S    00     00     00
+   {c}D{/}  R13  adresa de inceput (L)          -        S    00     00     00
+   {c}E{/}  R14  adresa cursor (H)              -        C/S  XX     XX     XX
+   {c}F{/}  R15  adresa cursor (L)              -        C/S  XX     XX     XX
+   {c}10{/} R16  creion optic (H)               -        C    XX     XX     XX
+   {c}11{/} R17  creion optic (L)               -        C    XX     XX     XX
+   {d}C = citire, S = scriere; "car." = caractere, "linii" = linii baleiate{/}
+
+  {d}Vezi si:{/} [[registre-cga|Registrele CGA]]  [[cuplor-cga|Cuplor CGA]]  [[memorie-ecran|Memoria de ecran]]
+         [[test:video|Test video]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:49|pag. 49]] [[pag:50|pag. 50]] [[pag:51|pag. 51]]
+
+@doc culori | hardware | Culorile cuplorului CGA
+  In regimul alfanumeric se pot selecta {c}16{/} culori ({b}R G B I{/}); fondul are
+  {c}8{/} (bitii R G B, fara I).
+
+   {b}R G B I{/}  {b}culoarea{/}         {b}R G B I{/}  {b}culoarea{/}
+   {c}0 0 0 0{/}  {a:17}▐{/}{a:00}  {/}{a:17}▌{/} negru       {c}0 0 0 1{/}  {a:17}▐{/}{a:80}  {/}{a:17}▌{/} gri
+   {c}0 0 1 0{/}  {a:17}▐{/}{a:10}  {/}{a:17}▌{/} albastru    {c}0 0 1 1{/}  {a:17}▐{/}{a:90}  {/}{a:17}▌{/} albastru intens
+   {c}0 1 0 0{/}  {a:17}▐{/}{a:20}  {/}{a:17}▌{/} verde       {c}0 1 0 1{/}  {a:17}▐{/}{a:A0}  {/}{a:17}▌{/} verde intens
+   {c}0 1 1 0{/}  {a:17}▐{/}{a:30}  {/}{a:17}▌{/} cyan        {c}0 1 1 1{/}  {a:17}▐{/}{a:B0}  {/}{a:17}▌{/} cyan intens
+   {c}1 0 0 0{/}  {a:17}▐{/}{a:40}  {/}{a:17}▌{/} rosu        {c}1 0 0 1{/}  {a:17}▐{/}{a:C0}  {/}{a:17}▌{/} rosu intens
+   {c}1 0 1 0{/}  {a:17}▐{/}{a:50}  {/}{a:17}▌{/} magenta     {c}1 0 1 1{/}  {a:17}▐{/}{a:D0}  {/}{a:17}▌{/} magenta intens
+   {c}1 1 0 0{/}  {a:17}▐{/}{a:60}  {/}{a:17}▌{/} maron       {c}1 1 0 1{/}  {a:17}▐{/}{a:E0}  {/}{a:17}▌{/} galben intens
+   {c}1 1 1 0{/}  {a:17}▐{/}{a:70}  {/}{a:17}▌{/} alb         {c}1 1 1 1{/}  {a:17}▐{/}{a:F0}  {/}{a:17}▌{/} alb intens
+
+  {h}Modul grafic 320 x 200{/}
+
+  Fiecare punct are {c}2{/} biti (C1 C0): una din 4 culori. Culoarea {c}00{/} este
+  fondul, oricare din cele 16 culori; celelalte trei apartin uneia din
+  doua palete, alese software (bitul 5 al registrului 3D9H):
+
+   {b}C1 C0{/}  {b}paleta 1{/} {d}(bit 5 = 0){/}      {b}paleta 2{/} {d}(bit 5 = 1){/}
+   {c}0  0{/}   fond (bitii 0-3 ai 3D9H)  fond (bitii 0-3 ai 3D9H)
+   {c}0  1{/}   {a:17}▐{/}{a:20}  {/}{a:17}▌{/} verde                {a:17}▐{/}{a:30}  {/}{a:17}▌{/} cyan
+   {c}1  0{/}   {a:17}▐{/}{a:40}  {/}{a:17}▌{/} rosu                 {a:17}▐{/}{a:50}  {/}{a:17}▌{/} magenta
+   {c}1  1{/}   {a:17}▐{/}{a:60}  {/}{a:17}▌{/} maron                {a:17}▐{/}{a:7F}  {/}{a:17}▌{/} alb
+
+  Culorile fondului: cele 8 de baza plus 8 intensificate, in total 16,
+  inclusiv negru si alb. Paleta de culori se incarca printr-un port de
+  intrare/iesire ([[registre-cga|registrele CGA]]).
+
+  {h}Modul grafic 640 x 200{/}
+
+  Numai doua culori: {a:17}▐{/}{a:00}  {/}{a:17}▌{/} negru pentru fond si una din cele {c}8{/} culori de baza
+  pentru informatie, aleasa din registrul de culoare (3D9H).
+
+  Cu monitor monocrom, culorile apar ca nuante de gri.
+
+  {d}Vezi si:{/} [[cuplor-cga|Cuplor CGA]]  [[memorie-ecran|Memoria de ecran]]  [[registre-cga|Registre]]
+         [[test:video|Test video]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:46|pag. 46]] [[pag:47|pag. 47]] [[pag:48|pag. 48]] [[pag:52|pag. 52]]
+
+@doc monitor | hardware | Monitoare si conectori
+  JUNIOR-XT permite cuplarea simultana a trei tipuri de monitoare. Lungimea
+  maxima a cablurilor de legatura: {c}1,5 m{/}. Panoul frontal al monitoarelor are
+  butoane de reglaj al luminozitatii si contrastului, comutatorul de retea
+  si un indicator luminos de punere sub tensiune.
+
+  {h}Conexiuni{/}
+
+  {d}┌───────────┐{/}
+  {d}│{/} {b}Cuplor CGA{/}{d}│{/}
+  {d}└───────────┘{/}
+   {d}├──{/} conector 9 contacte, cablu cu 9 fire, tata la ambele capete
+   {d}│{/}    {c}»{/} {b}monitor color RGB cu trepte de intensitate{/}
+   {d}├──{/} 4 mufe RCA, 4 cabluri ecranate, mufe RCA la ambele capete
+   {d}│{/}    {c}»{/} {b}monitor color RGB fara trepte de intensitate{/}
+   {d}└──{/} mufa RCA video-complex, cablu ecranat cu mufe RCA
+        {c}»{/} {b}monitor monocrom{/}
+
+  {h}Semnalele la conector{/}
+
+  {b}Color cu trepte de intensitate{/} {d}(9 contacte){/}
+   {c}1{/} {g}GND{/}   {c}2{/} {g}GND{/}   {c}3{/} R   {c}4{/} G   {c}5{/} B   {c}6{/} I   {c}7{/} {d}-{/}   {c}8{/} HSYNC   {c}9{/} VSYNC
+
+  {b}Color fara trepte de intensitate{/} {d}(mufe RCA){/}
+   {c}Mufa 1{/} R  + {g}GND{/}    {c}Mufa 2{/} G  + {g}GND{/}
+   {c}Mufa 3{/} B  + {g}GND{/}    {c}Mufa 4{/} SYNC + {g}GND{/}
+
+  {b}Monocrom cu semnal video complex{/}
+   {c}Mufe video{/}  SVIDEO + {g}GND{/}
+
+  La mufele RCA cu cabluri ecranate, {g}GND{/} este conectat la ecranul cablului.
+
+  {h}Caracteristicile monitoarelor{/}
+
+   {b}Color{/}                               {b}Monocrom{/}
+   ecran min. {c}310 mm{/} (diagonala)      ecran min. {c}310 mm{/} (diagonala)
+   min. {c}16{/} culori afisate             video complex, impedanta {c}75 ohmi{/}
+   R, G, B si intensitate (optional)  rezolutie min. {c}640 x 200{/}
+   independente                       frecventa liniilor {c}15,625 KHz{/}
+   comenzi TTL sau impedanta {c}75 ohmi{/}  frecventa cadrelor {c}50 - 60 Hz{/}
+   rezolutie min. {c}640 x 200{/}           banda {c}18 MHz{/} +/- 3 dB
+   frecventa liniilor {c}15,625 KHz{/}    
+   frecventa cadrelor {c}50 - 60 Hz{/}    
+   banda {c}18 MHz{/} +/- 3 dB            
+
+  {d}Vezi si:{/} [[cuplor-cga|Cuplor CGA]]  [[culori|Culori]]  [[test:video|Test video]]
+         [[instalare|Instalare]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:71|pag. 71]] [[pag:72|pag. 72]]

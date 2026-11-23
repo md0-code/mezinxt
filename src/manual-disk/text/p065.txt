@@ -1,0 +1,39 @@
+     {b}3.7. Tastatura{/b}
+
+     Tastatura  microcalculatorului  JUNIOR-XT este o tastatura seriala  cu
+microprocesor, compatibila IBM-PC/XT, ce utilizeaza taste cu efect Hall.
+     Tastatura  este prevazuta cu un cablu atasat permanent ce se  cupleaza
+la  echipament prin intermediul unei mufe cu cinci  contacte.  Acest  cablu
+contine  doua  linii de alimentare (+5V si masa),  o linie de  initializare
+si doua linii bidirectionale de date, respectiv ceas.
+     Repartizarea semnalelor la pinii mufei de tastatura este urmatoarea:
+
+     ----------------------------------
+     | Pin conector | Denumire semnal |
+     ----------------------------------
+     |      1       |      KBCLK      |
+     |      2       |      KBDATA     |
+     |      3       |      KBRESET    |
+     |      4       |      GND        |
+     |      5       |      +5V        |
+     ----------------------------------
+
+     Tastatura foloseste un microprocesor Z-80 pentru executarea functiilor
+de  scanare,   memorare  a  codurilor  si  initiere  a  dialogului  necesar
+transferului codurilor catre sistem.  De asemenea microprocesorul are rolul
+de  a executa la punerea sub tensiune un autotest ce verifica memoria ROM a
+tastaturii.
+     Tastatura microcalculatorului JUNIOR-XT este prevazuta cu 83 de taste,
+repartizate in trei grupuri distincte.
+     Partea  centrala a tastaturii este similara claviaturii unei masini de
+scris.
+     In  partea  stinga  se  afla 10 taste  de  functii  ce  sint  definite
+software.
+     In  partea  dreapta se afla un grup de 15  taste definite de  asemenea
+software  dar cu semnificatie de taste numerice,  control al cursorului  si
+editare ecran.
+     Tastatura  este  conceputa  pentru  a  conferi  o  mare  flexibilitate
+software  in definirea functiilor de tastatura.  Acest lucru este  realizat
+folosind  codurile  de scanare in locul codurilor ASCII,  tastele  generind
+coduri diferite atit la apasare cit si la eliberare.
+     Codurile de scanare ale tastaturii sint prezentate in tabelul urmator:

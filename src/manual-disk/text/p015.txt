@@ -1,0 +1,54 @@
+ Semnal       Sens       Descriere
+---------------------------------------------------------------------------
+
+{b}DATA0-DATA15{/b}  intrare/   Aceste  linii  furnizeaza  bitii de  date  0  - 15
+   (DATA)     iesire     pentru microprocesor,  memorie si dispozitivele de
+                         intrare/iesire si sint  active 1 logic.  D0   este
+                         bitul  cel mai putin semnificativ (LSB)  iar   D15
+                         este bitul cel  mai  semnificativ (MSB).
+
+     {b}ALE{/b}      iesire     Linie de activare a buffer-ului de adrese. Aceasta
+(ADDRESS LATCH)          linie este  comandata de controlorul de magistrala
+                         I8288  si este utilizata de placa logica  de  baza
+                         pentru   a   interfata  adresele  valide   de   la
+                         microprocesor.   Adresele  microprocesorului  sint
+                         inscrise  in buffer odata cu frontul  descrescator
+                         al semnalului ALE.
+
+    {b}IOCHCK{/b}    intrare    Verificarea canalului de  intrare/iesire.  Aceasta
+(I/O CHANNEL CHECK)      linie  furnizeaza microprocesorului informatii  de
+                         eroare,  referitoare la memorie sau la  dispoziti-
+                         vele de intrare/iesire.  Atunci cind semnalul este
+                         0 logic s-a detectat o eroare.
+
+   {b}IOCHRDY{/b}    iesire     Canal de intrare/iesire pregatit.  Aceasta  linie,
+(I/O CHANNEL READY)      de  obicei  1 logic (activa),  este trecuta  in  0
+                         logic  de  catre o memorie sau  un  dispozitiv  de
+                         intrare/iesire  pentru  a  prelungi  ciclurile  de
+                         memorie  sau  operatiile  de  intrare/iesire.   Ea
+                         permite  dispozitivelor mai lente sa se cupleze la
+                         canalul de intrare/iesire fara nici o dificultate.
+                         Orice  dispozitiv lent ce foloseste aceasta  linie
+                         va  trebui sa o treaca in stare  inactiva  imediat
+                         dupa  detectarea   unei  adrese valide si  a  unei
+                         comenzi de citire sau scriere. Aceasta linie nu va
+                         trebui  sa  fie in starea 0 logic mai mult  de  10
+                         cicluri de ceas.  Ciclurile masina (intrare/iesire
+                         sau  memorie) sint extinse de un numar  intreg  de
+                         ori numarul perioadelor de ceas (210 ns).
+
+  {b}IRQ0-IRQ7{/b}   intrare    Cereri de intreruperi. Aceste linii sint utilizate
+(INTERRUPT REQUEST)      pentru  anuntarea microprocesorului ca un dispozi-
+                         tiv    de    intrare/iesire     cere  intrerupere.
+                         Intreruperile  sint  in  ordine  prioritara,  IRQ0
+                         avind   prioritate  maxima  iar  IRQ7   prioritate
+                         minima.   O  cerere de intrerupere  este  generata
+                         prin   trecerea  din  0 logic in 1 logic   a  unei
+                         linii  IRQ si mentinind-o in  aceasta  stare  pina
+                         cind cererea a fost recunoscuta de  microprocesor.
+
+    {b}IOR{/b}       iesire     Cerere  de  citire intrare/iesire.  Aceasta  linie
+ (I/O READ)              comanda  unui dispozitiv de intrare/iesire punerea
+                         datelor  pe  magistrala de date si este  activa  0
+                         logic.  Operatia poate fi facuta  de microprocesor
+                         sau oa controlorul {b}DMA.{/b}

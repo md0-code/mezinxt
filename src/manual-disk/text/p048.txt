@@ -1,0 +1,55 @@
+  Adresa de memorie           Functia
+
+     B8000H            -----------------------
+                       |    linii pare       |
+                       | (0,2,4,.......198)  |
+                       |    8.000 octeti     |
+     B9F3FH            -----------------------
+                       |     nefolosita      |
+     BA000H            -----------------------
+                       |    linii impare     |
+                       | (1,3,5,.......199)  |
+                       |    8.000 octeti     |
+     BBF3FH            -----------------------
+                       |     nefolosita      |
+     BBFFFH            -----------------------
+
+La  adresa B8000H se gaseste punctul din coltul stinga  sus al ecranului.
+Selectia culorii se face astfel:
+
+     -----------------------------------------------------------
+     | C1 | C0 |               Functia                         |
+     -----------------------------------------------------------
+     | 0  | 0  | Culoarea punctului este una din cele 16 culori|
+     |    |    | ale fondului                                  |
+     | 0  | 1  | Selecteaza prima culoare din setul 1 sau setul|
+     |    |    | 2 de culori                                   |
+     | 1  | 0  | Selecteaza a doua culoare din setul 1 sau     |
+     |    |    | setul 2 de culori                             |
+     | 1  | 1  | Selecteaza a treia culoare din setul 1 sau    |
+     |    |    | setul 2 de culori                             |
+     -----------------------------------------------------------
+
+C1 si C0 vor selecta 4 din cele 16 culori preselectate.  Aceasta paleta  de
+culori este incarcata printr-un port de intrare/iesire.
+Cele doua palete de culori sint:
+
+     ------------------------------------------------
+     |        Paleta 1       |       Paleta 2       |
+     ------------------------------------------------
+     | culoarea 1 : verde    | culoarea 1 : cyan    |
+     | culoarea 2 : rosu     | culoarea 2 : magenta |
+     | culoarea 3 : maron    | culoarea 3 : alb     |
+     ------------------------------------------------
+
+     Culorile  fondului sint cele 8 culori de baza definite plus  8  culori
+intensificate, in total 16 culori, incluzind negru si alb.
+
+     {u}3.3.2.2. Modul grafic monocrom de rezolutie mare{/u}
+
+     In  modul de lucru grafic  monocrom de rezolutie mare,  sint  folosite
+pentru  afisare  monitoare  monocrome sau color.  Acest mod  de  lucru  are
+urmatoarele caracteristici:
+     - afiseaza maxim 640x200 puncte;
+     - lucreaza numai monocrom;
+     - necesita 16.000 octeti de memorie RAM;

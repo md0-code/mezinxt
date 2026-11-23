@@ -1,0 +1,40 @@
+              SEMNIFICATIA BITILOR DE INTRARE/IESIRE I8255A
+------------------------------------------------- -  -- -------------------
+         PA0  -
+        I  1   |
+        N  2   |
+        T  3   |
+0060    R  4   > Date tastatura
+        A  5   |
+        R  6   |
+        F  7
+
+
+         PB0   + Modulare canal 2 timer pentru difuzor
+        I  1   + Data difuzor
+        E  2     Rezervat
+0061    S  3     Comutator citire microintrerupatoare configurare sistem
+        I  4   - Activare test de paritate a memoriei RAM
+        R  5   - Activare test canal de intrare/iesire
+        E  6   - Mentine in 0 ceasul tastaturii
+           7   - Activare tastatura / +Initializare tastatura
+
+
+         PC0     SW-1       SW-5
+        I  1     SW-2  sau  SW-6
+        N  2     SW-3       SW-7
+0062    T  3     SW-4       SW-8
+        R  4     Iesire difuzor
+        A  5   + Iesire canal 2 timer
+        R  6   + Testare canal intrare/iesire
+        E  7   + Testare paritate RAM
+
+
+0063    Registru comanda/mod
+
+Valoarea registrului de comanda/mod: 99H
+
+Nota:     Semnul + indica executarea unei functii specificate de catre  un
+          bit in 1 logic;
+          Semnul  - indica executarea unei functii specificate de catre un
+          bit in 0 logic.

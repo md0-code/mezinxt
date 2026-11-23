@@ -1,0 +1,33 @@
+  REGISTRUL DE STARE 3 AL CONTROLORULUI DE DISC FLEXIBIL NEC uPD 765 (I8272)
+  --------------------------------------------------------------------------
+             Bit           |
+  -------------------------|                   Descriere
+  Nr.| Nume          Simbol|
+  --------------------------------------------------------------------------
+  D7 | Eroare           FT |  Acest bit reflecta  starea  semnalului FAULT
+     | ("Fault")           |  de eroare al unitatii de disc.
+  --------------------------------------------------------------------------
+  D6 | Scriere          WP |  Acest bit reflecta starea  semnalului  WRITE
+     | protejata           |  PROTECT al unitatii de disc.
+     | ("Write Protected") |
+  --------------------------------------------------------------------------
+  D5 | Operational     RDY |  Acest bit reflecta starea  semnalului  READY
+     | ("Ready")           |  al unitatii de disc.
+  --------------------------------------------------------------------------
+  D4 | Pista 0          T0 |  Acest bit reflecta starea semnalului TRACK 0
+     | ("Track 0")         |  al unitatii de disc.
+  --------------------------------------------------------------------------
+  D3 | Dubla fata       TS |  Acest bit reflecta starea semnalului TWO SIDE
+     | ("Two Side")        |  al unitatii de disc.
+  --------------------------------------------------------------------------
+  D2 | Adresa cap       HD |  Acest bit  reflecta  starea  semnalului SIDE
+     | ("Head Address")    |  SELECT al unitatii de disc.
+  --------------------------------------------------------------------------
+  D1 | Selectie        US1 |  Acest bit reflecta starea semnalului SELECT 1
+     | unitate 1           |  al unitatii de disc
+     | ("Unit Select 1")   |
+  --------------------------------------------------------------------------
+  D0 | Selectie        US0 |  Acest bit reflecta starea semnalului SELECT 0
+     | unitate 0           |  al unitatii de disc.
+     | ("Unit Select 0")   |
+  --------------------------------------------------------------------------

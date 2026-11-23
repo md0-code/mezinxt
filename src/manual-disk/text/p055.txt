@@ -1,0 +1,55 @@
+     {b}3.4.  Cuplorul  pentru  comunicatia  seriala asincrona  si  imprimanta{/b}
+           {b}paralela{/b}
+
+     Cuplorul  pentru comunicatia seriala asincrona si imprimanta  paralela
+este  realizat sub forma unei plachete logice ce se introduce in  unul  din
+conectorii  de extensie ai placii logice de baza si contine doua  interfete
+seriale asincrone compatibile RS-232-C (CCITT-V.24),  precum si o interfata
+paralela  ce  permite  cuplarea la echipament a  unei  imprimante  paralele
+compatibila CENTRONICS.
+
+     {b}3.4.1. Cuplorul pentru comunicatia seriala asincrona{/b}
+
+     Cuplorul  pentru  comunicatia seriala asigura schimbul  de  informatie
+intre  microcalculatorul JUNIOR-XT si alte echipamente,  prin intermediul a
+doua linii de comunicatie seriala.  El permite transmisia/receptia  datelor
+cu  viteze de 50 - 19200 bauds,  precum si gestiunea erorilor de  linie,  a
+starii  liniei  si a modemului atasat (optional).  Interfata cu liniile  de
+comunicatie este realizata prin intermediul a doua cuple standard  RS-232-C
+(CCITT-V.24).
+     Cuplorul   pentru  comunicatia  seriala  este  realizat  cu   ajutorul
+circuitului specializat Z80-SIO, fapt ce ii confera o mare versatilitate in
+functionare  (doua  canale seriale  independente,  regim  asincron/sincron,
+numar  programabil de biti/caracter,  biti de stop,  paritate,  etc.) si in
+programare (intreruperi vectorizate pe emisie/receptie,  erori si schimbari
+de stare, controlul semnalelor de modem, generare/detectie de "break",etc).
+     In afara circuitului specializat Z80-SIO,  cuplorul pentru comunicatia
+seriala  utilizeaza  pentru generarea ratelor de emisie/receptie  un  timer
+programabil  I8253-5 ce divizeaza semnalul provenit de la un  oscilator  cu
+cuart de frecventa 18,432 MHz. Canalul 0 al timer-ului I8253-5 este folosit
+pentru  generarea ceasului de emisie/receptie al caii de comunicatie  SIO/A
+iar  canalul  1  pentru generarea ceasului de emisie/receptie  al  caii  de
+comunicatie SIO/B.
+     Cuplorul  pentru comunicatia seriala contine de asemeni  interfata  cu
+magistrala  sistemului,  interfata  cu  liniile de  comunicatie  precum  si
+microintrerupatoarele  pentru stabilirea optiunilor de lucru.  Interfata cu
+magistrala  sistemului  este astfel conceputa incit introduce  o  stare  de
+asteptare  ("wait")  de  210  ns la fiecare transfer de  date  de  la/catre
+cuplorul de comunicatie seriala.
+     Cuplorul pentru comunicatia seriala are alocata o linie de intrerupere
+ce poate fi conectata la magistrala sistemului pe una din liniile IRQ3  sau
+IRQ4.  Configuratia  microintrerupatoarelor  de  selectie  a  nivelului  de
+intrerupere este prezentata in tabelul urmator:
+
+     -----------------------------
+     |  Nivel de   | SW11 | SW12 |
+     | intrerupere |      |      |
+     -----------------------------
+     |    IRQ3     |  OFF |  ON  |
+     |    IRQ4     |  ON  |  OFF |
+     -----------------------------
+
+     Pentru  a permite lucrul in intreruperi,  cuplorul pentru  comunicatia
+seriala este  prevazut cu un registru (port) de recunoastere a intreruperii
+(adresa 258H-25BH/268H-26BH).
+Citirea  acestui registru in rutina de tratare a intreruperii este  absolut

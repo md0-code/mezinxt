@@ -1,0 +1,54 @@
+ Semnal       Sens       Descriere
+---------------------------------------------------------------------- ----
+
+    {b}IOW{/b}       iesire     Cerere  de scriere intrare/iesire.  Linia  comanda
+(I/O WRITE)              unui  dispozitiv  de  intrare/iesire  sa  memoreze
+                         datele  de pe magistrala de date si este activa  0
+                         logic.  Operatia  poate fi facuta de microprocesor
+                         sau de controlorul DMA.
+
+    {b}MEMR{/b}      iesire     Aceasta  linie comanda memoriei sa puna datele  pe
+(MEMORY READ)            magistrala    de   date.    Este   comandata    de
+                         microprocesor  sau  de  controlorul  DMA  si  este
+                         activa 0 logic.
+
+    {b}MEMW{/b}      iesire     Comanda  de  scriere  in  memorie.    La activarea
+(MEMORY WRITE)           acestei  linii in 0 logic datele de pe  magistrala
+                         de  date  se inscriu  in  memorie.  Operatia  este
+                         facuta  de microprocesor sau de  controlorul  DMA.
+
+  {b}DRQ0-DRQ3{/b}   intrare    Aceste  linii sint cereri asincrone ale  canalului
+(DMA REQUEST)            utilizate   de  echipamentele  periferice   pentru
+                         accesul  DMA.  Liniile  sint in ordine prioritara,
+                         DRQ3  fiind de prioritate minima iar DRQ0  maxima.
+                         Se  genereaza o cerere prin punerea liniei DRQ  pe
+                         un nivel activ 1 logic. O linie DRQ trebuie sa fie
+                         tinuta   in   stare   activa   pina   cind   linia
+                         corespunzatoare DACK este activata.
+
+ {b}DACK0-DACK3{/b}  iesire     Aceste  linii  sint  utilizate pentru  confirmarea
+(DMA ACKNOWLEDGE)        cererilor DMA (DRQ0-DRQ3) si sint active 0 logic.
+
+     {b}AEN{/b}      iesire     Aceasta  linie  este  utilizata pentru  decuplarea
+(ADDRESS ENABLE)         microprocesorului  si a celorlalte dispozitive  de
+                         la  canalul de intrare/iesire pentru a se  permite
+                         transferurile DMA.  Atunci cind aceasta linie este
+                         activa   1  logic,   controlorul  DMA  controleaza
+                         magistrala   de  adrese,   date  si   comenzi   de
+                         scriere/citire.
+
+     {b}T/C{/b}      iesire     Aceasta linie este activa 1 logic si furnizeaza un
+(TERMINAL COUNT)         impuls  atunci  cind oricare din  canalele  DMA  a
+                         ajuns  la ultimul transfer de date.
+
+  {b}CARD SLCTD{/b}  intrare    Aceasta   linie  este  activata  de  extensia  J8.
+(CARD SELECTED)          Ea  semnalizeaza  placii logice de baza ca a  fost
+                         selectata     extensia    si    ca      buffer-ele
+                         corespunzatoare  placii  logice  de  baza  vor  fi
+                         directionate  catre  citirea,  respectiv  scrierea
+                         extensiei J8.
+
+     {b}XBHE{/b}     iesire     Aceasta linie  este generata numai in cazul utili-
+(BANK HIGH ENABLE)       zarii microprocesorului I8086.  Ea este  activa  0
+                         logic si indica  adresarea de catre  microprocesor
+                         a octetului de date superior (D8-D15).

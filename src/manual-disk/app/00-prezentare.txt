@@ -1,0 +1,155 @@
+@doc acasa | prezentare | JUNIOR-XT - microcalculator personal-profesional
+
+  {a:19}▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄{/}
+  {a:F4}     F   E   P   E   R      {/}   {h}Microcalculatorul JUNIOR-XT{/}  -  {b}Carte tehnica{/}
+  {a:19}▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀{/}
+
+  JUNIOR-XT este un microcalculator personal-profesional conceput pe baza
+  microprocesoarelor pe 16 biti ({c}I8086{/}, {c}I8087{/}), compatibil cu familia
+  {c}IBM-PC/XT{/}.
+
+  {h}Sectiuni{/}
+
+    {b}F1{/}  [[generalitati|Prezentare]]            generalitati, configuratii
+    {b}F2{/}  [[instalare|Instalare]]             instalare, exploatare, intretinere
+    {b}F3{/}  [[hardware|Hardware]]              descrierea functionala a echipamentului
+    {b}F4{/}  [[software|Software]]              BIOS-ul si tastatura
+    {b}F5{/}  [[anexe|Anexe]]                 tabele de caractere, instructiuni, piese
+    {b}F6{/}  [[teste|Teste]]                 verificarea interactiva a echipamentului
+    {b}F7{/}  [[pag:3|Carte tehnica]]         textul original, pagina cu pagina
+
+  {d}Sageti: alegere   Enter: deschidere   Backspace: inapoi{/}
+
+@doc generalitati | prezentare | Generalitati
+  {h}Ce este JUNIOR-XT{/}
+
+  Microcalculator personal-profesional, conceput pe baza microprocesoarelor
+  pe 16 biti ({c}I8086{/}, {c}I8087{/}), cu un grad de integrare tehnologica ridicat
+  si cu un software ce acopera o gama larga de aplicatii.
+
+  {h}Caracteristici{/}
+
+    {c}■{/} structura modulara, usor extensibila prin adaugarea de extensii
+      hardware: microsistem universal sau dedicat functional in aplicatii
+      specializate
+    {c}■{/} compatibilitate hardware cu familia {c}IBM-PC/XT{/}: se poate folosi
+      integral software-ul acestor echipamente ([[compatibilitate|compatibilitate]])
+    {c}■{/} configuratii livrate la comanda beneficiarului, din Unitati de
+      Repertoriu Comercial ({c}URC{/}) ([[configuratie|configuratia]])
+
+  {h}Modulele functionale de baza{/}
+
+   {d}┌──────────────────────────────────────────────────────────────┐{/}
+   {d}│{/} {b}BLOC LOGIC SI DE ALIMENTARE{/}  - nucleul microcalculatorului   {d}│{/}
+   {d}│{/} placa logica de baza, plachetele si cuploarele de extensie,  {d}│{/}
+   {d}│{/} unitatile de disc flexibil, difuzorul, sursa de alimentare   {d}│{/}
+   {d}└───────────────────────────┬─────────────────────┬────────────┘{/}
+                               {d}│{/}                     {d}│{/}
+                        {d}┌──────┴───────┐{/}      {d}┌──────┴───────┐{/}
+                        {d}│{/} {b}TASTATURA{/}    {d}│{/}      {d}│{/} {b}MONITOR TV{/}   {d}│{/}
+                        {d}└──────────────┘{/}      {d}└──────────────┘{/}
+
+  Blocul logic contine placa logica de baza ([[placa-baza|placa de baza]]), cuploarele
+  si sursa ([[sursa|sursa de alimentare]]); tastatura se descrie la [[tastatura-hw|tastatura]],
+  monitorul la [[monitor|monitor]].
+
+  {d}Vezi si:{/} [[configuratie|Configuratie si catalog]]  [[compatibilitate|Compatibilitate]]
+         [[hardware|Hardware]]  [[instalare|Instalare]]
+  Carte tehnica: [[pag:5|pag. 5]]
+
+@doc configuratie | prezentare | Configuratie si catalog de unitati
+  {h}Configuratia de baza{/}
+
+   {c}1{/} bloc logic si de alimentare
+   {c}2{/} cuplor pentru discul flexibil
+   {c}3{/} cuplor pentru afisajul grafic color de medie rezolutie
+   {c}4{/} cuplor pentru comunicatia seriala asincrona si imprimanta paralela
+   {c}5{/} doua unitati de discuri flexibile de 5,25 inch sau 8 inch
+   {c}6{/} tastatura
+   {c}7{/} monitor color sau monocrom
+   {c}8{/} imprimanta {d}(optional){/}
+
+  Microcalculatorul se livreaza in configuratii comandate de beneficiar.
+
+  {h}Elementele componente (URC){/}
+
+  {b}Nr  Cod URC       Denumire{/}
+  {c}1.{/}  703.100.000   Bloc logic si de alimentare
+  {c}2.{/}  703.200.000   Tastatura
+  {c}3.{/}  703.300.001   Cuplor pentru discul flexibil (FDA)
+  {c}4.{/}  703.300.002   Cuplor pentru afisajul grafic color de medie
+                    rezolutie (CGA)
+  {c}5.{/}  703.300.003   Cuplor pentru afisajul grafic monocrom de mare
+                    rezolutie (MDA)
+  {c}6.{/}  703.300.004   Cuplor pentru comunicatia seriala asincrona si
+                    imprimanta paralela
+  {c}7.{/}  703.300.005   Cuplor pentru comunicatia seriala sincrona
+  {c}8.{/}  703.300.006   Cuplor pentru discul Winchester
+  {c}9.{/}  703.300.007   Cuplor pentru banda magnetica
+  {c}10.{/} 703.300.008   Cuplor pentru joystick
+  {c}11.{/} 703.300.009   Cuplor de instrumentatie
+  {c}12.{/} 703.300.010   Modul de extensie memorie RAM 384 Kocteti
+  {c}13.{/} 703.300.011   Procesor matematic
+
+  {h}Echipamentele periferice{/}
+
+  {b}Nr  Cod URC       Denumire{/}
+  {c}1.{/}  703.800.0XX   Unitate de disc flexibil de 5,25 inch
+  {c}2.{/}  703.801.0XX   Unitate de disc flexibil de 8 inch
+  {c}3.{/}  703.802.0XX   Monitor color
+  {c}4.{/}  703.803.0XX   Monitor monocrom
+  {c}5.{/}  703.804.0XX   Imprimanta
+  {c}6.{/}  703.805.0XX   Unitate de disc fix (Winchester)
+  {c}7.{/}  703.806.0XX   Unitate de banda magnetica
+  {c}8.{/}  703.807.0XX   Plotter plan
+  {c}9.{/}  703.808.0XX   Plotter cu tambur
+  {c}10.{/} 703.809.0XX   Lector de banda perforata
+  {c}11.{/} 703.810.0XX   Perforator de banda
+  {c}12.{/} 703.811.0XX   Dispozitiv de intrare de tip joystick
+  {c}13.{/} 703.812.0XX   Dispozitiv de intrare de tip mouse
+  {c}14.{/} 703.813.0XX   Dispozitiv de vizualizare de tip display
+  {c}15.{/} 703.814.0XX   Dispozitiv de intrare de tip tableta grafica
+  {c}16.{/} 703.815.0XX   Dispozitiv de intrare de tip creion optic
+
+  {d}Vezi si:{/} [[generalitati|Generalitati]]  [[cuplor-disc|Cuplor disc]]  [[cuplor-cga|Cuplor CGA]]
+         [[cuplor-serial|Cuplor serial]]  [[memorie-ram|Memorie RAM 384 K]]
+  Carte tehnica: [[pag:5|pag. 5]] [[pag:6|pag. 6]]
+
+@doc compatibilitate | prezentare | Compatibilitate IBM-PC/XT si FELIX-PC
+  JUNIOR-XT respecta compatibilitatea hardware si software cu IBM-PC/XT, cu
+  o singura abatere: cuplorul serial.
+
+  {h}Nivel hardware{/}
+
+   {b}Element{/}           {b}Cum se asigura{/}
+   Arhitectura       acelasi tip de microprocesor sau echivalent, aceeasi
+   {/}                  alocare a memoriei ROM/RAM, aceleasi circuite
+   {/}                  specializate si port-uri, cu aceleasi adrese
+   Cuplor de afisaj  controlorul de ecran {c}MC 6845{/}
+   Cuplor de disc    controlorul {c}NEC uPD 765{/}; unitati de 5,25 inch,
+   {/}                  simpla/dubla fata, dubla densitate
+   Tastatura         functii, protocol de comunicatie, interfata (semnale si
+   {/}                  conectori) ca la IBM-PC/XT
+   {r}Cuplor serial{/}     {r}Z80-SIO{/} in loc de {c}I8250{/} (circuit neobtenabil)
+
+  {h}Canalul de intrare/iesire{/} ([[canal-ie|conectorii]])
+
+   {c}J1 - J8{/}    8 conectori 2 x 31 contacte: toate semnalele cuploarelor
+              IBM-PC/XT cu I8088; se pot folosi cuploare si plachete
+              de extensie compatibile IBM-PC/XT
+   {c}J9 - J12{/}   4 conectori 2 x 10 contacte: extensie cu semnalele
+              specifice I8086, compatibila cu cea din FELIX-PC
+
+  Plachetele IBM-PC/XT ce contin ROM sau RAM nu pot fi accesate pe 16 biti
+  simultan; cele fara memorie se pot folosi.
+
+  {h}Nivel software{/}
+
+  Compatibilitate integrala cu IBM-PC/XT, {r}cu exceptia{/} programelor care
+  acceseaza direct cuplorul serial: ele trebuie modificate ca adresa a
+  port-urilor si mod de programare. Driver-ul serial din BIOS este adaptat
+  la JUNIOR-XT, deci programele care folosesc functii BIOS sint portabile.
+
+  {d}Vezi si:{/} [[cuplor-serial|Cuplor serial]]  [[bios|BIOS]]  [[canal-ie|Canal I/E]]
+         [[generalitati|Generalitati]]
+  Carte tehnica: [[pag:73|pag. 73]] [[pag:74|pag. 74]]

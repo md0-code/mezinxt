@@ -1,0 +1,54 @@
+sistemului in cazul utilizarii circuitelor de memorie MK4164,  se adauga un
+modul  de extensie memorie RAM de 384 Kocteti,  implementat sub forma  unei
+plachete  logice  ce  se introduce in unul din conectorii  de  extensie  ai
+placii logice de baza.
+     Pe linga microprocesor si memorie,  placa logica de baza mai contine o
+logica  de acces direct la memorie (DMA) cu patru canale  programabile,  un
+sistem de intreruperi cu opt nivele de prioritati si trei canale de 16 biti
+pentru timer/numarator.
+     Logica  DMA este implementata cu circuitul specializat  I8237A-5  (sau
+I8257).  Din cele patru canale DMA,  trei sint disponibile pe magistrala de
+intrare/iesire,  fiind  folosite  de modulele si cuploarele de extensie  la
+transferuri  de  date  cu viteze mari intre  memorie  si  dispozitivele  de
+intrare/iesire, fara interventia microprocesorului.
+Al patrulea canal DMA este folosit pentru reimprospatarea memoriei dinamice
+atit  a placii logice de baza cit si a modulului de extensie RAM.  Cererile
+de  reimprospatare ("refresh") a memoriei dinamice RAM sint generate de  un
+canal al dispozitivului timer/numarator, care declanseaza la fiecare aprox.
+15 us un ciclu DMA fictiv de citire a memoriei.
+Toate  transferurile  DMA,  cu exceptia celor de reimprospatare a  memoriei
+dinamice  dureaza  cinci perioade de ceas de 210 ns (deci  1,05  us),  daca
+cererea   de   asteptare  ("ready")  nu   este   activata.   Ciclurile   de
+reimprospatare dureaza patru perioade de ceas de 210 ns (deci 840 ns).
+     Sistemul  de  intreruperi  este implementat  cu  ajutorul  circuitului
+specializat  I8259A.   Din  cele  opt  nivele  de  intreruperi,  sase  sint
+disponibile pe magistrala de intrare/iesire putind fi utilizate de modulele
+si  cuploarele  de  extensie.  Celelalte doua nivele  de  intreruperi  sint
+utilizate in placa logica de baza.
+Nivelul 0,  de prioritate maxima, este atasat canalului 0 al dispozitivului
+timer/numarator ce genereaza o intrerupere periodica corespunzind  ceasului
+ce  indica ora.  Nivelul 1 este asociat intreruperii generata de  tastatura
+seriala.
+     Intreruperea  nemascabila (NMI) a microprocesorului I8086 (I8088) este
+utilizata la depistarea erorilor de paritate ale memoriei RAM.
+     Dispozitivul  timer/numarator este implementat cu ajutorul circuitului
+specializat  I8253-5.  Cele trei canale sint utilizate de sistem  dupa  cum
+urmeaza:  canalul  0 este folosit ca un timer de uz general ce furnizeaza o
+baza de timp constanta pentru implementarea ceasului ce indica ora; canalul
+1  genereaza cererile de reimprospatare a memoriei dinamice RAM;  canalul 2
+este folosit la generarea tonurilor pentru difuzor.
+     Blocul  logic  si   de  alimentare  este  prevazut cu  un  difuzor  de
+3  ohm/0,3W,  conectat  la placa logica de baza prin intermediul unui cablu
+cu doua  fire si a unui conector cu doi pini.  Circuitele de comanda de  pe
+placa logica de baza permit ca difuzorul sa fie comandat in doua moduri:
+1) activarea unui bit pentru a genera un impuls; 2) generarea unei forme de
+unda  de catre canalul 2 al dispozitivului timer/numarator.  Ambele  metode
+pot fi executate simultan.
+     Pe  linga cele prezentate anterior,  placa logica de baza  contine  si
+circuitele   adaptoare  pentru  conectarea  tastaturii   seriale.   Aceasta
+interfata  genereaza  o  intrerupere catre microprocesor  la  receptionarea
+fiecarui  cod  primit  de la tastatura.  Tastatura se conecteaza  la  placa
+logica  de  baza prin intermediul unui conector cu 5 pini si a  unui  cablu
+torsadat cu 5 fire, asemanator cablului telefonic.
+     Repartizarea  semnalelor  la  pinii  conectorului  de  tastatura  este
+urmatoarea:

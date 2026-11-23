@@ -1,0 +1,31 @@
+  Semnal      Sens       Descriere
+---------------------------------------------------------------------------
+{b}WRITE PROTECT{/b} intrare    Unitatea   selectata   activeaza   aceasta   linie
+                         daca   se  instaleaza  o  discheta  protejata   la
+                         scriere.
+
+{b}TRACK 0{/b}       intrare    Unitatea   selectata    activeaza   aceasta  linie
+                         cind    pe   pista  0  s-a  pozitionat  capul   de
+                         citire/scriere.
+
+{b}READ DATA{/b}     intrare    Unitatea     selectata    genereaza    un   impuls
+                         pentru fiecare variatie a fluxului pe discheta.
+
+{b}WRITE FAULT{/b}   intrare    Aceasta  linie este folosita de unitatea  de  disc
+                         pentru a semnala o eroare.
+
+{b}READY{/b}         intrare    Aceasta  linie  indica faptul ca unitatea de  disc
+                         este operationala.
+
+{b}TWO SIDED{/b}     intrare    Aceasta linie semnaleaza existenta unei unitati de
+                         disc cu doua capete.
+
+     Cuplorul  pentru  discul flexibil este prevazut cu  doi  conectori  de
+iesire:
+- un conector de cablu plat cu 26 contacte pentru conectarea a doua unitati
+de disc de 5,25 inch din interiorul blocului logic si de alimentare;
+- un   conector  mama  cu  25  contacte  (accesibil  pe  panoul  spate   al
+echipamentului) care furnizeaza semnalele necesare pentru cuplarea  tuturor
+celor patru unitati de disc flexibil.
+     Repartizarea  semnalelor  la pinii celor doi conectori de iesire  este
+prezentata in tabelul de mai jos.

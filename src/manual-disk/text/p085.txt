@@ -1,0 +1,53 @@
+transmisi  prin rutina tastaturii catre sistem sau programul de  aplicatii.
+{b}Alt{/b} este tratata intern prin rutina tastaturii.
+
+     {b}Caps Lock{/b}
+     Aceasta tasta shifteaza tastele 16-25, 30-38  si 44-50 in majuscule. O
+a  doua  apasare  a tastei {b}Caps Lock{/b} inverseaza actiunea.  {b}Caps  Lock{/b}  este
+tratata intern prin rutina tastaturii.
+
+     {b}Scrl Lock{/b}
+     Aceasta   tasta   este  interpretata  de   programele   de   aplicatie
+corespunzatoare  ca  indicind faptul ca utilizarea tastelor de  control  al
+cursorului  realizeaza  o  incadrare a textului intr-o fereastra  si  nu  o
+deplasare  a  cursorului.  O  a  doua apasare  pe  {b}Scroll  Lock{/b}  inverseaza
+actiunea.  Rutina tastaturii inregistreaza starea de shift curenta a tastei
+{b}Scroll  Lock.{/b}   Este  responsabilitatea  sistemului sau  a  programului  de
+aplicatii sa execute aceasta functie.
+
+     {u}4.2.2.2. Prioritati si combinatii la  shiftarea tastelor{/u}
+
+     Daca sint apasate {b}Alt, Ctrl{/b} si tastele shiftate, si daca numai una din
+ele este valida,  atunci ordinea lor este dupa cum urmeaza: {b}Alt{/b} este prima,
+{b}Ctrl{/b} a doua, iar tasta {b}Shift{/b} a treia. Singura combinatie valida este {b}Alt{/b} si
+{b}Ctrl,{/b} ce este utilizata in functia de initializare a sistemului.
+
+     {b}4.2.3. Moduri de lucru speciale{/b}
+
+     {u}4.2.3.1. Initializarea sistemului{/u}
+
+     Combinatiile  {b}Alt,{/b}  {b}Ctrl{/b}  si  {b}Del{/b}  vor face ca  rutina  tastaturii  sa
+genereze  echivalentul  unei initializari  sau  reincarcari.  Initializarea
+sistemului este realizata intern la tastatura.
+
+     {u}4.2.3.2. Break{/u}
+
+     Combinatia  dintre tastele {b}Ctrl{/b} si {b}C{/b} va rezulta in rutina de tastatura
+generind adresa de intrerupere 1BH. De asemeni,  caracterele extinse (AL=00
+hexa, AH=00 hexa) vor fi reintoarse.
+
+     {u}4.2.3.3. Pauza{/u}
+
+     Combinatia  dintre  tastele   {b}Ctrl{/b} si {b}Num Lock{/b} va face  ca  rutina  de
+intrerupere  a tastaturii sa bucleze,  asteptind apasarea oricarei taste cu
+exceptia  tastei  {b}Num  Lock.{/b}   Aceasta  furnizeaza  o  metoda  transparenta
+aplicatiei   sau  sistemului  pentru  suspendarea  temporara  a   listarii,
+tiparirii,  etc., dupa  aceea reluindu-se operatia.  Pauza  este  transmisa
+intern catre rutina tastaturii.
+
+     {u}4.2.3.4. Tiparire ecran{/u}
+
+     Combinatia dintre tastele {b}Shift{/b} si {b}Prsc{/b} (tasta 55) vor da ca  rezultat
+o  intrerupere ce cheama rutina de tiparire ecran.  Aceasta rutina lucreaza
+in modurile alfanumeric si grafic, cu caracterele nerecunoscute tiparite ca
+spatii.

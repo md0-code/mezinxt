@@ -1,0 +1,55 @@
+     {b}4.2.4. Alte caracteristici{/b}
+
+     Rutina   tastaturii  realizeaza  o  interfatare   proprie.   Buffer-ul
+tastaturii  este suficient de mare ca sa faca fata unei tastari rapide.  Cu
+toate  acestea,  daca se introduce un caracter atunci cind  buffer-ul  este
+plin,  caracterul va fi ignorat si se va auzi un semnal sonor. De asemenea,
+rutinele  tastaturii  impiedica actiunea de afisare a  urmatoarelor  taste:
+{b}Ctrl, Shift, Alt, Num Lock, Scrl Lock, Caps Lock{/b} si {b}Ins.{/b}
+
+     {b}4.2.5. Utilizarea tastaturii{/b}
+
+     Tabelul de mai jos defineste cele mai uzuale functii:
+
+---------------------------------------------------------------------------
+   Functie                     Tasta(e)    Comentariu
+----- ---------------------------------------------------------------------
+   Cursor in pozitia initiala  Home        Editoare, procesoare de texte
+---------------------------------------------------------------------------
+   Return la menu              Home        Aplicatii cu meniu
+---------------------------------------------------------------------------
+   Cursor sus                  ^           Editoare orientate ecran,
+                               |           procesoare de texte
+---------------------------------------------------------------------------
+   Sus pagina, defilare        PgUp        Editoare, procesoare de texte
+   inapoi 25 linii si home
+--------------------------------------------------------------------------
+   Cursor stinga             <- Tasta 75   Text, comanda
+---------------------------------------------------------------------------
+   Cursor dreapta              ->          Text, comanda
+---------------------------------------------------------------------------
+   Defilare la sfirsit de      End         Editoare, procesoare de texte
+   pagina. Pozitionare cursor
+   la sfirsit de linie
+---------------------------------------------------------------------------
+   Cursor jos                  |           Editoare orientate ecran,
+                               V           procesoare de texte
+----- ----- ---------------------------------------------------------------
+   Jos pagina, defilare        PgDn        Editoare, procesoare de texte
+   inainte 25 linii si home
+- -- ----------------------------------------------------------------------
+   Start/Stop inserare text    Ins         Text, comanda
+   la cursor, shift text la
+   dreapta
+ --------------------------------------------------------------------------
+   Sterge caracter de la       Del         Text, comanda
+   cursor
+---------------------------------------------------------------------------
+   Backspace distructiv     <- Tasta 14    Text, comanda
+---------------------------------------------------------------------------
+   Tab inainte                 ->|         Text
+----------------------------------------------------------------------------
+   Tab inapoi                  |<-         Text
+---------------------------------------------------------------------------
+   Stergere ecran si Home    Ctrl Home     Comanda
+---------------------------------------------------------------------------

@@ -1,0 +1,216 @@
+@doc canal-ie | hardware | Canalul de intrare/iesire - conectori
+  Canalul este o extensie a magistralei microprocesorului (I8086/I8088):
+  magistrala este demultiplexata, alimentata si contine in plus functiile de
+  intrerupere si de acces direct la memorie (DMA). Toate liniile sint
+  compatibile TTL.
+
+  {h}Conectorii fizici{/}
+
+   {c}J1 - J8{/}    8 x 2 x 31 contacte: toate semnalele cuploarelor si
+             plachetelor dintr-un IBM-PC/XT cu I8088
+   {c}J9 - J12{/}   4 x 2 x 10 contacte: extensia pentru I8086 (liniile de
+             date DATA8-DATA15 si XBHE), ca in FELIX-PC
+
+  {h}Conectorii J1 - J8{/}  {d}2 x 31 contacte{/}
+
+  {d}Semnul{/} {c}-{/} {d}= activ 0 logic, semnul{/} {c}+{/} {d}= activ 1 logic.{/}  {g}verde{/}: masa, tensiuni
+
+             {b}pinii B         pinii A{/}
+          {g}GND{/} {d}─┤{/}{c}B01{/} {c}A01{/}{d}├─{/} -IOCHCK
+       +RESET {d}─┤{/}{c}B02{/} {c}A02{/}{d}├─{/} +DATA7
+          {g}+5V{/} {d}─┤{/}{c}B03{/} {c}A03{/}{d}├─{/} +DATA6
+        +IRQ2 {d}─┤{/}{c}B04{/} {c}A04{/}{d}├─{/} +DATA5
+          {g}-5V{/} {d}─┤{/}{c}B05{/} {c}A05{/}{d}├─{/} +DATA4
+        +DRQ2 {d}─┤{/}{c}B06{/} {c}A06{/}{d}├─{/} +DATA3
+         {g}-12V{/} {d}─┤{/}{c}B07{/} {c}A07{/}{d}├─{/} +DATA2
+   -CARDSLCTD {d}─┤{/}{c}B08{/} {c}A08{/}{d}├─{/} +DATA1
+         {g}+12V{/} {d}─┤{/}{c}B09{/} {c}A09{/}{d}├─{/} +DATA0
+          {g}GND{/} {d}─┤{/}{c}B10{/} {c}A10{/}{d}├─{/} -IOCHRDY
+        -MEMW {d}─┤{/}{c}B11{/} {c}A11{/}{d}├─{/} +AEN
+        -MEMR {d}─┤{/}{c}B12{/} {c}A12{/}{d}├─{/} +ADR19
+         -IOW {d}─┤{/}{c}B13{/} {c}A13{/}{d}├─{/} +ADR18
+         -IOR {d}─┤{/}{c}B14{/} {c}A14{/}{d}├─{/} +ADR17
+       -DACK3 {d}─┤{/}{c}B15{/} {c}A15{/}{d}├─{/} +ADR16
+        +DRQ3 {d}─┤{/}{c}B16{/} {c}A16{/}{d}├─{/} +ADR15
+       -DACK1 {d}─┤{/}{c}B17{/} {c}A17{/}{d}├─{/} +ADR14
+        +DRQ1 {d}─┤{/}{c}B18{/} {c}A18{/}{d}├─{/} +ADR13
+       -DACK0 {d}─┤{/}{c}B19{/} {c}A19{/}{d}├─{/} +ADR12
+         +CLK {d}─┤{/}{c}B20{/} {c}A20{/}{d}├─{/} +ADR11
+        +IRQ7 {d}─┤{/}{c}B21{/} {c}A21{/}{d}├─{/} +ADR10
+        +IRQ6 {d}─┤{/}{c}B22{/} {c}A22{/}{d}├─{/} +ADR9
+        +IRQ5 {d}─┤{/}{c}B23{/} {c}A23{/}{d}├─{/} +ADR8
+        +IRQ4 {d}─┤{/}{c}B24{/} {c}A24{/}{d}├─{/} +ADR7
+        +IRQ3 {d}─┤{/}{c}B25{/} {c}A25{/}{d}├─{/} +ADR6
+       -DACK2 {d}─┤{/}{c}B26{/} {c}A26{/}{d}├─{/} +ADR5
+         +T/C {d}─┤{/}{c}B27{/} {c}A27{/}{d}├─{/} +ADR4
+         +ALE {d}─┤{/}{c}B28{/} {c}A28{/}{d}├─{/} +ADR3
+          {g}+5V{/} {d}─┤{/}{c}B29{/} {c}A29{/}{d}├─{/} +ADR2
+         +OSC {d}─┤{/}{c}B30{/} {c}A30{/}{d}├─{/} +ADR1
+          {g}GND{/} {d}─┤{/}{c}B31{/} {c}A31{/}{d}├─{/} +ADR0
+
+  {h}Conectorii J9 - J12{/}  {d}2 x 10 contacte{/}
+
+        -XBHE {d}─┤{/}{c}D01{/} {c}C01{/}{d}├─{/} +DATA8
+        -INTA {d}─┤{/}{c}D02{/} {c}C02{/}{d}├─{/} +DATA9
+      +HLDAEN {d}─┤{/}{c}D03{/} {c}C03{/}{d}├─{/} +DATA10
+      +HRQDMA {d}─┤{/}{c}D04{/} {c}C04{/}{d}├─{/} +DATA11
+        +PCLK {d}─┤{/}{c}D05{/} {c}C05{/}{d}├─{/} +DATA12
+        +IRQ1 {d}─┤{/}{c}D06{/} {c}C06{/}{d}├─{/} +DATA13
+        +IRQ0 {d}─┤{/}{c}D07{/} {c}C07{/}{d}├─{/} +DATA14
+         +NMI {d}─┤{/}{c}D08{/} {c}C08{/}{d}├─{/} +DATA15
+       +HRQEN {d}─┤{/}{c}D09{/} {c}C09{/}{d}├─{/} {d}nefolosit{/}
+        +DRQ0 {d}─┤{/}{c}D10{/} {c}C10{/}{d}├─{/} {d}nefolosit{/}
+
+  {h}Tensiuni pe canal{/}
+
+   {g}+5 V{/} c.c. +/- 5%      {g}-5 V{/} c.c. +/-10%
+   {g}+12 V{/} c.c. +/- 5%     {g}-12 V{/} c.c. +/-10%       {g}GND{/} (masa)
+
+  {h}Temporizare{/}
+
+   fara IOCHRDY activat:  memorie {c}4{/} perioade de 210 ns ({c}840 ns{/}/octet),
+   port {c}5{/} perioade ({c}1,05 us{/}/octet); DMA {c}5{/} perioade; reimprospatarea
+   dureaza {c}4{/} perioade, la fiecare {c}72{/} de ceasuri, aprox. {c}7%{/} din magistrala.
+   Canalul comanda toate cele 8 extensii, cu 2 sarcini LS pe extensie
+   (adaptorii folosesc de obicei una). {c}J8{/} are cerinte de temporizare mai
+   stricte si presupune semnalul CARD SLCTD.
+
+  {d}Vezi si:{/} [[canal-semnale|Semnalele canalului]]  [[harta-ie|Harta I/E]]  [[compatibilitate|Compatibilitate]]
+         [[intreruperi-dma|Intreruperi si DMA]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:13|pag. 13]] [[pag:14|pag. 14]] [[pag:17|pag. 17]] [[pag:18|pag. 18]]
+
+@doc canal-semnale | hardware | Semnalele canalului de intrare/iesire
+  Sensul este fata de placa de baza. {c}-{/} activ 0, {c}+{/} activ 1 logic.
+
+  {h}Ceas si initializare{/}
+
+   {b}OSC{/}    iesire  14,318 MHz, perioada 70 ns, factor de umplere 50%
+   {b}CLK{/}    iesire  ceasul sistemului: 210 ns (4,77 MHz), umplere 33%;
+   {/}       {/}        1/3 din OSC
+   {b}PCLK{/}   iesire  420 ns (2,38 MHz), umplere 50%; 1/2 din CLK
+   {b}RESET{/}  iesire  initializarea logicii la punerea sub tensiune;
+   {/}       {/}        sincronizat cu frontul descrescator al ceasului; activ 1
+
+  {h}Adrese si date{/}
+
+   {b}ADR0-ADR19{/}  iesire     20 de linii: pina la 1 Moctet; A0 = LSB, A19 = MSB;
+   {/}            {/}           de la microprocesor sau controlorul DMA; active 1
+   {b}DATA0-15{/}    in/iesire  bitii de date 0 - 15; D0 = LSB, D15 = MSB; active 1
+   {b}ALE{/}         iesire     activarea buffer-ului de adrese, comandata de I8288;
+   {/}            {/}           adresele se inscriu cu frontul descrescator
+   {b}XBHE{/}        iesire     numai cu I8086; activ 0: se adreseaza octetul
+   {/}            {/}           superior (D8-D15)
+
+  {h}Comenzi de citire/scriere{/}  {d}active 0; de la microprocesor sau DMA{/}
+
+   {b}MEMR{/}  iesire  memoria pune datele pe magistrala
+   {b}MEMW{/}  iesire  datele de pe magistrala se inscriu in memorie
+   {b}IOR{/}   iesire  dispozitivul de I/E pune datele pe magistrala
+   {b}IOW{/}   iesire  dispozitivul de I/E memoreaza datele de pe magistrala
+
+  {h}Intreruperi{/}
+
+   {b}IRQ0-IRQ7{/}  intrare  cereri de intrerupere: IRQ0 prioritate maxima, IRQ7
+   {/}           {/}         minima; cererea = trecere din 0 in 1, mentinuta pina la
+   {/}           {/}         recunoasterea de catre microprocesor
+   {b}INTA{/}       iesire   activ 0, de la I8288: recunoasterea ciclului de
+   {/}           {/}         intrerupere
+   {b}NMI{/}        intrare  cerere de intrerupere nemascabila; activ 1
+
+  {h}DMA{/}
+
+   {b}DRQ0-DRQ3{/}    intrare  cereri asincrone; DRQ0 prioritate maxima, DRQ3
+   {/}             {/}         minima; activ 1, pina la activarea DACK corespunzator
+   {b}DACK0-DACK3{/}  iesire   confirmarea cererilor DMA; active 0
+   {b}AEN{/}          iesire   decupleaza microprocesorul pentru transferuri DMA;
+   {/}             {/}         activ 1: DMA comanda adrese, date, comenzi
+   {b}T/C{/}          iesire   activ 1: un canal DMA a ajuns la ultimul transfer
+   {b}HRQDMA{/}       iesire   activ 1: controlorul DMA I8237A-5 (I8257) cere
+   {/}             {/}         magistrala
+   {b}HRQEN{/}        intrare  valideaza HRQDMA, mai ales pentru testare; activ 1
+   {b}HLDAEN{/}       intrare  valideaza HOLDA al I8237A-5, mai ales pentru
+   {/}             {/}         testare; activ 1
+
+  {h}Stare si eroare{/}
+
+   {b}IOCHCK{/}      intrare  verificarea canalului: la 0 s-a detectat o eroare
+   {/}            {/}         de memorie sau de dispozitiv de I/E
+   {b}IOCHRDY{/}     iesire   in mod obisnuit 1; un dispozitiv lent il trece in 0
+   {/}            {/}         pentru a prelungi ciclul (cel mult 10 cicluri de ceas)
+   {b}CARD SLCTD{/}  intrare  de la extensia J8: placa a fost selectata, deci
+   {/}            {/}         buffer-ele se orienteaza spre citirea/scrierea lui J8
+
+  {d}Vezi si:{/} [[canal-ie|Conectorii J1-J12]]  [[intreruperi-dma|Intreruperi si DMA]]
+         [[placa-baza|Placa de baza]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:14|pag. 14]] [[pag:15|pag. 15]] [[pag:16|pag. 16]] [[pag:17|pag. 17]]
+
+@doc comutatoare | hardware | Comutatoare de configurare si strap-uri
+  Placa de baza are un microintrerupator cu 8 pozitii (DIP), citit prin
+  program: arata software-ului coprocesorul, memoria placii, cuplorul de
+  afisaj si numarul unitatilor de disc.  {c}ON{/} = inchis, {c}OFF{/} = deschis.
+
+   {b}SW-1 {/} {b}SW-2 {/} {b}SW-3 {/} {b}SW-4 {/} {b}SW-5 {/} {b}SW-6 {/} {b}SW-7 {/} {b}SW-8 {/}
+  {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/} {c}ON{/}  {d}│{/}
+  {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/} OFF {d}│{/}
+  {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+               {d}└{/} memorie {d}┘{/} {d}└{/} afisaj {d}─┘{/} {d}└{/} discuri {d}┘{/}
+
+  {d}PB3 = 0 permite citirea SW-1..4; PB3 = 1 permite citirea SW-5..8.{/}
+  {d}Bitii se citesc prin portul 0062, vezi{/} [[i8255|interfata I8255A]].
+
+  {h}SW-1{/}  functionare normala: {c}OFF{/}
+
+  {h}SW-2{/}  coprocesor matematic I8087
+
+   {c}ON{/}   neinstalat
+   {c}OFF{/}  instalat
+
+  {h}SW-3 SW-4{/}  memoria RAM de pe placa de baza
+
+   {b}SW-3{/}  {b}SW-4{/}  {b}capacitate{/}
+   {c}ON{/}    {c}ON{/}     64 K
+   OFF   {c}ON{/}    128 K
+   {c}ON{/}    OFF   192 K
+   OFF   OFF   256 K
+
+  {h}SW-5 SW-6{/}  tipul cuplorului de afisaj
+
+   {b}SW-5{/}  {b}SW-6{/}  {b}cuplor{/}
+   {c}ON{/}    {c}ON{/}     cuplor de afisaj neinstalat
+   OFF   {c}ON{/}     cuplor CGA (40x25)
+   {c}ON{/}    OFF   cuplor CGA (80x25)
+   OFF   OFF   cuplor MDA sau ambele
+
+  {h}SW-7 SW-8{/}  numarul unitatilor de disc flexibil
+
+   {b}SW-7{/}  {b}SW-8{/}  {b}unitati{/}
+   {c}ON{/}    {c}ON{/}     1
+   OFF   {c}ON{/}     2
+   {c}ON{/}    OFF   3
+   OFF   OFF   4
+
+  La punerea in functiune microcalculatorul isi citeste aceste optiuni;
+  rezultatul se vede in [[test:sistem|Test sistem]].
+
+  {h}Strap-uri ale placii de baza{/}  {d}ON = conectat, OFF = neconectat{/}
+
+   {b}Controlor DMA{/}  {b}S12{/}  {b}S13{/}  {b}S14{/}  {b}S15{/}
+   I8237-5        OFF  {c}ON{/}   {c}ON{/}   OFF
+   I8257          {c}ON{/}   OFF  OFF  {c}ON{/}
+
+   {b}Tip RAM{/}  {b}S16{/}  {b}S17{/}      {b}Tip ROM{/}  {b}S18{/}  {b}S19{/}
+   MK4164   OFF  {c}ON{/}       I2764    OFF  {c}ON{/}
+   MK41256  {c}ON{/}   OFF      I27128   {c}ON{/}   OFF
+
+   {b}Extensie{/}   {b}S11{/}
+   IBM-PC/XT  {c}ON{/}
+   JUNIOR-XT  OFF
+
+   {b}Microprocesor{/}  {b}S1{/}   {b}S2{/}   {b}S3{/}   {b}S4{/}   {b}S5{/}   {b}S6{/}   {b}S7{/}   {b}S8{/}   {b}S9{/}   {b}S10{/}
+   I8086          {c}ON{/}   {c}ON{/}   OFF  {c}ON{/}   OFF  {c}ON{/}   {c}ON{/}   OFF  OFF  {c}ON{/}
+   I8088          OFF  OFF  {c}ON{/}   OFF  {c}ON{/}   OFF  OFF  {c}ON{/}   {c}ON{/}   OFF
+
+  {d}Vezi si:{/} [[test:sistem|Test sistem]]  [[placa-baza|Placa de baza]]  [[harta-ie|Harta I/E]]
+         [[cuplor-cga|Cuplor CGA]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:21|pag. 21]] [[pag:22|pag. 22]]

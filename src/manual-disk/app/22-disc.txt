@@ -1,0 +1,385 @@
+@doc cuplor-disc | hardware | Cuplor de disc flexibil (FDA)
+  Cuplorul ("Floppy Disk Adapter", {c}FDA{/}) este o placheta introdusa intr-un
+  conector de extensie al placii de baza; leaga {c}1 - 4{/} unitati de disc
+  flexibil de 5,25 inch sau 8 inch (nu amestecate), in simpla/dubla
+  densitate (FM/MFM). La citire regenereaza datele cu o bucla PLL analogica,
+  la scriere foloseste precompensare. Controlorul este {c}NEC uPD 765{/} (I8272).
+
+  {h}Conectori de iesire{/}
+
+   {c}26 contacte{/}  cablu plat          {c}»{/} doua unitati din interiorul blocului
+   {c}25 contacte{/}  mama, panoul spate  {c}»{/} toate cele patru unitati
+
+  Deci: 2 interioare + 2 exterioare, sau 4 exterioare ([[interfata-disc|interfata discului]]).
+  Datele se transfera prin {b}DMA{/} (canalul 2), sfirsitul unei operatii prin
+  intrerupere (nivelul 6): [[intreruperi-dma|intreruperi si DMA]].
+
+  {h}Porturile cuplorului{/}
+
+   {b}3F2{/}  {c}iesire{/}          registrul de iesire (motoare, selectie, initializare)
+   {b}3F4{/}  {c}citire{/}          registrul de stare al FDC
+   {b}3F5{/}  {c}citire/scriere{/}  registrul de date al FDC: date, comenzi, parametri,
+   {/}     {/}                informatii de stare
+
+  {h}Registrul de iesire{/}  {d}adresa 3F2H, numai scriere; RESET il pune pe 0{/}
+
+     {b}  7   {/} {b}  6   {/} {b}  5   {/} {b}  4   {/} {b}  3   {/} {b}  2   {/} {b}  1   {/} {b}  0   {/}
+    {d}┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐{/}
+    {d}│{/} mot3 {d}│{/} mot2 {d}│{/} mot1 {d}│{/} mot0 {d}│{/} DMA  {d}│{/} FDC  {d}│{/} US1  {d}│{/} US0  {d}│{/}
+    {d}└──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘{/}
+     {d}└───────{/} motoarele {d}───────┘{/}
+   {c}FS0, FS1{/}  selectia unitatii, daca e pornita:
+              {c}00{/} = 0 (A)   {c}01{/} = 1 (B)   {c}10{/} = 2 (C)   {c}11{/} = 3 (D)
+   {c}FS2{/}       initializare FDC: initializat cind bitul e 0; se activeaza
+              trecindu-l in 1 prin program
+   {c}FS3{/}       valideaza cererile de DMA si intrerupere catre magistrala
+              (la 0 sint blocate)
+   {c}FS4 - FS7{/} motoarele unitatilor 0 - 3 (semnalele MOTOR ON 0-3); la 0
+              motorul e inactiv si unitatea nu poate fi selectata
+
+  {h}Registrul de stare al FDC{/}  {d}adresa 3F4H, numai citire{/}
+
+     {b}  7   {/} {b}  6   {/} {b}  5   {/} {b}  4   {/} {b}  3   {/} {b}  2   {/} {b}  1   {/} {b}  0   {/}
+    {d}┌──────┬──────┬──────┬──────┬──────┬──────┬──────┬──────┐{/}
+    {d}│{/} RQM  {d}│{/} DIO  {d}│{/} NDM  {d}│{/}  CB  {d}│{/} DDB  {d}│{/} DCB  {d}│{/} DBB  {d}│{/} DAB  {d}│{/}
+    {d}└──────┴──────┴──────┴──────┴──────┴──────┴──────┴──────┘{/}
+   {c}DB0 - DB3{/}  {b}DAB, DBB, DCB, DDB{/}: unitatea A, B, C, D ocupata, in
+              mod cautare pista ("seek")
+   {c}DB4{/}  {b}CB{/}   FDC ocupat: o comanda de citire/scriere este in curs
+   {c}DB5{/}  {b}NDM{/}  FDC este in mod non DMA
+   {c}DB6{/}  {b}DIO{/}  directia transferului: {c}1{/} de la registrul de date al FDC
+              spre microprocesor; {c}0{/} invers
+   {c}DB7{/}  {b}RQM{/}  registrul de date este pregatit sa trimita/primeasca
+              date; DIO si RQM se folosesc impreuna pentru protocolul
+              "ready" si "direction" cu microprocesorul
+
+  {h}Strap-uri ale cuplorului{/}  {d}ON = conectat, OFF = neconectat{/}
+
+   {b}Tip unitate{/}  {b}S1{/}   {b}S2{/}       {b}Semnal READY{/}         {b}S1{/}   {b}S2{/}
+   simpla fata  {c}ON{/}   OFF      READY unitate        OFF  {c}ON{/}
+   dubla fata   OFF  {c}ON{/}       READY permanent "1"  {c}ON{/}   OFF
+
+   {b}S5-S16{/}    {b}S5{/}  {b}S6{/}  {b}S7{/}  {b}S8{/}  {b}S9{/}  {b}S10{/} {b}S11{/} {b}S12{/} {b}S13{/} {b}S14{/} {b}S15{/} {b}S16{/}
+   5,25 inch OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}
+   8 inch    {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF {c}ON{/}  OFF
+
+  {h}Constantele de programare ale FDC{/}  {d}(hexa){/}
+
+   {b}N{/} {c}02{/}   {b}Format GPL{/} {c}05{/}   {b}SC{/} {c}08{/}   {b}GPL R/L{/} {c}2A{/}
+   {b}HUT{/} {c}0F{/}  {b}HLT{/} {c}01{/}          {b}SRT{/} {c}0C{/}
+
+  Fata de driver-ele software, cuplorul apare ca o interfata de comanda de
+  nivel inalt. Comenzile controlorului: [[comenzi-disc|comenzile discului]],
+  [[disc-stare|registrele ST0-ST3]].
+
+  {d}Vezi si:{/} [[comenzi-disc|Comenzi disc]]  [[disc-stare|Registre ST0-ST3]]  [[interfata-disc|Interfata]]
+         [[unitati-disc|Unitati]]  [[test:disc|Test disc]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:25|pag. 25]] [[pag:26|pag. 26]] [[pag:27|pag. 27]] [[pag:40|pag. 40]]
+
+@doc comenzi-disc | hardware | Comenzile controlorului de disc
+  Controlorul NEC uPD 765 (I8272) executa {c}15{/} comenzi. Fiecare are trei faze:
+
+  {d}┌──────────────────────┐ ┌────────────┐ ┌──────────────────────────┐{/}
+  {d}│{/} {b}1 COMANDA{/}            {d}│ │{/} {b}2 EXECUTIE{/} {d}│ │{/} {b}3 REZULTAT{/}               {d}│{/}
+  {d}│{/} FDC primeste de la   {d}│ │{/} FDC executa{d}│ │{/} informatii de stare si   {d}│{/}
+  {d}│{/} procesor informatiile{d}│ │{/} operatia   {d}│ │{/} de gestiune sint         {d}│{/}
+  {d}│{/} necesare operatiei   {d}│ │{/}            {d}│ │{/} pregatite pentru procesor{d}│{/}
+  {d}└──────────────────────┘ └────────────┘ └──────────────────────────┘{/}
+
+  Comanda si rezultatul sint transferuri pe mai multi octeti prin registrul
+  de date (3F5H); starea transferului se citeste din 3F4H ([[cuplor-disc|cuplorul de disc]]).
+  Primul octet al comenzii, in binar:
+
+  {h}Citire si scriere{/}  {d}comanda: cod, HD US1 US0, parametri{/}
+
+   {c}MT MF SK 0 0 1 1 0{/}  {b}Citeste date{/} {d}(Read Data){/}
+   {c}MT MF SK 0 1 1 0 0{/}  {b}Citeste date sterse{/} {d}(Read Deleted Data){/}
+   {c}MT MF 0  0 0 1 0 1{/}  {b}Scrie date{/} {d}(Write Data){/}
+   {c}MT MF 0  0 1 0 0 1{/}  {b}Scrie date sterse{/} {d}(Write Deleted Data){/}
+   {c}0  MF SK 0 0 0 1 0{/}  {b}Citeste o pista{/} {d}(Read a Track){/}
+   {c}0  MF 0  0 1 0 1 0{/}  {b}Citeste ID{/} {d}(Read ID){/}
+   {c}0  MF 0  0 1 1 1 1{/}  {b}Formateaza o pista{/} {d}(Format a Track){/}
+
+  Octetul 2: {c}X X X X X HD US1 US0{/}. Parametrii urmeaza, apoi executia:
+   {c}C H R N EOT GPL DTL{/}  citire/scriere ({b}Read a Track{/}: C H R EOT GPL DTL)
+   {c}N SC GPL D{/}  formatare: FDC formateaza un cilindru intreg
+  Executia: transfer de date intre FDD si sistem; {b}Read a Track{/} citeste tot
+  cilindrul de la index pina la EOT; {b}Read ID{/} memoreaza prima informatie
+  corecta din cilindru. Rezultat: {c}ST0 ST1 ST2 C H R N{/}.
+
+  {h}Comparare{/}  {d}comanda ca la citire; executia compara datele{/}
+
+   {c}MT MF SK 1 0 0 0 1{/}  {b}Comparare egala{/} {d}(Scan Equal){/}
+   {c}MT MF SK 1 1 0 0 1{/}  {b}Mai mica sau egala{/} {d}(Scan Low or Equal){/}
+   {c}MT MF SK 1 1 1 0 1{/}  {b}Mai mare sau egala{/} {d}(Scan High or Equal){/}
+  Parametri si rezultat ca la citire ({c}C H R N EOT GPL DTL{/}; {c}ST0..ST2 C H R N{/}).
+
+  {h}Pozitionare si stare{/}
+
+   {c}0 0 0 0 0 1 1 1{/}  {b}Recalibrare{/} {d}(Recalibrate){/}
+   {/}                 octetul 2: {c}X X X X X 0 US1 US0{/}; capul se pozitioneaza pe
+   {/}                 pista 0; fara rezultat
+   {c}0 0 0 0 1 1 1 1{/}  {b}Cautare pista{/} {d}(Seek){/}
+   {/}                 octetul 2: {c}X X X X X HD US1 US0{/}, apoi {c}NCN{/}; capul ajunge
+   {/}                 pe cilindrul cerut; fara rezultat
+   {c}0 0 0 0 0 0 1 1{/}  {b}Specificare{/} {d}(Specify){/}
+   {/}                 octetii {c}SRT HUT{/} si {c}HLT ND{/}; fara rezultat
+   {c}0 0 0 0 1 0 0 0{/}  {b}Stare intrerupere{/} {d}(Sense Interrupt Status){/}
+   {/}                 rezultat {c}ST0 PCN{/} (la sfirsitul cautarii pistei)
+   {c}0 0 0 0 0 1 0 0{/}  {b}Stare unitate{/} {d}(Sense Drive Status){/}
+   {/}                 octetul 2: {c}X X X X X HD US1 US0{/}; rezultat {c}ST3{/}
+   {r}coduri invalide{/}  {b}Invalid{/}: controlorul intra in stare de
+   {/}                 asteptare; rezultat {c}ST0 = 80{/}
+
+  {d}Vezi si:{/} [[disc-stare|Registre ST0-ST3, simboluri]]  [[cuplor-disc|Cuplor disc]]
+         [[test:disc|Test disc]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:27|pag. 27]] [[pag:28|pag. 28]] [[pag:29|pag. 29]] [[pag:30|pag. 30]] [[pag:31|pag. 31]] [[pag:32|pag. 32]] [[pag:33|pag. 33]]
+
+@doc disc-stare | hardware | Registrele ST0-ST3 si simbolurile discului
+  La sfirsitul unei comenzi, in faza de rezultat, se citesc registrele de
+  stare {c}ST0 - ST3{/}; ele nu se confunda cu registrul de stare (3F4H) si se
+  citesc numai dupa o comanda, referindu-se doar la ea.
+
+  {h}ST0{/}
+     {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+    {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+    {d}│{/} IC  {d}│{/} IC  {d}│{/} SE  {d}│{/} EC  {d}│{/} NR  {d}│{/} HD  {d}│{/} US1 {d}│{/} US0 {d}│{/}
+    {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}D7 D6{/}  cod de intrerupere: {c}00{/} terminare normala (NT); {c}01{/} terminare
+          anormala (AT), executia a inceput dar nu s-a finalizat corect;
+          {c}10{/} comanda invalida (IC), nu va fi lansata; {c}11{/} terminare
+          anormala: semnalul READY al FDD si-a schimbat starea
+   {c}D5 SE{/}  sfirsit cautare ("Seek End"): 1 cind FDC executa comanda
+   {c}D4 EC{/}  verificare echipament: eroare de la FDD sau pista 0 nu apare
+          dupa 77 de impulsuri (recalibrare)
+   {c}D3 NR{/}  neoperational: FDD "not ready" la o comanda de citire/scriere,
+          sau comanda pe a doua fata a unui disc cu o singura fata
+   {c}D2 HD{/}  adresa capului la intrerupere     {c}D1 D0{/}  unitatea ({c}US1 US0{/})
+
+  {h}ST1{/}
+     {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+    {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+    {d}│{/} EN  {d}│{/}  0  {d}│{/} DE  {d}│{/} OR  {d}│{/}  0  {d}│{/} ND  {d}│{/} NW  {d}│{/} MA  {d}│{/}
+    {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}D7 EN{/}  sfirsit de cilindru: acces la un sector dincolo de sfirsit
+   {c}D6, D3{/} neutilizate, intotdeauna 0
+   {c}D5 DE{/}  eroare de date: eroare CRC in cimpul ID sau in cel de date
+   {c}D4 OR{/}  depasire ("Over Run"): FDC nu a fost servit la timp
+   {c}D2 ND{/}  date lipsa: sectorul nu e gasit (citire, scriere date sterse,
+          scanare); cimpul ID nu se poate citi (Read ID); sectorul de
+          inceput nu e gasit (citirea unui cilindru)
+   {c}D1 NW{/}  scriere nepermisa: semnal de protectie la scriere de la FDD
+   {c}D0 MA{/}  lipsa marca de adresa ID (si pune in 1 bitul MD)
+
+  {h}ST2{/}
+     {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+    {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+    {d}│{/}  0  {d}│{/} CM  {d}│{/} DD  {d}│{/} WC  {d}│{/} SH  {d}│{/} SN  {d}│{/} BC  {d}│{/} MD  {d}│{/}
+    {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}D7{/}  nefolosit, intotdeauna 0
+   {c}D6 CM{/}  control marca adresa: sector cu adresa stearsa
+   {c}D5 DD{/}  eroare de date (CRC) in cimpul de date
+   {c}D4 WC{/}  cilindru eronat: C de pe discheta difera de cel din registrul ID
+   {c}D3 SH{/}  la scanare, conditia "egal" este satisfacuta
+   {c}D2 SN{/}  scanare necorespunzatoare: FDC nu gaseste un sector
+   {c}D1 BC{/}  cilindru necorespunzator: C difera de registrul ID si C = FF
+   {c}D0 MD{/}  lipsa marca de adresa in cimpul de date
+
+  {h}ST3{/}  {d}reflecta semnalele unitatii{/}
+     {b}  7  {/} {b}  6  {/} {b}  5  {/} {b}  4  {/} {b}  3  {/} {b}  2  {/} {b}  1  {/} {b}  0  {/}
+    {d}┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐{/}
+    {d}│{/} FT  {d}│{/} WP  {d}│{/} RDY {d}│{/} T0  {d}│{/} TS  {d}│{/} HD  {d}│{/} US1 {d}│{/} US0 {d}│{/}
+    {d}└─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘{/}
+   {c}D7{/} FAULT   {c}D6{/} WRITE PROTECT   {c}D5{/} READY   {c}D4{/} TRACK 0   {c}D3{/} TWO SIDE
+   {c}D2{/} SIDE SELECT   {c}D1 D0{/} SELECT 1, SELECT 0
+
+  {h}Simbolurile comenzilor{/}
+
+   {c}C{/}        numar cilindru
+   {c}D{/}        octet de umplere (paterne de date scrise intr-un sector)
+   {c}DTL{/}      lungimea datelor citite/scrise intr-un sector, cind N = 00
+   {c}EOT{/}      numarul ultimului sector al unui cilindru
+   {c}GPL{/}      lungimea GAP 3 intre sectoare
+   {c}H{/}        adresa capului (0 sau 1) din cimpul ID;  {c}HDS{/} selectia capului
+   {c}HLT{/}      timp de incarcare a capului: 2 - 254 ms, cuante de 2 ms
+   {c}HUT{/}      timp de descarcare a capului: 16 - 240 ms, cuante de 16 ms
+   {c}MF{/}       0 simpla densitate, 1 dubla densitate
+   {c}MT{/}       multipista: un cilindru pe ambele fete (HD0 si HD1)
+   {c}N{/}        numar de octeti de date dintr-un sector
+   {c}NCN{/}      numarul noului cilindru, in urma unei cautari de pista
+   {c}ND{/}       mod nou DMA
+   {c}PCN{/}      cilindrul actual al capului, rezultat al Sense Interrupt Status
+   {c}R{/}        numarul sectorului de citit sau scris;  {c}R/W{/} citire/scriere
+   {c}SC{/}       sectoare pe cilindru
+   {c}SK{/}       omite (sare peste) marca de adresa a datelor sterse
+   {c}SRT{/}      rata pasului motorului: 1 - 16 ms, cuante de 1 ms, aceeasi
+   {/}         pentru toate unitatile
+   {c}STP{/}      la scanare: 1 compara sectoarele contigue octet cu octet,
+   {/}         2 sectoarele alternate
+   {c}US0 US1{/}  selectia unitatii (0 sau 1)
+
+  {d}Vezi si:{/} [[comenzi-disc|Comenzi disc]]  [[cuplor-disc|Cuplor disc]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:34|pag. 34]] [[pag:35|pag. 35]] [[pag:36|pag. 36]] [[pag:37|pag. 37]] [[pag:38|pag. 38]] [[pag:39|pag. 39]]
+
+@doc interfata-disc | hardware | Interfata cu unitatile de disc
+  Toate semnalele sint active 0 logic. Sensul este fata de cuplor.
+
+  {h}Semnale de iesire{/}
+
+   {b}SELECT 0-3{/}    valideaza semnalele de interfata ale unitatii asociate,
+   {/}              cu exceptia MOTOR ON
+   {b}MOTOR ON 0-3{/}  unitatea asociata porneste motorul cind linia e activa
+   {b}SEEK/STEP{/}     la fiecare impuls capul se deplaseaza cu un cilindru
+   {b}DIRECTION{/}     la fiecare impuls SEEK/STEP: inapoi daca e activ, inainte
+   {/}              daca e inactiv
+   {b}SIDE SELECT{/}   se selecteaza al doilea cap (fata de deasupra) cind e
+   {b}(HEAD LOAD){/}   activata
+   {b}WRITE ENABLE{/}  dezactiveaza operatia de scriere
+   {b}WRITE DATA{/}    fiecare activare (cu WRITE ENABLE activ) scrie un flux
+   {/}              magnetic
+   {b}LOW CURRENT{/}   se adreseaza o pista mai mare de 43
+   {b}FAULT RESET{/}   sterge erorile memorate de unitate
+
+  {h}Semnale de intrare{/}
+
+   {b}INDEX{/}          un impuls la fiecare rotatie a dischetei
+   {b}WRITE PROTECT{/}  discheta instalata este protejata la scriere
+   {b}TRACK 0{/}        capul este pozitionat pe pista 0
+   {b}READ DATA{/}      un impuls la fiecare variatie a fluxului pe discheta
+   {b}WRITE FAULT{/}    unitatea semnaleaza o eroare
+   {b}READY{/}          unitatea este operationala
+   {b}TWO SIDED{/}      exista o unitate cu doua capete
+
+  {h}Pinii conectorilor cuplorului{/}
+
+   {d}25 ct.: mama, panoul spate (4 unitati); 26 ct.: cablu plat (2 interioare){/}
+
+   {b}25 ct.{/}  {b}semnal{/}                   {b}26 ct.{/}
+   {c}1{/}       READY                    {d}-{/}
+   {c}2{/}       WRITE FAULT              {d}-{/}
+   {c}3{/}       TWO SIDED                {d}-{/}
+   {c}4{/}       FAULT RESET              {d}-{/}
+   {c}5{/}       TRACK 0                  23
+   {c}6{/}       SELECT 0                 24
+   {c}7{/}       SELECT 1                 11
+   {c}8{/}       SELECT 2                 {d}-{/}
+   {c}9{/}       SELECT 3                 {d}-{/}
+   {c}10{/}      WRITE PROTECT            3,21
+   {c}11{/}      SEEK/STEP                1,22
+   {c}12{/}      {d}-{/}                        {d}-{/}
+   {c}13{/}      READ DATA                5,19
+   {c}14{/}      WRITE DATA               8,20
+   {c}15{/}      INDEX                    7,17
+   {c}16{/}      WRITE ENABLE             10,18
+   {c}17{/}      LOW CURRENT              {d}-{/}
+   {c}18{/}      DIRECTION                9,15
+   {c}19{/}      SIDE SELECT (HEAD LOAD)  13,16
+   {c}20{/}      MOTOR ON 0               25
+   {c}21{/}      MOTOR ON 1               12
+   {c}22{/}      MOTOR ON 2               {d}-{/}
+   {c}23{/}      MOTOR ON 3               {d}-{/}
+   {c}24{/}      GND                      2,4
+   {c}25{/}      GND                      14,26
+
+  {d}Vezi si:{/} [[cuplor-disc|Cuplor disc]]  [[unitati-disc|Unitati de disc]]  [[test:disc|Test disc]]
+         [[hardware|Hardware]]
+  Carte tehnica: [[pag:40|pag. 40]] [[pag:41|pag. 41]] [[pag:42|pag. 42]]
+
+@doc unitati-disc | hardware | Unitatile de disc flexibil
+  JUNIOR-XT lucreaza cu {c}1 - 4{/} unitati de disc flexibil, de 5,25 inch sau de
+  8 inch; {r}nu se pot folosi simultan{/} unitati de ambele marimi.
+
+   {a:3F} 5,25 inch {/}                               {a:3F} 8 inch {/}
+   simpla sau dubla fata                     numai simpla fata
+   40 / 80 piste pe fata                     77 de piste
+   numai dubla densitate (MFM)               numai dubla densitate (MFM)
+   2 in blocul logic, alimentate din sursa;  exterioare, cu surse proprii:
+   exterioare: subansamblul UDF-201          subansamblul UDF-102A
+   {d}fabricate de IEPER{/}                        {d}fabricate de IEPER{/}
+
+  {h}5,25 inch{/}  {d}in interiorul blocului logic{/}
+
+  Alimentate din [[sursa|sursa de alimentare]]: {c}+5 V{/} pentru logica si {c}+12 V{/} pentru
+  amplificatoare, motorul pas cu pas si antrenarea dischetei. Comanda: cablu
+  plat cu 26 de fire de la conectorul de 26 contacte al cuplorului.
+  Conectorul de interfata al unitatii: 2 x 17 contacte:
+
+   {b}pin{/}  {b}semnal{/}         {b}pin{/}  {b}semnal{/}
+   {c}1{/}    {g}GND{/}            {c}19{/}   {g}GND{/}
+   {c}2{/}    {d}-{/}              {c}20{/}   SEEK/STEP
+   {c}3{/}    {g}GND{/}            {c}21{/}   {g}GND{/}
+   {c}4{/}    IN USE         {c}22{/}   WRITE DATA
+   {c}5{/}    {g}GND{/}            {c}23{/}   {g}GND{/}
+   {c}6{/}    SELECT 3       {c}24{/}   WRITE ENABLE
+   {c}7{/}    {g}GND{/}            {c}25{/}   {g}GND{/}
+   {c}8{/}    INDEX          {c}26{/}   TRACK 0
+   {c}9{/}    {g}GND{/}            {c}27{/}   {g}GND{/}
+   {c}10{/}   SELECT 0       {c}28{/}   WRITE PROTECT
+   {c}11{/}   {g}GND{/}            {c}29{/}   {g}GND{/}
+   {c}12{/}   SELECT 1       {c}30{/}   READ DATA
+   {c}13{/}   {g}GND{/}            {c}31{/}   {g}GND{/}
+   {c}14{/}   SELECT 2       {c}32{/}   SIDE SELECT
+   {c}15{/}   {g}GND{/}            {c}33{/}   {g}GND{/}
+   {c}16{/}   MOTOR ON       {c}34{/}   READY
+   {c}17{/}   {g}GND{/}      
+   {c}18{/}   DIRECTION
+
+  Conectorul de alimentare (4 pini): {c}1{/} +12 V, {c}2{/} GND (pt. +12 V),
+  {c}3{/} GND (pt. +5 V), {c}4{/} +5 V.
+
+  {h}UDF-201{/}  {d}5,25 inch exterior, cu sursa proprie{/}
+
+  Se cupleaza printr-un cablu la conectorul de 25 contacte de pe panoul
+  spate. Conectorul sau de interfata:
+
+   {b}pin{/}  {b}semnal{/}             {b}pin{/}  {b}semnal{/}
+   {c}1{/}    READY              {c}14{/}   WRITE DATA
+   {c}2{/}    {d}-{/}                  {c}15{/}   INDEX
+   {c}3{/}    {d}-{/}                  {c}16{/}   WRITE ENABLE
+   {c}4{/}    {d}-{/}                  {c}17{/}   {d}-{/}
+   {c}5{/}    TRACK 0            {c}18{/}   DIRECTION
+   {c}6{/}    {d}-{/}                  {c}19{/}   SIDE SELECT (HEAD LOAD)
+   {c}7{/}    {d}-{/}                  {c}20{/}   {d}-{/}
+   {c}8{/}    SELECT 2           {c}21{/}   {d}-{/}
+   {c}9{/}    SELECT 3           {c}22{/}   MOTOR ON 2
+   {c}10{/}   WRITE PROTECT      {c}23{/}   MOTOR ON 3
+   {c}11{/}   SEEK/STEP          {c}24{/}   {g}GND{/}
+   {c}12{/}   {d}-{/}                  {c}25{/}   {g}GND{/}
+   {c}13{/}   READ DATA    
+
+  {h}UDF-102A{/}  {d}8 inch, exterior, cu sursa proprie{/}
+
+  Se cupleaza printr-un cablu la conectorul de 25 contacte de pe panoul
+  spate. Conectorul de interfata al unitatii (50 de contacte):
+
+   {b}pin{/}  {b}semnal{/}            {b}pin{/}  {b}semnal{/}
+   {c}1{/}    {g}GND{/}               {c}27{/}   {g}GND{/}
+   {c}2{/}    HEAD LOAD         {c}28{/}   SELECT 1
+   {c}3{/}    {g}GND{/}               {c}29{/}   {g}GND{/}
+   {c}4{/}    INDEX             {c}30{/}   SELECT 3
+   {c}5{/}    {g}GND{/}               {c}31{/}   {g}GND{/}
+   {c}6{/}    SEEK/STEP         {c}32{/}   READY 1
+   {c}7{/}    {g}GND{/}               {c}33{/}   {g}GND{/}
+   {c}8{/}    WRITE ENABLE      {c}34{/}   {d}-{/}
+   {c}9{/}    {g}GND{/}               {c}35{/}   {d}-{/}
+   {c}10{/}   SELECT 0          {c}36{/}   {d}-{/}
+   {c}11{/}   {g}GND{/}               {c}37{/}   {d}-{/}
+   {c}12{/}   SELECT 2          {c}38{/}   FAULT RESET
+   {c}13{/}   {g}GND{/}               {c}39{/}   {g}GND{/}
+   {c}14{/}   READY 0           {c}40{/}   WRITE FAULT
+   {c}15{/}   {g}GND{/}               {c}41{/}   {g}GND{/}
+   {c}16{/}   READY 2           {c}42{/}   {d}-{/}
+   {c}17{/}   {g}GND{/}               {c}43{/}   {d}-{/}
+   {c}18{/}   READ DATA         {c}44{/}   {d}-{/}
+   {c}19{/}   {g}GND{/}               {c}45{/}   {d}-{/}
+   {c}20{/}   TRACK 0           {c}46{/}   {d}-{/}
+   {c}21{/}   {g}GND{/}               {c}47{/}   {g}GND{/}
+   {c}22{/}   LOW CURRENT       {c}48{/}   WRITE PROTECT
+   {c}23{/}   {g}GND{/}               {c}49{/}   {g}GND{/}
+   {c}24{/}   DIRECTION         {c}50{/}   READY 3
+   {c}25{/}   {g}GND{/}         
+   {c}26{/}   WRITE DATA  
+
+  {d}Vezi si:{/} [[interfata-disc|Interfata cu unitatile]]  [[cuplor-disc|Cuplor disc]]
+         [[intretinere|Intretinere]]  [[test:disc|Test disc]]  [[hardware|Hardware]]
+  Carte tehnica: [[pag:68|pag. 68]] [[pag:69|pag. 69]] [[pag:70|pag. 70]]

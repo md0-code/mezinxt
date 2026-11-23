@@ -1,0 +1,205 @@
+@doc instalare | instalare | Instalare, exploatare, intretinere
+  {h}Cuprins{/}
+
+    [[conditii|Conditii de instalare si exploatare]]   temperatura, umiditate, masa
+    [[alimentare|Gabarit, greutati, alimentare]]         dimensiuni si retea de 220 V
+    [[punere-functiune|Punerea in functiune]]                  cei 7 pasi, mesajul de pornire
+    [[erori-post|Erori la punerea in functiune]]         mesajele testului de pornire
+    [[intretinere|Intretinere]]                           curatare, inspectie, depozitare
+
+  {h}Instalarea echipamentului dezambalat{/}
+
+   {d}┌───────────────────┐{/}   tastatura   {c}»{/} conectorul de pe panoul spate
+   {d}│{/} {b}BLOC LOGIC SI{/}     {d}│{/}   monitor      {c}»{/} conectorul de pe panoul spate
+   {d}│{/} {b}DE ALIMENTARE{/}     {d}│{/}   periferice   {c}»{/} conectorii corespunzatori de pe
+   {d}└───────────────────┘{/}                           panoul spate
+
+  Cele trei cuplari se fac cu cablurile de legatura, in conditiile din
+  [[conditii|conditii]] si [[alimentare|alimentare]]. Dupa instalare se urmeaza [[punere-functiune|punerea in functiune]].
+
+  {h}Protectia muncii si PCI{/}
+
+    {c}■{/} protectia contra electrocutarii: carcasele sint legate la pamint
+      prin priza SHUKO
+    {c}■{/} {r}se interzice accesul personalului necalificat in interiorul{/}
+      {r}echipamentului{/}
+    {c}■{/} paza contra incendiilor: conform normelor legale PCI
+
+  {d}Vezi si:{/} [[acasa|Prezentare]]  [[configuratie|Configuratie]]  [[sursa|Sursa de alimentare]]
+  Carte tehnica: [[pag:7|pag. 7]] [[pag:8|pag. 8]] [[pag:10|pag. 10]]
+
+@doc conditii | instalare | Conditii de instalare si exploatare
+  {h}Mediul{/}
+
+   {b}Temperatura mediului ambiant{/}  {c}5 ... 35 °C{/}
+   {b}Umiditate relativa{/}            {c}65 %{/} la {c}20 °C{/}, fara condensare
+   {b}Incaperi{/}                      inchise, tip protectie climatica {c}N3{/}
+   {b}Cimpuri electromagnetice{/}      fara interferenta de la transmitatoare
+   {/}                              radio, radar, masini industriale de
+   {/}                              radiofrecventa etc.
+
+  {h}Amplasarea{/}
+
+   {b}Masa de instalare{/}       {c}1000 x 800 mm{/}
+   {b}Suprafata de instalare{/}  cel putin {c}4 m patrati{/} pentru
+   {/}                        configuratia de baza, inclusiv scaunul
+   {/}                        operatorului; pentru echipamente periferice
+   {/}                        adaugate suprafata se mareste corespunzator
+   {b}Iluminarea{/}              corespunzatoare, pentru vizualizarea in
+   {/}                        bune conditii a ecranului
+
+   {c}┌───────────────── 1000 mm ──────────────────┐{/}
+   {d}│{/}                                            {d}│{/}
+   {d}│{/}   {a:3F} BLOC {/}   {a:1F} TAST. {/}   {a:1F}MONITOR{/}               {d}│{/} {c}800 mm{/}
+   {d}│{/}                                            {d}│{/}
+   {d}└────────────────────────────────────────────┘{/}
+
+  {d}Vezi si:{/} [[instalare|Instalare]]  [[alimentare|Alimentare]]  [[punere-functiune|Punerea in functiune]]
+  Carte tehnica: [[pag:7|pag. 7]]
+
+@doc alimentare | instalare | Gabarit, greutati si alimentare
+  {h}Dimensiuni si greutati{/}
+
+  {b}Modul                        Dimensiuni (mm)  Greutate{/}
+  Bloc logic si de alimentare  {c}480 x 440 x 155{/}  max. {c}20 kg{/}
+  Tastatura                    {c}480 x 207 x 32{/}   max. {c}2 kg{/}
+
+   {d}┌────────────────────────────┐{/}
+   {d}│{/}     {b}Bloc logic si de{/}       {d}│{/}  {d}480{/} lungime
+   {d}│{/}     {b}alimentare{/}             {d}│{/}  {d}440{/} adincime
+   {d}└────────────────────────────┘{/}  {d}155{/} inaltime
+
+  {h}Alimentarea cu energie electrica{/}
+
+   {b}Tensiune{/}           {c}220 V{/} +10%, -15%
+   {b}Frecventa retelei{/}  {c}50 Hz{/} +/- 2%
+   {b}Priza{/}              tip {c}SHUKO{/}
+   {b}Racordare{/}          la retea electrica separata, departe de instalatii
+   {/}                   sau agregate generatoare de paraziti
+
+  {d}Vezi si:{/} [[instalare|Instalare]]  [[conditii|Conditii]]  [[sursa|Sursa de alimentare]]
+  Carte tehnica: [[pag:7|pag. 7]]
+
+@doc punere-functiune | instalare | Punerea in functiune
+  {h}Succesiunea operatiilor{/}
+
+   {c}1{/}  Se verifica ca intrerupatoarele de pornire ale modulelor sa fie
+      pe pozitia {b}oprit{/}.
+   {c}2{/}  Se conecteaza echipamentul la retea prin cablurile de alimentare
+      ale modulelor (bloc logic si de alimentare, monitor, imprimanta).
+   {c}3{/}  Se verifica instalarea corecta a echipamentului.
+   {c}4{/}  Se pune in functiune blocul logic cu comutatorul de pornire de pe
+      panoul spate.
+   {c}5{/}  Se pune in functiune monitorul cu comutatorul sau de pornire.
+   {c}6{/}  Dupa cca. {c}2 sec.{/} de la conectarea blocului logic, microcalculatorul
+      emite {b}doua semnale acustice{/} si afiseaza pe ecran:
+
+   {a:0F}┌──────────────────────────────┐{/}
+   {a:0F}│{a:07} JUNIOR-XT computer Vy.z      {a:0F}│{/}   {c}y.z{/}  versiunea BIOS
+   {a:0F}│{a:07} xxxK RAM                     {a:0F}│{/}   {c}xxx{/}  memoria interna,
+   {a:0F}└──────────────────────────────┘{/}        in Kocteti
+
+   {c}7{/}  Se introduce in {b}unitatea 0{/} de disc flexibil discheta cu sistemul
+      de operare.
+
+  Dupa incarcarea sistemului de operare, exploatarea se face conform
+  manualului de utilizare.
+
+  {h}La terminarea lucrului{/}
+
+  Dischetele se scot din unitatile de disc; se deconecteaza monitorul si
+  blocul logic.
+
+  Daca pe ecran apar mesaje de eroare in locul mesajului de mai sus, vezi
+  [[erori-post|erorile la punerea in functiune]]; testul interactiv: [[test:sistem|Test sistem]].
+
+  {d}Vezi si:{/} [[instalare|Instalare]]  [[erori-post|Erori la pornire]]  [[test:sistem|Test sistem]]
+  Carte tehnica: [[pag:8|pag. 8]]
+
+@doc erori-post | instalare | Erori la punerea in functiune
+  La pornire, microcalculatorul executa un test de diagnosticare si evaluare
+  a resurselor hardware. Erorile se afiseaza pe ecran, insotite de semnale
+  acustice specifice. Cauze: cuplarea necorespunzatoare a tastaturii si a
+  unitatilor de disc, sau defecte hardware.
+
+  {h}Placa logica de baza{/}  {d}semnale sonore de eroare{/}
+
+  {b}Mesaj                 Inseamna{/}
+  {r}Error 101 Int{/}         eroare controlor de intreruperi
+  {r}Error 102 Time{/}        eroare timer
+  {r}Error 180{/}             eroare canal de intrare/iesire
+  {r}Error 201 RAM{/}         eroare memorie RAM
+  {r}Error 701 ROM{/}         eroare suma de control ROM aditional
+  {r}Error Rom bios check{/}  eroare suma de control ROM BIOS
+
+  {h}Cuplorul de afisaj{/}  {d}un semnal sonor prelung{/}
+
+  {r}Error 501 Crt RAM{/}  eroare memorie de afisaj
+  {r}Error 502 Crt{/}      eroare linii
+
+  De obicei sint generate de memoria de afisaj sau de controlorul de ecran
+  {c}MC 6845{/}. La un defect major al cuplorului mesajele pot sa nu apara
+  si echipamentul sa fie neoperational.
+
+  {h}Tastatura{/}  {d}un semnal sonor scurt{/}
+
+  {r}Error 301 Kbd{/}  cod de scanare intors diferit de {c}AAH{/}
+  {r}Error 302 Kbd{/}  cod de scanare intors diferit de {c}00H{/}
+
+  Cauza: tastatura functioneaza necorespunzator sau nu este cuplata la
+  blocul logic prin cablul de legatura.
+
+  {h}Cuplorul de disc flexibil{/}  {d}un semnal sonor scurt{/}
+
+  {r}Error 601{/}  cuplor de disc defect, sau unitate necuplata (cablul de
+  {/}           legatura neconectat sau unitatea nealimentata)
+
+  Dupa testarea cuplorului si a unitatii (se executa o operatie de
+  calibrare), microcalculatorul incearca sa incarce sistemul de operare de
+  pe unitatea 0. Daca discheta sistem lipseste, apare periodic mesajul
+
+  {y}Error on load, retrying{/}   {d}eroare de operare: fara semnal acustic{/}
+
+  Incarcarea reincepe imediat ce discheta sistem este introdusa in unitate.
+
+  Rezultatul testului de pornire se poate urmari interactiv cu
+  [[test:sistem|Test sistem]].
+
+  {d}Vezi si:{/} [[punere-functiune|Punerea in functiune]]  [[test:sistem|Test sistem]]
+         [[tastatura-hw|Tastatura]]  [[cuplor-disc|Cuplor disc]]  [[cuplor-cga|Cuplor CGA]]
+  Carte tehnica: [[pag:8|pag. 8]] [[pag:9|pag. 9]] [[pag:10|pag. 10]]
+
+@doc intretinere | instalare | Intretinere
+  Microcalculatorul nu necesita o intretinere deosebita; se impun totusi
+  masuri de protectie.
+
+  {h}Masuri curente{/}
+
+    {c}■{/} deconectarea de la retea la oprirea lucrului
+    {c}■{/} stergerea prafului de pe carcasa blocului logic, tastatura si monitor
+    {c}■{/} stergerea ecranului monitorului cu un material textil inmuiat in
+      alcool
+    {c}■{/} curatarea periodica a capetelor unitatilor de disc flexibil
+
+  {h}Intretinerea preventiva{/}
+
+  Consta in curatarea echipamentului, o inspectie vizuala si verificarea
+  performantelor echipamentului.
+
+    {c}■{/} {b}exteriorul{/}: tesatura moale imbibata cu solutie slaba de detergent
+      cu apa
+    {c}■{/} {b}interiorul{/}: praful din blocul logic se aspira periodic; el este
+      conductiv in conditii de umiditate ridicata si impiedica disiparea
+      caldurii
+    {c}■{/} inaintea curatarii interiorului, {r}echipamentul se deconecteaza de la{/}
+      {r}retea{/}
+    {c}■{/} se evita agentii chimici care ar putea dauna materialului plastic
+    {c}■{/} inspectia periodica: conectori rupti, zone afectate de disiparea
+      caldurii etc.
+
+  {h}Depozitarea{/}
+
+  In incaperi inchise, lipsite de praf, agenti corozivi si umezeala.
+
+  {d}Vezi si:{/} [[instalare|Instalare]]  [[conditii|Conditii]]  [[unitati-disc|Unitati de disc]]
+  Carte tehnica: [[pag:10|pag. 10]]

@@ -1,0 +1,54 @@
+                                  {b}CUPRINS{/b}
+
+
+{b}CAPITOLUL 1. GENERALITATI{/b}
+
+{b}CAPITOLUL 2. INSTALARE, EXPLOATARE, INTRETINERE{/b}
+       2.1. Instalare
+            2.1.1. Conditii de instalare si exploatare
+            2.1.2. Caracteristici de gabarit
+            2.1.3. Alimentarea cu energie electrica
+            2.1.4. Instalare
+            2.1.5. Protectia muncii si PCI
+       2.2. Exploatare
+            2.2.1. Punerea in functiune
+            2.2.2. Erori la punerea in functiune
+       2.3. Intretinere
+
+{b}CAPITOLUL 3. DESCRIERE FUNCTIONALA{/b}
+       3.1. Placa logica de baza
+       3.2. Cuplorul pentru discul flexibil
+            3.2.1. Descriere functionala si notiuni de programare
+            3.2.2. Interfata cu unitatile de disc flexibil
+       3.3. Cuplorul pentru afisajul grafic color de medie rezolutie
+            3.3.1. Regimul de lucru alfanumeric
+            3.3.2. Regimul de lucru grafic
+            3.3.3. Notiuni de programare
+       3.4. Cuplorul pentru comunicatia seriala asincrona si imprimanta
+            paralela
+            3.4.1. Cuplorul pentru comunicatia seriala asincrona
+            3.4.2. Cuplorul pentru imprimanta paralela
+       3.5. Modulul de extensie memorie RAM 384 Kocteti
+       3.6. Sursa de alimentare
+       3.7. Tastatura
+       3.8. Unitatile de disc flexibil
+       3.9. Monitorul TV
+       3.10.Compatibilitatea microcalculatorului JUNIOR-XT cu microcalcula-
+            toarele IBM-PC/XT si FELIX-PC
+            3.10.1. Compatibilitatea la nivel hardware
+            3.10.2. Compatibilitatea la nivel software
+
+{b}CAPITOLUL 4. PREZENTARE SOFTWARE{/b}
+       4.1. Sistemul de intrare/iesire (BIOS)
+       4.2. Codificarea si utilizarea tastaturii
+            4.2.1. Codurile caracterelor
+            4.2.2. Coduri extinse
+            4.2.3. Moduri de lucru speciale
+            4.2.4. Alte caracteristici
+            4.2.5. Utilizarea tastaturii
+
+
+{b}ANEXA 1. DESPRE CARACTERE, TASTE SI CULORI{/b}
+{b}ANEXA 2. INSTRUCTIUNILE MICROPROCESORULUI I8086/I8088{/b}
+{b}ANEXA 3. CATALOG DE SUBANSAMBLE SI PIESE DE SCHIMB{/b}
+{b}ANEXA 4. SCHEME ELECTRICE{/b}

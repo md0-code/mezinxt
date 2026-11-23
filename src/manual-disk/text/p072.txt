@@ -1,0 +1,27 @@
+   ------------------------------------------
+   |Monitor monocrom cu semnal video complex|
+   ------------------------------------------
+   |              |           SVIDEO        |
+   |  Mufe video  |--------------------------
+   |              |           GND           |
+   ------------------------------------------
+   Nota: In cazul folosirii mufelor RCA cu cabluri ecranate, semnalul GND
+         este conectat la ecranul cablului.
+
+   {u}Caracteristicile monitoarelor color{/u}
+   - dimensiune ecran: min. 310 mm (diagonala)
+   - numar culori afisate: min. 16
+   - semnale de culoare (R,G,B) si intensitate (optional) independente
+   - semnale de comanda TTL, sau de impedanta 75 ohm
+   - rezolutie de afisare: min 640 x 200 puncte
+   - frecventa liniilor: 15,625 KHz
+   - frecventa cadrelor: 50 - 60 Hz
+   - banda de frecventa: 18 MHz +/- 3 dB
+
+   {u}Caracteristicile monitorului monocrom{/u}
+   - dimensiune ecran: min. 310 mm (diagonala)
+   - semnal de intrare video complex de impedanta 75 ohm
+   - rezolutie de afisare: min. 640 x 200 puncte
+   - frecventa liniilor: 15,625 KHz
+   - frecventa cadrelor: 50 - 60 Hz
+   - banda de frecventa: 18 MHz +/- 3 dB

@@ -1,0 +1,36 @@
+                        {b}CAPITOLUL 1.  GENERALITATI{/b}
+
+
+     JUNIOR-XT  este  un microcalculator personal-profesional  conceput  pe
+baza  microprocesoarelor pe 16 biti (I8086,I8087),  cu un grad de integrare
+tehnologica ridicat si un software ce acopera o gama larga de aplicatii
+     Beneficiind de o structura modulara,  usor extensibila prin  adaugarea
+unor  extensii  hardware,   JUNIOR-XT  poate  fi  utilizat  ca  microsistem
+universal sau dedicat functional in aplicatii specializate.
+     Microcalculatorul  JUNIOR-XT  respecta  compatibilitatea  hardware  cu
+microcalculatoarele  similare  din  familia  IBM-PC/XT,   ceea  ce  permite
+utilizarea integrala a software-ului de pe aceste echipamente.
+     Modulele  functionale de baza ale microcalculatorului JUNIOR-XT  sint:
+blocul logic si de alimentare, tastatura si monitorul TV.
+     Blocul logic si de alimentare este nucleul microcalculatorului JUNIOR-
+XT.  El contine placa logica de baza, plachetele si cuploarele de extensie,
+unitatile  de  disc flexibil,  difuzorul,  precum si  sursa  de  alimentare
+necesara functionarii microsistemului.
+     Din punct de vedere comercial, elementele componente ale microcalcula-
+torului JUNIOR-XT sint Unitatile de  Repertoriu Comercial (URC)  prezentate
+in tabelul de mai jos.  Acestea asigura un grad  sporit  de  satisfacere  a
+necesitatilor  beneficiarilor,   printr-o varietate  mare  a  configuratii-
+lor  produsului, in vederea acoperirii domeniilor de aplicatii specifice.
+     Echipamentele de tip periferic necesare completarii configuratiei sint
+prezentate in tabelul alaturat.
+     In  functie  de  aplicatia  dorita,   microcalculatorul  JUNIOR-XT  se
+livreaza in diverse configuratii comandate de catre beneficiar.
+     Configuratia de baza a echipamentului este compusa din:
+     - bloc logic si de alimentare
+     - cuplor pentru discul flexibil
+     - cuplor pentru afisajul grafic color de medie rezolutie
+     - cuplor pentru comunicatia seriala asincrona si imprimanta paralela
+     - doua unitati de discuri flexibile de 5,25 inch sau 8 inch
+     - tastatura
+     - monitor color sau monocrom
+     - imprimanta (optional)

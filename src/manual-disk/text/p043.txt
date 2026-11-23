@@ -1,0 +1,55 @@
+     {b}3.3. Cuplorul pentru afisajul grafic color de medie rezolutie (CGA){/b}
+
+     Cuplorul pentru afisajul grafic color ("COLOR GRAPHICS ADAPTER" - CGA)
+este  realizat  sub forma unei plachete logice ce se introduce in unul  din
+conectorii  de  extensie ai placii logice de baza si  permite  cuplarea  la
+echipament a monitoarelor  color sau monocrome de rezolutie medie si mare.
+     Cuplorul  de  afisaj este implementat folosind  circuitul  specializat
+MC 6845 si genereaza semnale pentru doua tipuri de interfete video:
+     - interfata video-complex alb/negru;
+     - interfata  RGB  de  doua tipuri:  cu semnale TTL si  cu  semnale  de
+impedanta 75 ohmi.
+     In plus, este prevazuta si o interfata pentru creion optic.
+     Cuplorul de afisaj are doua regimuri de lucru: alfanumeric si grafic.
+Fiecare regim de lucru are mai multe moduri de operare.
+     In regimul de lucru alfanumeric se pot afisa:
+     - 40 coloane x 25 rinduri pentru monitoare de rezolutie medie;
+     - 80 coloane x 25 rinduri pentru monitoare de rezolutie mare.
+     In  ambele  moduri  caracterele sint definite intr-o  matrice  de  8x8
+puncte, dimensiunea caracterului fiind de 7x7 puncte.
+     In modul monocrom sint posibile urmatoarele atribute ale caracterului:
+video invers, blinking, intesificat.
+     In  modul color pot fi afisate saisprezece culori pentru caractere  si
+opt culori pentru fond. In plus, poate exista blinking la nivel de caracter.
+     Cuplorul de afisaj  contine  32  Kocteti de memorie RAM intre adresele
+B8000H-BC000H.
+     In  modul  40 coloane x 25 rinduri sint folositi 1.000  octeti  pentru
+pastrarea  caracterelor  si  1.000  octeti  pentru  pastrarea  atributelor/
+informatiei de culoare.  Aceasta inseamna ca se pot memora  maxim 16 ecrane
+(32 Kocteti).
+     In modul 80 coloane x 25 rinduri se pot memora maxim 8 ecrane.
+     Toti  cei  32 Kocteti  de memorie  pot fi direct accesati de procesor,
+ceea ce determina o  mare  flexibilitate  in lucrul  cu cuplorul de afisaj.
+     In modul de lucru alfanumeric color este  posibila selectarea  culorii
+marginii ecranului din cele saisprezece  culori existente.
+     In regimul grafic  sint  posibile  doua  moduri de operare:
+     - modul grafic color  de  rezolutie  medie: 320 x 200 puncte;
+     - modul grafic monocrom de rezolutie mare:  640 x 200 puncte.
+     In  modul grafic color de rezolutie medie fiecare punct poate avea una
+din  cele 4 culori adresabile.  Culoarea fondului poate fi oricare din cele
+16 culori posibile.  Cele 3  culori de lucru ramase dupa selectarea culorii
+de  fond  apartin   uneia   din  cele doua  palete  de  culoare  existente,
+selectabile  software.   O  paleta contine culorile:  verde / rosu /  maron
+iar cealalta contine culorile: cyan / magenta / alb.
+     Modul  grafic  de  rezolutie mare lucreaza  numai   monocrom  deoarece
+intreaga  memorie de ecran este folosita pentru  memorarea  informatiei  de
+punct  (0  - stins,1 - aprins). Informatia utila afisata are una din cele 8
+culori selectabile.
+     Cuplorul   de   afisaj lucreaza  neintretesut,la frecventele de  7,159
+MHz sau 14,318 MHz, in  functie de modul de operare selectat.
+     In  regimul alfanumeric caracterele sint formate intr-un generator  de
+caractere ROM.  Generatorul de caractere contine  256 de caractere diferite
+impartite in urmatoarele grupuri:
+     - 16 caractere speciale - elemente de baza pentru jocuri;
+     - 15 caractere  - elemente de editare pentru  procesare de texte;
+     - 96 caractere  - setul de caractere ASCII;

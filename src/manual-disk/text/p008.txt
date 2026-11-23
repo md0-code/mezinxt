@@ -1,0 +1,55 @@
+     - se  cupleaza  monitorul  prin intermediul cablului  de  legatura  la
+conectorul  specific  aflat  pe  panoul  spate  al  blocului  logic  si  de
+alimentare;
+     - echipamentele periferice se cupleaza prin intermediul cablurilor  de
+legatura  la conectorii corespunzatori de pe panoul spate al blocului logic
+si de alimentare.
+
+     {b}2.1.5. Protectia muncii si PCI{/b}
+
+     Protectia  impotriva  elecrocutarilor este asigurata prin  legarea  la
+pamint (prin intermediul prizei SHUKO) a carcaselor.
+     Se   interzice   accesul   personalului  necalificat   la   interiorul
+echipamentului.
+     Paza contra incendiilor se realizeaza conform normelor legale PCI.
+
+
+     {b}2.2. Exploatare{/b}
+
+     {b}2.2.1. Punerea in functiune{/b}
+
+     Pentru  punerea  in  functiune  a  microcalculatorului  JUNIOR-XT   se
+respecta urmatoarea succesiune de operatii:
+     1)   Se   verifica  ca  intrerupatoarele  de  pornire  ale   modulelor
+componente sa fie pe pozitia oprit;
+     2)  Se conecteaza echipamentul la retea prin intermediul cablurilor de
+alimentare ale modulelor componente (bloc logic si de alimentare,  monitor,
+imprimanta);
+     3) Se verifica instalarea corecta a echipamentului;
+     4) Se pune in functiune blocul logic prin actionarea comutatorului  de
+pornire aflat pe panoul spate al echipamentului;
+     5)  Se  pune in functiune monitorul prin actionarea  comutatorului  de
+pornire al acestuia;
+     6) Dupa cca.  2 sec. de la conectarea blocului logic si de alimentare,
+microcalculatorul emite doua semnale acustice si afiseaza pe ecran mesajul:
+
+          {b}JUNIOR-XT computer Vy.z{/b}
+          {b}xxxK RAM{/b}
+
+unde  y.z reprezinta versiunea componentei software BIOS iar xxx reprezinta
+dimensiunea in Kocteti a memoriei interne;
+     7)  Se  introduce in unitatea 0 de disc  flexibil  discheta  continind
+sistemul de operare.
+     Dupa incarcarea sistemului de operare,  exploatarea se va face conform
+manualului de utilizare.
+     La terminarea lucrului, dischetele se scot din unitatatile de disc, se
+deconecteaza monitorul si blocul logic.
+
+     {b}2.2.2. Erori la punerea in functiune{/b}
+
+     La  punerea in functiune,  microcalculatorul JUNIOR-XT executa un test
+de diagnosticare si evaluare a resurselor hardware.
+     Erorile  semnalate de sistem in aceasta faza sint  datorate  cuplarii
+necorespunzatoare  a  tastaturii si unitatilor de disc flexibil sau  indica
+defecte hardware.  Ele sint afisate pe ecranul monitorului si sint insotite
+de semnale acustice specifice fiecarei erori.

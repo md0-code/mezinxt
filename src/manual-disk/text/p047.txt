@@ -1,0 +1,46 @@
+     {b}3.3.2. Regimul de lucru grafic{/b}
+
+     In regimul de lucru grafic,  cuplorul de afisaj grafic color are  doua
+moduri de operare:
+     - modul de operare grafic color de rezolutie medie;
+     - modul de operare grafic monocrom de rezolutie mare.
+     Urmatorul tabel prezinta cele doua moduri:
+
+     ------------------------------------------------------------
+     |            | Orizontal | Vertical | Nr.culori  afisabile |
+     |            |  (puncte) | (rinduri)|  (inclusiv  fondul)  |
+     ------------------------------------------------------------
+     |rezolutie   |    320    |   200    |  4 culori  in  total |
+     |medie       |           |          | - una din 16 pt.fond |
+     |            |           |          | - unul din seturile: |
+     |            |           |          |    verde,rosu,maron  |
+     |            |           |          |          sau         |
+     |            |           |          |     cyan,magenta,alb |
+     |rezolutie   |    640    |   200    | numai 2 culori       |
+     |mare        |           |          | - negru pentru fond  |
+     |            |           |          | - una din cele 8     |
+     |            |           |          |   culori de baza pt. |
+     |            |           |          |   informatia utila   |
+     ------------------------------------------------------------
+
+     {u}3.3.2.1. Modul grafic color de rezolutie medie{/u}
+
+     In modul grafic color de rezolutie medie, pentru afisare se utilizeaza
+monitoare  color sau monocrome (pentru lucrul cu nuante de gri).  Acest mod
+de lucru are urmatoarele caracteristici:
+     - afiseaza maxim 302x200 puncte;
+     - selecteaza una din cele 4 culori pentru fiecare punct;
+     - necesita  16.000  octeti  de  memorie RAM;
+     - modul de  asociere  a  celor  4  puncte pe octet este urmatorul:
+
+        7     6     5     4     3     2     1    0
+     --------------------------------------------------
+     |  C1    C0 |  C1    C0 |  C1    C0 |  C1   C0   |
+     --------------------------------------------------
+     |  primul   | al doilea | al treilea| al patrulea|
+     |  punct    | punct     | punct     | punct      |
+     |  afisat   | afisat    | afisat    | afisat     |
+     --------------------------------------------------
+
+     - memoria  grafica  este organizata in doua zone a cite  8.000  octeti
+dupa cum urmeaza:

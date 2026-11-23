@@ -1,0 +1,55 @@
+izolarea  cu  usurinta a erorilor hardware intre cuplor si dispozitivul  de
+intrare/iesire atasat.
+     Selectia  adresei cuplorului pentru imprimanta paralela este stabilita
+prin microintrerupatoare,  cuplorul putind raspunde la adresele 278H - 27AH
+sau 378H - 37AH.  Cuplorul pentru imprimanta este inclus in configuratia de
+baza a produsului cu adresele 378H - 37AH.  Configuratia microintrerupatoa-
+relor de selectie a adresei cuplorului este prezentata in tabelul urmator:
+
+     ---------------------------
+     |Adresa cuplor| SW15  SW16|
+     |   (hexa)    |     |     |
+     ---------------------------
+     |  278 - 27A  | OFF | ON  |
+     |  378 - 37A  | ON  | OFF |
+     ---------------------------
+     Nota:  ON  indica microintrerupator inchis;
+            OFF indica microintrerupator deschis.
+
+     Liniile  de  intrare/iesire ale cuplorului pentru imprimanta  paralela
+sint  accesibile utilizatorului prin intermediul unui conector mama  de  25
+contacte   fixat pe suportul conector al cuplorului si accesibil pe  panoul
+spate al echipamentului.  Repartizarea semnalelor la  pinii conectorului de
+intrare/iesire este prezentata in tabelul urmator:
+
+     ---------------------------------------
+     | Pin nr. | Denumire semnal |  Sens   |
+     ---------------------------------------
+     |    1    |  - STROBE       | iesire  |
+     |    2    |  + PDATA0       | iesire  |
+     |    3    |  + PDATA1       | iesire  |
+     |    4    |  + PDATA2       | iesire  |
+     |    5    |  + PDATA3       | iesire  |
+     |    6    |  + PDATA4       | iesire  |
+     |    7    |  + PDATA5       | iesire  |
+     |    8    |  + PDATA6       | iesire  |
+     |    9    |  + PDATA7       | iesire  |
+     |   10    |  - ACK          | intrare |
+     |   11    |  + BUSY         | intrare |
+     |   12    |  + PAPER END    | intrare |
+     |   13    |  + SELECT       | intrare |
+     |   14    |  - AUTO FEED    | iesire  |
+     |   15    |  - ERROR        | intrare |
+     |   16    |  - INIT         | iesire  |
+     |   17    |  - SELIN        | iesire  |
+     |   18    |    GND          |         |
+     |   19    |    GND          |         |
+     |   20    |    GND          |         |
+     |   21    |    GND          |         |
+     |   22    |    GND          |         |
+     |   23    |    GND          |         |
+     |   24    |    GND          |         |
+     |   25    |    GND          |         |
+     ---------------------------------------
+     Nota:   Semnul - indica semnal activ 0 logic;
+             Semnul + indica semnal activ 1 logic.

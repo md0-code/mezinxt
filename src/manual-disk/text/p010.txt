@@ -1,0 +1,39 @@
+operatie de calibrare),  microcalculatorul incearca sa incarce sistemul  de
+operare de pe unitatea 0 de disc.
+In  cazul  in care discheta sistem nu este introdusa in unitate,  pe  ecran
+apare periodic mesajul:
+
+     {b}Error on load, retrying{/b}
+
+Aceasta  eroare este o eroare de operare,  de aceea nu este insotita de  un
+semnal acustic.
+     Incarcarea  sistemului  de  operare va reincepe  imediat  ce  discheta
+sistem va fi introdusa in unitate.
+
+
+     {b}2.3. Intretinere{/b}
+
+     Microcalculatorul  JUNIOR-XT nu necesita o intretinere  deosebita.  Se
+impun totusi o serie de masuri de protectie, cum ar fi:
+     - deconectarea de la retea la oprirea lucrului;
+     - stergerea  prafului  de  pe carcasa  blocului  logic,  tastatura  si
+       monitor;
+     - stergerea  ecranului  monitorului cu un material textil  inmuiat  in
+       alcool;
+     - curatarea periodica a capetelor unitatilor de disc flexibil.
+     Depozitarea   echipamentului  trebuie  facuta  in  incaperi   inchise,
+lipsite de praf, agenti corozivi, umezeala.
+     Intretinerea preventiva consta in curatarea echipamentului, efectuarea
+unei inspectii vizuale, si verificarea performantelor echipamentului.
+     Exteriorul  echipamentului poate fi curatat utilizind o tesatura moale
+imbibata cu o solutie slaba de detergent cu apa.
+     Praful  din interiorul blocului logic si de alimentare trebuie aspirat
+periodic datorita conductibilitatii lui electrice in conditii de  umiditate
+ridicata  si datorita faptului ca impiedica disiparea de caldura in  timpul
+functionarii.
+     Inaintea  curatarii  interiorului se deconecteaza echipamentul  de  la
+retea.
+     Se  evita curatarea cu agenti chimici care ar putea dauna zonelor  din
+material plastic.
+     Echipamentul  va  fi  inspectat periodic pentru  defecte  cum  ar  fi:
+conectori rupti, zone afectate de disiparea de caldura, etc.

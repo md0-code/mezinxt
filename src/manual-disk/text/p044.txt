@@ -1,0 +1,55 @@
+     - 48 caractere  - set de baza limbi straine;
+     - 48  caractere - set de  baza pentru  prezentare  economica ( tabele,
+                       scheme, diagrame folosind linii simple sau duble);
+     - 16 caractere grecesti;
+     - 16 caractere pentru notatii stiintifice.
+     Conectorul  de  9  contacte pentru interfata video RGB  cu  semnal  de
+intensificare  si  mufa RCA pentru semnalul video-complex  sint  fixate  pe
+placa logica a cuplorului de afisaj cu ajutorul unui suport metalic si sint
+accesibili la spatele echipamentului.
+     Semnalele   interfetei  video  RGB fara semnal de  intensificare   (de
+impedanta 75 ohm) sint  cuplate  prin intermediul unui cablu interior,   la
+mufe RCA fixate pe un suport metalic pe panoul spate al echipamentului.
+     Conexiunile la conectorul de iesire de 9 contacte sint urmatoarele:
+
+     ----------------------------------
+     | Pin conector | Denumire semnal |
+     ----------------------------------
+     |      1       |       GND       |
+     |      2       |       GND       |
+     |      3       |        R        |
+     |      4       |        G        |
+     |      5       |        B        |
+     |      6       |        I        |
+     |      7       |        -        |
+     |      8       |      HSYNC      |
+     |      9       |      VSYNC      |
+     ----------------------------------
+
+     Pentru   cuplarea  creionului optic se foloseste de asemeni  un  cablu
+interior  si  un  conector de 9 contacte mama,  ale  carui  conexiuni  sint
+urmatoarele:
+
+     ----------------------------------
+     | Pin conector | Denumire semnal |
+     ----------------------------------
+     |      1       |     LPENIN      |
+     |      2       |        -        |
+     |      3       |     LPENSW      |
+     |      4       |       GND       |
+     |      5       |       +5V       |
+     |      6       |       +12V      |
+     |      7       |        -        |
+     |      8       |        -        |
+     |      9       |        -        |
+     ----------------------------------
+
+     {b}3.3.1. Regimul de de lucru alfanumeric{/b}
+
+     Fiecare  caracter afisat este definit in memoria de afisare  prin  doi
+octeti. Cei doi octeti caracter/atribut au urmatorul format:
+
+           Cod caracter       |       Atribut
+     ---------------------------------------------------
+     | 7  6  5  4  3  2  1  0 | 7  6  5  4  3  2  1  0 |
+     ---------------------------------------------------

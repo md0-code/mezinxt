@@ -1,0 +1,46 @@
+     {b}3.8. Unitatile de disc flexibil{/b}
+
+     Microcalculatorul  JUNIOR-XT  poate  lucra  cu  1-4  unitati  de  disc
+flexibil  de 5,25 inch sau 8 inch.  Nu este posibila utilizarea simultana a
+unitatilor de disc de 5,25 inch si 8 inch.
+
+     {b}3.8.1. Unitatile de disc flexibil de 5,25 inch{/b}
+
+     Unitatile de disc flexibil de 5,25 inch pot fi simpla sau dubla  fata,
+cu 40/80 piste pe fiecare fata.  Ele sint folosite numai in dubla densitate
+utilizind modularea in frecventa modificata (MFM).
+     Blocul logic si de alimentare are alocat spatiu pentru doua unitati de
+disc  flexibil  de 5,25 inch.  Acestea se alimenteaza direct din  sursa  de
+alimentare  a  microsistemului,  care furnizeaza tensiunile de +5V si  +12V
+necesare  functionarii partii logice,  amplificatoarelor de  scriere/citire
+precum si miscarii motorului pas cu pas si de antrenare a dischetei.
+     Comanda  unitatilor de disc flexibil de 5,25 inch interioare  blocului
+logic  si de alimentare se face prin intermediul unui cablu plat cu  26  de
+fire  ce  face  legatura intre placheta de cuplor  pentru  discul  flexibil
+(conectorul de 26 contacte - vezi 3.2.2.) si unitatile de disc.
+     Unitatile  de  disc  flexibil de 5,25 inch  prezinta  un  conector  de
+interfata  cu  2 x 17 contacte,  repartizarea semnalelor la  pinii  acestui
+conector fiind urmatoarea:
+
+     -----------------------------------------------------------
+     |Pin conector|Denumire semnal|Pin conector|Denumire semnal|
+     -----------------------------------------------------------
+     |      1     | GND           |     19     | GND           |
+     |      2     |  -            |     20     | SEEK/STEP     |
+     |      3     | GND           |     21     | GND           |
+     |      4     | IN USE        |     22     | WRITE DATA    |
+     |      5     | GND           |     23     | GND           |
+     |      6     | SELECT 3      |     24     | WRITE ENABLE  |
+     |      7     | GND           |     25     | GND           |
+     |      8     | INDEX         |     26     | TRACK 0       |
+     |      9     | GND           |     27     | GND           |
+     |     10     | SELECT 0      |     28     | WRITE PROTECT |
+     |     11     | GND           |     29     | GND           |
+     |     12     | SELECT 1      |     30     | READ DATA     |
+     |     13     | GND           |     31     | GND           |
+     |     14     | SELECT 2      |     32     | SIDE SELECT   |
+     |     15     | GND           |     33     | GND           |
+     |     16     | MOTOR ON      |     34     | READY         |
+     |     17     | GND           |            |               |
+     |     18     | DIRECTION     |            |               |
+     -----------------------------------------------------------

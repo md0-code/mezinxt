@@ -1,0 +1,3 @@
+{fig tastatura}
+
+                    {b}Tastatura microcalculatorului JUNIOR-XT{/b}

@@ -1,0 +1,31 @@
+Nota 1:   Asterisc ( * ) poate fi tastat prin doua metode:
+          - se apasa tasta :    {b}PrSc{/b}.
+                                 {b}*{/b}
+          - se apasa tasta :     {b}*{/b}     impreuna cu {b}Shift{/b}.
+                                 {b}8{/b}
+
+Nota 2:   Punctul ( . ) poate fi tastat prin doua metode:
+          - se apasa tasta :    {b}>{/b}
+                                {b}.{/b}
+          - se apasa tasta :    {b}.{/b}      impreuna cu {b}Shift{/b} sau {b}Shift Lock{/b}.
+                               {b}DEL{/b}
+
+Nota 3:   Caracterele numerice (0 - 9) pot fi tastate prin doua metode:
+          - se apasa tastele numerice din partea superioara a tastaturii;
+          - folosind {b}Shift{/b} sau {b}Num Lock{/b} se apasa tastele din blocul numeric
+            separat.
+
+Nota 4:   Literele mari (A - Z) pot fi tastate  in doua moduri :
+          - folosind {b}Shift{/b} si apasind tasta corespunzatoare;
+          - folosind {b}Caps Lock{/b} si apasind tasta corespunzatoare;
+
+
+Nota 5:   Literele mici (a-z) pot fi tastate in doua moduri :
+          - apasind tasta corespunzatoare;
+          - folosind {b}Caps Lock{/b} si {b}Shift{/b} se apasa tasta corespunzatoare.
+
+Nota  6:  Dupa  apasarea tastei {b}Alt{/b} cei trei digiti se tasteaza din  blocul
+          numeric  separat;  codurile de caracter de la 000 la 255  pot  fi
+          introduse   in  acest  mod (  cu  {b}Caps  Lock{/b}   activat,   tastind
+          caracterele   cu  codurile de la 97 la 122 se vor afisa  literele
+          mari in locul literelor mici ).

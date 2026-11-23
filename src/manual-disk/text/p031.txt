@@ -1,0 +1,43 @@
+    --------------------------------------------------------------------------
+      Faza     R/W    D7 D6 D5 D4 D3 D2 D1 D0          Observatii
+    --------------------------------------------------------------------------
+                        {b}Formateaza o pista ("Format a Track"){/b}
+
+       Comanda  W     0  MF 0  0  1  1  1  1        Coduri de comanda.
+                W     X  X  X  X  X  HD US1 US0
+                W               N                   Octeti pe sector
+                W               SC                  Sector / pista  (sector/
+                                                    cilindru).
+                W               GPL                 Spatiu ("GAP").
+                W               D                   Octet de umplere.
+       Executie                                     FDC formateaza un cilin-
+                                                    dru intreg.
+       Rezultat R              ST0                  Informatii de stare dupa
+                R              ST1                  executia comenzii.
+                R              ST2
+                R               C                   In acest caz, informatia
+                R               H                   ID nu are nici o valoare.
+                R               R
+                R               N
+    --------------------------------------------------------------------------
+                        {b}Valoare la comparare egala ("Scan Equal"){/b}
+
+       Comanda  W     MT MF SK 1  0  0  0  1        Coduri de comanda.
+                W     X  X  X  X  X  HD US1 US0
+                W               C                   Informatii de sector  ID
+                W               H                   anterioare executiei co-
+                W               R                   menzii.
+                W               N
+                W              EOT
+                W              GPL
+                W              DTL
+       Executie                                     Datele  comparate  intre
+                                                    FDD  si  sistem.
+       Rezultat R              ST0                  Informatii de stare dupa
+                R              ST1                  executia comenzii.
+                R              ST2
+                R               C                   Informatii de sector  ID
+                R               H                   dupa executia comenzii.
+                R               R
+                R               N
+    --------------------------------------------------------------------------
