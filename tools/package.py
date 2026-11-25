@@ -39,7 +39,7 @@ NAME = "MezinXT"
 PLATFORMS = ("windows-x64", "windows-arm64", "linux-x64", "linux-arm64")
 
 # What the archive holds besides the program, the configuration and the ROMs: (archive path, path in the repository).
-DOCS = ["README.md", "README.ro.md"] + [f"docs/{n}" for n in ("LICENSE", "THIRD_PARTY.md", "CHANGELOG.md", "NOTES.md", "NOTES.ro.md")]
+DOCS = ["README.md", "README.ro.md", "LICENSE"] + [f"docs/{n}" for n in ("THIRD_PARTY.md", "CHANGELOG.md", "NOTES.md", "NOTES.ro.md")]
 ROMS = sorted(fetch_roms.IMAGES)
 # The lines of a README that show the pictures of assets/ (the logo, centred; the screenshot), which the archive does not hold.
 PICTURE_LINE = re.compile(r"^(?:!\[[^\]]*\]\(assets/[^)]*\)|<p align=\"center\">.*\bassets/.*</p>)\r?\n\r?\n", re.M)

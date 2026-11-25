@@ -194,5 +194,5 @@ Pe Linux (Debian 12, inclusiv în WSL), `tools/build_linux.sh` compilează, test
 
 ## Licență
 
-GPL-3.0-or-later (`docs/LICENSE`). Componentele terțe sunt enumerate în
+GPL-3.0-or-later (`LICENSE`). Componentele terțe sunt enumerate în
 `docs/THIRD_PARTY.md`.
